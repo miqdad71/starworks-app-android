@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view
+package com.miqdad71.starworks.view.activities
 
 import android.os.Bundle
 import android.view.WindowManager

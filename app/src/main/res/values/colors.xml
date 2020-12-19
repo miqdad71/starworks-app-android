@@ -15,6 +15,12 @@
     <color name="maincolor">#2B2B2B</color>
     <color name="btn_maincolor">#FF9800</color>
     <color name="gray">#837D8F</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorAccent">#EF5350</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="transparent">#00FFFFFF</color>
+
+
 
 
 </resources>
