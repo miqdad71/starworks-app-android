@@ -11,7 +11,7 @@
         android:theme="@style/Theme.StarworkS">
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".EngineerLoginActivity"></activity>
-        <activity android:name=".CompanyLoginActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

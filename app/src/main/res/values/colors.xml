@@ -12,4 +12,9 @@
     <color name="text_loc">#afafaf</color>
     <color name="color_favorite">#F51A51</color>
     <color name="ic_launcher_starworks_background">#FFFFFF</color>
+    <color name="maincolor">#F44336</color>
+    <color name="btn_maincolor">#FF9800</color>
+    <color name="gray">#837D8F</color>
+
+
 </resources>
