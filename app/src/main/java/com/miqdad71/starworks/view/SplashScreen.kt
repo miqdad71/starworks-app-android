@@ -1,10 +1,11 @@
-package com.miqdad71.starworks
+package com.miqdad71.starworks.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
+import com.miqdad71.starworks.R
 
 
 class SplashScreen : AppCompatActivity() {

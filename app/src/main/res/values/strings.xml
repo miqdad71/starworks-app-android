@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">StarworkS</string>
     <string name="mainscr_msg">Temukan developer berbakat &amp; terbaik di berbagai bidang keahlian</string>
-    <string name="login_here">LOGIN</string>
     <string name="logemp">Masuk Sebagai Pekerja</string>
     <string name="logcomp">Masuk Sebagai Perekrut</string>
 
@@ -10,7 +9,6 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign up</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
@@ -26,7 +24,16 @@
     <string name="my_logo">My Logo</string>
     <string name="main_background">Main Background</string>
 
-
+    <!--SignUp-->
+    <string name="action_sign_in_short">Sign up</string>
+    <string name="instruction_sign_up">Please fill the form below correctly</string>
+    <string name="full_name">Full Name</string>
+    <string name="company">Company</string>
+    <string name="position">Position</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="have_an_account">You have an account?</string>
+    <string name="login_here">Login here</string>
+    <string name="password_confirmation">Password Confirmation</string>
 
 
 </resources>

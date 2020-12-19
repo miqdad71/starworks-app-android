@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_starworks_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".EngineerLoginActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".SplashScreen">
+        <activity android:name=".view.SignUpActivity"/>
+        <activity android:name=".view.MainActivity" />
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,8 +1,9 @@
-package com.miqdad71.starworks
+package com.miqdad71.starworks.view
 
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.miqdad71.starworks.R
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
