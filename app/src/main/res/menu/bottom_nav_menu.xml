@@ -10,18 +10,14 @@
         android:icon="@drawable/ic_search"
         />
 
-    <item android:id="@+id/placeholder"
-        android:title=""
-        />
-
     <item android:id="@+id/miProfile"
         android:title="Profile"
         android:icon="@drawable/ic_person"
         />
 
-    <item android:id="@+id/miSettings"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings"
+    <item android:id="@+id/miJobs"
+        android:title="Jobs"
+        android:icon="@drawable/ic_jobs"
         />
 
 </menu>
