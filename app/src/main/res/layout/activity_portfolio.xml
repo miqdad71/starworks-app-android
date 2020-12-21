@@ -7,7 +7,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:background="@color/maincolor"
+        android:alpha="0.9"
+        android:fillViewport="true"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,7 +25,7 @@
                 android:fontFamily="sans-serif-thin"
                 android:text="@string/add_portfolio"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +40,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/instruction_add_portfolio"
-                android:textColor="@color/gray_500"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_add_portfolio" />
@@ -50,7 +53,7 @@
                 android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/app_name_portfolio"
-                android:textColor="@color/gray_500"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_instruction" />
@@ -87,7 +90,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/description"
-                android:textColor="@color/gray_500"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_app" />
@@ -127,7 +130,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/pub"
-                android:textColor="@color/gray_500"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_description" />
@@ -165,7 +168,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/repo"
-                android:textColor="@color/gray_500"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_pub" />
@@ -203,7 +206,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/workplace"
-                android:textColor="@color/gray_500"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_repo" />
@@ -241,7 +244,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/portfolio_type"
-                android:textColor="@color/gray_500"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_workplace" />
@@ -263,7 +266,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/mobile_application"
-                    android:textColor="@color/gray_500" />
+                    android:textColor="@color/white" />
 
                 <RadioButton
                     android:id="@+id/rb_web"
@@ -271,7 +274,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/web_application"
-                    android:textColor="@color/gray_500" />
+                    android:textColor="@color/white" />
 
             </RadioGroup>
 
@@ -283,7 +286,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/image_upload"
-                android:textColor="@color/gray_500"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rg_portfolio_type" />
@@ -295,7 +298,6 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="18dp"
                 android:background="@color/white"
-                android:contentDescription="@string/img_icon"
                 android:elevation="8dp"
                 android:onClick="onClick"
                 android:scaleType="center"
@@ -309,7 +311,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/primary"
+                android:backgroundTint="@color/btn_maincolor"
                 android:onClick="onClick"
                 android:padding="14dp"
                 android:text="@string/add_portfolio"
@@ -338,8 +340,7 @@
                     android:layout_height="20dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="24dp"
-                    android:contentDescription="@string/img_icon"
-                    android:src="@drawable/ic_arrow_left_gray" />
+                    android:src="@drawable/ic_back_white" />
 
                 <TextView
                     android:id="@+id/tv_back"
@@ -348,7 +349,7 @@
                     android:layout_marginBottom="24dp"
                     android:fontFamily="sans-serif"
                     android:text="@string/back_to_profile"
-                    android:textColor="@color/gray_500"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 

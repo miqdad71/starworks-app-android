@@ -3,6 +3,8 @@
     <string name="mainscr_msg">Temukan developer berbakat &amp; terbaik di berbagai bidang keahlian</string>
     <string name="logemp">Masuk Sebagai Pekerja</string>
     <string name="logcomp">Masuk Sebagai Perekrut</string>
+    <string name="hire">Hire</string>
+
 
     <string name="or">atau</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -36,7 +38,6 @@
 
     <string name="img_profile">Image Profile</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="skill">Skills</string>
     <string name="back_to_profile">Back to profile</string>
 
 
@@ -58,4 +59,29 @@
     <string name="back_to_verify">Back to verify email</string>
     <string name="new_password">New Password</string>
 
+    <!-- Skill -->
+    <string name="add_skill">Add Skill</string>
+    <string name="instruction_add_skill">Please fill the skill for add new skill below</string>
+    <string name="new_skill">New Skill</string>
+    <string name="skill_hint">Your new skill</string>
+    <string name="skill">Skill</string>
+
+    <!-- Portfolio -->
+    <string name="add_portfolio">Add Portofolio</string>
+    <string name="instruction_add_portfolio">Please fill the portfolio for add new portfolio below</string>
+    <string name="app_name_portfolio">App Name</string>
+    <string name="description">Description</string>
+    <string name="pub">Publication</string>
+    <string name="repo">Repository</string>
+    <string name="workplace">Workplace</string>
+    <string name="portfolio_type">Portfolio Type</string>
+    <string name="app_hint">Your app name</string>
+    <string name="description_hint">Short description</string>
+    <string name="link_pub_hint">Publication link</string>
+    <string name="link_repo_hint">Repository link</string>
+    <string name="work_place_hint">Related workplace</string>
+    <string name="portfolio_type_hint">Portfolio type</string>
+    <string name="image_upload">Choose Image</string>
+    <string name="mobile_application">Mobile Application</string>
+    <string name="web_application">Web Application</string>
 </resources>
