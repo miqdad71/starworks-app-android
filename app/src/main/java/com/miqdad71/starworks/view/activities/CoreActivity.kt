@@ -2,14 +2,12 @@ package com.miqdad71.starworks.view.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.view.fragments.FirstFragment
-import com.miqdad71.starworks.view.fragments.FourthFragment
-import com.miqdad71.starworks.view.fragments.SecondFragment
-import com.miqdad71.starworks.view.fragments.ThirdFragment
+import com.miqdad71.starworks.view.fragments.HomeFragment
+import com.miqdad71.starworks.view.fragments.JobsFragment
+import com.miqdad71.starworks.view.fragments.SearchFragment
+import com.miqdad71.starworks.view.fragments.ProfileEngineerFragment
 import kotlinx.android.synthetic.main.activity_core.*
 
 class CoreActivity : AppCompatActivity() {
@@ -20,10 +18,10 @@ class CoreActivity : AppCompatActivity() {
         bottomNavigationView.background = null
 //        bottomNavigationView.menu.getItem(2).isEnabled = false
 
-        val firstFragment = FirstFragment()
-        val secondFragment = SecondFragment()
-        val thirdFragment = ThirdFragment()
-        val fourthFragment = FourthFragment()
+        val firstFragment = HomeFragment()
+        val secondFragment = SearchFragment()
+        val thirdFragment = ProfileEngineerFragment()
+        val fourthFragment = JobsFragment()
 
         setCurrentFragment(firstFragment)
 

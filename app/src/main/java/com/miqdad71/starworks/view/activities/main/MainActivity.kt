@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.activities
+package com.miqdad71.starworks.view.activities.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.miqdad71.starworks.R
+import com.miqdad71.starworks.view.activities.login.LoginActivity
+import com.miqdad71.starworks.view.activities.login.LoginActivity1
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
