@@ -27,13 +27,14 @@ class CoreActivity : AppCompatActivity() {
 
         setCurrentFragment(firstFragment)
 
-        bottomNavigationView.setOnNavigationItemReselectedListener {
+        bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.miHome -> setCurrentFragment(firstFragment)
                 R.id.miSearch -> setCurrentFragment(secondFragment)
                 R.id.miProfile -> setCurrentFragment(thirdFragment)
                 R.id.miJobs -> setCurrentFragment(fourthFragment)
             }
+            false
         }
     }
 

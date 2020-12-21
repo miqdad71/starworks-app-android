@@ -35,5 +35,8 @@
     <string name="login_here">Login here</string>
     <string name="password_confirmation">Password Confirmation</string>
 
+    <string name="img_profile">Image Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="skill">Skills</string>
 
 </resources>

@@ -11,8 +11,11 @@
         android:theme="@style/Theme.StarworkS">
 <!--        <activity android:name=".view.activities.CoreActivity"/>-->
         <activity android:name=".view.activities.SignUpActivity" />
+        <activity android:name=".view.activities.ExperienceActivity" />
         <activity android:name=".view.activities.MainActivity" />
         <activity android:name=".view.activities.LoginActivity" />
+        <activity android:name=".view.activities.LoginActivity1" />
+
         <activity android:name=".view.activities.CoreActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

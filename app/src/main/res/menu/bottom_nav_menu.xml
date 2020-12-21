@@ -10,14 +10,16 @@
         android:icon="@drawable/ic_search"
         />
 
+    <item android:id="@+id/miJobs"
+        android:title="Jobs"
+        android:icon="@drawable/ic_jobs"
+        />
+
     <item android:id="@+id/miProfile"
         android:title="Profile"
         android:icon="@drawable/ic_person"
         />
 
-    <item android:id="@+id/miJobs"
-        android:title="Jobs"
-        android:icon="@drawable/ic_jobs"
-        />
+
 
 </menu>
