@@ -7,6 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/maincolor"
+        android:alpha="0.7"
         android:orientation="vertical">
 
         <Button
@@ -15,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/primary"
+            android:backgroundTint="@color/btn_maincolor"
             android:padding="14dp"
             android:text="@string/add_experience"
             android:textColor="@color/white"
@@ -35,6 +37,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <TextView
@@ -68,7 +71,7 @@
                     android:layout_marginTop="5dp"
                     android:text="January 2019 - March 2020"
                     android:textAlignment="textStart"
-                    android:textColor="@color/gray_500"
+                    android:textColor="@color/gray"
                     android:textSize="16sp" />
 
                 <TextView
@@ -79,7 +82,7 @@
                     android:layout_marginTop="5dp"
                     android:text="14 months"
                     android:textAlignment="textStart"
-                    android:textColor="@color/gray_500"
+                    android:textColor="@color/gray"
                     android:textSize="16sp" />
 
                 <TextView
@@ -91,7 +94,7 @@
                     android:layout_marginBottom="16dp"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at."
                     android:textAlignment="textStart"
-                    android:textColor="@color/gray_500"
+                    android:textColor="@color/gray"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -111,6 +114,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <TextView
@@ -144,7 +148,7 @@
                     android:layout_marginTop="5dp"
                     android:text="March 2020 - November 2020"
                     android:textAlignment="textStart"
-                    android:textColor="@color/gray_500"
+                    android:textColor="@color/gray"
                     android:textSize="16sp" />
 
                 <TextView
@@ -155,7 +159,7 @@
                     android:layout_marginTop="5dp"
                     android:text="8 months"
                     android:textAlignment="textStart"
-                    android:textColor="@color/gray_500"
+                    android:textColor="@color/gray"
                     android:textSize="16sp" />
 
                 <TextView
@@ -167,7 +171,7 @@
                     android:layout_marginBottom="16dp"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at."
                     android:textAlignment="textStart"
-                    android:textColor="@color/gray_500"
+                    android:textColor="@color/gray"
                     android:textSize="14sp" />
 
             </LinearLayout>
