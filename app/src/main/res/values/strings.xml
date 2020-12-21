@@ -38,5 +38,16 @@
     <string name="img_profile">Image Profile</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="skill">Skills</string>
+    <string name="back_to_profile">Back to profile</string>
+
+
+    <!-- Experience -->
+    <string name="add_experience">Add Experience</string>
+    <string name="instruction_add_experience">Please fill the experience for add new experience below</string>
+    <string name="position_exp">Position</string>
+    <string name="company_exp">Company</string>
+    <string name="start_exp">Date Start</string>
+    <string name="end_exp">Date End</string>
+    <string name="description_exp">Description</string>
 
 </resources>

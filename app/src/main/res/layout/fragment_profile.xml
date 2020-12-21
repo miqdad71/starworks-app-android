@@ -62,6 +62,16 @@
                     android:orientation="horizontal"
                     />
 
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:src="@mipmap/img_profile"
+                        app:layout_constraintStart_toStartOf="@id/iv_image_profile"
+                        app:layout_constraintEnd_toEndOf="@id/iv_image_profile"
+                        app:layout_constraintTop_toTopOf="@id/iv_image_profile"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_image_profile"
+                        />
+
 <!--                    <de.hdodenhof.circleimageview.CircleImageView-->
 <!--                        />-->
 
@@ -77,7 +87,6 @@
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_image_profile" />
 
@@ -92,31 +101,25 @@
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
                     <LinearLayout
                         android:id="@+id/ln_domicile"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_job_title">
 
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            />
 
                         <TextView
                             android:id="@+id/tv_domicile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
                             android:text="Bekasi, Jawa Barat"
                             android:textAlignment="center"
@@ -135,7 +138,6 @@
                         android:textAlignment="center"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ln_domicile" />
 
@@ -145,18 +147,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-condensed"
                         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at."
-                        android:textAlignment="center"
+                        android:justificationMode="inter_word"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginBottom="20dp"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_job_type" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_job_type"
+                        app:layout_constraintVertical_bias="0.0" />
 
-<!--                    <Button-->
+                    <!--                    <Button-->
 <!--                        android:id="@+id/btn_edit_engineer"-->
 <!--                        android:layout_width="match_parent"-->
 <!--                        android:layout_height="wrap_content"-->
@@ -228,6 +230,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="16dp"
+                        android:src="@drawable/ic_add"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
