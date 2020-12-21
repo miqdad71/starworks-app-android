@@ -9,12 +9,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/maincolor"
+        android:alpha="0.8"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray">
+            >
 
             <View
                 android:id="@+id/v_background"
@@ -79,7 +82,7 @@
                 android:fontFamily="sans-serif-thin"
                 android:text="Web Developer"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +103,9 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    >
 
                     <LinearLayout
                         android:id="@+id/iv_image_profile"
@@ -109,6 +114,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginHorizontal="16dp"
                         android:scaleType="centerCrop"
+                        android:background="@mipmap/img_profile"
                         android:orientation="horizontal"
                         />
 
@@ -222,7 +228,9 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    >
 
 
                     <LinearLayout
@@ -232,6 +240,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginHorizontal="16dp"
                         android:scaleType="centerCrop"
+                        android:background="@mipmap/img_zaki"
                         android:orientation="horizontal" />
 
                     <!--                    <de.hdodenhof.circleimageview.CircleImageView-->
@@ -338,7 +347,7 @@
                 android:fontFamily="sans-serif-thin"
                 android:text="Android Developer"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -361,7 +370,9 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    >
 
                     <LinearLayout
                         android:id="@+id/iv_image_profile_3"
@@ -370,6 +381,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginHorizontal="16dp"
                         android:scaleType="centerCrop"
+                        android:background="@mipmap/img_miqdad"
                         android:orientation="horizontal"
                         />
 

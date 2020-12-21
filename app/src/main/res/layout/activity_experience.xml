@@ -6,12 +6,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/maincolor"
+        android:alpha="0.9"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            >
 
             <TextView
                 android:id="@+id/tv_add_experience"
@@ -22,7 +25,7 @@
                 android:fontFamily="sans-serif-thin"
                 android:text="@string/add_experience"
                 android:textAlignment="textStart"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +40,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/instruction_add_experience"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_add_experience" />
@@ -50,7 +53,7 @@
                 android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/position_exp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_instruction" />
@@ -87,7 +90,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/company_exp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_position" />
@@ -125,7 +128,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/start_exp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_company" />
@@ -166,7 +169,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/end_exp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_date_start" />
@@ -207,7 +210,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/description_exp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_date_end" />
@@ -272,7 +275,7 @@
                     android:layout_height="20dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="24dp"
-                    android:src="@drawable/ic__arrow_back" />
+                    android:src="@drawable/ic_back_white" />
 
                 <TextView
                     android:id="@+id/tv_back"
@@ -281,7 +284,7 @@
                     android:layout_marginBottom="24dp"
                     android:fontFamily="sans-serif"
                     android:text="@string/back_to_profile"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
