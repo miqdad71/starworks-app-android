@@ -5,15 +5,20 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
+import com.miqdad71.starworks.databinding.ActivityMainBinding
 import com.miqdad71.starworks.view.activities.login.LoginActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         supportActionBar?.hide()
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val btn_login = findViewById<Button>(R.id.btn_login)
         val btn_register = findViewById<Button>(R.id.btn_login1)
@@ -30,7 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.btn_login1 -> {
-                val intent = Intent(this, LoginActivity1::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
             }
 
