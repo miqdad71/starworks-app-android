@@ -19,9 +19,9 @@ class CoreActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
 //        bottomNavigationView.background = null
-//        bottomNavigationView.menu.getItem(2).isEnabled = false
         binding = DataBindingUtil.setContentView(this, R.layout.activity_core)
         binding.bottomNavigationView.background = null
+//        binding.bottomNavigationView.menu.getItem(2).isEnabled = false
 
         val firstFragment = HomeFragment()
         val secondFragment = SearchFragment()
@@ -37,7 +37,7 @@ class CoreActivity : AppCompatActivity() {
                 R.id.miProfile -> setCurrentFragment(thirdFragment)
                 R.id.miJobs -> setCurrentFragment(fourthFragment)
             }
-            false
+            true
         }
     }
 
