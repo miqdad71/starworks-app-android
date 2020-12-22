@@ -1,13 +1,18 @@
 package com.miqdad71.starworks.view.activities.login
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityLoginBinding
+import com.miqdad71.starworks.view.activities.forgetpassword.ForgetPasswordVerifyActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,8 +23,24 @@ class LoginActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
+        binding.tvForgetPassword.setOnClickListener(this)
 
+    }
 
+    override fun onClick(v: View?){
 
+        when (v?.id) {
+            R.id.tv_forget_password -> {
+                val intent = Intent(this, ForgetPasswordVerifyActivity::class.java)
+                startActivity(intent)
+            }
+//            R.id.login -> {
+//                val intent = Intent(this, CoreActivity::class.java)
+//                startActivity(intent)
+//            }
+//            R.id.tv_sign_up -> {
+//
+//            }
+        }
     }
 }

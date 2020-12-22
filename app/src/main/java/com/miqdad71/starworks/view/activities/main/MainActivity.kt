@@ -25,11 +25,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val btn_login = findViewById<Button>(R.id.btn_login)
-        val btn_register = findViewById<Button>(R.id.btn_login1)
-
-        btn_login.setOnClickListener(this)
-        btn_register.setOnClickListener(this)
+        binding.btnLogin.setOnClickListener(this)
+        binding.btnLogin1.setOnClickListener(this)
 
     }
 

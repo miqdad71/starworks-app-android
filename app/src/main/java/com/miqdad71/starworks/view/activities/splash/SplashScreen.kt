@@ -24,6 +24,6 @@ class SplashScreen : AppCompatActivity() {
         handler.postDelayed({
             startActivity(Intent(applicationContext, MainActivity::class.java))
             finish()
-        }, 2000L) //2000 L = 2 detik
+        }, 3000L) //2000 L = 3 detik
     }
 }

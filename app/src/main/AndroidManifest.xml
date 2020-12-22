@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS">
         <activity android:name=".view.activities.CoreActivity"/>
-        <activity android:name=".view.activities.SignUpActivity" />
+        <activity android:name=".view.activities.forgetpassword.ForgetPasswordVerifyActivity" />
+        <activity android:name=".view.activities.forgetpassword.ForgetPasswordActivity" />
         <activity android:name=".view.activities.main.MainActivity" />
         <activity android:name=".view.activities.experience.ExperienceActivity" />
         <activity android:name=".view.activities.login.LoginActivity" />
