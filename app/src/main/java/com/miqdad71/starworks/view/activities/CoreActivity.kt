@@ -18,10 +18,14 @@ class CoreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
 
-//        bottomNavigationView.background = null
+//      bottomNavigationView.background = null
+//      binding.bottomNavigationView.menu.getItem(2).isEnabled = false
         binding = DataBindingUtil.setContentView(this, R.layout.activity_core)
         binding.bottomNavigationView.background = null
-//        binding.bottomNavigationView.menu.getItem(2).isEnabled = false
+
+
+
+
 
         val firstFragment = HomeFragment()
         val secondFragment = SearchFragment()
