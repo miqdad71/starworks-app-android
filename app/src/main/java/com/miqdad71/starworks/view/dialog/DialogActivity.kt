@@ -1,7 +1,9 @@
 package com.miqdad71.starworks.view.dialog
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
@@ -36,9 +38,14 @@ class DialogActivity : AppCompatActivity() {
     }
     private fun  showDialogTwo(){
         val dialog = AlertDialog.Builder(this)
-            .setTitle("Test Dialog Two")
-            .setMessage("Ini Dialog 2")
-            .create()
+            .setTitle("Konfirmasi User")
+            .setMessage("Tolong Konfirmasi")
+            .setPositiveButton("Show Toast")  { dialog:DialogInterface?, which: Int ->
+                Toast.makeText(this, "Show Dialog 2", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("Dissmiss") { dialogInterface, i ->
+                dialogInterface.dismiss()
+            }
         dialog.show()
     }
     private fun  showDialogThree(){

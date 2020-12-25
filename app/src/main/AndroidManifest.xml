@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_starworks_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS">
+        <activity android:name=".view.adapter.TabLayoutActivity"/>
         <activity android:name=".view.dialog.DialogActivity" />
         <activity android:name=".view.activities.CoreActivity" />
         <activity android:name=".view.activities.signup.SignUpActivity" />
