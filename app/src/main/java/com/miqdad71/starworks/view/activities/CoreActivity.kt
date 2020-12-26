@@ -21,7 +21,7 @@ class CoreActivity : AppCompatActivity() {
 //      bottomNavigationView.background = null
 //      binding.bottomNavigationView.menu.getItem(2).isEnabled = false
         binding = DataBindingUtil.setContentView(this, R.layout.activity_core)
-        binding.bottomNavigationView.background = null
+//        binding.bottomNavigationView.background = null
 
 
 
