@@ -49,6 +49,7 @@
     <string name="start_exp">Date Start</string>
     <string name="end_exp">Date End</string>
     <string name="description_exp">Description</string>
+    <string name="experience_tab_title">Experience</string>
 
     <!-- Reset Password -->
     <string name="instruction_verify_email">Please fill the email below correctly</string>
@@ -84,4 +85,5 @@
     <string name="image_upload">Choose Image</string>
     <string name="mobile_application">Mobile Application</string>
     <string name="web_application">Web Application</string>
+    <string name="portfolio_tab_title">Portfolio</string>
 </resources>

@@ -1,27 +1,32 @@
 package com.miqdad71.starworks.view.adapter
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.miqdad71.starworks.R
 import com.miqdad71.starworks.view.fragments.ExperienceFragment
 import com.miqdad71.starworks.view.fragments.PortofolioFragment
 
-abstract class TabPagerAdapter(fragment: FragmentManager): FragmentStatePagerAdapter(fragment, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class TabPagerAdapter(private val mContext: Context, fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    val fragment = arrayOf(ExperienceFragment(), PortofolioFragment())
+    val tabTitle = intArrayOf(R.string.portfolio_tab_title, R.string.experience_tab_title)
 
-    override fun getCount(): Int = fragment.size
+    override fun getCount(): Int = tabTitle.size
 
     override fun getItem(position: Int): Fragment {
-        return fragment[position]
+        var fragment: Fragment? = null
+        when (position) {
+            0 -> fragment = PortofolioFragment()
+            1 -> fragment = ExperienceFragment()
+        }
+        return fragment as Fragment
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when (position) {
-            0 -> "Fragment A"
-            1 -> "Fragment B"
-            else -> ""
-        }
+        return mContext.resources.getString(tabTitle[position])
+
     }
+
 
 }
