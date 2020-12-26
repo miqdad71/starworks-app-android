@@ -71,6 +71,7 @@
                         android:layout_height="120dp"
                         android:src="@mipmap/img_profile"
                         app:layout_constraintStart_toStartOf="@id/iv_image_profile"
+                        android:contentDescription="@string/photoprofile"
                         app:layout_constraintEnd_toEndOf="@id/iv_image_profile"
                         app:layout_constraintTop_toTopOf="@id/iv_image_profile"
                         app:layout_constraintBottom_toBottomOf="@id/iv_image_profile"
@@ -86,7 +87,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="18dp"
                         android:fontFamily="sans-serif-thin"
-                        android:text="PT. Wasa Mitra Engineering"
+                        android:text="@string/pt_wasa_mitra_engineering"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
@@ -101,7 +102,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="Chief of PT WME"
+                        android:text="@string/chief_of_pt_wme"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
@@ -125,7 +126,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="Cakung, Jakarta Timur"
+                            android:text="@string/cakung_jakarta_timur"
                             android:textAlignment="center"
                             android:textColor="@color/gray"
                             android:textSize="16sp" />
@@ -138,7 +139,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="5dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="Finansial"
+                        android:text="@string/finansial"
                         android:textAlignment="center"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
@@ -153,7 +154,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at."
+                        android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_vestibulum_erat_orci_mollis_nec_gravida_sed_ornare_quis_urna_curabitur_eu_lacus_fringilla_vestibulum_risus_at"
                         android:justificationMode="inter_word"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
@@ -219,7 +220,7 @@
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="16dp"
                         android:fontFamily="sans-serif-thin"
-                        android:text="Email &amp; Social Media"
+                        android:text="@string/email_amp_social_media"
                         android:textAlignment="textStart"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -253,7 +254,8 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:src="@drawable/ic_email" />
+                            android:src="@drawable/ic_email"
+                            android:contentDescription="@string/todo" />
 
                         <TextView
                             android:id="@+id/tv_email"
@@ -261,7 +263,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="wasamitra.eam@wme.com"
+                            android:text="@string/wasamitra_eam_wme_com"
                             android:textAlignment="textStart"
                             android:textColor="@color/gray"
                             android:textSize="16sp" />
@@ -283,7 +285,8 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:src="@drawable/ic_instagram" />
+                            android:src="@drawable/ic_instagram"
+                            android:contentDescription="@string/todo" />
 
                         <TextView
                             android:id="@+id/tv_instagram"
@@ -291,7 +294,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="\@eam_wme"
+                            android:text="@string/eam_wme"
                             android:textAlignment="textStart"
                             android:textColor="@color/gray"
                             android:textSize="16sp" />
@@ -315,7 +318,8 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:src="@drawable/ic_linkedin" />
+                            android:src="@drawable/ic_linkedin"
+                            android:contentDescription="@string/todo" />
 
                         <TextView
                             android:id="@+id/tv_linkedin"
@@ -323,7 +327,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="\@eamwme"
+                            android:text="@string/eamwme"
                             android:textAlignment="textStart"
                             android:textColor="@color/gray"
                             android:textSize="16sp" />

@@ -86,4 +86,21 @@
     <string name="mobile_application">Mobile Application</string>
     <string name="web_application">Web Application</string>
     <string name="portfolio_tab_title">Portfolio</string>
+
+    <!--autofix-->
+    <string name="pt_wasa_mitra_engineering">PT. Wasa Mitra Engineering</string>
+    <string name="chief_of_pt_wme">Chief of PT WME</string>
+    <string name="cakung_jakarta_timur">Cakung, Jakarta Timur</string>
+    <string name="finansial">Finansial</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_vestibulum_erat_orci_mollis_nec_gravida_sed_ornare_quis_urna_curabitur_eu_lacus_fringilla_vestibulum_risus_at">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</string>
+    <string name="todo">TODO</string>
+    <string name="eamwme">\@eamwme</string>
+    <string name="eam_wme">\@eam_wme</string>
+    <string name="wasamitra_eam_wme_com">wasamitra.eam@wme.com</string>
+    <string name="email_amp_social_media"><![CDATA[Email & Social Media]]></string>
+    <string name="photoprofile">photoprofile</string>
+    <string name="miqdad">Miqdad</string>
+    <string name="android_developer">Android Developer</string>
+    <string name="bekasi_jawa_barat">Bekasi, Jawa Barat</string>
+    <string name="freelance">Freelance</string>
 </resources>
