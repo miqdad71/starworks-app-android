@@ -13,7 +13,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorSecondary"
+            android:background="@color/btn_maincolor"
             android:fillViewport="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,8 +50,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            android:background="@color/btn_maincolor"
-                            android:alpha="0.7"
+                            android:background="@color/maincolor"
+                            android:alpha="0.9"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -90,6 +90,7 @@
                             android:layout_marginTop="18dp"
                             android:fontFamily="sans-serif-thin"
                             android:text="@string/miqdad"
+                            android:onClick="onClick"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="24sp"

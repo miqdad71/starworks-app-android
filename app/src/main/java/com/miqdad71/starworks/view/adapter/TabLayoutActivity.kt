@@ -15,7 +15,7 @@ class TabLayoutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tab_layout)
 
-        pagerAdapter = TabPagerAdapter(this, supportFragmentManager)
+        pagerAdapter = TabPagerAdapter(supportFragmentManager)
         binding.viewPager.adapter = pagerAdapter
 
         binding.tabLayout.setupWithViewPager(binding.viewPager)

@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.btnLogin.setOnClickListener(this)
-        binding.btnLogin1.setOnClickListener(this)
+        binding.btnCompany.setOnClickListener(this)
 
     }
 
@@ -34,11 +34,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.btn_login -> {
                 val intent = Intent(this, LoginActivity::class.java)
+                intent.putExtra("level", 0)
                 startActivity(intent)
+                this.finish()
+
             }
-            R.id.btn_login1 -> {
+            R.id.btn_company -> {
                 val intent = Intent(this, LoginActivity::class.java)
+                intent.putExtra("level", 1)
                 startActivity(intent)
+                this.finish()
+
             }
 
         }
