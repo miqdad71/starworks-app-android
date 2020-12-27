@@ -1,45 +1,47 @@
 package com.miqdad71.starworks.view.activities.login
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.textfield.TextInputLayout
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityLoginBinding
 import com.miqdad71.starworks.util.SharedPreference
 import com.miqdad71.starworks.view.activities.CoreActivity
 import com.miqdad71.starworks.view.activities.forgetpassword.ForgetPasswordVerifyActivity
-import com.miqdad71.starworks.view.activities.main.MainActivity
 import com.miqdad71.starworks.view.activities.signup.SignUpActivity
-import com.miqdad71.starworks.view.webview.WebViewActivity
-import kotlinx.android.synthetic.main.activity_login.*
+import com.miqdad71.starworks.view.dialog.Dialog
+import com.miqdad71.starworks.view.model.CompanyModel
+import com.miqdad71.starworks.view.model.EngineerModel
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
-    protected lateinit var sharedPref: SharedPreference
+    private lateinit var preference: SharedPreference
+    private lateinit var engineerModel: EngineerModel
+    private lateinit var companyModel: CompanyModel
+    private lateinit var dialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        engineerModel = EngineerModel()
+
         supportActionBar?.hide()
         window.setFlags(
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
+        dialog = Dialog()
+
         binding.tvForgetPassword.setOnClickListener(this)
         binding.login.setOnClickListener(this)
         binding.tvSignUp.setOnClickListener(this)
-        binding.tvHaveAccount.setOnClickListener(this)
     }
 
     override fun onClick(v: View?){
-        val acLevel = intent.getIntExtra("level", 0)
 
         when (v?.id) {
             R.id.tv_forget_password -> {
@@ -51,51 +53,52 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.login -> {
-                when {
-                    binding.etEmail.text.toString().isEmpty() -> {
-                        valTextLayout(input_layout_password)
-                        valEditText(input_layout_email, et_email, "Please enter your email!")
-                    }
-                    binding.etPassword.text.toString().isEmpty() -> {
-                        valTextLayout(input_layout_email)
-                        valEditText(input_layout_password, et_password, "Please enter your password!")
-                    }
-                    else -> {
-                        valTextLayout(input_layout_email)
-                        valTextLayout(input_layout_password)
-
-                        sharedPref.createAccountUser(acLevel, "Miqdad", et_email.text.toString(), "1234567890")
-                        val intent = Intent(this, LoginActivity::class.java)
-                        startActivity(intent)
-                        this@LoginActivity.finish()
-                    }
-                }
+                login(v)
             }
         }
     }
 
-    private fun valTextLayout(inputLayout: TextInputLayout) {
-        inputLayout.isHelperTextEnabled = false
-    }
+    private fun login(view: View) {
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassword.text.toString()
 
-    private fun valEditText(inputLayout: TextInputLayout, editText: EditText, hint: String) {
-        val text = editText.text.toString().trim()
+        preference = SharedPreference(view.context)
+        engineerModel = preference.getEngineerPreference(engineerModel)
+        companyModel = preference.getCompanyPreference()
 
-        if (text.isEmpty()) {
-            inputLayout.isHelperTextEnabled = true
-            inputLayout.helperText = hint
-            editText.requestFocus()
-        } else {
-            inputLayout.isHelperTextEnabled = false
+        if (email.isEmpty()) {
+            binding.etEmail.error = SignUpActivity.FIELD_REQUIRED
+            return
         }
-    }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        this@LoginActivity.finish()
-//        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        if (password.isEmpty()) {
+            binding.etPassword.error = SignUpActivity.FIELD_REQUIRED
+            return
+        }
+
+        if (engineerModel.email == email && engineerModel.password == password) {
+            engineerModel.isLogin = true
+            preference.getEngineerPreference(engineerModel)
+
+            dialog.dialogCancel(this, "Login Successful") {
+                val sendIntent = Intent(this, CoreActivity::class.java)
+                startActivity(sendIntent)
+                this.finish()
+            }
+        }
+//        else if (companyModel.email == email && companyModel.password == password) {
+//            companyModel.isLogin = true
+//            SharedPreference.setCompanyPreference(companyModel)
+//
+//            dialog.dialogCancel(this, "Login Successful") {
+//                val sendIntent = Intent(this, CompanyMainContentActivity::class.java)
+//                startActivity(sendIntent)
+//                activity?.finish()
+//            }
+//        }
+        else {
+            dialog.dialogCancel(this, "Email or Password Incorrect") { DialogInterface.BUTTON_NEGATIVE }
+        }
     }
 
 }

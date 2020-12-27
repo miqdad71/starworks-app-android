@@ -21,7 +21,7 @@ class WebViewActivity : AppCompatActivity(), WebViewListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_web_view)
 
-        binding.webView.loadUrl("https://mojok.co")
+        binding.webView.loadUrl("https://github.com/miqdad71")
 
         binding.webView.webChromeClient = MojokChromeClient(this)
         binding.webView.webViewClient = MojokWebClient(this)

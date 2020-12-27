@@ -1,14 +1,11 @@
 package com.miqdad71.starworks.view.model
 
 data class CompanyModel(
-    val cn_id: Int? = 0,
-    val ac_id: Int? = 0,
-    val cn_company: String? = null,
-    val cn_position: String? = null,
-    val cn_field: String? = null,
-    val cn_city: String? = null,
-    val cn_description: String? = null,
-    val cn_instagram: String? = null,
-    val cn_linkedin: String? = null,
-    val cn_profile: String? = null
+    var name: String? = null,
+    var email: String? = null,
+    var company: String? = null,
+    var position: String? = null,
+    var phone: Long = 0,
+    var password: String? = null,
+    var isLogin: Boolean = false
 )

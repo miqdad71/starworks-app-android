@@ -9,7 +9,7 @@ import com.miqdad71.starworks.databinding.ActivityCoreBinding
 import com.miqdad71.starworks.view.fragments.HomeFragment
 import com.miqdad71.starworks.view.fragments.JobsFragment
 import com.miqdad71.starworks.view.fragments.SearchFragment
-import com.miqdad71.starworks.view.fragments.ProfileEngineerFragment
+import com.miqdad71.starworks.view.fragments.engineer.ProfileEngineerFragment
 import kotlinx.android.synthetic.main.activity_core.*
 
 class CoreActivity : AppCompatActivity() {
@@ -17,15 +17,10 @@ class CoreActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-
 //      bottomNavigationView.background = null
 //      binding.bottomNavigationView.menu.getItem(2).isEnabled = false
+//      binding.bottomNavigationView.background = null
         binding = DataBindingUtil.setContentView(this, R.layout.activity_core)
-//        binding.bottomNavigationView.background = null
-
-
-
-
 
         val firstFragment = HomeFragment()
         val secondFragment = SearchFragment()

@@ -5,17 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <data>
-
-        <variable
-            name="accountModel"
-            type="com.miqdad71.starworks.view.model.AccountModel" />
-
-        <variable
-            name="engineerModel"
-            type="com.miqdad71.starworks.view.model.EngineerModel" />
-    </data>
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -62,18 +51,6 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <LinearLayout
-                            android:id="@+id/iv_image_profile"
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginTop="32dp"
-                            android:contentDescription="@string/img_profile"
-                            android:scaleType="centerCrop"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:orientation="horizontal"
-                            />
 
                         <ImageView
                             android:layout_width="120dp"
@@ -85,8 +62,19 @@
                             app:layout_constraintBottom_toBottomOf="@id/iv_image_profile"
                             android:contentDescription="@string/todo" />
 
-                        <!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-                        <!--                        />-->
+<!--                        PERHATIKAN-->
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/iv_image_profile"
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_marginTop="32dp"
+                                android:contentDescription="@string/img_profile"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:orientation="horizontal"
+                                />
 
                         <TextView
                             android:id="@+id/tv_name"
@@ -273,7 +261,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="16dp"
                                 android:fontFamily="sans-serif-condensed"
-                                android:text="@{accountModel.ac_email}"
+                                android:text="miqdad.ihbs71777@gmail.com"
                                 android:textAlignment="textStart"
                                 android:textColor="@color/gray"
                                 android:textSize="16sp" />
@@ -281,7 +269,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/ln_instagram"
+                            android:id="@+id/ln_github"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
@@ -296,16 +284,16 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:contentDescription="@string/img_profile"
-                                android:src="@drawable/ic_phone" />
+                                android:src="@mipmap/ic_github" />
 
                             <TextView
-                                android:id="@+id/tv_instagram"
+                                android:id="@+id/tv_github"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="16dp"
                                 android:layout_marginBottom="16dp"
                                 android:fontFamily="sans-serif-condensed"
-                                android:text="@{accountModel.ac_phone}"
+                                android:text="miqdad71"
                                 android:textAlignment="textStart"
                                 android:textColor="@color/gray"
                                 android:textSize="16sp" />

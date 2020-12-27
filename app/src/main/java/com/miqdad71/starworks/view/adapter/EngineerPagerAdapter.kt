@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.miqdad71.starworks.view.fragments.ExperienceFragment
 import com.miqdad71.starworks.view.fragments.PortofolioFragment
 
-class TabPagerAdapter( fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class EngineerPagerAdapter(fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     val tabTitle = arrayOf("Portfolio", "Experience")
     private val fragment = arrayOf(PortofolioFragment(), ExperienceFragment())

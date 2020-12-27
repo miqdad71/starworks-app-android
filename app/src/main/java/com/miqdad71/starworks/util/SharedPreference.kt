@@ -1,72 +1,65 @@
 package com.miqdad71.starworks.util
 
 import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
-import com.miqdad71.starworks.view.activities.CoreActivity
-import com.miqdad71.starworks.view.activities.main.MainActivity
+import com.miqdad71.starworks.view.model.CompanyModel
+import com.miqdad71.starworks.view.model.EngineerModel
 
-class SharedPreference(private val context: Context) {
+class SharedPreference (context: Context) {
+
     companion object {
-        const val PREF_NAME = "LOGIN"
-        const val LOGIN = "IS_LOGIN"
-        const val TOKEN = "TOKEN"
-        const val AC_LEVEL = "AC_LEVEL"
-        const val AC_DETAIL = "AC_DETAIL"
-        const val AC_EMAIL = "AC_EMAIL"
-        const val AC_NAME = "AC_NAME"
+        private const val ENG_PREF_NAME = "eng_pref"
+        private const val COMP_PREF_NAME = "comp_pref"
+
+        private const val EMAIL = "email"
+        private const val PASSWORD = "password"
+        private const val PHONE = "phone"
+        private const val COMPANY = "company"
+        private const val POSITION = "position"
+        private const val LOGIN = "isLogin"
     }
 
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
+    private val engineerPreferences = context.getSharedPreferences(ENG_PREF_NAME, Context.MODE_PRIVATE)
+    private val companyPreferences = context.getSharedPreferences(COMP_PREF_NAME, Context.MODE_PRIVATE)
 
-    fun createInDetail(acDetail: Int) {
-        editor.putInt(AC_DETAIL, acDetail)
-        editor.commit()
+    fun setEngineerPreference(value: EngineerModel) {
+        val editor = engineerPreferences.edit()
+        editor.putString(EMAIL, value.email)
+        editor.putString(PASSWORD, value.password)
+        editor.putLong(PHONE, value.phone)
+        editor.putBoolean(LOGIN, value.isLogin)
+        editor.apply()
     }
 
-    fun createAccountUser(acLevel: Int, acName: String, acEmail: String, token: String) {
-        editor.putBoolean(LOGIN, true)
-        editor.putInt(AC_LEVEL, acLevel)
-        editor.putString(AC_NAME, acName)
-        editor.putString(AC_EMAIL, acEmail)
-        editor.putString(TOKEN, token)
-        editor.commit()
+    fun getEngineerPreference(engineerModel: EngineerModel): EngineerModel {
+        val model = EngineerModel()
+        model.email = engineerPreferences.getString(EMAIL, "")
+        model.password = engineerPreferences.getString(PASSWORD, "")
+        model.phone = engineerPreferences.getLong(PHONE, 0)
+        model.isLogin = engineerPreferences.getBoolean(LOGIN, false)
+
+        return model
     }
 
-    fun getAccountUser(): HashMap<String, String> {
-        val user: HashMap<String, String> = HashMap()
-        user[AC_NAME] = sharedPreferences.getString(AC_NAME, "Not set")!!
-        user[AC_EMAIL] = sharedPreferences.getString(AC_EMAIL, "Not set")!!
-        user[TOKEN] = sharedPreferences.getString(TOKEN, "Not set")!!
-
-        return user
+    fun setCompanyPreference(value: CompanyModel) {
+        val editor = companyPreferences.edit()
+        editor.putString(EMAIL, value.email)
+        editor.putString(PASSWORD, value.password)
+        editor.putString(COMPANY, value.company)
+        editor.putString(POSITION, value.position)
+        editor.putLong(PHONE, value.phone)
+        editor.putBoolean(LOGIN, value.isLogin)
+        editor.apply()
     }
 
-    fun getLevelUser(): Int {
-        return sharedPreferences.getInt(AC_LEVEL, 0)
-    }
+    fun getCompanyPreference(): CompanyModel {
+        val model = CompanyModel()
+        model.email = companyPreferences.getString(EMAIL, "")
+        model.password = companyPreferences.getString(PASSWORD, "")
+        model.company = companyPreferences.getString(COMPANY, "")
+        model.position = companyPreferences.getString(POSITION, "")
+        model.phone = companyPreferences.getLong(PHONE, 0)
+        model.isLogin = companyPreferences.getBoolean(LOGIN, false)
 
-    fun getInDetail(): Int {
-        return sharedPreferences.getInt(AC_DETAIL, 0)
-    }
-
-    fun getIsLogin(): Boolean {
-        return sharedPreferences.getBoolean(LOGIN, false)
-    }
-
-    fun checkIsLogin() {
-        if (!this.getIsLogin()) {
-            context.startActivity(Intent(context, MainActivity::class.java))
-            (context as CoreActivity).finish()
-        }
-    }
-
-    fun accountLogout() {
-        editor.clear()
-        editor.commit()
-
-        context.startActivity(Intent(context, MainActivity::class.java))
-        (context as CoreActivity).finish()
+        return model
     }
 }

@@ -106,6 +106,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/form_input_white"
                         android:hint="@string/email"
+                        android:text="qwert@gmail.com"
                         android:importantForAutofill="no"
                         android:inputType="textEmailAddress"
                         android:padding="18dp"
@@ -146,6 +147,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/form_input_white"
                         android:hint="@string/password"
+                        android:text="12345678"
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
                         android:padding="18dp" />

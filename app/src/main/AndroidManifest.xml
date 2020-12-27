@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS">
         <activity android:name=".view.webview.WebViewActivity"/>
-        <activity android:name=".view.adapter.TabLayoutActivity" />
+        <activity android:name=".view.adapter.EngineerLayoutActivity" />
         <activity android:name=".view.dialog.DialogActivity" />
         <activity android:name=".view.activities.CoreActivity" />
         <activity android:name=".view.activities.signup.SignUpActivity" />
