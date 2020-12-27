@@ -4,11 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-    <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+    <data>
+
+        <variable
+            name="accountModel"
+            type="com.miqdad71.starworks.view.model.AccountModel" />
+
+        <variable
+            name="engineerModel"
+            type="com.miqdad71.starworks.view.model.EngineerModel" />
+    </data>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -200,6 +206,117 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_identity">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_contact"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="16dp"
+                            android:fontFamily="sans-serif-thin"
+                            android:text="Contact"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/v_divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_contact" />
+
+                        <LinearLayout
+                            android:id="@+id/ln_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_divider"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:contentDescription="@string/img_profile"
+                                android:src="@drawable/ic_email" />
+
+                            <TextView
+                                android:id="@+id/tv_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="@{accountModel.ac_email}"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ln_instagram"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="14dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ln_email"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:contentDescription="@string/img_profile"
+                                android:src="@drawable/ic_phone" />
+
+                            <TextView
+                                android:id="@+id/tv_instagram"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="@{accountModel.ac_phone}"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cv_skill"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -209,7 +326,7 @@
                     app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_identity">
+                    app:layout_constraintTop_toBottomOf="@+id/cv_contact">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -239,9 +356,9 @@
                             android:layout_marginTop="24dp"
                             android:layout_marginBottom="16dp"
                             android:src="@drawable/ic_add"
+                            android:contentDescription="@string/image_upload"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:contentDescription="@string/todo" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <View
                             android:id="@+id/v_divider_skill"
@@ -253,186 +370,28 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/tv_skill" />
 
-                        <!--                    <com.google.android.flexbox.FlexboxLayout-->
-                        <!--                        android:layout_width="match_parent"-->
-                        <!--                        android:layout_height="match_parent"-->
-                        <!--                        android:layout_marginBottom="16dp"-->
-                        <!--                        android:paddingHorizontal="8dp"-->
-                        <!--                        android:paddingVertical="8dp"-->
-                        <!--                        app:flexWrap="wrap"-->
-                        <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-                        <!--                        app:layout_constraintEnd_toEndOf="parent"-->
-                        <!--                        app:layout_constraintStart_toStartOf="parent"-->
-                        <!--                        app:layout_constraintTop_toBottomOf="@+id/v_divider_skill">-->
+                        <com.google.android.flexbox.FlexboxLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="16dp"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="8dp"
+                            app:flexWrap="wrap"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/v_divider_skill">
 
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill1"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="Web"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_skill"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:nestedScrollingEnabled="false" />
 
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill2"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="Laravel"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill3"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="Golang"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill4"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="Javascript"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill5"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="PHP"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill6"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="HTML"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill7"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="C++"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill8"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="C#"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill9"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="Kotlin"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill10"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="Swift"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                        <TextView-->
-                        <!--                            android:id="@+id/tv_skill11"-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginHorizontal="2.5dp"-->
-                        <!--                            android:layout_marginVertical="5dp"-->
-                        <!--                            android:background="@color/blue"-->
-                        <!--                            android:fontFamily="sans-serif-condensed"-->
-                        <!--                            android:paddingHorizontal="8dp"-->
-                        <!--                            android:paddingVertical="2dp"-->
-                        <!--                            android:text="Dart"-->
-                        <!--                            android:textAlignment="textStart"-->
-                        <!--                            android:textColor="@color/white"-->
-                        <!--                            android:textSize="12sp" />-->
-
-                        <!--                    </com.google.android.flexbox.FlexboxLayout>-->
+                        </com.google.android.flexbox.FlexboxLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 </androidx.cardview.widget.CardView>
 
@@ -476,6 +435,4 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
