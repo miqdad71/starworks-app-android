@@ -12,15 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_starworks_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS">
-        <activity android:name=".view.recycleview.EngineerRecycleViewActivity"></activity>
         <activity android:name=".view.webview.WebViewActivity" />
         <activity android:name=".view.adapter.EngineerLayoutActivity" />
         <activity android:name=".view.dialog.DialogActivity" />
-        <activity android:name=".view.activities.CoreActivity" />
+        <activity android:name=".view.activities.main.EngineerMainActivity" />
         <activity android:name=".view.activities.signup.SignUpActivity" />
         <activity android:name=".view.activities.forgetpassword.ForgetPasswordVerifyActivity" />
         <activity android:name=".view.activities.forgetpassword.ForgetPasswordActivity" />
-        <activity android:name=".view.activities.main.MainActivity" />
+        <activity android:name=".view.activities.OnboardActivity" />
         <activity android:name=".view.activities.experience.ExperienceActivity" />
         <activity android:name=".view.activities.login.LoginActivity" />
         <activity android:name=".view.activities.splash.SplashScreen">

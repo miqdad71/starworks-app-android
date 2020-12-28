@@ -1,17 +1,16 @@
-package com.miqdad71.starworks.view.activities.main
+package com.miqdad71.starworks.view.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityMainBinding
 import com.miqdad71.starworks.view.activities.login.LoginActivity
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class OnboardActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
 

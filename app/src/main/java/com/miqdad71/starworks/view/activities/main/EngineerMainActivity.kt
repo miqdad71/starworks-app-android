@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.activities
+package com.miqdad71.starworks.view.activities.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +12,7 @@ import com.miqdad71.starworks.view.fragments.SearchFragment
 import com.miqdad71.starworks.view.fragments.engineer.ProfileEngineerFragment
 import kotlinx.android.synthetic.main.activity_core.*
 
-class CoreActivity : AppCompatActivity() {
+class EngineerMainActivity : AppCompatActivity() {
    private lateinit var binding: ActivityCoreBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,7 +6,7 @@ import android.os.Handler
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.view.activities.main.MainActivity
+import com.miqdad71.starworks.view.activities.OnboardActivity
 
 
 class SplashScreen : AppCompatActivity() {
@@ -22,7 +22,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         val handler = Handler()
         handler.postDelayed({
-            startActivity(Intent(applicationContext, MainActivity::class.java))
+            startActivity(Intent(applicationContext, OnboardActivity::class.java))
             finish()
         }, 3000L) //2000 L = 3 detik
     }
