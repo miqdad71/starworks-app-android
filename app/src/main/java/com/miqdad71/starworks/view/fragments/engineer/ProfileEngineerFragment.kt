@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.FragmentProfileEngineerBinding
+import com.miqdad71.starworks.view.activities.skill.SkillActivity
 import com.miqdad71.starworks.view.adapter.EngineerPagerAdapter
 import com.miqdad71.starworks.view.webview.WebViewActivity
 
@@ -45,6 +46,10 @@ class ProfileEngineerFragment : Fragment(R.layout.fragment_profile_engineer), Vi
         when (v?.id) {
             R.id.tv_github -> {
                 val intent = Intent(v.context, WebViewActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.iv_add_skill -> {
+                val intent = Intent(v.context, SkillActivity::class.java)
                 startActivity(intent)
             }
         }
