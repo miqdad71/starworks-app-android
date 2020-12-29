@@ -344,6 +344,7 @@
                             android:layout_marginTop="24dp"
                             android:layout_marginBottom="16dp"
                             android:src="@drawable/ic_add"
+                            android:onClick="onClick"
                             android:contentDescription="@string/image_upload"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

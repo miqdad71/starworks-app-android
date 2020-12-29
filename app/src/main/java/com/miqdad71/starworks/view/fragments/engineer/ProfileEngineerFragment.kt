@@ -22,16 +22,17 @@ class ProfileEngineerFragment : Fragment(R.layout.fragment_profile_engineer), Vi
 //      binding fragments
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
         return binding.root
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.tvGithub.setOnClickListener(this)
+        binding.ivAddSkill.setOnClickListener(this)
         adapter = EngineerPagerAdapter( requireFragmentManager())
-
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
-        binding.tvGithub.setOnClickListener(this)
-
     }
 
     override fun onResume() {
@@ -54,4 +55,33 @@ class ProfileEngineerFragment : Fragment(R.layout.fragment_profile_engineer), Vi
             }
         }
     }
+
+//    private fun dataSkill() {
+//        skillModel = ArrayList()
+//        skillModel.add(SkillModel(sk_skill_name = "PHP"))
+//        skillModel.add(SkillModel(sk_skill_name = "Javascript"))
+//        skillModel.add(SkillModel(sk_skill_name = "Dart"))
+//        skillModel.add(SkillModel(sk_skill_name = "Kotlin"))
+//        skillModel.add(SkillModel(sk_skill_name = "Java"))
+//        skillModel.add(SkillModel(sk_skill_name = "HTML5"))
+//        skillModel.add(SkillModel(sk_skill_name = "CSS3"))
+//        skillModel.add(SkillModel(sk_skill_name = "C++"))
+//        skillModel.add(SkillModel(sk_skill_name = "C#"))
+//        skillModel.add(SkillModel(sk_skill_name = "C"))
+//        skillModel.add(SkillModel(sk_skill_name = "Node JS"))
+//        skillModel.add(SkillModel(sk_skill_name = "Express JS"))
+//        skillModel.add(SkillModel(sk_skill_name = "React JS"))
+//        skillModel.add(SkillModel(sk_skill_name = "Vue JS"))
+//        skillModel.add(SkillModel(sk_skill_name = "Angular JS"))
+//        skillModel.add(SkillModel(sk_skill_name = "CodeIgniter"))
+//        skillModel.add(SkillModel(sk_skill_name = "Laravel"))
+//        skillModel.add(SkillModel(sk_skill_name = "Spring"))
+//        skillModel.add(SkillModel(sk_skill_name = "Golang"))
+//        skillModel.add(SkillModel(sk_skill_name = "Python"))
+//        skillModel.add(SkillModel(sk_skill_name = "Flutter"))
+//    }
+//    override fun onStart() {
+//        super.onStart()
+//        sharedPref.createInDetail(0)
+//    }
 }
