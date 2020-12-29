@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.fragments
+package com.miqdad71.starworks.view.fragments.engineer
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.FragmentExperienceBinding
-import com.miqdad71.starworks.databinding.FragmentHomeBinding
 import com.miqdad71.starworks.view.adapter.ListExperienceRecycleViewAdapter
 import com.miqdad71.starworks.view.model.Databases
 import com.miqdad71.starworks.view.model.Experience

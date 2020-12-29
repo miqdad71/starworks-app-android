@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.fragments
+package com.miqdad71.starworks.view.fragments.engineer
 
 import android.os.Bundle
 import android.view.LayoutInflater
