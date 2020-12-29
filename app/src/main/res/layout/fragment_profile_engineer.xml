@@ -267,7 +267,6 @@
                                 android:textSize="16sp" />
 
                         </LinearLayout>
-
                         <LinearLayout
                             android:id="@+id/ln_github"
                             android:layout_width="match_parent"
@@ -284,14 +283,13 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:contentDescription="@string/img_profile"
-                                android:src="@mipmap/ic_github" />
+                                android:src="@drawable/github" />
 
                             <TextView
                                 android:id="@+id/tv_github"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="16dp"
-                                android:layout_marginBottom="16dp"
                                 android:fontFamily="sans-serif-condensed"
                                 android:text="miqdad71"
                                 android:textAlignment="textStart"
@@ -299,6 +297,71 @@
                                 android:textSize="16sp" />
 
                         </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ln_instagram"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="14dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ln_github"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:contentDescription="@string/img_profile"
+                                android:src="@drawable/instagram" />
+
+                            <TextView
+                                android:id="@+id/tv_instagram"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="miqdad_aja7"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/ln_gitlab"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="14dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/ln_instagram"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:contentDescription="@string/img_profile"
+                                android:src="@drawable/gitlabgrey"
+                                android:backgroundTint="@color/gray"
+                                />
+
+                            <TextView
+                                android:id="@+id/tv_gitlab"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="sans-serif-condensed"
+                                android:text="\@miqdad.ihbs71777"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/gray"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

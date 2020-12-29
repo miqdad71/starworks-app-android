@@ -13,7 +13,7 @@ import com.miqdad71.starworks.view.adapter.ListPortfolioRecycleViewAdapter
 import com.miqdad71.starworks.view.model.Databases
 import com.miqdad71.starworks.view.model.Portfolio
 
-class PortofolioFragment : Fragment(R.layout.fragment_portfolio) {
+class EngineerPortofolioFragment : Fragment(R.layout.fragment_portfolio) {
 
     private lateinit var rootView: View
     private lateinit var binding: FragmentPortfolioBinding

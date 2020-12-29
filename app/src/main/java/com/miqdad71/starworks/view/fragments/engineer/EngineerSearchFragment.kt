@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.FragmentSearchBinding
 
-class SearchFragment : Fragment(R.layout.fragment_search) {
+class EngineerSearchFragment : Fragment(R.layout.fragment_search) {
     private lateinit var rootView: View
     private lateinit var binding: FragmentSearchBinding
 

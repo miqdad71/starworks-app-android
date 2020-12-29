@@ -13,7 +13,7 @@ import com.miqdad71.starworks.view.activities.skill.SkillActivity
 import com.miqdad71.starworks.view.adapter.EngineerPagerAdapter
 import com.miqdad71.starworks.view.webview.WebViewActivity
 
-class ProfileEngineerFragment : Fragment(R.layout.fragment_profile_engineer), View.OnClickListener {
+class EngineerProfileEngineerFragment : Fragment(R.layout.fragment_profile_engineer), View.OnClickListener {
     private lateinit var binding: FragmentProfileEngineerBinding
     private lateinit var adapter: EngineerPagerAdapter
 

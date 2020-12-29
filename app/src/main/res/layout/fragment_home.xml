@@ -5,6 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
+    <data>
+        <variable
+            name="AccountModel"
+            type="com.miqdad71.starworks.view.model.AccountModel" />
+    </data>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

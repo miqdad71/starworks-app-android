@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.FragmentJobsBinding
 
-class JobsFragment : Fragment(R.layout.fragment_jobs) {
+class EngineerJobsFragment : Fragment(R.layout.fragment_jobs) {
 
     private lateinit var rootView: View
     private lateinit var binding: FragmentJobsBinding
