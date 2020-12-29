@@ -12,14 +12,26 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/btn_maincolor"
             android:fillViewport="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/transparent"
+                android:background="background_profile"
                 >
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:background="@android:color/holo_orange_light"
+                    android:alpha="0.9"
+                    android:elevation="8dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:titleTextColor="@color/white" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_identity"
@@ -31,20 +43,12 @@
                     app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    >
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:background="@color/maincolor"
-                            android:alpha="0.9"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
 
                         <LinearLayout
                             android:id="@+id/iv_image_profile"
@@ -59,7 +63,7 @@
                             android:orientation="horizontal"
                             />
 
-                        <ImageView
+                        <de.hdodenhof.circleimageview.CircleImageView
                             android:layout_width="120dp"
                             android:layout_height="120dp"
                             android:src="@mipmap/img_profile"
@@ -69,9 +73,6 @@
                             app:layout_constraintTop_toTopOf="@id/iv_image_profile"
                             app:layout_constraintBottom_toBottomOf="@id/iv_image_profile"
                             />
-
-                        <!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-                        <!--                        />-->
 
                         <TextView
                             android:id="@+id/tv_name"
@@ -280,7 +281,7 @@
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:contentDescription="@string/todo"
-                                android:src="@drawable/ic_instagram" />
+                                android:src="@drawable/instagram" />
 
                             <TextView
                                 android:id="@+id/tv_instagram"
@@ -288,7 +289,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="16dp"
                                 android:fontFamily="sans-serif-condensed"
-                                android:text="@string/eam_wme"
+                                android:text="\@eam_wme"
                                 android:textAlignment="textStart"
                                 android:textColor="@color/gray"
                                 android:textSize="16sp" />
@@ -321,7 +322,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginHorizontal="16dp"
                                 android:fontFamily="sans-serif-condensed"
-                                android:text="@string/eamwme"
+                                android:text="\@eamwme"
                                 android:textAlignment="textStart"
                                 android:textColor="@color/gray"
                                 android:textSize="16sp" />

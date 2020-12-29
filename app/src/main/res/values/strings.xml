@@ -94,8 +94,6 @@
     <string name="finansial">Finansial</string>
     <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_vestibulum_erat_orci_mollis_nec_gravida_sed_ornare_quis_urna_curabitur_eu_lacus_fringilla_vestibulum_risus_at">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</string>
     <string name="todo">TODO</string>
-    <string name="eamwme">\@eamwme</string>
-    <string name="eam_wme">\@eam_wme</string>
     <string name="wasamitra_eam_wme_com">wasamitra.eam@wme.com</string>
     <string name="email_amp_social_media"><![CDATA[Email & Social Media]]></string>
     <string name="photoprofile">photoprofile</string>
@@ -107,4 +105,5 @@
     <string name="gohipe_teknologi">PT. Wasa Mitra Engineering</string>
     <string name="february_2021_oktober_2022">Januari 2018 - November 2020</string>
     <string name="total_months">22 Month</string>
+    <string name="img_icon">IMG Icon</string>
 </resources>
