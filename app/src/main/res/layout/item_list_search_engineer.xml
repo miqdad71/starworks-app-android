@@ -11,19 +11,19 @@
         android:layout_gravity="center"
         android:paddingHorizontal="8dp"
         android:elevation="3dp"
-        android:background="@color/gray"
+        android:background="@color/background_profile"
         >
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_list_search_eng"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:src="@drawable/img_profile_miqdad"
             android:layout_marginTop="12dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/maincolor"
             />
 
         <TextView

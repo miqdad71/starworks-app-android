@@ -3,6 +3,7 @@ package com.miqdad71.starworks.view.activities.signup
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -17,10 +18,10 @@ import com.miqdad71.starworks.view.model.EngineerModel
 class SignUpActivity : AppCompatActivity() {
 
     companion object {
-        const val FIELD_REQUIRED = "Field tidak boleh kosong"
-        const val FIELD_DIGITS_ONLY = "Hanya boleh berisi numerik"
-        const val FIELD_IS_NOT_VALID = "Email tidak valid"
-        const val FIELD_MUST_MATCH = "Password harus sama"
+        const val FIELD_REQUIRED = "Fields cannot be empty"
+        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
+        const val FIELD_IS_NOT_VALID = "Invalid email"
+        const val FIELD_MUST_MATCH = "Password must be the same"
     }
     private var engineerModel: EngineerModel = EngineerModel()
     private lateinit var binding: ActivitySignUpBinding
@@ -34,6 +35,12 @@ class SignUpActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
+
+//        if (intent.getIntExtra("level", 0) == 1) {
+//            binding.clCompany.visibility = View.VISIBLE
+//        } else {
+//            binding.clCompany.visibility = View.GONE
+//        }
 
         // sign-up action
         binding.btnSignUp.setOnClickListener {

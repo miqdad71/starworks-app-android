@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:background="@color/gray"
+            android:background="@color/background_profile"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -24,18 +24,18 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             android:layout_gravity="center"
-            android:background="@color/maincolor"
+            android:background="@color/white"
             android:layout_marginRight="5dp"
             android:paddingHorizontal="8dp"
             android:elevation="3dp">
 
-            <com.google.android.material.imageview.ShapeableImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_eng"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="8dp"
+                android:src="@drawable/img_profile_miqdad"
                 android:scaleType="centerCrop"
-                android:background="@color/btn_maincolor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +50,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="Miqdad"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +67,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="Android Developer"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_eng_android" />

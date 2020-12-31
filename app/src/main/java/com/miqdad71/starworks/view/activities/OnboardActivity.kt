@@ -33,15 +33,16 @@ class OnboardActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.btn_login -> {
                 val intent = Intent(this, LoginActivity::class.java)
+                intent.putExtra("level", 0)
                 startActivity(intent)
                 this.finish()
 
             }
             R.id.btn_company -> {
                 val intent = Intent(this, LoginActivity::class.java)
+                intent.putExtra("level", 1)
                 startActivity(intent)
                 this.finish()
-
             }
 
         }

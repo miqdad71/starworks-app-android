@@ -1,10 +1,7 @@
 package com.miqdad71.starworks.view.dialog
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
-import com.miqdad71.starworks.R
 
 class Dialog {
     fun dialog(context: Context?, message: String, listAction: () -> Unit) {
@@ -34,16 +31,4 @@ class Dialog {
         dialog.show()
     }
 
-    fun dialogCheckInternet(context: Context?, activity: Activity) {
-        val dialog = AlertDialog.Builder(context).apply {
-            setTitle("Network Info")
-            setMessage("No internet connection\nCheck your internet connectivity and try again")
-            setIcon(R.drawable.ic_no_internet)
-            setCancelable(false)
-            setPositiveButton("OK") { _, _ ->
-                activity.finishAffinity()
-            }
-        }
-        dialog.show()
-    }
 }

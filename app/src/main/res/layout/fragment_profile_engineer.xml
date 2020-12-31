@@ -8,12 +8,12 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/background_profile"
             android:fillViewport="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="background_profile"
                 >
 
                 <androidx.appcompat.widget.Toolbar
@@ -21,7 +21,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:background="@android:color/holo_orange_light"
-                    android:alpha="0.9"
                     android:elevation="8dp"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -2,15 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity.portfolio.PortfolioActivity">
+    tools:context=".activity.portofolio.PortfolioActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/maincolor"
-        android:alpha="0.9"
-        android:fillViewport="true"
-        >
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,7 +18,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:background="@android:color/holo_orange_light"
-                android:alpha="0.9"
                 android:elevation="8dp"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,13 +34,12 @@
                 android:fontFamily="sans-serif-thin"
                 android:text="@string/add_portfolio"
                 android:textAlignment="textStart"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
             <TextView
                 android:id="@+id/tv_instruction"
@@ -54,7 +49,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/instruction_add_portfolio"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_500"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_add_portfolio" />
@@ -67,7 +62,7 @@
                 android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/app_name_portfolio"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_instruction" />
@@ -104,7 +99,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/description"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_app" />
@@ -144,7 +139,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/pub"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_description" />
@@ -182,7 +177,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/repo"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_pub" />
@@ -220,7 +215,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/workplace"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_repo" />
@@ -258,7 +253,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/portfolio_type"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/input_layout_workplace" />
@@ -280,7 +275,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/mobile_application"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/gray_500" />
 
                 <RadioButton
                     android:id="@+id/rb_web"
@@ -288,7 +283,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/web_application"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/gray_500" />
 
             </RadioGroup>
 
@@ -300,7 +295,7 @@
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
                 android:text="@string/image_upload"
-                android:textColor="@color/white"
+                android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rg_portfolio_type" />
@@ -312,20 +307,20 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="18dp"
                 android:background="@color/white"
+                android:contentDescription="@string/img_icon"
                 android:elevation="8dp"
                 android:onClick="onClick"
                 android:scaleType="center"
-                android:src="@drawable/ic_add_image"
+                android:src="@drawable/ic_upload_file"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_image_upload" />
 
             <Button
-                android:id="@+id/btn_add_skill"
+                android:id="@+id/btn_add_portfolio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/btn_maincolor"
                 android:onClick="onClick"
                 android:padding="14dp"
@@ -333,46 +328,45 @@
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ib_choose_image"
-                app:layout_constraintBottom_toBottomOf="parent"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/ib_choose_image" />
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/ln_back"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="16dp"-->
-<!--                android:layout_marginTop="18dp"-->
-<!--                android:gravity="center|top"-->
-<!--                android:onClick="onClick"-->
-<!--                android:orientation="horizontal"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/btn_add_skill"-->
-<!--                tools:ignore="UseCompoundDrawables">-->
+            <LinearLayout
+                android:id="@+id/ln_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="18dp"
+                android:gravity="center|top"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_add_skill"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:ignore="UseCompoundDrawables">
 
 <!--                <ImageView-->
-<!--                    android:id="@+id/iv_back"-->
 <!--                    android:layout_width="20dp"-->
 <!--                    android:layout_height="20dp"-->
 <!--                    android:layout_marginEnd="8dp"-->
 <!--                    android:layout_marginBottom="24dp"-->
-<!--                    android:src="@drawable/ic_back_white" />-->
+<!--                    android:contentDescription="@string/img_icon"-->
+<!--                    android:src="@drawable/ic_arrow_left_gray" />-->
 
 <!--                <TextView-->
-<!--                    android:id="@+id/tv_back"-->
 <!--                    android:layout_width="wrap_content"-->
 <!--                    android:layout_height="wrap_content"-->
 <!--                    android:layout_marginBottom="24dp"-->
 <!--                    android:fontFamily="sans-serif"-->
 <!--                    android:text="@string/back_to_profile"-->
-<!--                    android:textColor="@color/white"-->
+<!--                    android:textColor="@color/gray_500"-->
 <!--                    android:textSize="14sp"-->
 <!--                    android:textStyle="bold" />-->
 
-<!--            </LinearLayout>-->
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
 </layout>

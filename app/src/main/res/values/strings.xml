@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">StarworkS</string>
-    <string name="mainscr_msg">Temukan developer berbakat &amp; terbaik di berbagai bidang keahlian</string>
-    <string name="logemp">Masuk Sebagai Pekerja</string>
-    <string name="logcomp">Masuk Sebagai Perekrut</string>
+    <string name="mainscr_msg">FIND TALENTED &amp; BEST DEVELOPERS IN VARIOUS FIELDS OF EXPERTISE</string>
+    <string name="logemp">LOGIN AS ENGINEER</string>
+    <string name="logcomp">LOGIN AS COMPANY</string>
     <string name="hire">Hire</string>
 
 
-    <string name="or">atau</string>
+    <string name="or">or</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
