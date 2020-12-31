@@ -10,9 +10,10 @@
         tools:context=".view.activities.main.CompanyMainActivity">
 
         <FrameLayout
-            android:id="@+id/flFragment"
+            android:id="@+id/flFragmentCompany"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
             />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu"
+            app:menu="@menu/bottom_nav_menu_company"
             />
 
 

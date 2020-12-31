@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.model
+package com.miqdad71.starworks.view.model.account
 
 data class AccountModel(
     val ac_id: Int? = 0,

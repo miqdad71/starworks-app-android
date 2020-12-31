@@ -36,11 +36,11 @@ class SignUpActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
 
-//        if (intent.getIntExtra("level", 0) == 1) {
-//            binding.clCompany.visibility = View.VISIBLE
-//        } else {
-//            binding.clCompany.visibility = View.GONE
-//        }
+        if (intent.getIntExtra("level", 0) == 1) {
+            binding.clCompany.visibility = View.VISIBLE
+        } else {
+            binding.clCompany.visibility = View.GONE
+        }
 
         // sign-up action
         binding.btnSignUp.setOnClickListener {

@@ -4,13 +4,16 @@ import android.content.Context
 import com.miqdad71.starworks.view.model.CompanyModel
 import com.miqdad71.starworks.view.model.EngineerModel
 
-class SharedPreference (context: Context) {
+class SharedPreference(context: Context) {
 
     companion object {
+        private const val TOKEN = "token"
         private const val ENG_PREF_NAME = "eng_pref"
         private const val COMP_PREF_NAME = "comp_pref"
-
         private const val EMAIL = "email"
+        private const val NAME = "name"
+        private const val AC_ID = "ac_id"
+        private const val AC_LEVEL = "ac_level"
         private const val PASSWORD = "password"
         private const val PHONE = "phone"
         private const val COMPANY = "company"
@@ -18,8 +21,31 @@ class SharedPreference (context: Context) {
         private const val LOGIN = "isLogin"
     }
 
-    private val engineerPreferences = context.getSharedPreferences(ENG_PREF_NAME, Context.MODE_PRIVATE)
-    private val companyPreferences = context.getSharedPreferences(COMP_PREF_NAME, Context.MODE_PRIVATE)
+    private val engineerPreferences =
+        context.getSharedPreferences(ENG_PREF_NAME, Context.MODE_PRIVATE)
+    private val companyPreferences =
+        context.getSharedPreferences(COMP_PREF_NAME, Context.MODE_PRIVATE)
+
+    fun setToken(token: String) {
+        val editor = engineerPreferences.edit()
+        editor.putString(TOKEN, token)
+        editor.apply()
+
+    }
+
+    fun getToken(): String? {
+        return engineerPreferences.getString(TOKEN, "Not Set")
+    }
+
+    fun setAccount(ac_name: String, ac_id: Int, ac_level: Int, ac_email: String) {
+        val editor = engineerPreferences.edit()
+        editor.putString(NAME, ac_name)
+        editor.putString(EMAIL, ac_email)
+        editor.putInt(AC_ID, ac_id)
+        editor.putInt(AC_LEVEL, ac_level)
+        editor.putBoolean(LOGIN, true)
+        editor.apply()
+    }
 
     fun setEngineerPreference(value: EngineerModel) {
         val editor = engineerPreferences.edit()
@@ -51,7 +77,7 @@ class SharedPreference (context: Context) {
         editor.apply()
     }
 
-    fun getCompanyPreference(): CompanyModel {
+    fun getCompanyPreference(companyModel: CompanyModel): CompanyModel {
         val model = CompanyModel()
         model.email = companyPreferences.getString(EMAIL, "")
         model.password = companyPreferences.getString(PASSWORD, "")

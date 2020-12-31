@@ -5,7 +5,8 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.databinding.ActivityEngineerMainBinding
+import com.miqdad71.starworks.databinding.ActivityCompanyMainBinding
+import com.miqdad71.starworks.view.fragments.company.ProfileCompanyFragment
 import com.miqdad71.starworks.view.fragments.engineer.EngineerHomeFragment
 import com.miqdad71.starworks.view.fragments.engineer.EngineerJobsFragment
 import com.miqdad71.starworks.view.fragments.engineer.EngineerProfileEngineerFragment
@@ -13,7 +14,7 @@ import com.miqdad71.starworks.view.fragments.engineer.EngineerSearchFragment
 import kotlinx.android.synthetic.main.activity_engineer_main.*
 
 class CompanyMainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityEngineerMainBinding
+    private lateinit var binding: ActivityCompanyMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -21,7 +22,7 @@ class CompanyMainActivity : AppCompatActivity() {
 
         val firstFragment = EngineerHomeFragment()
         val secondFragment = EngineerSearchFragment()
-        val thirdFragment = EngineerProfileEngineerFragment()
+        val thirdFragment = ProfileCompanyFragment()
         val fourthFragment = EngineerJobsFragment()
 
         setCurrentFragment(firstFragment)
@@ -38,7 +39,7 @@ class CompanyMainActivity : AppCompatActivity() {
 }
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment, fragment)
+            replace(R.id.flFragmentCompany, fragment)
             commit()
         }
 }

@@ -64,6 +64,7 @@
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-black"
             app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="@+id/img_bg" />
 

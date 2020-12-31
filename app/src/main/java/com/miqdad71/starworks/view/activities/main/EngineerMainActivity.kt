@@ -42,7 +42,7 @@ class EngineerMainActivity : AppCompatActivity() {
 
     private fun setCurrentFragment(fragment: Fragment) =
             supportFragmentManager.beginTransaction().apply {
-                replace(R.id.flFragment, fragment)
+                replace(R.id.flFragmentEngineer, fragment)
                 commit()
             }
 }

@@ -39,6 +39,7 @@ class EngineerPortofolioFragment : Fragment(R.layout.fragment_portfolio) {
 
     private fun showRecycleList(view: View) {
         binding.rvPortfolio.apply {
+            setHasFixedSize(true)
             layoutManager = LinearLayoutManager(view.context)
             adapter = ListPortfolioRecycleViewAdapter(listPortfolio)
         }

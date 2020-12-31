@@ -1,21 +1,26 @@
 package com.miqdad71.starworks.view.activities.login
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
+import com.miqdad71.starworks.api.AccountAPI
 import com.miqdad71.starworks.databinding.ActivityLoginBinding
+import com.miqdad71.starworks.remote.ApiClient
 import com.miqdad71.starworks.util.SharedPreference
-import com.miqdad71.starworks.view.activities.main.EngineerMainActivity
 import com.miqdad71.starworks.view.activities.forgetpassword.ForgetPasswordVerifyActivity
+import com.miqdad71.starworks.view.activities.main.CompanyMainActivity
+import com.miqdad71.starworks.view.activities.main.EngineerMainActivity
 import com.miqdad71.starworks.view.activities.signup.SignUpActivity
 import com.miqdad71.starworks.view.dialog.Dialog
 import com.miqdad71.starworks.view.model.CompanyModel
 import com.miqdad71.starworks.view.model.EngineerModel
+import com.miqdad71.starworks.view.model.account.LoginResponse
+import kotlinx.coroutines.*
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
@@ -23,16 +28,20 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var engineerModel: EngineerModel
     private lateinit var companyModel: CompanyModel
     private lateinit var dialog: Dialog
+    private lateinit var coroutineScope: CoroutineScope
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         engineerModel = EngineerModel()
+        companyModel = CompanyModel()
+        coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
         supportActionBar?.hide()
         window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
         dialog = Dialog()
 
@@ -41,7 +50,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvSignUp.setOnClickListener(this)
     }
 
-    override fun onClick(v: View?){
+    override fun onClick(v: View?) {
+        val acLevel = intent.getIntExtra("level", 0)
 
         when (v?.id) {
             R.id.tv_forget_password -> {
@@ -50,6 +60,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tv_sign_up -> {
                 val intent = Intent(this, SignUpActivity::class.java)
+                intent.putExtra("level", acLevel)
                 startActivity(intent)
             }
             R.id.login -> {
@@ -61,10 +72,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private fun login(view: View) {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
+        val acLevel = intent.getIntExtra("level", 0)
 
         preference = SharedPreference(view.context)
         engineerModel = preference.getEngineerPreference(engineerModel)
-        companyModel = preference.getCompanyPreference()
+        companyModel = preference.getCompanyPreference(companyModel)
 
         if (email.isEmpty()) {
             binding.etEmail.error = SignUpActivity.FIELD_REQUIRED
@@ -75,30 +87,37 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             binding.etPassword.error = SignUpActivity.FIELD_REQUIRED
             return
         }
-
-        if (engineerModel.email == email && engineerModel.password == password) {
-            engineerModel.isLogin = true
-            preference.getEngineerPreference(engineerModel)
-
-            dialog.dialogCancel(this, "Login Successful") {
-                val sendIntent = Intent(this, EngineerMainActivity::class.java)
-                startActivity(sendIntent)
-                this.finish()
-            }
-        }
-//        else if (companyModel.email == email && companyModel.password == password) {
-//            companyModel.isLogin = true
-//            SharedPreference.setCompanyPreference(companyModel)
-//
-//            dialog.dialogCancel(this, "Login Successful") {
-//                val sendIntent = Intent(this, CompanyMainContentActivity::class.java)
-//                startActivity(sendIntent)
-//                activity?.finish()
-//            }
-//        }
-        else {
-            dialog.dialogCancel(this, "Email or Password Incorrect") { DialogInterface.BUTTON_NEGATIVE }
-        }
+        loginAccount()
     }
 
+    fun loginAccount() {
+        val api = ApiClient.getApiClient(this).create(AccountAPI::class.java)
+        coroutineScope.launch {
+            val res = withContext(Dispatchers.IO) {
+                try {
+                    api.login(
+                        binding.etEmail.text.toString(),
+                        binding.etPassword.text.toString()
+                    )
+                } catch (t: Exception) {
+                    Log.e("Error", t.localizedMessage)
+                }
+            }
+            if (res is LoginResponse) {
+                val data = res.data
+                if (data.ac_level == 0) {
+                    preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
+                    val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
+                    startActivity(sendIntent)
+                    this@LoginActivity.finish()
+                } else {
+                    preference.getCompanyPreference(companyModel)
+                    val sendIntent = Intent(this@LoginActivity, CompanyMainActivity::class.java)
+                    startActivity(sendIntent)
+                    this@LoginActivity.finish()
+                }
+            }
+
+        }
+    }
 }
