@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_starworks_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS">
+        <activity android:name=".view.activities.main.CompanyMainActivity"></activity>
         <activity android:name=".view.webview.WebViewActivity" />
         <activity android:name=".view.adapter.EngineerLayoutActivity" />
         <activity android:name=".view.dialog.DialogActivity" />
