@@ -12,9 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_starworks_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
-        android:usesCleartextTraffic="true"
-        >
-        <activity android:name=".view.activities.main.CompanyMainActivity"></activity>
+        android:usesCleartextTraffic="true">
+<!--        <activity android:name=".project.ListEngineerActivity"/>-->
+        <activity android:name=".view.activities.main.CompanyMainActivity" />
         <activity android:name=".view.webview.WebViewActivity" />
         <activity android:name=".view.adapter.EngineerLayoutActivity" />
         <activity android:name=".view.dialog.DialogActivity" />
@@ -25,7 +25,7 @@
         <activity android:name=".view.activities.OnboardActivity" />
         <activity android:name=".view.activities.experience.ExperienceActivity" />
         <activity android:name=".view.activities.login.LoginActivity" />
-        <activity android:name=".view.activities.splash.SplashScreen">
+        <activity android:name=".project.ListEngineerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
