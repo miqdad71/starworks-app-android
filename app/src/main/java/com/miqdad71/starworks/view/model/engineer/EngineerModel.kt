@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.model
+package com.miqdad71.starworks.view.model.engineer
 
 data class EngineerModel(
     var name: String? = null,

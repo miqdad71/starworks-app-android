@@ -1,8 +1,9 @@
 package com.miqdad71.starworks.util
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.miqdad71.starworks.view.model.CompanyModel
-import com.miqdad71.starworks.view.model.EngineerModel
+import com.miqdad71.starworks.view.model.engineer.EngineerModel
 
 class SharedPreference(context: Context) {
 
@@ -25,6 +26,8 @@ class SharedPreference(context: Context) {
         context.getSharedPreferences(ENG_PREF_NAME, Context.MODE_PRIVATE)
     private val companyPreferences =
         context.getSharedPreferences(COMP_PREF_NAME, Context.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences(ENG_PREF_NAME, Context.MODE_PRIVATE)
 
     fun setToken(token: String) {
         val editor = engineerPreferences.edit()
@@ -35,6 +38,19 @@ class SharedPreference(context: Context) {
 
     fun getToken(): String? {
         return engineerPreferences.getString(TOKEN, "Not Set")
+    }
+
+    fun getLevelUser(): Int {
+        return sharedPreferences.getInt(AC_LEVEL, 0)
+    }
+
+    fun getAccountUser(): HashMap<String, String> {
+        val user: HashMap<String, String> = HashMap()
+        user[NAME] = sharedPreferences.getString(NAME, "Not set")!!
+        user[EMAIL] = sharedPreferences.getString(EMAIL, "Not set")!!
+        user[TOKEN] = sharedPreferences.getString(TOKEN, "Not set")!!
+
+        return user
     }
 
     fun setAccount(ac_name: String, ac_id: Int, ac_level: Int, ac_email: String) {

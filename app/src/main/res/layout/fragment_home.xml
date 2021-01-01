@@ -3,12 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.fragments.engineer.EngineerHomeFragment"
     >
 
     <data>
         <variable
             name="AccountModel"
             type="com.miqdad71.starworks.view.model.account.AccountModel" />
+
+        <variable
+            name="title"
+            type="String" />
     </data>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,34 +58,37 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView_hello"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tv_company"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
                             android:layout_marginTop="40dp"
                             android:gravity="center"
-                            android:text="Mon, 28 December 2020"
+                            android:text="@{title}"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textView_greeting"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tv_name"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
                             android:gravity="center"
                             android:letterSpacing="0.1"
-                            android:text="Hi, Miqdad !"
+                            android:text="@{AccountModel.ac_name}"
                             android:textColor="@color/white"
                             android:textSize="23sp"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@+id/textView_hello"
-                            app:layout_constraintTop_toBottomOf="@+id/textView_hello" />
+                            app:layout_constraintStart_toStartOf="@+id/tv_company"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_company" />
 
                         <TextView
-                            android:id="@+id/textView_list_engineer"
+                            android:id="@+id/tv_web"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -94,17 +102,17 @@
                             app:layout_constraintTop_toBottomOf="@+id/img_engineer_home_bg" />
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_list_company"
+                            android:id="@+id/rv_web"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="8dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView_list_engineer" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_web" />
 
                         <TextView
-                            android:id="@+id/textView_list_engineer2"
+                            android:id="@+id/tv_android"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -113,11 +121,11 @@
                             android:textColor="@color/black"
                             android:textSize="23sp"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@+id/rv_list_company"
-                            app:layout_constraintTop_toBottomOf="@+id/rv_list_company" />
+                            app:layout_constraintStart_toStartOf="@+id/rv_web"
+                            app:layout_constraintTop_toBottomOf="@+id/rv_web" />
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_list_company2"
+                            android:id="@+id/rv_android"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -125,7 +133,7 @@
                             android:layout_marginBottom="16dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView_list_engineer2" />
+                            app:layout_constraintTop_toBottomOf="@+id/tv_android" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

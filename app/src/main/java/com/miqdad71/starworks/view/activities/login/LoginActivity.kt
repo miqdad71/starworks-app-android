@@ -18,7 +18,7 @@ import com.miqdad71.starworks.view.activities.main.EngineerMainActivity
 import com.miqdad71.starworks.view.activities.signup.SignUpActivity
 import com.miqdad71.starworks.view.dialog.Dialog
 import com.miqdad71.starworks.view.model.CompanyModel
-import com.miqdad71.starworks.view.model.EngineerModel
+import com.miqdad71.starworks.view.model.engineer.EngineerModel
 import com.miqdad71.starworks.view.model.account.LoginResponse
 import kotlinx.coroutines.*
 

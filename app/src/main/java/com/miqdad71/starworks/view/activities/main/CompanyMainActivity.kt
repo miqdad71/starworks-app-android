@@ -9,7 +9,7 @@ import com.miqdad71.starworks.databinding.ActivityCompanyMainBinding
 import com.miqdad71.starworks.view.fragments.company.ProfileCompanyFragment
 import com.miqdad71.starworks.view.fragments.engineer.EngineerHomeFragment
 import com.miqdad71.starworks.view.fragments.engineer.EngineerJobsFragment
-import com.miqdad71.starworks.view.fragments.engineer.EngineerProfileEngineerFragment
+//import com.miqdad71.starworks.view.fragments.engineer.EngineerProfileEngineerFragment
 import com.miqdad71.starworks.view.fragments.engineer.EngineerSearchFragment
 import kotlinx.android.synthetic.main.activity_engineer_main.*
 

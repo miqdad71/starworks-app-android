@@ -4,13 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
+import com.miqdad71.starworks.api.EngineerAPI
 import com.miqdad71.starworks.databinding.FragmentHomeBinding
-import com.miqdad71.starworks.view.model.EngineerModel
+import com.miqdad71.starworks.databinding.FragmentJobsBinding
+import com.miqdad71.starworks.remote.ApiClient
+import com.miqdad71.starworks.util.SharedPreference
+import com.miqdad71.starworks.view.adapter.HomeEngineerAdapter
+import com.miqdad71.starworks.view.model.engineer.EngineerModel
+import com.miqdad71.starworks.view.model.account.AccountModel
+import com.miqdad71.starworks.view.model.engineer.EngineerResponse
+//import com.miqdad71.starworks.view.detail_profile.ProfileDetailActivity
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.coroutines.*
 
-class EngineerHomeFragment : Fragment(R.layout.fragment_home), View.OnClickListener {
+
+class EngineerHomeFragment : Fragment() {
 
     private lateinit var rootView: View
     private lateinit var binding: FragmentHomeBinding
@@ -24,18 +38,70 @@ class EngineerHomeFragment : Fragment(R.layout.fragment_home), View.OnClickListe
 
     }
 
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-//        binding.accountModel = AccountModel(ac_name = userDetail[AC_NAME])
-//        setupWebDevRecyclerView()
-//        setupAndroidDevRecyclerView()
-
-    }
-
 
 }
+//class EngineerHomeFragment : AppCompatActivity() {
+//
+//    private lateinit var rootView: View
+//    private lateinit var binding: FragmentHomeBinding
+//    private lateinit var sharedPref: SharedPreference
+//    private lateinit var userDetail: HashMap<String, String>
+//    private lateinit var coroutineScope: CoroutineScope
+//
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        binding = DataBindingUtil.setContentView(this, R.layout.fragment_home)
+//        super.onCreate(savedInstanceState)
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        sharedPref = SharedPreference(view.context)
+//        userDetail = sharedPref.getAccountUser()
+//        coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+//
+//        if (sharedPref.getLevelUser() == 0) {
+//            binding.title = "Login as Engineer"
+//        } else {
+//            binding.title = "Login as Company"
+//        }
+//
+//        binding.accountModel = AccountModel(ac_name = "Hai, ${userDetail[NAME]}")
+//
+//        setupWebDevRecyclerView()
+//        getAllProject(view)
+//
+//    }
+//    private fun setupWebDevRecyclerView() {
+//        binding.rvWeb.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+//
+//        val adapter = HomeEngineerAdapter()
+//        binding.rvWeb.adapter = adapter
+//
+//        adapter.setOnItemClickCallback(object: HomeEngineerAdapter.OnItemClickCallback {
+//            override fun onItemClick(data: EngineerModel) {
+//                intents<ProfileDetailActivity>(activity)
+//            }
+//        })
+//    }
+//    private fun getAllProject(view: View) {
+//        val service = ApiClient.getApiClient(view.context).create(EngineerAPI::class.java)
+//
+//        coroutineScope.launch {
+//            val response = withContext(Dispatchers.IO) {
+//                try {
+//                    service.getAllEngineer()
+//                } catch (e: Throwable) {
+//                    e.printStackTrace()
+//                }
+//            }
+//
+//            if (response is EngineerResponse) {
+//                val list = response.data.map {
+//                    EngineerModel(it.enId, it.acId)
+//                }
+//
+//                (binding.rvWeb.adapter as HomeEngineerAdapter).addList(list)
+//            }
+//        }
+//    }
+//}
