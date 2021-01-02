@@ -17,7 +17,7 @@ import com.miqdad71.starworks.view.activities.main.CompanyMainActivity
 import com.miqdad71.starworks.view.activities.main.EngineerMainActivity
 import com.miqdad71.starworks.view.activities.signup.SignUpActivity
 import com.miqdad71.starworks.view.dialog.Dialog
-import com.miqdad71.starworks.view.model.CompanyModel
+import com.miqdad71.starworks.view.model.company.CompanyModel
 import com.miqdad71.starworks.view.model.engineer.EngineerModel
 import com.miqdad71.starworks.view.model.account.LoginResponse
 import kotlinx.coroutines.*
@@ -111,7 +111,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(sendIntent)
                     this@LoginActivity.finish()
                 } else {
-                    preference.getCompanyPreference(companyModel)
+                    preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
                     val sendIntent = Intent(this@LoginActivity, CompanyMainActivity::class.java)
                     startActivity(sendIntent)
                     this@LoginActivity.finish()

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.fragments.engineer.HomeEngineerFragment"
+    >
+
+    <data>
+        <variable
+            name="AccountModel"
+            type="com.miqdad71.starworks.view.model.account.AccountModel" />
+
+        <variable
+            name="title"
+            type="String" />
+    </data>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background_grey"
+                >
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="70dp">
+
+
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/img_engineer_home_bg"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/bg_bottom_radius_corner_bottom_right"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_notification"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/transparent"
+                            android:src="@drawable/ic_notif"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_company"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginTop="40dp"
+                            android:gravity="center"
+                            android:text="@{title}"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:gravity="center"
+                            android:letterSpacing="0.1"
+                            android:text="@{AccountModel.ac_name}"
+                            android:textColor="@color/white"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/tv_company"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_company" />
+
+                        <TextView
+                            android:id="@+id/tv_web"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:text="Web Developer"
+                            android:textColor="@color/black"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/img_engineer_home_bg" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_web"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_web" />
+
+                        <TextView
+                            android:id="@+id/tv_android"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:text="Android Developer"
+                            android:textColor="@color/black"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@+id/rv_web"
+                            app:layout_constraintTop_toBottomOf="@+id/rv_web" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_android"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_android" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.core.widget.NestedScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

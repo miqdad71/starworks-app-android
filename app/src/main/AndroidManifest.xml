@@ -13,19 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
-<!--        <activity android:name=".project.ListEngineerActivity"/>-->
-        <activity android:name=".view.activities.main.CompanyMainActivity" />
+        <activity android:name=".project.ListEngineerActivity"/>
         <activity android:name=".view.webview.WebViewActivity" />
         <activity android:name=".view.adapter.EngineerLayoutActivity" />
         <activity android:name=".view.dialog.DialogActivity" />
         <activity android:name=".view.activities.main.EngineerMainActivity" />
+        <activity android:name=".view.activities.main.CompanyMainActivity" />
         <activity android:name=".view.activities.signup.SignUpActivity" />
         <activity android:name=".view.activities.forgetpassword.ForgetPasswordVerifyActivity" />
         <activity android:name=".view.activities.forgetpassword.ForgetPasswordActivity" />
         <activity android:name=".view.activities.OnboardActivity" />
         <activity android:name=".view.activities.experience.ExperienceActivity" />
         <activity android:name=".view.activities.login.LoginActivity" />
-        <activity android:name=".project.ListEngineerActivity">
+        <activity android:name=".view.activities.splash.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.fragments.engineer
+package com.miqdad71.starworks.view.fragments.company
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,21 +7,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.databinding.FragmentJobsBinding
+import com.miqdad71.starworks.databinding.FragmentSearchCompanyBinding
+import com.miqdad71.starworks.databinding.FragmentSearchEngineerBinding
 
-class EngineerJobsFragment : Fragment(R.layout.fragment_jobs) {
-
+class SearchCompanyFragment : Fragment(R.layout.fragment_search_engineer) {
     private lateinit var rootView: View
-    private lateinit var binding: FragmentJobsBinding
+    private lateinit var binding: FragmentSearchCompanyBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
 
 //      binding fragments
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_jobs, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_company, container, false)
         return binding.root
 
     }
-
-
 }

@@ -6,10 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityEngineerMainBinding
-import com.miqdad71.starworks.view.fragments.engineer.EngineerHomeFragment
-import com.miqdad71.starworks.view.fragments.engineer.EngineerJobsFragment
-import com.miqdad71.starworks.view.fragments.engineer.EngineerSearchFragment
-import com.miqdad71.starworks.view.fragments.engineer.EngineerProfileEngineerFragment
+import com.miqdad71.starworks.view.fragments.engineer.HomeEngineerFragment
+import com.miqdad71.starworks.view.fragments.engineer.HireEngineerFragment
+import com.miqdad71.starworks.view.fragments.engineer.SearchEngineerFragment
+import com.miqdad71.starworks.view.fragments.engineer.ProfileEngineerFragment
 import kotlinx.android.synthetic.main.activity_engineer_main.*
 
 class EngineerMainActivity : AppCompatActivity() {
@@ -22,10 +22,10 @@ class EngineerMainActivity : AppCompatActivity() {
 //      binding.bottomNavigationView.background = null
         binding = DataBindingUtil.setContentView(this, R.layout.activity_engineer_main)
 
-        val firstFragment = EngineerHomeFragment()
-        val secondFragment = EngineerSearchFragment()
-        val thirdFragment = EngineerProfileEngineerFragment()
-        val fourthFragment = EngineerJobsFragment()
+        val firstFragment = HomeEngineerFragment()
+        val secondFragment = SearchEngineerFragment()
+        val thirdFragment = ProfileEngineerFragment()
+        val fourthFragment = HireEngineerFragment()
 
         setCurrentFragment(firstFragment)
 

@@ -6,11 +6,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityCompanyMainBinding
+import com.miqdad71.starworks.view.fragments.company.HireCompanyFragment
+import com.miqdad71.starworks.view.fragments.company.HomeCompanyFragment
 import com.miqdad71.starworks.view.fragments.company.ProfileCompanyFragment
-import com.miqdad71.starworks.view.fragments.engineer.EngineerHomeFragment
-import com.miqdad71.starworks.view.fragments.engineer.EngineerJobsFragment
-//import com.miqdad71.starworks.view.fragments.engineer.EngineerProfileEngineerFragment
-import com.miqdad71.starworks.view.fragments.engineer.EngineerSearchFragment
+import com.miqdad71.starworks.view.fragments.company.SearchCompanyFragment
+import com.miqdad71.starworks.view.fragments.engineer.HomeEngineerFragment
+import com.miqdad71.starworks.view.fragments.engineer.HireEngineerFragment
+//import com.miqdad71.starworks.view.fragments.engineer.ProfileEngineerFragment
+import com.miqdad71.starworks.view.fragments.engineer.SearchEngineerFragment
 import kotlinx.android.synthetic.main.activity_engineer_main.*
 
 class CompanyMainActivity : AppCompatActivity() {
@@ -20,10 +23,10 @@ class CompanyMainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_company_main)
 
-        val firstFragment = EngineerHomeFragment()
-        val secondFragment = EngineerSearchFragment()
+        val firstFragment = HomeCompanyFragment()
+        val secondFragment = SearchCompanyFragment()
         val thirdFragment = ProfileCompanyFragment()
-        val fourthFragment = EngineerJobsFragment()
+        val fourthFragment = HireCompanyFragment()
 
         setCurrentFragment(firstFragment)
 

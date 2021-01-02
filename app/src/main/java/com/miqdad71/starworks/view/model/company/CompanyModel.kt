@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.model
+package com.miqdad71.starworks.view.model.company
 
 data class CompanyModel(
     var name: String? = null,

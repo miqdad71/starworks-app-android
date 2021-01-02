@@ -20,7 +20,7 @@ class ListEngineerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_list_engineer)
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-        service = ApiClient.getApiClient(applicationContext).create(ListEngineerApiService::class.java)
+        service = ApiClient.getApiClient(applicationContext)?.create(ListEngineerApiService::class.java)
 
         binding.recyclerView.adapter = ListEngineerAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)

@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.databinding.FragmentSearchBinding
+import com.miqdad71.starworks.databinding.FragmentSearchEngineerBinding
 
-class EngineerSearchFragment : Fragment(R.layout.fragment_search) {
+class SearchEngineerFragment : Fragment(R.layout.fragment_search_engineer) {
     private lateinit var rootView: View
-    private lateinit var binding: FragmentSearchBinding
+    private lateinit var binding: FragmentSearchEngineerBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
 
 //      binding fragments
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_engineer, container, false)
         return binding.root
 
     }

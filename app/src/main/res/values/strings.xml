@@ -106,4 +106,5 @@
     <string name="february_2021_oktober_2022">Januari 2018 - November 2020</string>
     <string name="total_months">22 Month</string>
     <string name="img_icon">IMG Icon</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -13,7 +13,7 @@ import com.miqdad71.starworks.view.adapter.ListExperienceRecycleViewAdapter
 import com.miqdad71.starworks.view.model.Databases
 import com.miqdad71.starworks.view.model.Experience
 
-class EngineerExperienceFragment : Fragment(R.layout.fragment_experience) {
+class ExperienceEngineerFragment : Fragment(R.layout.fragment_experience) {
 
     private lateinit var rootView: View
     private lateinit var binding: FragmentExperienceBinding

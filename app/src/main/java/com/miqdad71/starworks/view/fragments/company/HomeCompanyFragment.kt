@@ -1,46 +1,36 @@
-package com.miqdad71.starworks.view.fragments.engineer
+package com.miqdad71.starworks.view.fragments.company
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.api.EngineerAPI
-import com.miqdad71.starworks.databinding.FragmentHomeBinding
-import com.miqdad71.starworks.databinding.FragmentJobsBinding
-import com.miqdad71.starworks.remote.ApiClient
-import com.miqdad71.starworks.util.SharedPreference
-import com.miqdad71.starworks.view.adapter.HomeEngineerAdapter
-import com.miqdad71.starworks.view.model.engineer.EngineerModel
-import com.miqdad71.starworks.view.model.account.AccountModel
-import com.miqdad71.starworks.view.model.engineer.EngineerResponse
+import com.miqdad71.starworks.databinding.FragmentHomeCompanyBinding
+import com.miqdad71.starworks.databinding.FragmentHomeEngineerBinding
 //import com.miqdad71.starworks.view.detail_profile.ProfileDetailActivity
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.coroutines.*
 
 
-class EngineerHomeFragment : Fragment() {
+class HomeCompanyFragment : Fragment() {
 
     private lateinit var rootView: View
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeCompanyBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
 
 //      binding fragments
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_company, container, false)
         return binding.root
 
     }
 
 
 }
-//class EngineerHomeFragment : AppCompatActivity() {
+//class HomeEngineerFragment : AppCompatActivity() {
 //
 //    private lateinit var rootView: View
 //    private lateinit var binding: FragmentHomeBinding
