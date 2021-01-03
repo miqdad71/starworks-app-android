@@ -72,36 +72,4 @@ class SharedPreference(context: Context) {
         editor.apply()
     }
 
-    fun getEngineerPreference(engineerModel: EngineerModel): EngineerModel {
-        val model = EngineerModel()
-        model.email = engineerPreferences.getString(EMAIL, "")
-        model.password = engineerPreferences.getString(PASSWORD, "")
-        model.phone = engineerPreferences.getLong(PHONE, 0)
-        model.isLogin = engineerPreferences.getBoolean(LOGIN, false)
-
-        return model
-    }
-
-    fun setCompanyPreference(value: CompanyModel) {
-        val editor = companyPreferences.edit()
-        editor.putString(EMAIL, value.email)
-        editor.putString(PASSWORD, value.password)
-        editor.putString(COMPANY, value.company)
-        editor.putString(POSITION, value.position)
-        editor.putLong(PHONE, value.phone)
-        editor.putBoolean(LOGIN, value.isLogin)
-        editor.apply()
-    }
-
-    fun getCompanyPreference(companyModel: CompanyModel): CompanyModel {
-        val model = CompanyModel()
-        model.email = companyPreferences.getString(EMAIL, "")
-        model.password = companyPreferences.getString(PASSWORD, "")
-        model.company = companyPreferences.getString(COMPANY, "")
-        model.position = companyPreferences.getString(POSITION, "")
-        model.phone = companyPreferences.getLong(PHONE, 0)
-        model.isLogin = companyPreferences.getBoolean(LOGIN, false)
-
-        return model
-    }
 }

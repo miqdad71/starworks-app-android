@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.project
+package com.miqdad71.starworks.view.fragments.company.searchdata
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,11 +8,11 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemListSearchEngineerBinding
 import com.miqdad71.starworks.databinding.ItemProjectBinding
 
-class ListEngineerAdapter : RecyclerView.Adapter<ListEngineerAdapter.ProjectHolder>() {
+class SearchCompanyAdapter : RecyclerView.Adapter<SearchCompanyAdapter.ProjectHolder>() {
 
-    private var items = mutableListOf<ListEngineerModel>()
+    private var items = mutableListOf<SearchEngineerModel>()
 
-    fun addList(list: List<ListEngineerModel>) {
+    fun addList(list: List<SearchEngineerModel>) {
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()
@@ -35,6 +35,7 @@ class ListEngineerAdapter : RecyclerView.Adapter<ListEngineerAdapter.ProjectHold
         val item = items[position]
         holder.binding.tvListSearchEngName.text = item.acName
         holder.binding.tvListSearchEngJob.text = item.enJobType
+
     }
 
     override fun getItemCount(): Int = items.size

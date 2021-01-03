@@ -8,7 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface EngineerAPI {
-    @FormUrlEncoded
     @GET("engineer")
     suspend fun getAllEngineer(): EngineerResponse
 }

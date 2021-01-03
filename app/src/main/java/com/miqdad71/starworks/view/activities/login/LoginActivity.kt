@@ -25,8 +25,6 @@ import kotlinx.coroutines.*
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var preference: SharedPreference
-    private lateinit var engineerModel: EngineerModel
-    private lateinit var companyModel: CompanyModel
     private lateinit var dialog: Dialog
     private lateinit var coroutineScope: CoroutineScope
 
@@ -34,8 +32,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        engineerModel = EngineerModel()
-        companyModel = CompanyModel()
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
         supportActionBar?.hide()
@@ -72,11 +68,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private fun login(view: View) {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
-        val acLevel = intent.getIntExtra("level", 0)
-
         preference = SharedPreference(view.context)
-        engineerModel = preference.getEngineerPreference(engineerModel)
-        companyModel = preference.getCompanyPreference(companyModel)
 
         if (email.isEmpty()) {
             binding.etEmail.error = SignUpActivity.FIELD_REQUIRED
@@ -105,13 +97,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
             if (res is LoginResponse) {
                 val data = res.data
+                preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
                 if (data.ac_level == 0) {
-                    preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
                     val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
                     startActivity(sendIntent)
                     this@LoginActivity.finish()
-                } else {
-                    preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
+                }
+                if (data.ac_level == 1){
+//                    preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
                     val sendIntent = Intent(this@LoginActivity, CompanyMainActivity::class.java)
                     startActivity(sendIntent)
                     this@LoginActivity.finish()
