@@ -8,13 +8,11 @@
         android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_profile"
-        >
+        android:background="@color/background_profile">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -42,8 +40,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/iv_image_profile"
@@ -51,13 +48,12 @@
                         android:layout_height="120dp"
                         android:layout_marginTop="32dp"
                         android:contentDescription="@string/img_profile"
-                        android:src="@drawable/img_profile_miqdad"
+                        android:orientation="horizontal"
                         android:scaleType="centerCrop"
+                        android:src="@drawable/img_profile_miqdad"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:orientation="horizontal"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -66,8 +62,8 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="18dp"
                         android:fontFamily="sans-serif-thin"
-                        android:text="@string/miqdad"
                         android:onClick="onClick"
+                        android:text="@string/miqdad"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
@@ -134,8 +130,8 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_vestibulum_erat_orci_mollis_nec_gravida_sed_ornare_quis_urna_curabitur_eu_lacus_fringilla_vestibulum_risus_at"
                         android:justificationMode="inter_word"
+                        android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_vestibulum_erat_orci_mollis_nec_gravida_sed_ornare_quis_urna_curabitur_eu_lacus_fringilla_vestibulum_risus_at"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -414,13 +410,13 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-<!--                    <com.id124.wjobsid.util.WrapContentViewPager-->
-<!--                        android:id="@+id/view_pager"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/tab_layout" />-->
+                    <!--                    <com.id124.wjobsid.util.WrapContentViewPager-->
+                    <!--                        android:id="@+id/view_pager"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                        app:layout_constraintTop_toBottomOf="@+id/tab_layout" />-->
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

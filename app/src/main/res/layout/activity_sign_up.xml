@@ -2,8 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.activities.signup.SignUpActivity"
-    >
+    tools:context=".view.activities.signup.SignUpActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,10 +38,10 @@
                     android:layout_height="50dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="56dp"
+                    android:contentDescription="@string/todo"
                     android:src="@drawable/logo"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:contentDescription="@string/todo" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tv_logo"
@@ -75,7 +74,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_logo" />
 
 
-
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
@@ -106,10 +104,10 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/form_input_white"
                         android:hint="@string/full_name"
-                        android:text="qwerty"
                         android:importantForAutofill="no"
                         android:inputType="textPersonName"
-                        android:padding="18dp" />
+                        android:padding="18dp"
+                        android:text="qwerty" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,11 +141,11 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/form_input_white"
                         android:hint="@string/email"
-                        android:text="qwert@gmail.com"
                         android:importantForAutofill="no"
                         android:inputType="textEmailAddress"
                         android:padding="18dp"
-                        android:paddingBottom="10dp" />
+                        android:paddingBottom="10dp"
+                        android:text="qwert@gmail.com" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -263,10 +261,10 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/form_input_white"
                         android:hint="@string/phone_number"
-                        android:text="083127462837"
                         android:importantForAutofill="no"
                         android:inputType="phone"
-                        android:padding="18dp" />
+                        android:padding="18dp"
+                        android:text="083127462837" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -302,10 +300,10 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/form_input_white"
                         android:hint="@string/password"
-                        android:text="12345678"
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
-                        android:padding="18dp" />
+                        android:padding="18dp"
+                        android:text="12345678" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -341,10 +339,10 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/form_input_white"
                         android:hint="@string/password_confirmation"
-                        android:text="12345678"
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
-                        android:padding="18dp" />
+                        android:padding="18dp"
+                        android:text="12345678" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".project.ListEngineerActivity"
-        >
+        tools:context=".project.ListEngineerActivity">
 
         <EditText
             android:id="@+id/et_search_box"
