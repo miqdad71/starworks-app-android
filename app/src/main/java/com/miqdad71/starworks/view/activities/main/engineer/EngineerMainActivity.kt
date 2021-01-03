@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.activities.main
+package com.miqdad71.starworks.view.activities.main.engineer
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.view.activities.main
+package com.miqdad71.starworks.view.activities.main.company
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,10 +10,7 @@ import com.miqdad71.starworks.view.fragments.company.HireCompanyFragment
 import com.miqdad71.starworks.view.fragments.company.HomeCompanyFragment
 import com.miqdad71.starworks.view.fragments.company.ProfileCompanyFragment
 import com.miqdad71.starworks.view.fragments.company.SearchCompanyFragment
-import com.miqdad71.starworks.view.fragments.engineer.HomeEngineerFragment
-import com.miqdad71.starworks.view.fragments.engineer.HireEngineerFragment
 //import com.miqdad71.starworks.view.fragments.engineer.ProfileEngineerFragment
-import com.miqdad71.starworks.view.fragments.engineer.SearchEngineerFragment
 import kotlinx.android.synthetic.main.activity_engineer_main.*
 
 class CompanyMainActivity : AppCompatActivity() {

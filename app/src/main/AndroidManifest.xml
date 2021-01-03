@@ -13,12 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
-        <activity android:name=".project.ListEngineerActivity"/>
+        <activity android:name=".view.activities.main.company.HireCompanyActivity"></activity>
+        <activity android:name=".project.ListEngineerActivity" />
         <activity android:name=".view.webview.WebViewActivity" />
         <activity android:name=".view.adapter.EngineerLayoutActivity" />
         <activity android:name=".view.dialog.DialogActivity" />
-        <activity android:name=".view.activities.main.EngineerMainActivity" />
-        <activity android:name=".view.activities.main.CompanyMainActivity" />
+        <activity android:name=".view.activities.main.engineer.EngineerMainActivity" />
+        <activity android:name=".view.activities.main.company.CompanyMainActivity" />
         <activity android:name=".view.activities.signup.SignUpActivity" />
         <activity android:name=".view.activities.forgetpassword.ForgetPasswordVerifyActivity" />
         <activity android:name=".view.activities.forgetpassword.ForgetPasswordActivity" />

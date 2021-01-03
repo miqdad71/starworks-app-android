@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="project_list_company">
+        <item>- Project -</item>
+        <item>Aplikasi Android - Pendeteksi Kejombloan</item>
+        <item>Aplikasi Android - Mamalemon</item>
+        <item>Aplikasi IOS - Ramalan Masa Depan</item>
+        <item>Perancangan Sistem Teleportasi Dengan Kecerdasan Buatan</item>
+        <item>Implementasi Server Tercepat Di Seluruh Dunia</item>
+    </string-array>
+
+</resources>

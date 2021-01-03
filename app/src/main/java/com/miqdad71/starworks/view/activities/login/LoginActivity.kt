@@ -13,8 +13,8 @@ import com.miqdad71.starworks.databinding.ActivityLoginBinding
 import com.miqdad71.starworks.remote.ApiClient
 import com.miqdad71.starworks.util.SharedPreference
 import com.miqdad71.starworks.view.activities.forgetpassword.ForgetPasswordVerifyActivity
-import com.miqdad71.starworks.view.activities.main.CompanyMainActivity
-import com.miqdad71.starworks.view.activities.main.EngineerMainActivity
+import com.miqdad71.starworks.view.activities.main.company.CompanyMainActivity
+import com.miqdad71.starworks.view.activities.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.view.activities.signup.SignUpActivity
 import com.miqdad71.starworks.view.dialog.Dialog
 import com.miqdad71.starworks.view.model.company.CompanyModel

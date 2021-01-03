@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivitySignUpBinding
 import com.miqdad71.starworks.util.SharedPreference
-import com.miqdad71.starworks.view.activities.main.EngineerMainActivity
+import com.miqdad71.starworks.view.activities.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.view.activities.login.LoginActivity
 import com.miqdad71.starworks.view.dialog.Dialog
 import com.miqdad71.starworks.view.model.engineer.EngineerModel
