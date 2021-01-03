@@ -3,11 +3,12 @@
 
     <string-array name="project_list_company">
         <item>- Project -</item>
-        <item>Aplikasi Android - Pendeteksi Kejombloan</item>
-        <item>Aplikasi Android - Mamalemon</item>
-        <item>Aplikasi IOS - Ramalan Masa Depan</item>
-        <item>Perancangan Sistem Teleportasi Dengan Kecerdasan Buatan</item>
-        <item>Implementasi Server Tercepat Di Seluruh Dunia</item>
+        <item>Smart Locker</item>
+        <item>Flashbulb</item>
+        <item>Gravity Screen</item>
+        <item>AirDroid</item>
+        <item>Clap to Find</item>
+
     </string-array>
 
 </resources>

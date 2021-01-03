@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activities.main.company.HireCompanyActivity"></activity>
+        <activity android:name=".view.activities.main.company.AddProjectActivity"></activity>
+        <activity android:name=".view.activities.main.company.HireCompanyActivity" />
         <activity android:name=".project.ListEngineerActivity" />
         <activity android:name=".view.webview.WebViewActivity" />
         <activity android:name=".view.adapter.EngineerLayoutActivity" />
