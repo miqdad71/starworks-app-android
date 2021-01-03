@@ -13,21 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activities.main.company.AddProjectActivity"/>
-        <activity android:name=".view.activities.main.company.HireCompanyActivity" />
-        <activity android:name=".project.ListEngineerActivity" />
-        <activity android:name=".view.webview.WebViewActivity" />
-        <activity android:name=".view.adapter.EngineerLayoutActivity" />
-        <activity android:name=".view.dialog.DialogActivity" />
-        <activity android:name=".view.activities.main.engineer.EngineerMainActivity" />
-        <activity android:name=".view.activities.main.company.CompanyMainActivity" />
-        <activity android:name=".view.activities.signup.SignUpActivity" />
-        <activity android:name=".view.activities.forgetpassword.ForgetPasswordVerifyActivity" />
-        <activity android:name=".view.activities.forgetpassword.ForgetPasswordActivity" />
-        <activity android:name=".view.activities.OnboardActivity" />
-        <activity android:name=".view.activities.experience.ExperienceActivity" />
-        <activity android:name=".view.activities.login.LoginActivity" />
-        <activity android:name=".view.activities.splash.SplashScreen">
+        <activity android:name=".ui.activities.main.company.AddProjectActivity"/>
+        <activity android:name=".ui.activities.main.company.HireCompanyActivity" />
+        <activity android:name=".tryweek7.ListEngineerActivity" />
+        <activity android:name=".ui.webview.WebViewActivity" />
+        <activity android:name=".ui.adapter.EngineerLayoutActivity" />
+        <activity android:name=".ui.dialog.DialogActivity" />
+        <activity android:name=".ui.activities.main.engineer.EngineerMainActivity" />
+        <activity android:name=".ui.activities.main.company.CompanyMainActivity" />
+        <activity android:name=".ui.activities.signup.SignUpActivity" />
+        <activity android:name=".ui.activities.forgetpassword.ForgetPasswordVerifyActivity" />
+        <activity android:name=".ui.activities.forgetpassword.ForgetPasswordActivity" />
+        <activity android:name=".ui.activities.OnboardActivity" />
+        <activity android:name=".ui.activities.experience.ExperienceActivity" />
+        <activity android:name=".ui.activities.login.LoginActivity" />
+        <activity android:name=".ui.activities.splash.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

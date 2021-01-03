@@ -1,13 +1,9 @@
 package com.miqdad71.starworks.api
 
-import com.miqdad71.starworks.view.model.account.LoginResponse
-import com.miqdad71.starworks.view.model.engineer.EngineerResponse
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
+import com.miqdad71.starworks.ui.fragments.company.homegetdata.HomeCompanyResponse
 import retrofit2.http.GET
-import retrofit2.http.POST
 
 interface EngineerAPI {
     @GET("engineer")
-    suspend fun getAllEngineer(): EngineerResponse
+    suspend fun getAllEngineer(): HomeCompanyResponse
 }

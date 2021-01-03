@@ -2,8 +2,7 @@ package com.miqdad71.starworks.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.miqdad71.starworks.view.model.company.CompanyModel
-import com.miqdad71.starworks.view.model.engineer.EngineerModel
+import com.miqdad71.starworks.data.model.engineer.EngineerModel
 
 class SharedPreference(context: Context) {
 

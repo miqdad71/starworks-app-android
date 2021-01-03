@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".view.webview.WebViewActivity">
+        tools:context=".ui.webview.WebViewActivity">
 
         <ProgressBar
             android:id="@+id/progress_bar"

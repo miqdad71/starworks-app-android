@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.fragments.engineer.HomeEngineerFragment">
+    tools:context=".ui.fragments.engineer.HomeEngineerFragment">
 
     <data>
 
         <variable
             name="AccountModel"
-            type="com.miqdad71.starworks.view.model.account.AccountModel" />
+            type="com.miqdad71.starworks.data.model.account.AccountModel" />
 
         <variable
             name="title"
@@ -76,7 +76,7 @@
                     android:layout_marginEnd="20dp"
                     android:gravity="center"
                     android:letterSpacing="0.1"
-                    android:text="@{AccountModel.ac_name}"
+                    android:text="Hi"
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold"

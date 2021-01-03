@@ -7,8 +7,8 @@
 
         <variable
             name="engineer"
-            type="com.miqdad71.starworks.view.model.engineer.EngineerModel" />
-
+            type="com.miqdad71.starworks.data.model.engineer.EngineerModel" />
+<!--        model.engineer.EngineerModel-->
         <variable
             name="imageUrl"
             type="String" />
