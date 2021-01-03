@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.tryweek7
+package com.miqdad71.starworks.example
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

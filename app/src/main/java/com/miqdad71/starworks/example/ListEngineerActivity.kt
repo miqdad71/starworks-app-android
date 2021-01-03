@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.tryweek7
+package com.miqdad71.starworks.example
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

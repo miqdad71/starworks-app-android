@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.tryweek7
+package com.miqdad71.starworks.example
 
 data class ListEngineerModel(
     val enId: String?= null,

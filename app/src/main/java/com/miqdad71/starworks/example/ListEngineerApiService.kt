@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.tryweek7
+package com.miqdad71.starworks.example
 
 import retrofit2.http.GET
 
