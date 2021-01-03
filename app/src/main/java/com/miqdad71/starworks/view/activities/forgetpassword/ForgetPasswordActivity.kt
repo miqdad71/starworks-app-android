@@ -17,8 +17,8 @@ class ForgetPasswordActivity : AppCompatActivity(), View.OnClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_forget_password)
         supportActionBar?.hide()
         window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
 
         binding.lnBack.setOnClickListener(this)

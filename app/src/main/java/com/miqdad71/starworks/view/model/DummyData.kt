@@ -11,13 +11,13 @@ object Databases {
         R.drawable.portofolio5
     )
 
-    val porto : IntArray
+    val porto: IntArray
         get() {
             val portos = portfolio
             return portos
         }
 
-    val listExperiences : ArrayList<Experience>
+    val listExperiences: ArrayList<Experience>
         get() {
             val expers = ArrayList<Experience>()
             for (i in desc.indices) {
@@ -64,7 +64,8 @@ object Databases {
         "14 months",
         "16 months"
     )
-    private const val str = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    private const val str =
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
     private val desc = arrayOf(
         str,
         str,
@@ -72,12 +73,6 @@ object Databases {
         str,
         str
     )
-
-
-
-
-
-
 
 
 //    private val name = arrayOf(
@@ -130,8 +125,6 @@ object Databases {
 //    private val status = arrayOf(
 //        "wait", "approved", "rejected", "approved", "wait"
 //    )
-
-
 
 
 //

@@ -13,14 +13,19 @@ import com.miqdad71.starworks.view.activities.skill.SkillActivity
 import com.miqdad71.starworks.view.adapter.EngineerPagerAdapter
 import com.miqdad71.starworks.view.webview.WebViewActivity
 
-class ProfileEngineerFragment : Fragment(R.layout.fragment_profile_engineer), View.OnClickListener {
+class ProfileEngineerFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentProfileEngineerBinding
     private lateinit var adapter: EngineerPagerAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
 //      binding fragments
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
         return binding.root
 
 
@@ -30,19 +35,19 @@ class ProfileEngineerFragment : Fragment(R.layout.fragment_profile_engineer), Vi
         super.onViewCreated(view, savedInstanceState)
         binding.tvGithub.setOnClickListener(this)
         binding.ivAddSkill.setOnClickListener(this)
-        adapter = EngineerPagerAdapter( requireFragmentManager())
+        adapter = EngineerPagerAdapter(requireFragmentManager())
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
     override fun onResume() {
         super.onResume()
-        adapter = EngineerPagerAdapter( requireFragmentManager())
+        adapter = EngineerPagerAdapter(requireFragmentManager())
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
-    override fun onClick(v: View?){
+    override fun onClick(v: View?) {
 
         when (v?.id) {
             R.id.tv_github -> {

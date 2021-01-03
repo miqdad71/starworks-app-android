@@ -18,11 +18,16 @@ class HomeEngineerFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var binding: FragmentHomeEngineerBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return super.onCreateView(inflater, container, savedInstanceState)
 
 //      binding fragments
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_engineer, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_home_engineer, container, false)
         return binding.root
 
     }

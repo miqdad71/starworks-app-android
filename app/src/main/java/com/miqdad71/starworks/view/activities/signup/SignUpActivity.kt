@@ -23,6 +23,7 @@ class SignUpActivity : AppCompatActivity() {
         const val FIELD_IS_NOT_VALID = "Invalid email"
         const val FIELD_MUST_MATCH = "Password must be the same"
     }
+
     private var engineerModel: EngineerModel = EngineerModel()
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var dialog: Dialog
@@ -32,8 +33,8 @@ class SignUpActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         supportActionBar?.hide()
         window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
 
         if (intent.getIntExtra("level", 0) == 1) {
@@ -104,7 +105,13 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveData(name: String, email: String, password: String, phone: String, isLogin: Boolean) {
+    private fun saveData(
+        name: String,
+        email: String,
+        password: String,
+        phone: String,
+        isLogin: Boolean
+    ) {
         val userPreference = SharedPreference(this)
 
 //        engineerModel.let {

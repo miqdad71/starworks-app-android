@@ -26,6 +26,7 @@ class WebViewActivity : AppCompatActivity(), WebViewListener {
         binding.webView.webChromeClient = MojokChromeClient(this)
         binding.webView.webViewClient = MojokWebClient(this)
     }
+
     class MojokChromeClient(private var listener: WebViewListener) : WebChromeClient() {
         override fun onProgressChanged(view: WebView?, newProgress: Int) {
             listener.onProgressChange(newProgress)

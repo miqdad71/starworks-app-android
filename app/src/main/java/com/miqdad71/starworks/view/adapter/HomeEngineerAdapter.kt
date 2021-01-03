@@ -18,7 +18,7 @@ class HomeEngineerAdapter : RecyclerView.Adapter<HomeEngineerAdapter.RecyclerVie
         this.onItemClickCallback = onItemClickCallback
     }
 
-    inner class RecyclerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun binding(en: EngineerModel) {
             binding.engineer = en
             binding.executePendingBindings()
@@ -30,7 +30,12 @@ class HomeEngineerAdapter : RecyclerView.Adapter<HomeEngineerAdapter.RecyclerVie
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
-        binding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_list_web_dev, parent, false)
+        binding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_list_web_dev,
+            parent,
+            false
+        )
         return RecyclerViewHolder(binding.root)
     }
 

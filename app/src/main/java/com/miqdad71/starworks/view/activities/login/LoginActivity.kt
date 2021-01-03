@@ -98,12 +98,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             if (res is LoginResponse) {
                 val data = res.data
                 preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
-                if (data.ac_level == 0) {
+                if (data.ac_level == 1) {
                     val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
                     startActivity(sendIntent)
                     this@LoginActivity.finish()
                 }
-                if (data.ac_level == 1){
+                if (data.ac_level == 0) {
 //                    preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
                     val sendIntent = Intent(this@LoginActivity, CompanyMainActivity::class.java)
                     startActivity(sendIntent)

@@ -8,7 +8,7 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivitySkillBinding
 
 class SkillActivity : AppCompatActivity(), View.OnClickListener {
-private lateinit var binding: ActivitySkillBinding
+    private lateinit var binding: ActivitySkillBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_skill)
         super.onCreate(savedInstanceState)

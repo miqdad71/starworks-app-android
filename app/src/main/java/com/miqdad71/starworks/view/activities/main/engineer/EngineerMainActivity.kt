@@ -13,7 +13,7 @@ import com.miqdad71.starworks.view.fragments.engineer.ProfileEngineerFragment
 import kotlinx.android.synthetic.main.activity_engineer_main.*
 
 class EngineerMainActivity : AppCompatActivity() {
-   private lateinit var binding: ActivityEngineerMainBinding
+    private lateinit var binding: ActivityEngineerMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -30,7 +30,7 @@ class EngineerMainActivity : AppCompatActivity() {
         setCurrentFragment(firstFragment)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.miHome -> setCurrentFragment(firstFragment)
                 R.id.miSearch -> setCurrentFragment(secondFragment)
                 R.id.miProfile -> setCurrentFragment(thirdFragment)
@@ -41,8 +41,8 @@ class EngineerMainActivity : AppCompatActivity() {
     }
 
     private fun setCurrentFragment(fragment: Fragment) =
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.flFragmentEngineer, fragment)
-                commit()
-            }
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragmentEngineer, fragment)
+            commit()
+        }
 }

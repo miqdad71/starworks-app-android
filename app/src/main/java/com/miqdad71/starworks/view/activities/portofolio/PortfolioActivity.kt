@@ -9,7 +9,7 @@ import com.miqdad71.starworks.databinding.ActivityPortfolioBinding
 
 class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityPortfolioBinding
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_portfolio)
         super.onCreate(savedInstanceState)

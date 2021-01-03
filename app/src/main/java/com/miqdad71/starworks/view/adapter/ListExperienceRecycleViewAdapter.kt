@@ -11,9 +11,11 @@ import com.miqdad71.starworks.databinding.ItemEngineerExperienceBinding
 import com.miqdad71.starworks.view.model.Experience
 import kotlin.collections.ArrayList
 
-class ListExperienceRecycleViewAdapter(private val listExperience: ArrayList<Experience>) : RecyclerView.Adapter<ListExperienceRecycleViewAdapter.ListViewHolder>() {
+class ListExperienceRecycleViewAdapter(private val listExperience: ArrayList<Experience>) :
+    RecyclerView.Adapter<ListExperienceRecycleViewAdapter.ListViewHolder>() {
 
-    inner class ListViewHolder(val binding: ItemEngineerExperienceBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ListViewHolder(val binding: ItemEngineerExperienceBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(experience: Experience) {
             Glide.with(itemView.context)
                 .load(experience.image)
@@ -29,7 +31,14 @@ class ListExperienceRecycleViewAdapter(private val listExperience: ArrayList<Exp
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ListViewHolder {
-        return ListViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.context), R.layout.item_engineer_experience, viewGroup, false))
+        return ListViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(viewGroup.context),
+                R.layout.item_engineer_experience,
+                viewGroup,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {

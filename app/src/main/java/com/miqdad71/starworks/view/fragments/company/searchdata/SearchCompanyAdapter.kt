@@ -18,7 +18,8 @@ class SearchCompanyAdapter : RecyclerView.Adapter<SearchCompanyAdapter.ProjectHo
         notifyDataSetChanged()
     }
 
-    class ProjectHolder(val binding: ItemListSearchEngineerBinding) : RecyclerView.ViewHolder(binding.root)
+    class ProjectHolder(val binding: ItemListSearchEngineerBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectHolder {
         return ProjectHolder(

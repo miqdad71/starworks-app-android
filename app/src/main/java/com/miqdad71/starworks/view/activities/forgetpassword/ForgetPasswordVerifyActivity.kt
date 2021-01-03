@@ -16,8 +16,8 @@ class ForgetPasswordVerifyActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
         binding = DataBindingUtil.setContentView(this, R.layout.activity_forget_password_verify)
 
@@ -26,9 +26,9 @@ class ForgetPasswordVerifyActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-          R.id.btn_next -> {
-              val intent = Intent(this, ForgetPasswordActivity::class.java)
-              startActivity(intent)
+            R.id.btn_next -> {
+                val intent = Intent(this, ForgetPasswordActivity::class.java)
+                startActivity(intent)
             }
             R.id.ln_back -> {
                 onBackPressed()

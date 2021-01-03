@@ -2,14 +2,14 @@ package com.miqdad71.starworks.view.model.account
 
 import com.google.gson.annotations.SerializedName
 
-data class LoginResponse(val success: Boolean, val message: String, val data: LoginItem){
+data class LoginResponse(val success: Boolean, val message: String, val data: LoginItem) {
     data class LoginItem(
         @SerializedName("ac_id")
         val ac_id: Int,
         @SerializedName("en_id")
-        val en_id: Int?=null,
+        val en_id: Int? = null,
         @SerializedName("cn_id")
-        val cn_id: Int?=null,
+        val cn_id: Int? = null,
         @SerializedName("ac_name")
         val ac_name: String,
         @SerializedName("ac_email")

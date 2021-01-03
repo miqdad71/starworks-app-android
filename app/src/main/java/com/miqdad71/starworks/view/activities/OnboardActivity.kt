@@ -18,8 +18,8 @@ class OnboardActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)

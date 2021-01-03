@@ -18,23 +18,31 @@ import com.miqdad71.starworks.view.fragments.company.searchdata.SearchCompanyRes
 import com.miqdad71.starworks.view.fragments.company.searchdata.SearchEngineerModel
 import kotlinx.coroutines.*
 
-class SearchCompanyFragment : Fragment(R.layout.fragment_search_engineer) {
+class SearchCompanyFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var binding: FragmentSearchCompanyBinding
     private lateinit var coroutineScope: CoroutineScope
     private lateinit var service: EngineerAPI
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search_company, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_search_company, container, false)
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-        service = ApiClient.getApiClient(requireActivity().applicationContext).create(EngineerAPI::class.java)
+        service = ApiClient.getApiClient(requireActivity().applicationContext)
+            .create(EngineerAPI::class.java)
         binding.rvSearchListProject.adapter = SearchCompanyAdapter()
-        binding.rvSearchListProject.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.rvSearchListProject.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         getAllEngineer()
         return binding.root
 
     }
+
     private fun getAllEngineer() {
         coroutineScope.launch {
             Log.d("android2", "Start: ${Thread.currentThread().name}")

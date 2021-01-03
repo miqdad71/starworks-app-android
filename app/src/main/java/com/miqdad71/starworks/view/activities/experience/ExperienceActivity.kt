@@ -11,11 +11,11 @@ import com.miqdad71.starworks.databinding.ActivityExperienceBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ExperienceActivity : AppCompatActivity(), View.OnClickListener  {
+class ExperienceActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var myCalendar: Calendar
     private lateinit var date: DatePickerDialog.OnDateSetListener
-    private lateinit var binding : ActivityExperienceBinding
-    
+    private lateinit var binding: ActivityExperienceBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_experience)
         super.onCreate(savedInstanceState)

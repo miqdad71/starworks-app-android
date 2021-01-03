@@ -2,7 +2,7 @@ package com.miqdad71.starworks.view.model.account
 
 import com.google.gson.annotations.SerializedName
 
-data class AccountResponse(val success: Boolean, val message: String, val data: List<AccountItem>){
+data class AccountResponse(val success: Boolean, val message: String, val data: List<AccountItem>) {
     data class AccountItem(
         @SerializedName("ac_id")
         val ac_id: Int,
@@ -18,5 +18,5 @@ data class AccountResponse(val success: Boolean, val message: String, val data: 
         val ac_level: Int,
         @SerializedName("token")
         val token: String
-        )
+    )
 }

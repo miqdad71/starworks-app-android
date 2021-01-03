@@ -29,18 +29,19 @@ class DialogActivity : AppCompatActivity() {
 
     }
 
-    private fun  showDialogOne(){
+    private fun showDialogOne() {
         val dialog = AlertDialog.Builder(this)
             .setTitle("Test Dialog One")
             .setMessage("Ini Dialog 1")
             .create()
         dialog.show()
     }
-    private fun  showDialogTwo(){
+
+    private fun showDialogTwo() {
         val dialog = AlertDialog.Builder(this)
             .setTitle("Konfirmasi User")
             .setMessage("Tolong Konfirmasi")
-            .setPositiveButton("Show Toast")  { dialog:DialogInterface?, which: Int ->
+            .setPositiveButton("Show Toast") { dialog: DialogInterface?, which: Int ->
                 Toast.makeText(this, "Show Dialog 2", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Dissmiss") { dialogInterface, i ->
@@ -48,7 +49,8 @@ class DialogActivity : AppCompatActivity() {
             }
         dialog.show()
     }
-    private fun  showDialogThree(){
+
+    private fun showDialogThree() {
         val dialog = AlertDialog.Builder(this)
             .setTitle("Test Dialog Three")
             .setMessage("Ini Dialog 3")

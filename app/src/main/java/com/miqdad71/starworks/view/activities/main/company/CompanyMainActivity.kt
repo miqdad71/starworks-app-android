@@ -28,7 +28,7 @@ class CompanyMainActivity : AppCompatActivity() {
         setCurrentFragment(firstFragment)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.miHome -> setCurrentFragment(firstFragment)
                 R.id.miSearch -> setCurrentFragment(secondFragment)
                 R.id.miProfile -> setCurrentFragment(thirdFragment)
@@ -36,7 +36,8 @@ class CompanyMainActivity : AppCompatActivity() {
             }
             true
         }
-}
+    }
+
     private fun setCurrentFragment(fragment: Fragment) =
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flFragmentCompany, fragment)

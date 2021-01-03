@@ -1,12 +1,12 @@
 package com.miqdad71.starworks.view.fragments.company.searchdata
 
 data class SearchEngineerModel(
-    val enId: String?= null,
-    val acId: String?= null,
-    val acName: String?= null,
-    val enJobTitle: String?= null,
-    val enJobType: String?= null,
-    val enDomicile: String?= null,
-    val enDescription: String?= null,
-    val enProfile: String?= null
+    val enId: String? = null,
+    val acId: String? = null,
+    val acName: String? = null,
+    val enJobTitle: String? = null,
+    val enJobType: String? = null,
+    val enDomicile: String? = null,
+    val enDescription: String? = null,
+    val enProfile: String? = null
 )

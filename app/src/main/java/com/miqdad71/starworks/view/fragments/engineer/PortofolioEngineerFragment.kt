@@ -13,17 +13,22 @@ import com.miqdad71.starworks.view.adapter.ListPortfolioRecycleViewAdapter
 import com.miqdad71.starworks.view.model.Databases
 import com.miqdad71.starworks.view.model.Portfolio
 
-class PortofolioEngineerFragment : Fragment(R.layout.fragment_portfolio) {
+class PortofolioEngineerFragment : Fragment() {
 
     private lateinit var rootView: View
     private lateinit var binding: FragmentPortfolioBinding
     private val listPortfolio = ArrayList<Portfolio>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 //      binding fragments
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_portfolio, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val portfolio = Databases.porto

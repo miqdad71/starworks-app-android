@@ -10,9 +10,11 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemEngineerPortofolioBinding
 import com.miqdad71.starworks.view.model.Portfolio
 
-class ListPortfolioRecycleViewAdapter(private val listPortfolio: ArrayList<Portfolio>) : RecyclerView.Adapter<ListPortfolioRecycleViewAdapter.ListViewHolder>() {
+class ListPortfolioRecycleViewAdapter(private val listPortfolio: ArrayList<Portfolio>) :
+    RecyclerView.Adapter<ListPortfolioRecycleViewAdapter.ListViewHolder>() {
 
-    inner class ListViewHolder(val binding: ItemEngineerPortofolioBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ListViewHolder(val binding: ItemEngineerPortofolioBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(portfolio: Portfolio) {
             Glide.with(itemView.context)
                 .load(portfolio.image)
@@ -22,7 +24,14 @@ class ListPortfolioRecycleViewAdapter(private val listPortfolio: ArrayList<Portf
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): ListViewHolder {
-        return ListViewHolder(DataBindingUtil.inflate(LayoutInflater.from(viewGroup.context), R.layout.item_engineer_portofolio, viewGroup, false))
+        return ListViewHolder(
+            DataBindingUtil.inflate(
+                LayoutInflater.from(viewGroup.context),
+                R.layout.item_engineer_portofolio,
+                viewGroup,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
