@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
 
 class SharedPreference(context: Context) {
-
     companion object {
         private const val TOKEN = "token"
         private const val ENG_PREF_NAME = "eng_pref"
@@ -32,7 +31,6 @@ class SharedPreference(context: Context) {
         val editor = engineerPreferences.edit()
         editor.putString(TOKEN, token)
         editor.apply()
-
     }
 
     fun getToken(): String? {

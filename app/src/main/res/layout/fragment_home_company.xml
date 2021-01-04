@@ -34,7 +34,7 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/img_engineer_home_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="180dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/bg_bottom_radius_corner_bottom_right"
                     app:layout_constraintEnd_toEndOf="parent"
