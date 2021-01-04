@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.company.homegetdata
+package com.miqdad71.starworks.ui.fragments.company.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,6 +10,11 @@ import com.miqdad71.starworks.databinding.ItemListWebDevBinding
 class HomeCompanyAdapter : RecyclerView.Adapter<HomeCompanyAdapter.ProjectHolder>() {
 
     private var items = mutableListOf<HomeEngineerModel>()
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     fun addList(list: List<HomeEngineerModel>) {
         items.clear()
@@ -33,9 +38,16 @@ class HomeCompanyAdapter : RecyclerView.Adapter<HomeCompanyAdapter.ProjectHolder
 
     override fun onBindViewHolder(holder: ProjectHolder, position: Int) {
         val item = items[position]
+        holder.binding.rlItemWeb.setOnClickListener {
+            onItemClickCallback.onItemClick(item)
+        }
         holder.binding.tvEngWeb.text = item.acName
         holder.binding.tvEngJob.text = item.enJobType
 
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClick(data: HomeEngineerModel)
     }
 
     override fun getItemCount(): Int = items.size

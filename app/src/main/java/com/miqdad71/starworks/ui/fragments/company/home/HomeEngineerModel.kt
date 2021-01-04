@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.company.homegetdata
+package com.miqdad71.starworks.ui.fragments.company.home
 
 import com.google.gson.annotations.SerializedName
 

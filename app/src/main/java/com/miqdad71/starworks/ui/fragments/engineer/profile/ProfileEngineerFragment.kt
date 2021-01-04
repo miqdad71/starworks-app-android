@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.engineer
+package com.miqdad71.starworks.ui.fragments.engineer.profile
 
 import android.content.Intent
 import android.os.Bundle

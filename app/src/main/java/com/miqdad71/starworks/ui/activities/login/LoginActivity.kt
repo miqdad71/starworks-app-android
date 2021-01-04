@@ -16,7 +16,7 @@ import com.miqdad71.starworks.ui.activities.forgetpassword.ForgetPasswordVerifyA
 import com.miqdad71.starworks.ui.activities.main.company.CompanyMainActivity
 import com.miqdad71.starworks.ui.activities.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.ui.activities.signup.SignUpActivity
-import com.miqdad71.starworks.ui.dialog.Dialog
+import com.miqdad71.starworks.ui.activities.dialog.Dialog
 import com.miqdad71.starworks.data.model.account.LoginResponse
 import kotlinx.coroutines.*
 
@@ -100,7 +100,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 Log.d("loginData", data.toString())
                 val level = data.ac_level
                 preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
-
+                preference.setToken(data.token)
                 when(level) {
                     0 -> {
                         val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
@@ -113,19 +113,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         this@LoginActivity.finish()
                     }
                 }
-//                if (data.ac_level == 1) {
-//                    val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
-//                    startActivity(sendIntent)
-//                    this@LoginActivity.finish()
-//                }
-//                if (data.ac_level == 0) {
-////                    preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
-//                    val sendIntent = Intent(this@LoginActivity, CompanyMainActivity::class.java)
-//                    startActivity(sendIntent)
-//                    this@LoginActivity.finish()
-//                }
             }
-
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.company
+package com.miqdad71.starworks.ui.fragments.company.search
 
 import android.os.Bundle
 import android.util.Log
@@ -13,9 +13,6 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.api.EngineerAPI
 import com.miqdad71.starworks.databinding.FragmentSearchCompanyBinding
 import com.miqdad71.starworks.data.remote.ApiClient
-import com.miqdad71.starworks.ui.fragments.company.search.SearchCompanyAdapter
-import com.miqdad71.starworks.ui.fragments.company.search.SearchCompanyResponse
-import com.miqdad71.starworks.ui.fragments.company.search.SearchEngineerModel
 import kotlinx.coroutines.*
 
 class SearchCompanyFragment : Fragment() {

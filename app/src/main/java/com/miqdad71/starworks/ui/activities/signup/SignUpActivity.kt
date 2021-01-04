@@ -12,7 +12,7 @@ import com.miqdad71.starworks.databinding.ActivitySignUpBinding
 import com.miqdad71.starworks.util.SharedPreference
 import com.miqdad71.starworks.ui.activities.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.ui.activities.login.LoginActivity
-import com.miqdad71.starworks.ui.dialog.Dialog
+import com.miqdad71.starworks.ui.activities.dialog.Dialog
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
 
 class SignUpActivity : AppCompatActivity() {

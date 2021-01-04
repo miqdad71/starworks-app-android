@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.adapter
+package com.miqdad71.starworks.ui.fragments.engineer.home
 
 import android.view.LayoutInflater
 import android.view.View

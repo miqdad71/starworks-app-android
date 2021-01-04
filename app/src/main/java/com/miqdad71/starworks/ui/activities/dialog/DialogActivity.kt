@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.dialog
+package com.miqdad71.starworks.ui.activities.dialog
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity

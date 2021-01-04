@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.company.homegetdata
+package com.miqdad71.starworks.ui.fragments.company.home
 
 data class HomeCompanyResponse(
     val success: String,

@@ -1,5 +1,6 @@
-package com.miqdad71.starworks.ui.fragments.company
+package com.miqdad71.starworks.ui.fragments.company.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,7 +14,8 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.api.EngineerAPI
 import com.miqdad71.starworks.databinding.FragmentHomeCompanyBinding
 import com.miqdad71.starworks.data.remote.ApiClient
-import com.miqdad71.starworks.ui.fragments.company.homegetdata.*
+import com.miqdad71.starworks.databinding.ActivityProfileDetailBinding
+import com.miqdad71.starworks.ui.activities.profile.ProfileDetailActivity
 //import com.miqdad71.starworks.view.detail_profile.ProfileDetailActivity
 import kotlinx.coroutines.*
 
@@ -53,7 +55,14 @@ class HomeCompanyFragment : Fragment() {
                 val dataFromResult = resultData.data
                 //rv web
                 binding.rvWeb.layoutManager = LinearLayoutManager(requireActivity().applicationContext, RecyclerView.HORIZONTAL, false)
-                binding.rvWeb.adapter = HomeCompanyAdapter().apply { addList(dataFromResult) }
+                val adapter = HomeCompanyAdapter().apply { addList(dataFromResult) }
+                binding.rvWeb.adapter = adapter
+                adapter.setOnItemClickCallback(object : HomeCompanyAdapter.OnItemClickCallback{
+                    override fun onItemClick(data: HomeEngineerModel) {
+                        val intent = Intent(activity, ProfileDetailActivity::class.java)
+                        startActivity(intent)
+                    }
+                })
 
                 //rv android
                 binding.rvAndroid.layoutManager = LinearLayoutManager(requireActivity().applicationContext, RecyclerView.HORIZONTAL, false)

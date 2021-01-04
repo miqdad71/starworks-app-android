@@ -12,5 +12,20 @@ class AddProjectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_project)
+        setToolbarActionBar()
+
+    }
+
+    private fun setToolbarActionBar() {
+        setSupportActionBar(binding.toolbar)
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+//            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+//        )
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Profile Hire"
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 }

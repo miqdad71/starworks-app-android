@@ -6,10 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityCompanyMainBinding
-import com.miqdad71.starworks.ui.fragments.company.HireCompanyFragment
-import com.miqdad71.starworks.ui.fragments.company.HomeCompanyFragment
-import com.miqdad71.starworks.ui.fragments.company.ProfileCompanyFragment
-import com.miqdad71.starworks.ui.fragments.company.SearchCompanyFragment
+import com.miqdad71.starworks.ui.fragments.company.hire.HireCompanyFragment
+import com.miqdad71.starworks.ui.fragments.company.home.HomeCompanyFragment
+import com.miqdad71.starworks.ui.fragments.company.profile.ProfileCompanyFragment
+import com.miqdad71.starworks.ui.fragments.company.search.SearchCompanyFragment
 //import com.miqdad71.starworks.view.fragments.engineer.ProfileEngineerFragment
 import kotlinx.android.synthetic.main.activity_engineer_main.*
 

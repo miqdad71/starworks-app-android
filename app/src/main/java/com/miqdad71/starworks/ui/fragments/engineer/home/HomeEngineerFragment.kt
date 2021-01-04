@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.engineer
+package com.miqdad71.starworks.ui.fragments.engineer.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.databinding.FragmentSearchEngineerBinding
+import com.miqdad71.starworks.databinding.FragmentHomeEngineerBinding
+//import com.miqdad71.starworks.view.detail_profile.ProfileDetailActivity
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.coroutines.*
 
-class SearchEngineerFragment : Fragment() {
+
+class HomeEngineerFragment : Fragment() {
+
     private lateinit var rootView: View
-    private lateinit var binding: FragmentSearchEngineerBinding
+    private lateinit var binding: FragmentHomeEngineerBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +27,7 @@ class SearchEngineerFragment : Fragment() {
 
 //      binding fragments
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_search_engineer, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_home_engineer, container, false)
         return binding.root
 
     }

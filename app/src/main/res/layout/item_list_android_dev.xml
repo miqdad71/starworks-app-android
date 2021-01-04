@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="200dp"
-        android:layout_height="270dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginEnd="8dp">
 

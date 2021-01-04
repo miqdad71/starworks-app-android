@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.company
+package com.miqdad71.starworks.ui.fragments.company.hire
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,23 +7,26 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.databinding.FragmentProfileCompanyBinding
+import com.miqdad71.starworks.databinding.FragmentHireCompanyBinding
 
-class ProfileCompanyFragment : Fragment() {
-    private lateinit var binding: FragmentProfileCompanyBinding
+class HireCompanyFragment : Fragment() {
+
+    private lateinit var rootView: View
+    private lateinit var binding: FragmentHireCompanyBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
 
 //      binding fragments
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_hire_company, container, false)
         return binding.root
 
-
     }
+
 
 }

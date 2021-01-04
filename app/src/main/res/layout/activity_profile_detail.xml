@@ -2,7 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity.profile.ProfileDetailActivity">
+    tools:context=".ui.activities.profile.ProfileDetailActivity"
+    >
 
     <ScrollView
         android:id="@+id/nested_scroll"
@@ -410,13 +411,13 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!--                    <com.id124.wjobsid.util.WrapContentViewPager-->
-                    <!--                        android:id="@+id/view_pager"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
-                    <!--                        app:layout_constraintStart_toStartOf="parent"-->
-                    <!--                        app:layout_constraintTop_toBottomOf="@+id/tab_layout" />-->
+                    <com.miqdad71.starworks.util.WrapContentViewPager
+                        android:id="@+id/view_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

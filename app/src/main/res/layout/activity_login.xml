@@ -108,7 +108,7 @@
                         android:inputType="textEmailAddress"
                         android:padding="18dp"
                         android:paddingBottom="10dp"
-                        android:text="miqdad@gmail.com" />
+                        android:text="miqdad.ihbs71777@gmail.com" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

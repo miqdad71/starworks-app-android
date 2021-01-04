@@ -3,8 +3,8 @@ package com.miqdad71.starworks.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.miqdad71.starworks.ui.fragments.engineer.ExperienceEngineerFragment
-import com.miqdad71.starworks.ui.fragments.engineer.PortofolioEngineerFragment
+import com.miqdad71.starworks.ui.fragments.engineer.profile.ExperienceEngineerFragment
+import com.miqdad71.starworks.ui.fragments.engineer.profile.PortofolioEngineerFragment
 
 class EngineerPagerAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

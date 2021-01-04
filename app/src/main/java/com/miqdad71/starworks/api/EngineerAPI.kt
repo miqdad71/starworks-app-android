@@ -1,6 +1,6 @@
 package com.miqdad71.starworks.api
 
-import com.miqdad71.starworks.ui.fragments.company.homegetdata.HomeCompanyResponse
+import com.miqdad71.starworks.ui.fragments.company.home.HomeCompanyResponse
 import retrofit2.http.GET
 
 interface EngineerAPI {

@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.engineer
+package com.miqdad71.starworks.ui.fragments.engineer.hire
 
 import android.os.Bundle
 import android.view.LayoutInflater
