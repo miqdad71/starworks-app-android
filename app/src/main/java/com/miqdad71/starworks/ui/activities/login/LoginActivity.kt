@@ -46,7 +46,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         val acLevel = intent.getIntExtra("level", 0)
-
         when (v?.id) {
             R.id.tv_forget_password -> {
                 val intent = Intent(this, ForgetPasswordVerifyActivity::class.java)
@@ -62,7 +61,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-
     private fun login(view: View) {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()

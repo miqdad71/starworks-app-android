@@ -19,7 +19,6 @@ import com.miqdad71.starworks.ui.activities.profile.ProfileDetailActivity
 //import com.miqdad71.starworks.view.detail_profile.ProfileDetailActivity
 import kotlinx.coroutines.*
 
-
 class HomeCompanyFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var binding: FragmentHomeCompanyBinding
@@ -72,41 +71,6 @@ class HomeCompanyFragment : Fragment() {
                 Log.d("qwerty0error", e.toString())
             }
         }
-
-//        coroutineScope.launch {
-//            Log.d("android2", "Start: ${Thread.currentThread().name}")
-//
-//            val result = withContext(Dispatchers.IO) {
-//                Log.d("android2", "CallApi: ${Thread.currentThread().name}")
-//                try {
-//                    service?.getAllEngineer()
-//
-//                } catch (e: Throwable) {
-//                    e.printStackTrace()
-//                    Log.e("errorcatch", e.toString())
-//                }
-//            }
-//
-//            if (result is HomeCompanyResponse) {
-//                Log.d("android2", result.toString())
-//                val list = result.data.map {
-//                    HomeEngineerModel(
-//                        it.enId, it.acId, it.acName, it.enJobTitle,
-//                        it.enJobType, it.enDomicile, it.enDescription, it.enProfile
-//                    )
-//                }
-//                binding.rvWeb.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-//                (binding.rvWeb.adapter as HomeCompanyAdapter).addList(list)
-//
-//                Log.d("qwerty1", "data $list")
-//
-//            }
-//
-//            Log.d("qwerty3", service.toString())
-//            Log.d("qwerty2", result.toString())
-//
-//        }
-
     }
 
     override fun onDestroy() {
