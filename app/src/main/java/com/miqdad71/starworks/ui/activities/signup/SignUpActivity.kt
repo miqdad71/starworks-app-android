@@ -60,8 +60,8 @@ class SignUpActivity : AppCompatActivity() {
         val password = binding.etPassword.text.toString()
         val passwordconfirm = binding.etPasswordConfirm.text.toString()
         val phonenumber = binding.etPhoneNumber.text.toString()
-//        val position = binding.etPosition.text.toString()
-//        val company = binding.etCompany.text.toString()
+        val position = binding.etPosition.text.toString()
+        val company = binding.etCompany.text.toString()
 
         if (name.isEmpty()) {
             binding.etName.error = FIELD_REQUIRED
@@ -100,7 +100,7 @@ class SignUpActivity : AppCompatActivity() {
         saveData(name, email, password, phonenumber, true)
 
         dialog.dialog(this, "Register Successful") {
-            val sendIntent = Intent(this, EngineerMainActivity::class.java)
+            val sendIntent = Intent(this, LoginActivity::class.java)
             startActivity(sendIntent)
         }
     }
@@ -113,14 +113,6 @@ class SignUpActivity : AppCompatActivity() {
         isLogin: Boolean
     ) {
         val userPreference = SharedPreference(this)
-
-//        engineerModel.let {
-//            it.name = name
-//            it.email = email
-//            it.password = password
-//            it.phone = phone.toLong()
-//            it.isLogin = isLogin
-//        }
 
         engineerModel.name = name
         engineerModel.email = email

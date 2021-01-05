@@ -13,13 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.fragments.engineer.hire.EngineerProjectFragment"></activity>
+        <activity
+            android:name=".ui.activities.detail.ProjectDetailActivity"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity android:name=".ui.activities.main.company.AddProjectActivity" />
         <activity
             android:name=".ui.activities.main.company.HireCompanyActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
-            android:name=".ui.activities.profile.ProfileDetailActivity"
+            android:name=".ui.activities.detail.ProfileDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity android:name=".example.ListEngineerActivity" />
         <activity android:name=".ui.webview.WebViewActivity" />

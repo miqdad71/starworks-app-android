@@ -14,8 +14,7 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.api.EngineerAPI
 import com.miqdad71.starworks.databinding.FragmentHomeCompanyBinding
 import com.miqdad71.starworks.data.remote.ApiClient
-import com.miqdad71.starworks.databinding.ActivityProfileDetailBinding
-import com.miqdad71.starworks.ui.activities.profile.ProfileDetailActivity
+import com.miqdad71.starworks.ui.activities.detail.ProfileDetailActivity
 //import com.miqdad71.starworks.view.detail_profile.ProfileDetailActivity
 import kotlinx.coroutines.*
 

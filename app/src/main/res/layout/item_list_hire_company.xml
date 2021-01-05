@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_hire_engineer"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginHorizontal="8dp"
         android:layout_marginVertical="4dp"
-        android:background="@color/background_profile"
+        android:background="@color/white"
         android:elevation="3dp"
         android:paddingHorizontal="8dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_list_search_project"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:layout_marginStart="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/img_profile_miqdad"
@@ -28,8 +29,8 @@
             android:id="@+id/tv_list_search_project_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Project name"
@@ -41,30 +42,42 @@
 
         <TextView
             android:id="@+id/tv_list_search_project_desc"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
             android:ellipsize="end"
             android:maxLines="4"
-            android:text="Description"
+            android:text="Message"
             android:textColor="@color/black"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/tv_list_search_project_deadline"
-            app:layout_constraintEnd_toStartOf="@+id/tv_list_search_project_status"
             app:layout_constraintStart_toStartOf="@+id/tv_list_search_project_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_list_search_project_name" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="16dp"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:text="Price"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/tv_list_search_project_desc"
+            app:layout_constraintLeft_toRightOf="@+id/tv_list_search_project_deadline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
         <TextView
             android:id="@+id/tv_list_search_project_deadline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:drawableStart="@drawable/ic_time_white"
+            android:layout_marginBottom="30dp"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
-            android:text="01-01-2021"
+            android:text="Price :"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_list_search_project_name"
@@ -88,13 +101,13 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:padding="10dp"
-            android:text="Approved"
+            android:text="Waiting"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/img_list_search_project"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/img_list_search_project" />
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

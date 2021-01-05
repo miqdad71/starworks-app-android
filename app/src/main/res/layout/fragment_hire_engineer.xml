@@ -32,7 +32,9 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_hire_engineer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/background_profile"
+            />
 
     </LinearLayout>
 

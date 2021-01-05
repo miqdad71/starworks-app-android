@@ -61,6 +61,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
     private fun login(view: View) {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
@@ -96,8 +97,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             if (res is LoginResponse) {
                 val data = res.data
                 Log.d("loginData", data.toString())
-                val level = data.ac_level
-                preference.setAccount(data.ac_name, data.ac_id, data.ac_level, data.ac_email)
+                val level = data.acLevel
+                preference.setAccount(data.acName, data.acId, data.acLevel, data.acEmail)
                 preference.setToken(data.token)
                 when(level) {
                     0 -> {

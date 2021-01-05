@@ -36,5 +36,10 @@ class HireEngineerFragment : Fragment() {
 
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        pagerAdapter = HireEngineerPagerAdapter(requireActivity().supportFragmentManager)
+        binding.vpHireEngineer.adapter = pagerAdapter
+        binding.tlHireEngineer.setupWithViewPager(binding.vpHireEngineer)
+    }
 }

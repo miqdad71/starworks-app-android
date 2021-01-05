@@ -107,7 +107,7 @@
                         android:importantForAutofill="no"
                         android:inputType="textPersonName"
                         android:padding="18dp"
-                        android:text="qwerty" />
+                        android:text="Miqdad" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,7 +145,7 @@
                         android:inputType="textEmailAddress"
                         android:padding="18dp"
                         android:paddingBottom="10dp"
-                        android:text="qwert@gmail.com" />
+                        android:text="miqdad.ihbs71777@gmail.com" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -303,7 +303,7 @@
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
                         android:padding="18dp"
-                        android:text="12345678" />
+                        android:text="1234" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -342,7 +342,7 @@
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
                         android:padding="18dp"
-                        android:text="12345678" />
+                        android:text="1234" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

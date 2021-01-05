@@ -12,7 +12,7 @@ class HireEngineerPagerAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     val tabTitle = arrayOf("Your Project", "Project Bidding")
-    private val fragment = arrayOf(EngineerProjectFragment(), BiddingProjectFragment())
+    private val fragment = arrayOf(BiddingProjectFragment(), EngineerProjectFragment())
 
     override fun getCount(): Int = tabTitle.size
 

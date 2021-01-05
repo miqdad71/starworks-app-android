@@ -11,14 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.api.EngineerAPI
 import com.miqdad71.starworks.api.HireAPI
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentEngineerProjectBinding
-import com.miqdad71.starworks.databinding.FragmentProfileEngineerBinding
-import com.miqdad71.starworks.ui.activities.profile.ProfileDetailActivity
-import com.miqdad71.starworks.ui.adapter.HireEngineerPagerAdapter
-import com.miqdad71.starworks.ui.fragments.company.home.HomeEngineerModel
+import com.miqdad71.starworks.ui.activities.detail.ProfileDetailActivity
+import com.miqdad71.starworks.ui.activities.detail.ProjectDetailActivity
 import kotlinx.coroutines.*
 
 class EngineerProjectFragment : Fragment() {
@@ -56,7 +53,7 @@ class EngineerProjectFragment : Fragment() {
                 binding.rvEngineerProject.adapter = adapter
                 adapter.setOnItemClickCallback(object : EngineerProjectAdapter.OnItemClickCallback{
                     override fun onItemClick(data: HireProjectModel) {
-                        val intent = Intent(activity, ProfileDetailActivity::class.java)
+                        val intent = Intent(activity, ProjectDetailActivity::class.java)
                         startActivity(intent)
                     }
                 })
