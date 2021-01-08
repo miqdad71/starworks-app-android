@@ -28,13 +28,13 @@ class SharedPreference(context: Context) {
         context.getSharedPreferences(ENG_PREF_NAME, Context.MODE_PRIVATE)
 
     fun setToken(token: String) {
-        val editor = engineerPreferences.edit()
+        val editor = sharedPreferences.edit()
         editor.putString(TOKEN, token)
         editor.apply()
     }
 
     fun getToken(): String? {
-        return engineerPreferences.getString(TOKEN, "Not Set")
+        return sharedPreferences.getString(TOKEN, "Not Set")
     }
 
     fun getLevelUser(): Int {
@@ -60,13 +60,13 @@ class SharedPreference(context: Context) {
         editor.apply()
     }
 
-    fun setEngineerPreference(value: EngineerModel) {
-        val editor = engineerPreferences.edit()
-        editor.putString(EMAIL, value.email)
-        editor.putString(PASSWORD, value.password)
-        editor.putLong(PHONE, value.phone)
-        editor.putBoolean(LOGIN, value.isLogin)
-        editor.apply()
-    }
+//    fun setEngineerPreference(value: EngineerModel) {
+//        val editor = engineerPreferences.edit()
+//        editor.putString(EMAIL, value.email)
+//        editor.putString(PASSWORD, value.password)
+//        editor.putLong(PHONE, value.phone)
+//        editor.putBoolean(LOGIN, value.isLogin)
+//        editor.apply()
+//    }
 
 }

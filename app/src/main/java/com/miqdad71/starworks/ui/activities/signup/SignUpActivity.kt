@@ -2,7 +2,6 @@ package com.miqdad71.starworks.ui.activities.signup
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
@@ -11,15 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.api.AccountAPI
-import com.miqdad71.starworks.data.model.account.LoginResponse
+import com.miqdad71.starworks.data.model.account.SignUpResponse
 import com.miqdad71.starworks.databinding.ActivitySignUpBinding
 import com.miqdad71.starworks.util.SharedPreference
 import com.miqdad71.starworks.ui.activities.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.ui.activities.login.LoginActivity
 import com.miqdad71.starworks.ui.activities.dialog.Dialog
-import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.data.remote.ApiClient
-import com.miqdad71.starworks.ui.activities.forgetpassword.ForgetPasswordVerifyActivity
 import com.miqdad71.starworks.ui.activities.main.company.CompanyMainActivity
 import kotlinx.coroutines.*
 import retrofit2.HttpException
@@ -72,33 +69,67 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun signUp(view: View) {
-        val nama = binding.etName.text.toString()
+        val name = binding.etName.text.toString()
         val email = binding.etEmail.text.toString()
+        val company = binding.etCompany.text.toString()
+        val position = binding.etPosition.text.toString()
         val phone = binding.etPhoneNumber.text.toString()
         val password = binding.etPassword.text.toString()
         val passwordconfirmation = binding.etPasswordConfirm.text.toString()
 
         preference = SharedPreference(view.context)
 
-        if (password.isEmpty()) {
+        if (intent.getIntExtra("level", 0) == 0) {
+
+            if (name.isEmpty()) {
             binding.etName.error = FIELD_REQUIRED
             return
-        }
-        if (email.isEmpty()) {
-            binding.etEmail.error = FIELD_REQUIRED
+            }
+            if (email.isEmpty()) {
+            binding.etEmail.error = FIELD_IS_NOT_VALID
             return
-        }
-        if (password.isEmpty()) {
-            binding.etPhoneNumber.error = FIELD_REQUIRED
-            return
-        }
-        if (password.isEmpty()) {
-            binding.etPassword.error = FIELD_REQUIRED
-            return
-        }
-        if (password.isEmpty()) {
-            binding.etPasswordConfirm.error = FIELD_REQUIRED
-            return
+            }
+            if (phone.isEmpty()) {
+                binding.etPhoneNumber.error = FIELD_DIGITS_ONLY
+                return
+            }
+            if (password.isEmpty()) {
+                binding.etPassword.error = FIELD_REQUIRED
+                return
+            }
+            if (password != passwordconfirmation) {
+                binding.etPasswordConfirm.error = FIELD_MUST_MATCH
+                return
+            }
+        } else {
+            if (name.isEmpty()) {
+                binding.etName.error = FIELD_REQUIRED
+                return
+            }
+            if (email.isEmpty()) {
+                binding.etEmail.error = FIELD_IS_NOT_VALID
+                return
+            }
+            if (company.isEmpty()) {
+                binding.etCompany.error = FIELD_IS_NOT_VALID
+                return
+            }
+            if (position.isEmpty()) {
+                binding.etPosition.error = FIELD_IS_NOT_VALID
+                return
+            }
+            if (phone.isEmpty()) {
+                binding.etPhoneNumber.error = FIELD_DIGITS_ONLY
+                return
+            }
+            if (password.isEmpty()) {
+                binding.etPassword.error = FIELD_REQUIRED
+                return
+            }
+            if (password != passwordconfirmation) {
+                binding.etPasswordConfirm.error = FIELD_MUST_MATCH
+                return
+            }
         }
         signUpAccount()
     }
@@ -107,35 +138,49 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         coroutineScope.launch {
             val res = withContext(Dispatchers.IO) {
                 try {
-                    api.login(
-                        binding.etEmail.text.toString(),
-                        binding.etPassword.text.toString()
-                    )
-
-                } catch (t: Exception) {
-                    Log.e("Error", t.localizedMessage)
+                    if (intent.getIntExtra("level", 0) == 0) {
+                        api.signUpEngineerAccount(
+                            acName = binding.etName.text.toString(),
+                            acEmail = binding.etEmail.text.toString(),
+                            acPhone = binding.etPhoneNumber.text.toString(),
+                            acPassword = binding.etPassword.text.toString(),
+                            acLevel = 0
+                        )
+                    } else {
+                        api.signUpCompanyAccount(
+                            acName = binding.etName.text.toString(),
+                            acEmail = binding.etEmail.text.toString(),
+                            acPhone = binding.etPhoneNumber.text.toString(),
+                            acPassword = binding.etPassword.text.toString(),
+                            acLevel = 1,
+                            cnCompany = binding.etCompany.text.toString(),
+                            cnPosition = binding.etPosition.text.toString()
+                        )
+                    }
+                } catch (e: HttpException) {
+                    runOnUiThread {
+                        if (e.code() == 400) {
+                            Toast.makeText(this@SignUpActivity, "Email has registered!", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@SignUpActivity, "Fail to registration! Please try again later!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 }
             }
 
-            if (res is LoginResponse) {
-                val data = res.data
-                Log.d("loginData", data.toString())
-                val level = data.acLevel
-                preference.setAccount(data.acName, data.acId, data.acLevel, data.acEmail)
-                preference.setToken(data.token)
-                when(level) {
-                    0 -> {
-                        val sendIntent = Intent(this@SignUpActivity, EngineerMainActivity::class.java)
-                        startActivity(sendIntent)
-                        this@SignUpActivity.finish()
-                    }
-                    1 -> {
-                        val sendIntent = Intent(this@SignUpActivity, CompanyMainActivity::class.java)
-                        startActivity(sendIntent)
-                        this@SignUpActivity.finish()
-                    }
+
+            if (res is SignUpResponse) {
+                if (res.success) {
+                    Toast.makeText(this@SignUpActivity, res.message, Toast.LENGTH_SHORT).show()
+                    this@SignUpActivity.finish()
+                } else {
+                    Toast.makeText(this@SignUpActivity, res.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineScope.cancel()
     }
 }
