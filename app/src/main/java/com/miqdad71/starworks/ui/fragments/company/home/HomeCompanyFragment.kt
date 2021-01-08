@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.api.EngineerAPI
+import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.databinding.FragmentHomeCompanyBinding
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.ui.activities.detail.ProfileDetailActivity
+import com.miqdad71.starworks.ui.fragments.engineer.home.HomeEngineerAdapter
 //import com.miqdad71.starworks.view.detail_profile.ProfileDetailActivity
 import kotlinx.coroutines.*
 
@@ -38,14 +40,37 @@ class HomeCompanyFragment : Fragment() {
         service = ApiClient.getApiClient(requireActivity())
             .create(EngineerAPI::class.java)
 
-
+        setupWebDevRecyclerView()
         getAllEngineer()
         return binding.root
 
     }
 
-    private fun getAllEngineer() {
+    private fun setupWebDevRecyclerView() {
+        binding.rvWeb.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        binding.rvWeb.isNestedScrollingEnabled = false
 
+        val adapter = HomeEngineerAdapter()
+        adapter.notifyDataSetChanged()
+        binding.rvWeb.adapter = adapter
+
+        adapter.setOnItemClickCallback(object: HomeEngineerAdapter.OnItemClickCallback {
+            override fun onItemClick(data: EngineerModel) {
+                val intent = Intent(activity, ProfileDetailActivity::class.java)
+                intent.putExtra("en_id", data.enId)
+                intent.putExtra("ac_id", data.acId)
+                intent.putExtra("ac_name", data.acName)
+                intent.putExtra("en_job_title", data.enJobTitle)
+                intent.putExtra("en_domicile", data.enDomicile)
+                intent.putExtra("en_job_type", data.enJobType)
+                intent.putExtra("en_description", data.enDescription)
+                intent.putExtra("en_profile", data.enProfile)
+                startActivity(intent)
+            }
+        })
+    }
+
+    private fun getAllEngineer() {
         // other way
         coroutineScope.launch {
             try {
@@ -65,9 +90,7 @@ class HomeCompanyFragment : Fragment() {
                 //rv android
                 binding.rvAndroid.layoutManager = LinearLayoutManager(requireActivity().applicationContext, RecyclerView.HORIZONTAL, false)
                 binding.rvAndroid.adapter = HomeCompanyAdapter().apply { addList(dataFromResult) }
-                Log.d("qwerty0", dataFromResult.toString())
             }catch (e: Throwable) {
-                Log.d("qwerty0error", e.toString())
             }
         }
     }

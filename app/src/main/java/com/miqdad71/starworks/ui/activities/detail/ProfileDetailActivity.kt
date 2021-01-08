@@ -2,110 +2,131 @@ package com.miqdad71.starworks.ui.activities.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.google.android.flexbox.FlexboxLayoutManager
 import com.miqdad71.starworks.R
+import com.miqdad71.starworks.api.AccountAPI
+import com.miqdad71.starworks.data.model.engineer.EngineerModel
+import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityProfileDetailBinding
 import com.miqdad71.starworks.ui.activities.main.company.HireCompanyActivity
+import com.miqdad71.starworks.util.SharedPreference
+import com.miqdad71.starworks.util.ViewPagerAdapter
+import kotlinx.android.synthetic.main.activity_profile_detail.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
-    
+    private var enId: Int? = 0
     private lateinit var binding: ActivityProfileDetailBinding
-    
+    private lateinit var preference: SharedPreference
+    private lateinit var coroutineScope: CoroutineScope
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile_detail)
         setToolbarActionBar()
-//        initViewPager()
+        super.onCreate(savedInstanceState)
+        enId = intent.getIntExtra("en_id", 0)
 
-//        if (sharedPref.getLevelUser() == 0) {
+        Log.d("msg", "ID ENNGINEER: $enId")
+
+//        if (preference.getLevelUser() == 0) {
 //            binding.btnHire.visibility = View.GONE
 //        } else {
 //            binding.btnHire.visibility = View.VISIBLE
 //        }
+        setToolbarActionBar()
+//        initViewPager()
+//        setSkillRecyclerView()
+
+//        setEngineer()
+//        setSkill()
     }
 
+    
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btn_hire -> {
+                val intent = Intent(this@ProfileDetailActivity, HireCompanyActivity::class.java)
+                intent.putExtra("en_id", enId)
+                startActivity(intent)
+            }
+        }
+    }
+
+//    override fun onStart() {
+//        super.onStart()
+//        preference.createInDetail(1)
+//    }
+    
     private fun setToolbarActionBar() {
         setSupportActionBar(binding.toolbar)
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-//            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-//        )
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Profile Detail"
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
     }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.btn_hire -> {
-                val intent = Intent(this, HireCompanyActivity::class.java)
-                startActivity(intent)
-            }
-        }
-    }
-
+    
 //    private fun initViewPager() {
-//        bind.tabLayout.setupWithViewPager(view_pager)
+//        binding.tabLayout.setupWithViewPager(view_pager)
 //        val adapter = ViewPagerAdapter(supportFragmentManager)
 //
 //        adapter.addFrag(DetailProfilePortfolioFragment(), "Portfolio")
 //        adapter.addFrag(DetailProfileExperienceFragment(), "Experience")
-//        bind.viewPager.adapter = adapter
+//        binding.viewPager.adapter = adapter
 //    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        sharedPref.createInDetail(1)
-//    }
-}
 
-//class ProfileDetailActivity : BaseActivity<ActivityProfileDetailBinding>(), View.OnClickListener {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        setLayout = R.layout.activity_profile_detail
-//        super.onCreate(savedInstanceState)
+//    private fun setSkillRecyclerView() {
+//        binding.rvSkill.layoutManager = FlexboxLayoutManager(this@ProfileDetailActivity)
 //
-//        setToolbarActionBar()
-//        initViewPager()
-//
-//        if (sharedPref.getLevelUser() == 0) {
-//            bind.btnHire.visibility = View.GONE
-//        } else {
-//            bind.btnHire.visibility = View.VISIBLE
-//        }
+//        val adapter = ProfileSkillAdapter()
+//        binding.rvSkill.adapter = adapter
 //    }
+
+//    private fun setEngineer() {
+//        binding.engineer = EngineerModel(
+//            enId = enId!!,
+//            acId = intent.getIntExtra("ac_id", 0),
+//            acName = intent.getStringExtra("ac_name")!!,
+//            enJobTitle = intent.getStringExtra("en_job_title"),
+//            enJobType = intent.getStringExtra("en_job_type"),
+//            enDomicile = intent.getStringExtra("en_domicile"),
+//            enDescription = intent.getStringExtra("en_description")
+//        )
 //
-//    private fun setToolbarActionBar() {
-//        setSupportActionBar(bind.toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//        supportActionBar?.title = "Profile Detail"
-//        bind.toolbar.setNavigationOnClickListener {
-//            onBackPressed()
-//        }
+//        binding.imageUrl = ApiClient.BASE_URL_IMAGE + intent.getStringExtra("en_profile")
 //    }
+
+//    private fun setSkill() {
+//        val api = ApiClient.getApiClient(this).create(AccountAPI::class.java)
 //
-//    override fun onClick(v: View?) {
-//        when (v?.id) {
-//            R.id.btn_hire -> {
-//                intents<HireActivity>(this@ProfileDetailActivity)
+//        coroutineScope.launch {
+//            val response = withContext(Dispatchers.Main) {
+//                try {
+//                    api.getAllSkill(intent.getIntExtra("en_id", 0))
+//                } catch (e: Throwable) {
+//                    e.printStackTrace()
+//                }
+//            }
+//
+//            if (response is SkillResponse) {
+//                val list = response.data.map {
+//                    SkillModel(
+//                        sk_id = it.sk_id,
+//                        sk_skill_name = it.skSkillName
+//                    )
+//                }
+//
+//                (binding.rvSkill.adapter as ProfileSkillAdapter).addList(list)
 //            }
 //        }
 //    }
-//
-//    private fun initViewPager() {
-//        bind.tabLayout.setupWithViewPager(view_pager)
-//        val adapter = ViewPagerAdapter(supportFragmentManager)
-//
-//        adapter.addFrag(DetailProfilePortfolioFragment(), "Portfolio")
-//        adapter.addFrag(DetailProfileExperienceFragment(), "Experience")
-//        bind.viewPager.adapter = adapter
-//    }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        sharedPref.createInDetail(1)
-//    }
-//}
+}

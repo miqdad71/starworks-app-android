@@ -100,7 +100,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 val level = data.acLevel
                 preference.setAccount(data.acName, data.acId, data.acLevel, data.acEmail)
                 preference.setToken(data.token)
-                when(level) {
+                when (level) {
                     0 -> {
                         val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
                         startActivity(sendIntent)

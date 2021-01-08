@@ -4,6 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.activities.detail.ProfileDetailActivity"
     >
+    <data>
+
+        <variable
+            name="engineer"
+            type="com.miqdad71.starworks.data.model.engineer.EngineerModel" />
+
+        <variable
+            name="imageUrl"
+            type="String" />
+    </data>
 
     <ScrollView
         android:id="@+id/nested_scroll"
@@ -64,7 +74,7 @@
                         android:layout_marginTop="18dp"
                         android:fontFamily="sans-serif-thin"
                         android:onClick="onClick"
-                        android:text="@string/miqdad"
+                        android:text="@{engineer.acName}"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
@@ -79,12 +89,12 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/android_developer"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+<!--                    android:text="@{engineer.enJobTitle != null ? engineer.enJobTitle : @string/en_job_title_not_set}"-->
 
                     <LinearLayout
                         android:id="@+id/ln_domicile"
@@ -103,10 +113,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="@string/bekasi_jawa_barat"
                             android:textAlignment="center"
                             android:textColor="@color/gray"
                             android:textSize="16sp" />
+<!--                        android:text="@{engineer.enDomicile != null ? engineer.enDomicile : @string/en_domicile_not_set}"-->
+
                     </LinearLayout>
 
                     <TextView
@@ -116,12 +127,12 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="5dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/freelance"
                         android:textAlignment="center"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ln_domicile" />
+<!--                    android:text="@{engineer.enJobType != null ? engineer.enJobType : @string/en_job_type_not_set}"-->
 
                     <TextView
                         android:id="@+id/tv_description"
@@ -132,13 +143,14 @@
                         android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-condensed"
                         android:justificationMode="inter_word"
-                        android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_vestibulum_erat_orci_mollis_nec_gravida_sed_ornare_quis_urna_curabitur_eu_lacus_fringilla_vestibulum_risus_at"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_job_type"
                         app:layout_constraintVertical_bias="0.0" />
+<!--                    android:text="@{engineer.enDescription != null ? engineer.enDescription : @string/en_description_not_set}"-->
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -183,7 +195,7 @@
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="16dp"
                         android:fontFamily="sans-serif-thin"
-                        android:text="Skill"
+                        android:text="@string/skill"
                         android:textAlignment="textStart"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -196,7 +208,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0.5dp"
                         android:layout_marginTop="16dp"
-                        android:background="@color/gray"
+                        android:background="@color/gray_500"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_skill" />
@@ -213,174 +225,16 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/v_divider_skill">
 
-                        <TextView
-                            android:id="@+id/tv_skill1"
-                            android:layout_width="wrap_content"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_skill"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Web"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Laravel"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Golang"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Javascript"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="PHP"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="HTML"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="C++"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="C#"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Kotlin"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Swift"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/tv_skill11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2.5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@android:color/holo_orange_dark"
-                            android:fontFamily="sans-serif-condensed"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Dart"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
+                            android:nestedScrollingEnabled="false" />
 
                     </com.google.android.flexbox.FlexboxLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </androidx.cardview.widget.CardView>
 

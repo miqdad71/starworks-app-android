@@ -6,18 +6,19 @@ import com.miqdad71.starworks.data.model.engineer.EngineerModel
 
 class SharedPreference(context: Context) {
     companion object {
-        private const val TOKEN = "token"
-        private const val ENG_PREF_NAME = "eng_pref"
-        private const val COMP_PREF_NAME = "comp_pref"
-        private const val EMAIL = "email"
-        private const val NAME = "name"
-        private const val AC_ID = "ac_id"
-        private const val AC_LEVEL = "ac_level"
-        private const val PASSWORD = "password"
-        private const val PHONE = "phone"
-        private const val COMPANY = "company"
-        private const val POSITION = "position"
-        private const val LOGIN = "isLogin"
+        const val TOKEN = "token"
+        const val ENG_PREF_NAME = "eng_pref"
+        const val COMP_PREF_NAME = "comp_pref"
+        const val EMAIL = "email"
+        const val NAME = "name"
+        const val AC_ID = "ac_id"
+        const val AC_LEVEL = "ac_level"
+        const val PASSWORD = "password"
+        const val PHONE = "phone"
+        const val COMPANY = "company"
+        const val POSITION = "position"
+        const val LOGIN = "isLogin"
+        const val AC_DETAIL = "AC_DETAIL"
     }
 
     private val engineerPreferences =
@@ -26,6 +27,7 @@ class SharedPreference(context: Context) {
         context.getSharedPreferences(COMP_PREF_NAME, Context.MODE_PRIVATE)
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences(ENG_PREF_NAME, Context.MODE_PRIVATE)
+    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
     fun setToken(token: String) {
         val editor = sharedPreferences.edit()
@@ -39,6 +41,11 @@ class SharedPreference(context: Context) {
 
     fun getLevelUser(): Int {
         return sharedPreferences.getInt(AC_LEVEL, 0)
+    }
+
+    fun createInDetail(acDetail: Int) {
+        editor.putInt(AC_DETAIL, acDetail)
+        editor.commit()
     }
 
     fun getAccountUser(): HashMap<String, String> {
