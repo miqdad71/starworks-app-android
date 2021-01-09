@@ -49,8 +49,6 @@ class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
 //        setSkill()
     }
 
-    
-
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_hire -> {
