@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.adapter
+package com.miqdad71.starworks.ui.adapter.engineer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

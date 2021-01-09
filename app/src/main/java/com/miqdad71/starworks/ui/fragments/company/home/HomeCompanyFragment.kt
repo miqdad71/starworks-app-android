@@ -2,7 +2,6 @@ package com.miqdad71.starworks.ui.fragments.company.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +10,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
+import com.miqdad71.starworks.api.AccountAPI
 import com.miqdad71.starworks.api.EngineerAPI
+import com.miqdad71.starworks.data.model.account.AccountModel
+import com.miqdad71.starworks.data.model.company.HomeEngineerModel
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
+import com.miqdad71.starworks.data.model.engineer.EngineerResponse
 import com.miqdad71.starworks.databinding.FragmentHomeCompanyBinding
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.ui.activities.detail.ProfileDetailActivity
-import com.miqdad71.starworks.ui.fragments.engineer.home.HomeEngineerAdapter
+import com.miqdad71.starworks.ui.adapter.company.HomeCompanyAdapter
+import com.miqdad71.starworks.ui.adapter.engineer.HomeEngineerAdapter
+import com.miqdad71.starworks.util.SharedPreference.Companion.AC_NAME
 //import com.miqdad71.starworks.view.detail_profile.ProfileDetailActivity
 import kotlinx.coroutines.*
 
@@ -24,7 +29,8 @@ class HomeCompanyFragment : Fragment() {
     private lateinit var rootView: View
     private lateinit var binding: FragmentHomeCompanyBinding
     private lateinit var coroutineScope: CoroutineScope
-    private lateinit var service: EngineerAPI
+    private lateinit var api: EngineerAPI
+    private lateinit var userDetail: HashMap<String, String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,9 +43,9 @@ class HomeCompanyFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_home_company, container, false)
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-        service = ApiClient.getApiClient(requireActivity())
+        api = ApiClient.getApiClient(requireActivity())
             .create(EngineerAPI::class.java)
-
+        binding.accountModel = AccountModel(acName = "Hai, ${userDetail[AC_NAME]}")
         setupWebDevRecyclerView()
         getAllEngineer()
         return binding.root
@@ -71,28 +77,56 @@ class HomeCompanyFragment : Fragment() {
     }
 
     private fun getAllEngineer() {
-        // other way
-        coroutineScope.launch {
-            try {
-                val resultData = service.getAllEngineer()
-                val dataFromResult = resultData.data
-                //rv web
-                binding.rvWeb.layoutManager = LinearLayoutManager(requireActivity().applicationContext, RecyclerView.HORIZONTAL, false)
-                val adapter = HomeCompanyAdapter().apply { addList(dataFromResult) }
-                binding.rvWeb.adapter = adapter
-                adapter.setOnItemClickCallback(object : HomeCompanyAdapter.OnItemClickCallback{
-                    override fun onItemClick(data: HomeEngineerModel) {
-                        val intent = Intent(activity, ProfileDetailActivity::class.java)
-                        startActivity(intent)
-                    }
-                })
+        val api = ApiClient.getApiClient(requireActivity()).create(EngineerAPI::class.java)
 
-                //rv android
-                binding.rvAndroid.layoutManager = LinearLayoutManager(requireActivity().applicationContext, RecyclerView.HORIZONTAL, false)
-                binding.rvAndroid.adapter = HomeCompanyAdapter().apply { addList(dataFromResult) }
-            }catch (e: Throwable) {
+        coroutineScope.launch{
+            val response = withContext(Dispatchers.IO) {
+                try {
+                    api.getAllEngineer()
+                } catch (e: Throwable) {
+                    e.printStackTrace()
+                }
+            }
+
+            if (response is EngineerResponse) {
+                val list = response.data.map {
+                    EngineerModel(
+                        enId = it.enId,
+                        acId = it.acId,
+                        acName = it.acName,
+                        enJobTitle = it.enJobTitle,
+                        enJobType = it.enJobType,
+                        enDomicile = it.enDomicile,
+                        enDescription = it.enDescription,
+                        enProfile = it.enProfile
+                    )
+                }
+
+                (binding.rvWeb.adapter as HomeEngineerAdapter).addList(list)
             }
         }
+        // other way
+//        coroutineScope.launch {
+//            try {
+//                val resultData = api.getAllEngineer()
+//                val dataFromResult = resultData.data
+//                //rv web
+//                binding.rvWeb.layoutManager = LinearLayoutManager(requireActivity().applicationContext, RecyclerView.HORIZONTAL, false)
+//                val adapter = HomeCompanyAdapter().apply { addList(dataFromResult) }
+//                binding.rvWeb.adapter = adapter
+//                adapter.setOnItemClickCallback(object : HomeCompanyAdapter.OnItemClickCallback{
+//                    override fun onItemClick(data: HomeEngineerModel) {
+//                        val intent = Intent(activity, ProfileDetailActivity::class.java)
+//                        startActivity(intent)
+//                    }
+//                })
+//
+//                //rv android
+//                binding.rvAndroid.layoutManager = LinearLayoutManager(requireActivity().applicationContext, RecyclerView.HORIZONTAL, false)
+//                binding.rvAndroid.adapter = HomeCompanyAdapter().apply { addList(dataFromResult) }
+//            }catch (e: Throwable) {
+//            }
+//        }
     }
 
     override fun onDestroy() {

@@ -1,9 +1,7 @@
 package com.miqdad71.starworks.api
 
-import com.miqdad71.starworks.data.model.account.LoginResponse
 import com.miqdad71.starworks.data.model.hire.HireResponse
-import com.miqdad71.starworks.ui.fragments.company.home.HomeCompanyResponse
-import com.miqdad71.starworks.ui.fragments.engineer.hire.HireProjectResponse
+import com.miqdad71.starworks.data.model.engineer.HireProjectResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET

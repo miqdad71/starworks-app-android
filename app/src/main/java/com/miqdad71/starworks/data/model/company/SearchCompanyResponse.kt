@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.company.search
+package com.miqdad71.starworks.data.model.company
 
 import com.google.gson.annotations.SerializedName
 
@@ -9,10 +9,10 @@ data class SearchCompanyResponse(
 ) {
     data class EngineerList(
         @SerializedName("en_id")
-        val enId: String,
+        val enId: Int,
 
         @SerializedName("ac_id")
-        val acId: String,
+        val acId: Int,
 
         @SerializedName("ac_name")
         val acName: String,

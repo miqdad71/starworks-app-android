@@ -1,16 +1,16 @@
-package com.miqdad71.starworks.ui.fragments.engineer.hire
+package com.miqdad71.starworks.data.model.engineer
 
 import com.google.gson.annotations.SerializedName
 
 data class HireProjectModel(
     @SerializedName("hr_id")
-    val hrId: String,
+    val hrId: Int,
 
     @SerializedName("en_id")
-    val enId: String,
+    val enId: Int,
 
     @SerializedName("pj_id")
-    val pjId: String,
+    val pjId: Int,
 
     @SerializedName("pj_project_name")
     val pjProjectName: String,

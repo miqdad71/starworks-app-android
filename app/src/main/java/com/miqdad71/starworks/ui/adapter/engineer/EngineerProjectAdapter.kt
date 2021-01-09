@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.engineer.hire
+package com.miqdad71.starworks.ui.adapter.engineer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemListHireCompanyBinding
-import com.miqdad71.starworks.databinding.ItemListWebDevBinding
+import com.miqdad71.starworks.data.model.engineer.HireProjectModel
 
 class EngineerProjectAdapter : RecyclerView.Adapter<EngineerProjectAdapter.ProjectHolder>() {
 

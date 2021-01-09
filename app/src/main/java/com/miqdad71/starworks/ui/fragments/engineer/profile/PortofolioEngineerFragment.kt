@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.FragmentPortfolioBinding
-import com.miqdad71.starworks.ui.adapter.ListPortfolioRecycleViewAdapter
+import com.miqdad71.starworks.ui.adapter.portfolio.ListPortfolioRecycleViewAdapter
 import com.miqdad71.starworks.data.model.Databases
 import com.miqdad71.starworks.data.model.Portfolio
 

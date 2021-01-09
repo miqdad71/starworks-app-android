@@ -16,14 +16,12 @@ import com.miqdad71.starworks.ui.activities.forgetpassword.ForgetPasswordVerifyA
 import com.miqdad71.starworks.ui.activities.main.company.CompanyMainActivity
 import com.miqdad71.starworks.ui.activities.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.ui.activities.signup.SignUpActivity
-import com.miqdad71.starworks.ui.activities.dialog.Dialog
 import com.miqdad71.starworks.data.model.account.LoginResponse
 import kotlinx.coroutines.*
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var preference: SharedPreference
-    private lateinit var dialog: Dialog
     private lateinit var coroutineScope: CoroutineScope
 
 
@@ -37,7 +35,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
             WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
-        dialog = Dialog()
 
         binding.tvForgetPassword.setOnClickListener(this)
         binding.login.setOnClickListener(this)

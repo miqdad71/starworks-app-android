@@ -106,8 +106,7 @@
                         android:hint="@string/full_name"
                         android:importantForAutofill="no"
                         android:inputType="textPersonName"
-                        android:padding="18dp"
-                        android:text="Miqdad" />
+                        android:padding="18dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,8 +143,7 @@
                         android:importantForAutofill="no"
                         android:inputType="textEmailAddress"
                         android:padding="18dp"
-                        android:paddingBottom="10dp"
-                        android:text="miqdad.ihbs71777@gmail.com" />
+                        android:paddingBottom="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -263,8 +261,7 @@
                         android:hint="@string/phone_number"
                         android:importantForAutofill="no"
                         android:inputType="phone"
-                        android:padding="18dp"
-                        android:text="083127462837" />
+                        android:padding="18dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -302,8 +299,7 @@
                         android:hint="@string/password"
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
-                        android:padding="18dp"
-                        android:text="1234" />
+                        android:padding="18dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -341,8 +337,7 @@
                         android:hint="@string/password_confirmation"
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
-                        android:padding="18dp"
-                        android:text="1234" />
+                        android:padding="18dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 

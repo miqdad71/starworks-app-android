@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.adapter
+package com.miqdad71.starworks.ui.adapter.engineer
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

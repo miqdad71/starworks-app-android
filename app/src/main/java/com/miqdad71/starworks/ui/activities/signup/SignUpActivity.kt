@@ -2,7 +2,6 @@ package com.miqdad71.starworks.ui.activities.signup
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -13,11 +12,8 @@ import com.miqdad71.starworks.api.AccountAPI
 import com.miqdad71.starworks.data.model.account.SignUpResponse
 import com.miqdad71.starworks.databinding.ActivitySignUpBinding
 import com.miqdad71.starworks.util.SharedPreference
-import com.miqdad71.starworks.ui.activities.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.ui.activities.login.LoginActivity
-import com.miqdad71.starworks.ui.activities.dialog.Dialog
 import com.miqdad71.starworks.data.remote.ApiClient
-import com.miqdad71.starworks.ui.activities.main.company.CompanyMainActivity
 import kotlinx.coroutines.*
 import retrofit2.HttpException
 
@@ -31,7 +27,6 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private lateinit var binding: ActivitySignUpBinding
-    private lateinit var dialog: Dialog
     private lateinit var preference: SharedPreference
     private lateinit var coroutineScope: CoroutineScope
 

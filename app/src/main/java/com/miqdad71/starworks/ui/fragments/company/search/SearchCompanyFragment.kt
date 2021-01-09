@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.api.EngineerAPI
+import com.miqdad71.starworks.data.model.company.SearchCompanyResponse
+import com.miqdad71.starworks.data.model.company.SearchEngineerModel
 import com.miqdad71.starworks.databinding.FragmentSearchCompanyBinding
 import com.miqdad71.starworks.data.remote.ApiClient
+import com.miqdad71.starworks.ui.adapter.company.SearchCompanyAdapter
 import kotlinx.coroutines.*
 
 class SearchCompanyFragment : Fragment() {

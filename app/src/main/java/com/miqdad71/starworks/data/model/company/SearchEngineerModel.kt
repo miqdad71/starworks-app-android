@@ -1,8 +1,8 @@
-package com.miqdad71.starworks.ui.fragments.company.search
+package com.miqdad71.starworks.data.model.company
 
 data class SearchEngineerModel(
-    val enId: String? = null,
-    val acId: String? = null,
+    val enId: Int? = null,
+    val acId: Int? = null,
     val acName: String? = null,
     val enJobTitle: String? = null,
     val enJobType: String? = null,

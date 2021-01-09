@@ -1,4 +1,6 @@
-package com.miqdad71.starworks.ui.fragments.engineer.hire
+package com.miqdad71.starworks.data.model.engineer
+
+import com.miqdad71.starworks.data.model.engineer.HireProjectModel
 
 data class HireProjectResponse(
     val success: String,

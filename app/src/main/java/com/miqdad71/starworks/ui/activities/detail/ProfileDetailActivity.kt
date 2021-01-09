@@ -45,7 +45,7 @@ class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
 //        initViewPager()
 //        setSkillRecyclerView()
 
-//        setEngineer()
+        setEngineer()
 //        setSkill()
     }
 
@@ -61,10 +61,10 @@ class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        preference.createInDetail(1)
-//    }
+    override fun onStart() {
+        super.onStart()
+        preference.createInDetail(1)
+    }
     
     private fun setToolbarActionBar() {
         setSupportActionBar(binding.toolbar)
@@ -91,19 +91,19 @@ class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
 //        binding.rvSkill.adapter = adapter
 //    }
 
-//    private fun setEngineer() {
-//        binding.engineer = EngineerModel(
-//            enId = enId!!,
-//            acId = intent.getIntExtra("ac_id", 0),
-//            acName = intent.getStringExtra("ac_name")!!,
-//            enJobTitle = intent.getStringExtra("en_job_title"),
-//            enJobType = intent.getStringExtra("en_job_type"),
-//            enDomicile = intent.getStringExtra("en_domicile"),
-//            enDescription = intent.getStringExtra("en_description")
-//        )
-//
-//        binding.imageUrl = ApiClient.BASE_URL_IMAGE + intent.getStringExtra("en_profile")
-//    }
+    private fun setEngineer() {
+        binding.engineer = EngineerModel(
+            enId = enId!!,
+            acId = intent.getIntExtra("ac_id", 0),
+            acName = intent.getStringExtra("ac_name")!!,
+            enJobTitle = intent.getStringExtra("en_job_title"),
+            enJobType = intent.getStringExtra("en_job_type"),
+            enDomicile = intent.getStringExtra("en_domicile"),
+            enDescription = intent.getStringExtra("en_description")
+        )
+
+        binding.imageUrl = ApiClient.BASE_URL_IMAGE + intent.getStringExtra("en_profile")
+    }
 
 //    private fun setSkill() {
 //        val api = ApiClient.getApiClient(this).create(AccountAPI::class.java)

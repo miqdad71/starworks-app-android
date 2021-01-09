@@ -25,8 +25,8 @@
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity android:name=".example.ListEngineerActivity" />
         <activity android:name=".ui.webview.WebViewActivity" />
-        <activity android:name=".ui.adapter.EngineerLayoutActivity" />
-        <activity android:name=".ui.activities.dialog.DialogActivity" />
+        <activity android:name=".ui.adapter.engineer.EngineerLayoutActivity" />
+        <activity android:name="com.miqdad71.starworks.example.dialog.DialogActivity" />
         <activity
             android:name=".ui.activities.main.engineer.EngineerMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />

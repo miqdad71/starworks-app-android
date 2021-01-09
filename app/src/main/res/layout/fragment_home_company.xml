@@ -7,7 +7,7 @@
     <data>
 
         <variable
-            name="AccountModel"
+            name="accountModel"
             type="com.miqdad71.starworks.data.model.account.AccountModel" />
 
         <variable

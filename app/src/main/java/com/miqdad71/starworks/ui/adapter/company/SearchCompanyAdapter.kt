@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.fragments.company.search
+package com.miqdad71.starworks.ui.adapter.company
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemListSearchEngineerBinding
+import com.miqdad71.starworks.data.model.company.SearchEngineerModel
 
 class SearchCompanyAdapter : RecyclerView.Adapter<SearchCompanyAdapter.ProjectHolder>() {
 
