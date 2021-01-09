@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.FragmentProfileEngineerBinding
-import com.miqdad71.starworks.ui.activities.skill.SkillActivity
+import com.miqdad71.starworks.ui.activity.skill.SkillActivity
 import com.miqdad71.starworks.ui.adapter.engineer.EngineerPagerAdapter
 import com.miqdad71.starworks.ui.webview.WebViewActivity
 

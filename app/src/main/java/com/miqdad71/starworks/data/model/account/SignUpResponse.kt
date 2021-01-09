@@ -20,9 +20,6 @@ data class SignUpResponse(val success: Boolean, val message: String, val data: R
         val acPassword: String,
 
         @SerializedName("ac_level")
-        val acLevel: Int,
-
-        @SerializedName("token")
-        val token: String
+        val acLevel: Int
     )
 }

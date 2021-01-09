@@ -14,32 +14,32 @@
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activities.detail.ProjectDetailActivity"
+            android:name=".ui.activity.detail.ProjectDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
-        <activity android:name=".ui.activities.main.company.AddProjectActivity" />
+        <activity android:name=".ui.activity.main.company.AddProjectActivity" />
         <activity
-            android:name=".ui.activities.main.company.HireCompanyActivity"
+            android:name=".ui.activity.main.company.HireCompanyActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
-            android:name=".ui.activities.detail.ProfileDetailActivity"
+            android:name=".ui.activity.detail.ProfileDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity android:name=".example.ListEngineerActivity" />
         <activity android:name=".ui.webview.WebViewActivity" />
         <activity android:name=".ui.adapter.engineer.EngineerLayoutActivity" />
         <activity android:name="com.miqdad71.starworks.example.dialog.DialogActivity" />
         <activity
-            android:name=".ui.activities.main.engineer.EngineerMainActivity"
+            android:name=".ui.activity.main.engineer.EngineerMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
-            android:name=".ui.activities.main.company.CompanyMainActivity"
+            android:name=".ui.activity.main.company.CompanyMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
-        <activity android:name=".ui.activities.signup.SignUpActivity" />
-        <activity android:name=".ui.activities.forgetpassword.ForgetPasswordVerifyActivity" />
-        <activity android:name=".ui.activities.forgetpassword.ForgetPasswordActivity" />
-        <activity android:name=".ui.activities.OnboardActivity" />
-        <activity android:name=".ui.activities.experience.ExperienceActivity" />
-        <activity android:name=".ui.activities.login.LoginActivity" />
-        <activity android:name=".ui.activities.splash.SplashScreen">
+        <activity android:name=".ui.activity.signup.SignUpActivity" />
+        <activity android:name=".ui.activity.forgetpassword.ForgetPasswordVerifyActivity" />
+        <activity android:name=".ui.activity.forgetpassword.ForgetPasswordActivity" />
+        <activity android:name=".ui.activity.OnboardActivity" />
+        <activity android:name=".ui.activity.experience.ExperienceActivity" />
+        <activity android:name=".ui.activity.login.LoginActivity" />
+        <activity android:name=".ui.activity.splash.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

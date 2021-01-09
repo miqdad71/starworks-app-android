@@ -4,28 +4,34 @@ import com.google.gson.annotations.SerializedName
 
 class CompanyResponse(val success: String, val message: String, val data: ArrayList<CompanyItem>) {
     data class CompanyItem(
-        @SerializedName("en_id")
-        val enId: String,
+        @SerializedName("cn_id")
+        val cnId: Int,
 
         @SerializedName("ac_id")
-        val acId: String,
+        val acId: Int,
 
-        @SerializedName("ac_name")
-        val acName: String,
+        @SerializedName("cn_company")
+        val cnCompany: String,
 
-        @SerializedName("en_job_title")
-        val enJobTitle: String,
+        @SerializedName("cn_position")
+        val cnPosition: String,
 
-        @SerializedName("en_job_type")
-        val enJobType: String,
+        @SerializedName("cn_field")
+        val cnField: String,
 
-        @SerializedName("en_domicile")
-        val enDomicile: String,
+        @SerializedName("cn_city")
+        val cnCity: String,
 
-        @SerializedName("en_description")
-        val enDescription: String,
+        @SerializedName("cn_description")
+        val cnDescription: String,
 
-        @SerializedName("en_profile")
-        val enProfile: String
+        @SerializedName("cn_instagram")
+        val cnInstagram: String,
+
+        @SerializedName("cn_linkedin")
+        val cnLinkedin: String,
+
+        @SerializedName("cn_profile")
+        val cnProfile: String
     )
 }

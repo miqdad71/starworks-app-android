@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.activities.detail.ProfileDetailActivity"
+    tools:context=".ui.activity.detail.ProfileDetailActivity"
     >
     <data>
 
@@ -64,7 +64,8 @@
                         android:src="@drawable/img_profile_miqdad"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -80,7 +81,10 @@
                         android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_image_profile" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_image_profile"
+                        tools:text="Name"
+
+                        />
 
                     <TextView
                         android:id="@+id/tv_job_title"
@@ -90,11 +94,12 @@
                         android:layout_marginTop="16dp"
                         android:fontFamily="sans-serif-condensed"
                         android:textAlignment="center"
+                        android:text="@{engineer.enJobTitle != null ? engineer.enJobTitle : @string/en_job_title_not_set}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
+                        tools:text="Job Title"
                         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-<!--                    android:text="@{engineer.enJobTitle != null ? engineer.enJobTitle : @string/en_job_title_not_set}"-->
 
                     <LinearLayout
                         android:id="@+id/ln_domicile"
@@ -113,10 +118,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
+                            android:text="@{engineer.enDomicile != null ? engineer.enDomicile : @string/en_domicile_not_set}"
                             android:textAlignment="center"
                             android:textColor="@color/gray"
-                            android:textSize="16sp" />
-<!--                        android:text="@{engineer.enDomicile != null ? engineer.enDomicile : @string/en_domicile_not_set}"-->
+                            android:textSize="16sp"
+                            tools:text="Domicile"
+                            />
 
                     </LinearLayout>
 
@@ -127,12 +134,14 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="5dp"
                         android:fontFamily="sans-serif-condensed"
+                        android:text="@{engineer.enJobType != null ? engineer.enJobType : @string/en_job_type_not_set}"
                         android:textAlignment="center"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ln_domicile" />
-<!--                    android:text="@{engineer.enJobType != null ? engineer.enJobType : @string/en_job_type_not_set}"-->
+                        app:layout_constraintTop_toBottomOf="@+id/ln_domicile"
+                        tools:text="Job Type"
+                        />
 
                     <TextView
                         android:id="@+id/tv_description"
@@ -142,14 +151,16 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-condensed"
+                        android:text="@{engineer.enDescription != null ? engineer.enDescription : @string/en_description_not_set}"
                         android:justificationMode="inter_word"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_job_type"
-                        app:layout_constraintVertical_bias="0.0" />
-<!--                    android:text="@{engineer.enDescription != null ? engineer.enDescription : @string/en_description_not_set}"-->
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="Descrption"
+                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

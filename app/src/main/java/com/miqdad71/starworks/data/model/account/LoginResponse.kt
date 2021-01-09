@@ -4,6 +4,12 @@ import com.google.gson.annotations.SerializedName
 
 data class LoginResponse(val success: Boolean, val message: String, val data: LoginItem) {
     data class LoginItem(
+        @SerializedName("en_id")
+        val enId: Int? = null,
+
+        @SerializedName("cn_id")
+        val cnId: Int? = null,
+
         @SerializedName("ac_id")
         val acId: Int,
 

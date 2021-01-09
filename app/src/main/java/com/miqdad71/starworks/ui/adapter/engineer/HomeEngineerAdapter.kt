@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
+import com.miqdad71.starworks.data.model.engineer.HomeEngineerModel
 import com.miqdad71.starworks.databinding.ItemListWebDevBinding
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
+import com.miqdad71.starworks.ui.adapter.company.HomeCompanyAdapter
 
 class HomeEngineerAdapter : RecyclerView.Adapter<HomeEngineerAdapter.RecyclerViewHolder>() {
     private lateinit var binding: ItemListWebDevBinding
@@ -47,8 +49,11 @@ class HomeEngineerAdapter : RecyclerView.Adapter<HomeEngineerAdapter.RecyclerVie
         return items.size
     }
 
-    interface OnItemClickCallback {
+    interface OnItemClickCallback : HomeCompanyAdapter.OnItemClickCallback {
         fun onItemClick(data: EngineerModel)
+        override fun onItemClick(data: HomeEngineerModel) {
+            TODO("Not yet implemented")
+        }
     }
 
     fun addList(list: List<EngineerModel>) {

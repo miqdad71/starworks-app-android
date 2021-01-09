@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activities.main.company.CompanyMainActivity">
+        tools:context=".ui.activity.main.company.CompanyMainActivity">
 
         <FrameLayout
             android:id="@+id/flFragmentCompany"

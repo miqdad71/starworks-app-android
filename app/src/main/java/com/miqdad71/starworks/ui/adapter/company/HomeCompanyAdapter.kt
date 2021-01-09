@@ -6,14 +6,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemListWebDevBinding
-import com.miqdad71.starworks.data.model.company.HomeEngineerModel
+import com.miqdad71.starworks.data.model.engineer.HomeEngineerModel
 
 class HomeCompanyAdapter : RecyclerView.Adapter<HomeCompanyAdapter.ProjectHolder>() {
 
     private var items = mutableListOf<HomeEngineerModel>()
     private lateinit var onItemClickCallback: OnItemClickCallback
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+    fun setOnItemClickCallback(onItemClickCallback: HomeCompanyAdapter.OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 

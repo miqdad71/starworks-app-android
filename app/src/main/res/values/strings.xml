@@ -87,6 +87,23 @@
     <string name="web_application">Web Application</string>
     <string name="portfolio_tab_title">Portofolio</string>
 
+    <!-- Not set -->
+    <string name="ac_name_not_set">Name Not Set</string>
+    <string name="en_job_title_not_set">Job Title Not Set</string>
+    <string name="en_job_type_not_set">Job Type Not Set</string>
+    <string name="en_domicile_not_set">Domicile Not Set</string>
+    <string name="en_description_not_set">Description Not Set</string>
+
+    <!-- Not set -->
+    <string name="cn_company_not_set">Company Not Set</string>
+    <string name="cn_position_not_set">Position Not Set</string>
+    <string name="cn_field_not_set">Field Not Set</string>
+    <string name="cn_city_not_set">City Not Set</string>
+    <string name="cn_description_not_set">Description Not Set</string>
+    <string name="ac_phone_number_not_set">Phone Number Not Set</string>
+    <string name="cn_instagram_not_set">Instagram Not Set</string>
+    <string name="cn_linked_not_set">LinkedIn Not Set</string>
+
     <!--autofix-->
     <string name="pt_wasa_mitra_engineering">PT. Wasa Mitra Engineering</string>
     <string name="chief_of_pt_wme">Chief of PT WME</string>
@@ -107,4 +124,5 @@
     <string name="total_months">22 Month</string>
     <string name="img_icon">IMG Icon</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="img_background">Image Background</string>
 </resources>

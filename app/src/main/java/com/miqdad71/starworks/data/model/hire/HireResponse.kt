@@ -2,19 +2,35 @@ package com.miqdad71.starworks.data.model.hire
 
 import com.google.gson.annotations.SerializedName
 
-data class HireResponse(val success: Boolean, val message: String, val data: LoginItem) {
-    data class LoginItem(
-        @SerializedName("ac_id")
-        val hr_id: Int,
+data class HireResponse(val success: Boolean, val message: String, val data: HireItem) {
+    data class HireItem(
+        @SerializedName("hr_id")
+        val hrId: Int,
         @SerializedName("en_id")
-        val en_id: Int? = null,
-        @SerializedName("cn_id")
-        val pj_id: Int? = null,
-        @SerializedName("ac_name")
-        val hr_message: String,
-        @SerializedName("ac_email")
-        val hr_status: String,
-        @SerializedName("ac_phone")
-        val hr_date_confirm: String
+        val enId: Int,
+        @SerializedName("pj_id")
+        val pjId: Int,
+        @SerializedName("hr_price")
+        val hrPrice: Long,
+        @SerializedName("hr_message")
+        val hrMessage: String,
+        @SerializedName("hr_status")
+        val hrStatus: String,
+        @SerializedName("hr_date_confirm")
+        val hrDateConfirm: String,
+        @SerializedName("pj_project_name")
+        val pjProjectName: String,
+        @SerializedName("pj_description")
+        val pjDescription: String,
+        @SerializedName("pj_deadline")
+        val pjDeadline: String,
+        @SerializedName("cn_company")
+        val cnCompany: String,
+        @SerializedName("cn_field")
+        val cnField: String,
+        @SerializedName("cn_city")
+        val cnCity: String,
+        @SerializedName("cn_profile")
+        val cnProfile: String
     )
 }
