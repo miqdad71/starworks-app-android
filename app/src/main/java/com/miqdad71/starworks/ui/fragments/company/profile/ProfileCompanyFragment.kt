@@ -19,10 +19,8 @@ class ProfileCompanyFragment : Fragment() {
     ): View? {
 
 //      binding fragments
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
         return binding.root
-
 
     }
 

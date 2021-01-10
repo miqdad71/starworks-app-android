@@ -24,6 +24,7 @@ class CompanyMainActivity : AppCompatActivity() {
         val secondFragment = SearchCompanyFragment()
         val thirdFragment = ProfileCompanyFragment()
         val fourthFragment = HireCompanyFragment()
+        val fifthFragment = HireCompanyFragment()
 
         setCurrentFragment(firstFragment)
 
@@ -32,7 +33,9 @@ class CompanyMainActivity : AppCompatActivity() {
                 R.id.miHome -> setCurrentFragment(firstFragment)
                 R.id.miSearch -> setCurrentFragment(secondFragment)
                 R.id.miProfile -> setCurrentFragment(thirdFragment)
-                R.id.miProject -> setCurrentFragment(fourthFragment)
+                R.id.miHire -> setCurrentFragment(fourthFragment)
+                R.id.miProject -> setCurrentFragment(fifthFragment)
+
             }
             true
         }

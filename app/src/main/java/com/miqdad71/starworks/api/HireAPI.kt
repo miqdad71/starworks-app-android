@@ -2,22 +2,36 @@ package com.miqdad71.starworks.api
 
 import com.miqdad71.starworks.data.model.hire.HireResponse
 import com.miqdad71.starworks.data.model.engineer.HireProjectResponse
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface HireAPI {
+    @GET("hire/engineer/{enId}")
+    suspend fun getHireEnId(): HireProjectResponse
+
+    @GET("hire/engineer/{enId}")
+    suspend fun getAllHire(
+        @Path("enId") enId: Int
+    ): HireResponse
+
+    @GET("hire/company/{cnId}")
+    suspend fun getAllHireCompany(
+        @Path("cnId") cnId: Int,
+        @Query("status") status: String
+    ): HireResponse
+
     @FormUrlEncoded
-//    endpoint
     @POST("hire")
     suspend fun hire(
-        @Field("en_id") enId: Int,
-        @Field("pj_id") pjId: Int,
-        @Field("hr_price") hrPrice: String,
-        @Field("hr_message") hrMessage: String
-        ): HireResponse
+        @Field("en_id") enId: Int.Companion,
+        @Field("pj_id") pjId: Int.Companion,
+        @Field("hr_price") hrPrice: Long.Companion,
+        @Field("hr_message") hrMessage: String.Companion
+    ): HireResponse
 
-    @GET("hire/engineer/1")
-    suspend fun getHireEnId(): HireProjectResponse
+    @FormUrlEncoded
+    @PUT("hire/{hrId}")
+    suspend fun updateHireStatus(
+        @Path("hrId") hrId: Int,
+        @Field("hr_status") hrStatus: String
+    ): HireResponse
 }

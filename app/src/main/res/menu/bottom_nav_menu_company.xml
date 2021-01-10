@@ -11,8 +11,13 @@
         android:title="Search" />
 
     <item
-        android:id="@+id/miProject"
+        android:id="@+id/miHire"
         android:icon="@drawable/ic_jobs"
+        android:title="Hire" />
+
+    <item
+        android:id="@+id/miProject"
+        android:icon="@drawable/ic_project"
         android:title="Project" />
 
     <item

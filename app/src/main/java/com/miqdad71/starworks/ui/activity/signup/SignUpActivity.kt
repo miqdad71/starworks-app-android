@@ -128,6 +128,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         }
         signUpAccount()
     }
+
     fun signUpAccount() {
         val api = ApiClient.getApiClient(this).create(AccountAPI::class.java)
         coroutineScope.launch {
@@ -163,7 +164,6 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
 
-
             if (res is SignUpResponse) {
                 if (res.success) {
                     Toast.makeText(this@SignUpActivity, res.message, Toast.LENGTH_SHORT).show()
@@ -174,6 +174,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         coroutineScope.cancel()

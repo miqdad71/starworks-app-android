@@ -17,6 +17,7 @@ import com.miqdad71.starworks.databinding.FragmentHireCompanyBinding
 import com.miqdad71.starworks.ui.activity.detail.ProjectDetailActivity
 import com.miqdad71.starworks.ui.adapter.engineer.EngineerProjectAdapter
 import com.miqdad71.starworks.data.model.engineer.HireProjectModel
+import com.miqdad71.starworks.ui.activity.main.company.AddProjectActivity
 import kotlinx.coroutines.*
 
 class HireCompanyFragment : Fragment() {
@@ -38,6 +39,10 @@ class HireCompanyFragment : Fragment() {
             .create(HireAPI::class.java)
 
         getHireEnId()
+        binding.btnCreateProject.setOnClickListener {
+            val intent = Intent(activity, AddProjectActivity::class.java)
+            startActivity(intent)
+        }
         return binding.root
 
     }

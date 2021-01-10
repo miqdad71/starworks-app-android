@@ -2,7 +2,7 @@ package com.miqdad71.starworks.data.model.hire
 
 import com.google.gson.annotations.SerializedName
 
-data class HireResponse(val success: Boolean, val message: String, val data: HireItem) {
+data class HireResponse(val success: Boolean, val message: String, val data: List<HireItem>) {
     data class HireItem(
         @SerializedName("hr_id")
         val hrId: Int,

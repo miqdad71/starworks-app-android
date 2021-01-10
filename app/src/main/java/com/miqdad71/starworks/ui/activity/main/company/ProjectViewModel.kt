@@ -41,8 +41,8 @@ class ProjectViewModel : ViewModel(), CoroutineScope {
                         cnId = cnId,
                         pjProjectName = pjProjectName,
                         pjDeadline = pjDeadline,
-                        pjDescription = pjDescription,
-                        image = image
+                        pjDescription = pjDescription
+//                        image = image
                     )
                 } catch (e: HttpException) {
                     withContext(Dispatchers.Main) {

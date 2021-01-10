@@ -85,7 +85,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_price">
 
                 <EditText
-                    android:id="@+id/et_price"
+                    android:id="@+id/et_project_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_input_white"

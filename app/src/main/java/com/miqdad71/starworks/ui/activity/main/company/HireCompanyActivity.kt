@@ -47,31 +47,31 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun hire(view: View) {
-        val email = binding.etPrice.text.toString()
-        val password = binding.etDescription.text.toString()
+        val price = binding.etPrice.text.toString()
+        val desc = binding.etDescription.text.toString()
 
-        if (email.isEmpty()) {
+        if (price.isEmpty()) {
             binding.etPrice.error = SignUpActivity.FIELD_REQUIRED
             return
         }
 
-        if (password.isEmpty()) {
+        if (desc.isEmpty()) {
             binding.etDescription.error = SignUpActivity.FIELD_REQUIRED
             return
         }
-        hireEngineer()
+        hireEngineer(enId = Int, pjId = Int, hrPrice = Long, hrMessage = String)
     }
 
-    fun hireEngineer() {
+    fun hireEngineer(enId: Int.Companion, pjId: Int.Companion, hrPrice: Long.Companion, hrMessage: String.Companion) {
         val api = ApiClient.getApiClient(this).create(HireAPI::class.java)
         coroutineScope.launch {
             val res = withContext(Dispatchers.IO) {
                 try {
                     api.hire(
-                        enId = 1,
-                        pjId = 2,
-                        hrPrice = binding.etPrice.text.toString(),
-                        hrMessage = binding.etDescription.text.toString()
+                        enId = enId,
+                        pjId = pjId,
+                        hrPrice = hrPrice,
+                        hrMessage = hrMessage
                         )
 
                 } catch (t: Exception) {
