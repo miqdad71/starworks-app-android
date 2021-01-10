@@ -100,15 +100,22 @@ class SharedPreference(context: Context) {
         return sharedPreferences.getInt(CN_ID, 0)
     }
 
-
-
-//
-
-    fun setAccount(acName: String, acId: Int, acLevel: Int, acEmail: String) {
+    fun setAccountEngineer(acName: String, acId: Int, enId: Int, acLevel: Int, acEmail: String) {
         val editor = sharedPreferences.edit()
         editor.putString(AC_NAME, acName)
         editor.putString(AC_EMAIL, acEmail)
         editor.putInt(AC_ID, acId)
+        editor.putInt(EN_ID, enId)
+        editor.putInt(AC_LEVEL, acLevel)
+        editor.putBoolean(LOGIN, true)
+        editor.apply()
+    }
+    fun setAccountCompany(acName: String, acId: Int, cnId: Int, acLevel: Int, acEmail: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(AC_NAME, acName)
+        editor.putString(AC_EMAIL, acEmail)
+        editor.putInt(AC_ID, acId)
+        editor.putInt(CN_ID, cnId)
         editor.putInt(AC_LEVEL, acLevel)
         editor.putBoolean(LOGIN, true)
         editor.apply()

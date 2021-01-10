@@ -71,7 +71,6 @@ class HomeCompanyFragment : Fragment() {
                     }
                 })
 
-
                 //rv android
                 binding.rvAndroid.layoutManager = LinearLayoutManager(requireActivity().applicationContext, RecyclerView.HORIZONTAL, false)
                 binding.rvAndroid.adapter = HomeCompanyAdapter().apply { addList(dataFromResult) }
@@ -85,64 +84,4 @@ class HomeCompanyFragment : Fragment() {
         coroutineScope.cancel()
         super.onDestroy()
     }
-
 }
-
-
-//case mentor
-//
-//private fun setupWebDevRecyclerView() {
-//    binding.rvWeb.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-//    binding.rvWeb.isNestedScrollingEnabled = false
-//
-//    val adapter = HomeEngineerAdapter()
-//    adapter.notifyDataSetChanged()
-//    binding.rvWeb.adapter = adapter
-//
-//    adapter.setOnItemClickCallback(object : HomeEngineerAdapter.OnItemClickCallback {
-//        override fun onItemClick(data: EngineerModel) {
-//            val intent = Intent(activity, ProfileDetailActivity::class.java)
-//            intent.putExtra("en_id", data.enId)
-//            intent.putExtra("ac_id", data.acId)
-//            intent.putExtra("ac_name", data.acName)
-//            intent.putExtra("en_job_title", data.enJobTitle)
-//            intent.putExtra("en_domicile", data.enDomicile)
-//            intent.putExtra("en_job_type", data.enJobType)
-//            intent.putExtra("en_description", data.enDescription)
-//            intent.putExtra("en_profile", data.enProfile)
-//            startActivity(intent)
-//        }
-//    })
-//}
-//
-//private fun getAllEngineer() {
-//    val api = ApiClient.getApiClient(requireActivity()).create(EngineerAPI::class.java)
-//
-//
-//    coroutineScope.launch {
-//        val response = withContext(Dispatchers.IO) {
-//            try {
-//                api.getAllEngineer()
-//            } catch (e: Throwable) {
-//                e.printStackTrace()
-//            }
-//        }
-//
-//        if (response is EngineerResponse) {
-//            val list = response.data.map {
-//                EngineerModel(
-//                    enId = it.enId,
-//                    acId = it.acId,
-//                    acName = it.acName,
-//                    enJobTitle = it.enJobTitle,
-//                    enJobType = it.enJobType,
-//                    enDomicile = it.enDomicile,
-//                    enDescription = it.enDescription,
-//                    enProfile = it.enProfile
-//                )
-//            }
-//
-//            (binding.rvWeb.adapter as HomeEngineerAdapter).addList(list)
-//        }
-//    }
-//}

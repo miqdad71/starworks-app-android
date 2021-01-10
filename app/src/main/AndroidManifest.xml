@@ -19,7 +19,7 @@
         <activity android:name=".ui.activity.main.company.AddProjectActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar"/>
         <activity
-            android:name=".ui.activity.main.company.HireCompanyActivity"
+            android:name=".ui.activity.detail.HireCompanyActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
             android:name=".ui.activity.detail.ProfileDetailActivity"

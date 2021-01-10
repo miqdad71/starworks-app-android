@@ -95,15 +95,30 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 val data = res.data
                 Log.d("loginData", data.toString())
                 val level = data.acLevel
-                preference.setAccount(data.acName, data.acId, data.acLevel, data.acEmail)
+
                 preference.setToken(data.token)
                 when (level) {
                     0 -> {
-                        val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
+                        preference.setAccountEngineer(
+                            acName = data.acName,
+                            acId = data.acId,
+                            enId = data.enId,
+                            acLevel = data.acLevel,
+                            acEmail = data.acEmail
+                        )
+                        val sendIntent =
+                            Intent(this@LoginActivity, EngineerMainActivity::class.java)
                         startActivity(sendIntent)
                         this@LoginActivity.finish()
                     }
                     1 -> {
+                        preference.setAccountCompany(
+                            acName = data.acName,
+                            acId = data.acId,
+                            cnId = data.cnId,
+                            acLevel = data.acLevel,
+                            acEmail = data.acEmail
+                        )
                         val sendIntent = Intent(this@LoginActivity, CompanyMainActivity::class.java)
                         startActivity(sendIntent)
                         this@LoginActivity.finish()

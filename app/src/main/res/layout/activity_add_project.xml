@@ -175,7 +175,6 @@
                     android:hint="ex: AirDroid akan membantumu memindahkan file tanpa menggunakan kabel data!"
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine"
-                    android:maxLength="5"
                     android:minLines="5"
                     android:padding="18dp"
                     android:paddingBottom="10dp" />

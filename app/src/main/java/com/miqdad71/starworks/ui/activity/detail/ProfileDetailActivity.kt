@@ -10,8 +10,6 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityProfileDetailBinding
-import com.miqdad71.starworks.ui.activity.main.company.HireCompanyActivity
-import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.android.synthetic.main.activity_profile_detail.*
 import kotlinx.coroutines.CoroutineScope
 

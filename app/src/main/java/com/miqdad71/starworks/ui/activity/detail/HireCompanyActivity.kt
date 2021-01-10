@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.activity.main.company
+package com.miqdad71.starworks.ui.activity.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,23 +7,37 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.api.HireAPI
+import com.miqdad71.starworks.api.ProjectAPI
 import com.miqdad71.starworks.data.model.hire.HireResponse
+import com.miqdad71.starworks.data.model.project.ProjectModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityHireCompanyBinding
 import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
+import com.miqdad71.starworks.ui.adapter.project.ProjectSpinnerAdapter
+import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*
+import java.util.HashMap
 
 class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityHireCompanyBinding
     private lateinit var coroutineScope: CoroutineScope
+    private lateinit var preference: SharedPreference
+    private lateinit var userDetail: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hire_company)
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+        preference = SharedPreference(this)
+        userDetail = preference.getAccountUser()
+        getAllProject()
         setToolbarActionBar()
+        val adapter = ProjectSpinnerAdapter(this@HireCompanyActivity)
 
+        binding.spProject.adapter = adapter
+
+        Log.e("GetID", "${preference.getIdCompany()}")
     }
 
     private fun setToolbarActionBar() {
@@ -32,6 +46,31 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.title = ""
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
+        }
+    }
+
+    private fun getAllProject() {
+        val api = ApiClient.getApiClient(this).create(ProjectAPI::class.java)
+
+        coroutineScope.launch {
+            try {
+                val resultData = api.getAllProject(preference.getIdCompany())
+                val dataFromResult = resultData.data
+                val list = dataFromResult.map {
+                    ProjectModel(
+                        pjId = it.pjId,
+                        cnId = it.cnId,
+                        pjProjectName = it.pjProjectName,
+                        pjDescription = it.pjDescription,
+                        pjDeadline = it.pjDeadline,
+                        pjImage = it.pjImage
+                    )
+                }
+                (binding.spProject.adapter as ProjectSpinnerAdapter).addList(list)
+
+            }catch (e: Throwable) {
+
+            }
         }
     }
 

@@ -73,7 +73,6 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/form_input_white"
-                android:entries="@array/project_list_company"
                 android:paddingHorizontal="4dp"
                 android:paddingVertical="16dp"
                 android:spinnerMode="dropdown"
