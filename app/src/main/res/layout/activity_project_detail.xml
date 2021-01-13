@@ -4,6 +4,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="hire"
+            type="com.miqdad71.starworks.data.model.hire.HireModel" />
+
+        <variable
+            name="imageUrl"
+            type="String" />
+    </data>
+
     <ScrollView
         android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
@@ -38,6 +49,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -63,64 +75,31 @@
                         android:layout_marginTop="18dp"
                         android:fontFamily="sans-serif-thin"
                         android:onClick="onClick"
-                        android:text="Project"
+                        android:text="@{hire.pjProjectName}"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_image_profile" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_image_profile"
+                        tools:text="Project Name"
+                        />
 
                     <TextView
-                        android:id="@+id/tv_job_title"
+                        android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/android_developer"
+                        android:text="@{hire.pjDeadline}"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-                    <LinearLayout
-                        android:id="@+id/ln_domicile"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_job_title">
-
-
-                        <TextView
-                            android:id="@+id/tv_domicile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="16dp"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="@string/bekasi_jawa_barat"
-                            android:textAlignment="center"
-                            android:textColor="@color/gray"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/tv_job_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="@string/freelance"
-                        android:textAlignment="center"
-                        android:textColor="@color/gray"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ln_domicile" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                        tools:text="Project Price"
+                        />
 
                     <TextView
                         android:id="@+id/tv_description"
@@ -128,17 +107,49 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-condensed"
                         android:justificationMode="inter_word"
-                        android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_vestibulum_erat_orci_mollis_nec_gravida_sed_ornare_quis_urna_curabitur_eu_lacus_fringilla_vestibulum_risus_at"
+                        android:text="@{hire.pjDescription}"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_job_type"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_price"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="Project Description"
+                        />
+
+                    <Button
+                        android:id="@+id/btn_approve"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@android:color/holo_orange_light"
+                        android:onClick="onClick"
+                        android:padding="14dp"
+                        android:text="@string/Approve"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_description"
+
+                        />
+
+                    <Button
+                        android:id="@+id/btn_reject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@android:color/holo_red_light"
+                        android:onClick="onClick"
+                        android:padding="14dp"
+                        android:text="@string/Reject"
+                        android:textColor="@color/white"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_approve"
+
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             </androidx.cardview.widget.CardView>
 

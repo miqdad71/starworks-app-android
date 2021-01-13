@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.adapter.company
+package com.miqdad71.starworks.ui.adapter.company.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,13 +6,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemListSearchEngineerBinding
-import com.miqdad71.starworks.data.model.company.SearchEngineerModel
+import com.miqdad71.starworks.data.model.engineer.EngineerModel
 
 class SearchCompanyAdapter : RecyclerView.Adapter<SearchCompanyAdapter.ProjectHolder>() {
 
-    private var items = mutableListOf<SearchEngineerModel>()
+    private var items = mutableListOf<EngineerModel>()
 
-    fun addList(list: List<SearchEngineerModel>) {
+    fun addList(list: List<EngineerModel>) {
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()

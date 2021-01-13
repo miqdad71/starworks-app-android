@@ -5,6 +5,7 @@ data class HireModel(
     val enId: Int? = 0,
     val pjId: Int? = 0,
     val hrPrice: Long? = 0,
+    val acName: String? = null,
     val hrMessage: String? = null,
     val hrStatus: String? = null,
     val hrDateConfirm: String? = null,

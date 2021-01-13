@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.activity.detail
+package com.miqdad71.starworks.ui.activity.detail.company
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.api.HireAPI
-import com.miqdad71.starworks.api.ProjectAPI
+import com.miqdad71.starworks.serviceapi.HireAPI
+import com.miqdad71.starworks.serviceapi.ProjectAPI
 import com.miqdad71.starworks.data.model.hire.HireResponse
 import com.miqdad71.starworks.data.model.project.ProjectModel
 import com.miqdad71.starworks.data.remote.ApiClient
@@ -22,22 +22,21 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityHireCompanyBinding
     private lateinit var coroutineScope: CoroutineScope
-    private lateinit var preference: SharedPreference
-    private lateinit var userDetail: HashMap<String, String>
+    private lateinit var sharedPref: SharedPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hire_company)
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-        preference = SharedPreference(this)
-        userDetail = preference.getAccountUser()
+        sharedPref = SharedPreference(this)
+        
         getAllProject()
         setToolbarActionBar()
         val adapter = ProjectSpinnerAdapter(this@HireCompanyActivity)
 
         binding.spProject.adapter = adapter
 
-        Log.e("GetID", "${preference.getIdCompany()}")
+        Log.e("GetID", "${sharedPref.getIdCompany()}")
     }
 
     private fun setToolbarActionBar() {
@@ -50,11 +49,11 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getAllProject() {
-        val api = ApiClient.getApiClient(this).create(ProjectAPI::class.java)
+        val service = ApiClient.getApiClient(this).create(ProjectAPI::class.java)
 
         coroutineScope.launch {
             try {
-                val resultData = api.getAllProject(preference.getIdCompany())
+                val resultData = service.getAllProject(sharedPref.getIdCompany())
                 val dataFromResult = resultData.data
                 val list = dataFromResult.map {
                     ProjectModel(
@@ -102,11 +101,11 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun hireEngineer(enId: Int.Companion, pjId: Int.Companion, hrPrice: Long.Companion, hrMessage: String.Companion) {
-        val api = ApiClient.getApiClient(this).create(HireAPI::class.java)
+        val service = ApiClient.getApiClient(this).create(HireAPI::class.java)
         coroutineScope.launch {
             val res = withContext(Dispatchers.IO) {
                 try {
-                    api.hire(
+                    service.hire(
                         enId = enId,
                         pjId = pjId,
                         hrPrice = hrPrice,

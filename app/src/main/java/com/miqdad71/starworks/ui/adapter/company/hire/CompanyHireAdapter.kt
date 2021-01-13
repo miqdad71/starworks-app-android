@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.adapter.company
+package com.miqdad71.starworks.ui.adapter.company.hire
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,18 +6,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemListHireCompanyBinding
-import com.miqdad71.starworks.data.model.engineer.HireProjectModel
+import com.miqdad71.starworks.data.model.hire.HireModel
+import java.util.*
 
-class CompanyProjectAdapter : RecyclerView.Adapter<CompanyProjectAdapter.ProjectHolder>() {
+class CompanyHireAdapter : RecyclerView.Adapter<CompanyHireAdapter.ProjectHolder>() {
 
-    private var items = mutableListOf<HireProjectModel>()
-    private lateinit var onItemClickCallback: OnItemClickCallback
+    private var items = mutableListOf<HireModel>()
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
-    fun addList(list: List<HireProjectModel>) {
+    fun addList(list: List<HireModel>) {
         items.clear()
         items.addAll(list)
         notifyDataSetChanged()
@@ -39,19 +35,11 @@ class CompanyProjectAdapter : RecyclerView.Adapter<CompanyProjectAdapter.Project
 
     override fun onBindViewHolder(holder: ProjectHolder, position: Int) {
         val item = items[position]
-        holder.binding.itemHireEngineer.setOnClickListener {
-            onItemClickCallback.onItemClick(item)
-        }
+        holder.binding.tvListStatus.text = item.hrStatus!!.toUpperCase(Locale.ROOT)
+        holder.binding.tvListEngineer.text = item.acName
         holder.binding.tvListSearchProjectName.text = item.pjProjectName
         holder.binding.tvListSearchProjectDesc.text = item.pjDescription
-        holder.binding.tvPrice.text = item.hrPrice
-
 
     }
-
-    interface OnItemClickCallback {
-        fun onItemClick(data: HireProjectModel)
-    }
-
     override fun getItemCount(): Int = items.size
 }

@@ -2,7 +2,11 @@ package com.miqdad71.starworks.data.model.experience
 
 import com.google.gson.annotations.SerializedName
 
-data class ExperienceResponse(val success: Boolean, val message: String, val data: List<ExperienceItem>) {
+data class ExperienceResponse(
+    val success: Boolean,
+    val message: String,
+    val data: List<ExperienceItem>
+) {
     data class ExperienceItem(
         @SerializedName("ex_id")
         val exId: Int,

@@ -3,9 +3,9 @@ package com.miqdad71.starworks.data.model.engineer
 import com.google.gson.annotations.SerializedName
 
 class EngineerResponse(
-    val success: String,
+    val success: Boolean,
     val message: String,
-    val data: ArrayList<EngineerItem>
+    val data: List<EngineerItem>
 ) {
     data class EngineerItem(
         @SerializedName("en_id")

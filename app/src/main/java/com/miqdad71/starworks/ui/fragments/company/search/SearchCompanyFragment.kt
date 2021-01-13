@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.api.EngineerAPI
-import com.miqdad71.starworks.data.model.company.SearchCompanyResponse
-import com.miqdad71.starworks.data.model.company.SearchEngineerModel
+import com.miqdad71.starworks.serviceapi.EngineerAPI
+import com.miqdad71.starworks.data.model.engineer.EngineerModel
+import com.miqdad71.starworks.data.model.engineer.EngineerResponse
 import com.miqdad71.starworks.databinding.FragmentSearchCompanyBinding
 import com.miqdad71.starworks.data.remote.ApiClient
-import com.miqdad71.starworks.ui.adapter.company.SearchCompanyAdapter
+import com.miqdad71.starworks.ui.adapter.company.search.SearchCompanyAdapter
 import kotlinx.coroutines.*
 
 class SearchCompanyFragment : Fragment() {
@@ -56,10 +56,10 @@ class SearchCompanyFragment : Fragment() {
                 }
             }
 
-            if (result is SearchCompanyResponse) {
+            if (result is EngineerResponse) {
                 Log.d("android2", result.toString())
                 val list = result.data?.map {
-                    SearchEngineerModel(
+                    EngineerModel(
                         it.enId, it.acId, it.acName, it.enJobTitle,
                         it.enJobType, it.enDomicile, it.enDescription, it.enProfile
                     )

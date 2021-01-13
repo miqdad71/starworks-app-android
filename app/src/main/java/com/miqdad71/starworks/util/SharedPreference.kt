@@ -16,10 +16,6 @@ class SharedPreference(context: Context) {
         const val CN_ID = "CN_ID"
 
         const val AC_LEVEL = "AC_LEVEL"
-        const val PASSWORD = "password"
-        const val PHONE = "phone"
-        const val COMPANY = "company"
-        const val POSITION = "position"
         const val LOGIN = "isLogin"
         const val AC_DETAIL = "AC_DETAIL"
     }

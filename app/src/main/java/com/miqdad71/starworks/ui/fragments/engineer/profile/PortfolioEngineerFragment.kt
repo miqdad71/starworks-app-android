@@ -13,9 +13,8 @@ import com.miqdad71.starworks.ui.adapter.portfolio.ListPortfolioRecycleViewAdapt
 import com.miqdad71.starworks.data.model.Databases
 import com.miqdad71.starworks.data.model.Portfolio
 
-class PortofolioEngineerFragment : Fragment() {
+class PortfolioEngineerFragment : Fragment() {
 
-    private lateinit var rootView: View
     private lateinit var binding: FragmentPortfolioBinding
     private val listPortfolio = ArrayList<Portfolio>()
 
@@ -23,8 +22,8 @@ class PortofolioEngineerFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-//      binding fragments
+    ): View {
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_portfolio, container, false)
         return binding.root
     }
@@ -33,9 +32,9 @@ class PortofolioEngineerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val portfolio = Databases.porto
 
-        for (i in 0 until portfolio.size) {
+        for (element in portfolio) {
             val porto = Portfolio(
-                portfolio[i]
+                element
             )
             listPortfolio.add(porto)
         }

@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.api.AccountAPI
+import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.data.model.account.SignUpResponse
 import com.miqdad71.starworks.databinding.ActivitySignUpBinding
 import com.miqdad71.starworks.util.SharedPreference

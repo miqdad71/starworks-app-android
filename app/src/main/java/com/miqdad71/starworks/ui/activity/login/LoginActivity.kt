@@ -8,7 +8,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.api.AccountAPI
+import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.databinding.ActivityLoginBinding
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.util.SharedPreference

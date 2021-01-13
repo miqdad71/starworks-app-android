@@ -17,11 +17,7 @@ class EngineerMainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEngineerMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.hide()
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-        )
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_engineer_main)
 
         val firstFragment = HomeEngineerFragment()

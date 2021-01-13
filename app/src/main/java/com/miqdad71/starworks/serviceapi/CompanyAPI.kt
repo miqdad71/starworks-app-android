@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.api
+package com.miqdad71.starworks.serviceapi
 
 import com.miqdad71.starworks.data.model.company.CompanyResponse
 import retrofit2.http.GET

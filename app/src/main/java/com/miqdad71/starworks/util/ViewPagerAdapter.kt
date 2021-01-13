@@ -20,11 +20,6 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHA
         return mFragmentTitleList[position]
     }
 
-    fun addFrag(fragment: Fragment) {
-        mFragmentList.add(fragment)
-        mFragmentTitleList.add("")
-    }
-
     fun addFrag(fragment: Fragment, title: String) {
         mFragmentList.add(fragment)
         mFragmentTitleList.add(title)

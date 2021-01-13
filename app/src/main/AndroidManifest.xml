@@ -14,20 +14,21 @@
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activity.detail.ProjectDetailActivity"
-            android:theme="@style/Theme.StarworkS.NoActionBar" />
-        <activity android:name=".ui.activity.main.company.AddProjectActivity"
-            android:theme="@style/Theme.StarworkS.NoActionBar"/>
-        <activity
-            android:name=".ui.activity.detail.HireCompanyActivity"
+            android:name=".ui.activity.detail.engineer.ProjectDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
-            android:name=".ui.activity.detail.ProfileDetailActivity"
+            android:name=".ui.activity.main.company.AddProjectActivity"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name=".ui.activity.detail.company.HireCompanyActivity"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name=".ui.activity.detail.company.ProfileDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity android:name=".example.ListEngineerActivity" />
         <activity android:name=".ui.webview.WebViewActivity" />
         <activity android:name=".ui.adapter.engineer.EngineerLayoutActivity" />
-        <activity android:name="com.miqdad71.starworks.example.dialog.DialogActivity" />
+        <activity android:name=".example.dialog.DialogActivity" />
         <activity
             android:name=".ui.activity.main.engineer.EngineerMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />

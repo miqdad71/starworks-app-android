@@ -1,12 +1,9 @@
-package com.miqdad71.starworks.api
+package com.miqdad71.starworks.serviceapi
 
 import com.miqdad71.starworks.data.model.hire.HireResponse
-import com.miqdad71.starworks.data.model.engineer.HireProjectResponse
 import retrofit2.http.*
 
 interface HireAPI {
-    @GET("hire/engineer/{enId}")
-    suspend fun getHireEnId(): HireProjectResponse
 
     @GET("hire/engineer/{enId}")
     suspend fun getAllHire(
@@ -15,8 +12,7 @@ interface HireAPI {
 
     @GET("hire/company/{cnId}")
     suspend fun getAllHireCompany(
-        @Path("cnId") cnId: Int,
-        @Query("status") status: String
+        @Path("cnId") cnId: Int
     ): HireResponse
 
     @FormUrlEncoded

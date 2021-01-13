@@ -13,6 +13,7 @@ import com.miqdad71.starworks.ui.activity.skill.SkillActivity
 import com.miqdad71.starworks.ui.adapter.engineer.EngineerPagerAdapter
 import com.miqdad71.starworks.ui.webview.WebViewActivity
 
+@Suppress("DEPRECATION")
 class ProfileEngineerFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentProfileEngineerBinding
     private lateinit var adapter: EngineerPagerAdapter
@@ -21,7 +22,7 @@ class ProfileEngineerFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
 //      binding fragments
         binding =

@@ -15,7 +15,6 @@ import com.miqdad71.starworks.data.model.Experience
 
 class ExperienceEngineerFragment : Fragment() {
 
-    private lateinit var rootView: View
     private lateinit var binding: FragmentExperienceBinding
     private val listExperience = ArrayList<Experience>()
 
@@ -23,8 +22,8 @@ class ExperienceEngineerFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-//      binding fragments
+    ): View {
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_experience, container, false)
         return binding.root
     }
