@@ -3,9 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="accountModel"
+            type="com.miqdad71.starworks.data.model.account.AccountModel" />
+
+        <variable
+            name="engineerModel"
+            type="com.miqdad71.starworks.data.model.engineer.EngineerModel" />
+
+        <variable
+            name="imageUrl"
+            type="String" />
+
+        <variable
+            name="dataNotFound"
+            type="String" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_profile"
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +72,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
+                    <!--                    app:loadImage="@{imageUrl}"-->
                     <TextView
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
@@ -61,14 +80,14 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="18dp"
                         android:fontFamily="sans-serif-thin"
-                        android:onClick="onClick"
-                        android:text="@string/miqdad"
+                        android:text="@{accountModel.acName}"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_image_profile" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_image_profile"
+                        tools:text="Name" />
 
                     <TextView
                         android:id="@+id/tv_job_title"
@@ -77,12 +96,28 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@string/android_developer"
+                        android:text="@{engineerModel.enJobTitle != null ? engineerModel.enJobTitle : @string/en_job_title_not_set}"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                        tools:text="Job Title" />
+
+                    <TextView
+                        android:id="@+id/tv_job_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@{engineerModel.enJobType != null ? engineerModel.enJobType : @string/en_job_type_not_set}"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_job_title"
+                        tools:text="Job Type" />
 
                     <LinearLayout
                         android:id="@+id/ln_domicile"
@@ -92,7 +127,7 @@
                         android:gravity="center"
                         android:orientation="horizontal"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_job_title">
+                        app:layout_constraintTop_toBottomOf="@+id/tv_job_type">
 
 
                         <TextView
@@ -101,25 +136,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="@string/bekasi_jawa_barat"
+                            android:text="@{engineerModel.enDomicile != null ? engineerModel.enDomicile : @string/en_domicile_not_set}"
                             android:textAlignment="center"
                             android:textColor="@color/gray"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            tools:text="Domicile" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tv_job_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:text="@string/freelance"
-                        android:textAlignment="center"
-                        android:textColor="@color/gray"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ln_domicile" />
 
                     <TextView
                         android:id="@+id/tv_description"
@@ -130,14 +153,17 @@
                         android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-condensed"
                         android:justificationMode="inter_word"
-                        android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_vestibulum_erat_orci_mollis_nec_gravida_sed_ornare_quis_urna_curabitur_eu_lacus_fringilla_vestibulum_risus_at"
+                        android:text="@{engineerModel.enDescription != null ? engineerModel.enDescription : @string/en_description_not_set}"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_job_type"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintTop_toBottomOf="@+id/ln_domicile"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="Description" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -165,7 +191,7 @@
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="16dp"
                         android:fontFamily="sans-serif-thin"
-                        android:text="Contact"
+                        android:text="@string/contact"
                         android:textAlignment="textStart"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -208,10 +234,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="miqdad.ihbs71777@gmail.com"
+                            android:text="@{accountModel.acEmail}"
                             android:textAlignment="textStart"
                             android:textColor="@color/gray"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            tools:text="Email" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -238,7 +265,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="miqdad71"
+                            android:text="@string/miqdad71"
                             android:textAlignment="textStart"
                             android:textColor="@color/gray"
                             android:textSize="16sp" />
@@ -268,7 +295,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="miqdad_aja7"
+                            android:text="@string/miqdad_aja7"
                             android:textAlignment="textStart"
                             android:textColor="@color/gray"
                             android:textSize="16sp" />
@@ -300,13 +327,14 @@
                             android:layout_marginHorizontal="16dp"
                             android:layout_marginBottom="16dp"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="\@miqdad.ihbs71777"
+                            android:text="@string/miqdad_ihbs71777"
                             android:textAlignment="textStart"
                             android:textColor="@color/gray"
                             android:textSize="16sp" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -363,6 +391,39 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_skill" />
 
+                    <TextView
+                        android:id="@+id/tv_data_not_found"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="sans-serif"
+                        android:text="@{dataNotFound}"
+                        android:textAlignment="center"
+                        android:textColor="@color/gray_500"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/v_divider_skill" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/maincolor"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/v_divider_skill" />
+
                     <com.google.android.flexbox.FlexboxLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -381,7 +442,9 @@
                             android:layout_height="wrap_content"
                             android:nestedScrollingEnabled="false" />
                     </com.google.android.flexbox.FlexboxLayout>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView

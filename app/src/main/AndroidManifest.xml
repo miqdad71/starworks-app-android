@@ -4,37 +4,51 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_starworks"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_starworks_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activity.detail.engineer.ProjectDetailActivity"
+            android:name=".ui.activity.detail.company.ProjectDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
+
         <activity
             android:name=".ui.activity.main.company.AddProjectActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
+
         <activity
             android:name=".ui.activity.detail.company.HireCompanyActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
+
         <activity
-            android:name=".ui.activity.detail.company.ProfileDetailActivity"
+            android:name=".ui.activity.detail.engineer.ProfileEngineerDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
+
         <activity android:name=".example.ListEngineerActivity" />
+
         <activity android:name=".ui.webview.WebViewActivity" />
+
         <activity android:name=".ui.adapter.engineer.EngineerLayoutActivity" />
+
         <activity android:name=".example.dialog.DialogActivity" />
+
         <activity
             android:name=".ui.activity.main.engineer.EngineerMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
+
         <activity
             android:name=".ui.activity.main.company.CompanyMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
+
         <activity android:name=".ui.activity.signup.SignUpActivity" />
         <activity android:name=".ui.activity.forgetpassword.ForgetPasswordVerifyActivity" />
         <activity android:name=".ui.activity.forgetpassword.ForgetPasswordActivity" />

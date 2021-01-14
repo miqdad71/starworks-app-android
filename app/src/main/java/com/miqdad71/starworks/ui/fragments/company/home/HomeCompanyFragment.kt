@@ -16,7 +16,7 @@ import com.miqdad71.starworks.data.model.account.AccountModel
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.databinding.FragmentHomeCompanyBinding
 import com.miqdad71.starworks.data.remote.ApiClient
-import com.miqdad71.starworks.ui.activity.detail.company.ProfileDetailActivity
+import com.miqdad71.starworks.ui.activity.detail.engineer.ProfileEngineerDetailActivity
 import com.miqdad71.starworks.ui.adapter.company.home.HomeCompanyAdapter
 import com.miqdad71.starworks.util.SharedPreference
 import com.miqdad71.starworks.util.SharedPreference.Companion.AC_NAME
@@ -53,7 +53,7 @@ class HomeCompanyFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : HomeCompanyAdapter.OnItemClickCallback {
             override fun onItemClick(data: EngineerModel) {
-                val intent = Intent(activity, ProfileDetailActivity::class.java)
+                val intent = Intent(activity, ProfileEngineerDetailActivity::class.java)
                 intent.putExtra("en_id", data.enId)
                 intent.putExtra("ac_id", data.acId)
                 intent.putExtra("ac_name", data.acName)

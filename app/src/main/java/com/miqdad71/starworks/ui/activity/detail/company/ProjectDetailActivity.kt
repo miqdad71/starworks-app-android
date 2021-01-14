@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.activity.detail.engineer
+package com.miqdad71.starworks.ui.activity.detail.company
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,13 +7,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.data.model.hire.HireModel
 import com.miqdad71.starworks.data.model.hire.HireResponse
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityProjectDetailBinding
 import com.miqdad71.starworks.serviceapi.HireAPI
-import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*
 
@@ -23,18 +21,23 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var coroutineScope: CoroutineScope
     private lateinit var sharedPref: SharedPreference
     private var hrId: Int? = 0
+    private var hrStatus: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_project_detail)
         
         hrId = intent.getIntExtra("hr_id", 0)
+        hrStatus = intent.getStringExtra("hr_status")
+        if (hrStatus != "wait") {
+            binding.btnApprove.visibility = View.GONE
+            binding.btnReject.visibility = View.GONE
+        }
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
         sharedPref = SharedPreference(this)
-        
-        
-        setHire()
+
         setToolbarActionBar()
+        setHire()
 
     }
     
@@ -66,7 +69,7 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
         approveProject(hrId = intent.getIntExtra("hr_id", 0), hrStatus = "reject")
     }
 
-    fun approveProject(hrId: Int, hrStatus: String) {
+    private fun approveProject(hrId: Int, hrStatus: String) {
         val service = ApiClient.getApiClient(this).create(HireAPI::class.java)
         coroutineScope.launch {
             val res = withContext(Dispatchers.IO) {
@@ -78,6 +81,7 @@ class ProjectDetailActivity : AppCompatActivity(), View.OnClickListener {
                     )
 
                 } catch (t: Exception) {
+                    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
                     Log.e("Error", t.localizedMessage)
                 }
             }

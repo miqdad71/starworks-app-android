@@ -2,9 +2,7 @@ package com.miqdad71.starworks.serviceapi
 
 import com.miqdad71.starworks.data.model.account.AccountResponse
 import com.miqdad71.starworks.data.model.account.LoginResponse
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface AccountAPI {
     @FormUrlEncoded
@@ -37,4 +35,24 @@ interface AccountAPI {
         @Field("cn_company") cnCompany: String,
         @Field("cn_position") cnPosition: String
     ): AccountResponse
+
+    @FormUrlEncoded
+    @PUT("account/{acId}")
+    suspend fun updateAccount(
+        @Path("acId") acId: Int,
+        @FieldMap fields: Map<String, String>
+    ): AccountResponse
+
+    @FormUrlEncoded
+    @PUT("account/password/{acId}")
+    suspend fun resetPassword(
+        @Path("acId") acId: Int,
+        @Field("ac_password") acPassword: String
+    ): AccountResponse
+
+    @GET("account/detail/{acId}")
+    suspend fun detailAccount(
+        @Path("acId") acId: Int
+    ): AccountResponse
+
 }

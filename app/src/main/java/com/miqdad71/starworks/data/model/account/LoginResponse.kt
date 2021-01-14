@@ -19,6 +19,18 @@ data class LoginResponse(val success: Boolean, val message: String, val data: Lo
         @SerializedName("ac_email")
         val acEmail: String,
 
+        @SerializedName("en_job_title")
+        val enJobTitle: String,
+
+        @SerializedName("en_job_type")
+        val enJobType: String,
+
+        @SerializedName("en_domicile")
+        val enDomicile: String,
+
+        @SerializedName("en_description")
+        val enDescription: String,
+
         @SerializedName("ac_phone")
         val acPhone: String,
 

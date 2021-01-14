@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         loginAccount()
     }
 
-    fun loginAccount() {
+    private fun loginAccount() {
         val api = ApiClient.getApiClient(this).create(AccountAPI::class.java)
         coroutineScope.launch {
             val res = withContext(Dispatchers.IO) {
@@ -87,6 +87,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     )
 
                 } catch (t: Exception) {
+                    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
                     Log.e("Error", t.localizedMessage)
                 }
             }

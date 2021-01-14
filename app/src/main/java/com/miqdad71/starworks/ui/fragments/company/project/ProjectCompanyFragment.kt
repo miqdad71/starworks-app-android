@@ -15,7 +15,7 @@ import com.miqdad71.starworks.data.model.project.ProjectModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentProjectCompanyBinding
 import com.miqdad71.starworks.serviceapi.ProjectAPI
-import com.miqdad71.starworks.ui.activity.detail.engineer.ProjectDetailActivity
+import com.miqdad71.starworks.ui.activity.detail.company.ProjectDetailActivity
 import com.miqdad71.starworks.ui.activity.main.company.AddProjectActivity
 import com.miqdad71.starworks.ui.adapter.company.project.CompanyProjectAdapter
 import com.miqdad71.starworks.util.SharedPreference

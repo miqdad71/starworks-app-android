@@ -2,7 +2,7 @@ package com.miqdad71.starworks.data.model.company
 
 import com.google.gson.annotations.SerializedName
 
-class CompanyResponse(val success: String, val message: String, val data: ArrayList<CompanyItem>) {
+class CompanyResponse(val success: String, val message: String, val data: List<CompanyItem>) {
     data class CompanyItem(
         @SerializedName("cn_id")
         val cnId: Int,

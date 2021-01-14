@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.activity.detail.company
+package com.miqdad71.starworks.ui.activity.detail.engineer
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,9 +10,10 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityProfileDetailBinding
+import com.miqdad71.starworks.ui.activity.detail.company.HireCompanyActivity
 import kotlinx.android.synthetic.main.activity_profile_detail.*
 
-class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
+class ProfileEngineerDetailActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityProfileDetailBinding
 
@@ -22,9 +23,9 @@ class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile_detail)
         setToolbarActionBar()
+
         enId = intent.getIntExtra("en_id", 0)
-        Log.d("msg", "ID ENNGINEER: $enId")
-        setToolbarActionBar()
+        Log.d("msg", "ID ENGINEER: $enId")
         setEngineer()
 
         /*initViewPager()
@@ -35,7 +36,7 @@ class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_hire -> {
-                val intent = Intent(this@ProfileDetailActivity, HireCompanyActivity::class.java)
+                val intent = Intent(this@ProfileEngineerDetailActivity, HireCompanyActivity::class.java)
                 intent.putExtra("en_id", enId)
                 startActivity(intent)
             }
@@ -77,7 +78,7 @@ class ProfileDetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setSkillRecyclerView() {
-        binding.rvSkill.layoutManager = FlexboxLayoutManager(this@ProfileDetailActivity)
+        binding.rvSkill.layoutManager = FlexboxLayoutManager(this@ProfileEngineerDetailActivity)
 
         val adapter = ProfileSkillAdapter()
         binding.rvSkill.adapter = adapter

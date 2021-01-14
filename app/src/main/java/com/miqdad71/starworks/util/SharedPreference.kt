@@ -1,8 +1,10 @@
 package com.miqdad71.starworks.util
 
+import android.content.ClipDescription
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.icu.text.CaseMap
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
 
 class SharedPreference(context: Context) {
@@ -11,6 +13,9 @@ class SharedPreference(context: Context) {
         const val PREF_NAME = "PREF_NAME"
         const val AC_EMAIL = "AC_EMAIL"
         const val AC_NAME = "AC_NAME"
+        const val AC_PHONE = "AC_PHONE"
+
+
         const val AC_ID = "AC_ID"
         const val EN_ID = "EN_ID"
         const val CN_ID = "CN_ID"
@@ -18,6 +23,21 @@ class SharedPreference(context: Context) {
         const val AC_LEVEL = "AC_LEVEL"
         const val LOGIN = "isLogin"
         const val AC_DETAIL = "AC_DETAIL"
+
+        const val EN_JOB_TITLE = "EN_JOB_TITLE"
+        const val EN_JOB_TYPE = "EN_JOB_TYPE"
+        const val EN_DOMICILE = "EN_DOMICILE"
+        const val EN_DESCRIPTION = "EN_DESCRIPTION"
+
+        const val CN_COMPANY = "CN_COMPANY"
+        const val CN_POSITION = "CN_POSITION"
+        const val CN_FIELD = "CN_FIELD"
+        const val CN_CITY = "CN_CITY"
+        const val CN_DESCRIPTION = "CN_DESCRIPTION"
+        const val CN_INSTAGRAM = "CN_INSTAGRAM"
+        const val CN_LINKEDIN = "CN_LINKEDIN"
+        const val CN_PROFILE = "CN_PROFILE"
+
     }
 
     private val sharedPreferences: SharedPreferences =
@@ -28,30 +48,6 @@ class SharedPreference(context: Context) {
         editor.putInt(AC_DETAIL, acDetail)
         editor.commit()
     }
-
-//    fun createAccountUser(
-//        id: Int,
-//        acId: Int,
-//        acLevel: Int,
-//        acName: String,
-//        acEmail: String,
-//        token: String
-//    ) {
-//        editor.putBoolean(LOGIN, true)
-//        editor.putInt(AC_LEVEL, acLevel)
-//        editor.putString(AC_NAME, acName)
-//        editor.putString(AC_EMAIL, acEmail)
-//        editor.putString(TOKEN, token)
-//        editor.putInt(AC_ID, acId)
-//
-//        if (acLevel == 0) {
-//            editor.putInt(EN_ID, id)
-//        } else {
-//            editor.putInt(CN_ID, id)
-//        }
-//
-//        editor.commit()
-//    }
 
     fun getAccountUser(): HashMap<String, String> {
         val user: HashMap<String, String> = HashMap()
@@ -71,6 +67,7 @@ class SharedPreference(context: Context) {
     fun getToken(): String? {
         return sharedPreferences.getString(TOKEN, "Not Set")
     }
+
     fun getLevelUser(): Int {
         return sharedPreferences.getInt(AC_LEVEL, 0)
     }
@@ -96,16 +93,25 @@ class SharedPreference(context: Context) {
         return sharedPreferences.getInt(CN_ID, 0)
     }
 
-    fun setAccountEngineer(acName: String, acId: Int, enId: Int, acLevel: Int, acEmail: String) {
+    fun setAccountEngineer(
+        acName: String,
+        acId: Int,
+        enId: Int,
+        acLevel: Int,
+        acEmail: String
+
+    ) {
         val editor = sharedPreferences.edit()
         editor.putString(AC_NAME, acName)
         editor.putString(AC_EMAIL, acEmail)
+
         editor.putInt(AC_ID, acId)
         editor.putInt(EN_ID, enId)
         editor.putInt(AC_LEVEL, acLevel)
         editor.putBoolean(LOGIN, true)
         editor.apply()
     }
+
     fun setAccountCompany(acName: String, acId: Int, cnId: Int, acLevel: Int, acEmail: String) {
         val editor = sharedPreferences.edit()
         editor.putString(AC_NAME, acName)

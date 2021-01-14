@@ -1,6 +1,5 @@
 package com.miqdad71.starworks.ui.fragments.company.hire
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,7 +15,6 @@ import com.miqdad71.starworks.data.model.hire.HireModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentHireCompanyBinding
 import com.miqdad71.starworks.serviceapi.HireAPI
-import com.miqdad71.starworks.ui.activity.detail.engineer.ProjectDetailActivity
 import com.miqdad71.starworks.ui.adapter.company.hire.CompanyHireAdapter
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.CoroutineScope

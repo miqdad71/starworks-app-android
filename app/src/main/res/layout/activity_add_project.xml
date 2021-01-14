@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="imageUrl"-->
-<!--            type="String" />-->
-<!--    </data>-->
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,8 +10,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.activity.main.company.AddProjectActivity"
-            >
+            tools:context=".ui.activity.main.company.AddProjectActivity">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -214,18 +207,6 @@
                     android:scaleType="centerCrop"
                     android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/iv_image_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="275dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="18dp"
-                    android:contentDescription="@string/img_background"
-                    android:onClick="onClick"
-                    android:scaleType="centerCrop"
-                    android:visibility="gone"
-                    />
-<!--                app:loadImage="@{imageUrl}"-->
 
                 <ImageButton
                     android:id="@+id/ib_choose_image"

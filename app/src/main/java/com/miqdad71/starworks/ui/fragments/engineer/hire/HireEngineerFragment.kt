@@ -15,7 +15,7 @@ import com.miqdad71.starworks.serviceapi.HireAPI
 import com.miqdad71.starworks.data.model.hire.HireModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentHireEngineerBinding
-import com.miqdad71.starworks.ui.activity.detail.engineer.ProjectDetailActivity
+import com.miqdad71.starworks.ui.activity.detail.company.ProjectDetailActivity
 import com.miqdad71.starworks.ui.adapter.engineer.EngineerProjectAdapter
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*

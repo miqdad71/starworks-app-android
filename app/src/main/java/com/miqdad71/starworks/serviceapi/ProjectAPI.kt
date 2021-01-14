@@ -11,14 +11,14 @@ interface ProjectAPI {
         @Path("cnId") cnId: Int
     ): ProjectResponse
 
-    @FormUrlEncoded
+    @Multipart
     @POST("project")
     suspend fun createProject(
-        @Field("cn_id") cnId: Int,
-        @Field("pj_project_name") pjProjectName: String,
-        @Field("pj_description") pjDescription: String,
-        @Field("pj_deadline") pjDeadline: String,
-        @Field ("image") image: String? = null
+        @Part("cn_id") cnId: RequestBody,
+        @Part("pj_project_name") pjProjectName: RequestBody,
+        @Part("pj_description") pjDescription: RequestBody,
+        @Part("pj_deadline") pjDeadline: RequestBody,
+        @Part image: MultipartBody.Part
     ): ProjectResponse
 
     @Multipart

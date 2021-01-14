@@ -2,8 +2,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.activity.detail.company.ProfileDetailActivity"
-    >
+    tools:context=".ui.activity.detail.engineer.ProfileEngineerDetailActivity">
+
     <data>
 
         <variable
@@ -29,7 +29,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background="@android:color/holo_orange_light"
+                android:background="@color/maincolor"
                 android:elevation="8dp"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,8 +64,7 @@
                         android:src="@drawable/img_profile_miqdad"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -93,13 +92,13 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:textAlignment="center"
                         android:text="@{engineer.enJobTitle != null ? engineer.enJobTitle : @string/en_job_title_not_set}"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:text="Job Title"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                        tools:text="Job Title" />
 
                     <LinearLayout
                         android:id="@+id/ln_domicile"
@@ -122,8 +121,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/gray"
                             android:textSize="16sp"
-                            tools:text="Domicile"
-                            />
+                            tools:text="Domicile" />
 
                     </LinearLayout>
 
@@ -140,8 +138,7 @@
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ln_domicile"
-                        tools:text="Job Type"
-                        />
+                        tools:text="Job Type" />
 
                     <TextView
                         android:id="@+id/tv_description"
@@ -151,16 +148,15 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@{engineer.enDescription != null ? engineer.enDescription : @string/en_description_not_set}"
                         android:justificationMode="inter_word"
+                        android:text="@{engineer.enDescription != null ? engineer.enDescription : @string/en_description_not_set}"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_job_type"
                         app:layout_constraintVertical_bias="0.0"
-                        tools:text="Descrption"
-                        />
+                        tools:text="Descrption" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
