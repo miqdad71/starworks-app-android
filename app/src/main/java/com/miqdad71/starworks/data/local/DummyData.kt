@@ -1,6 +1,7 @@
 package com.miqdad71.starworks.data.model
 
 import com.miqdad71.starworks.R
+import com.miqdad71.starworks.data.local.Experience
 
 object Databases {
     private val portfolio = intArrayOf(

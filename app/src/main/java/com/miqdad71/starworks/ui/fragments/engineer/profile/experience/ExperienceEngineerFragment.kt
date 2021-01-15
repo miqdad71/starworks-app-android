@@ -11,7 +11,7 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.FragmentExperienceBinding
 import com.miqdad71.starworks.ui.adapter.experience.ListExperienceRecycleViewAdapter
 import com.miqdad71.starworks.data.model.Databases
-import com.miqdad71.starworks.data.model.Experience
+import com.miqdad71.starworks.data.local.Experience
 
 class ExperienceEngineerFragment : Fragment() {
 

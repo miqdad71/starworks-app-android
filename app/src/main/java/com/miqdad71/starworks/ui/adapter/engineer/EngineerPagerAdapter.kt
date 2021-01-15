@@ -6,21 +6,29 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.miqdad71.starworks.ui.fragments.engineer.profile.experience.ExperienceEngineerFragment
 import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment
 
-class EngineerPagerAdapter(fragmentManager: FragmentManager) :
-    FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-
-    private val tabTitle = arrayOf("Portfolio", "Experience")
-    private val fragment = arrayOf(PortfolioEngineerFragment(), ExperienceEngineerFragment())
-
-    override fun getCount(): Int = tabTitle.size
+class EngineerPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    private val mFragmentList: MutableList<Fragment> = ArrayList()
+    private val mFragmentTitleList: MutableList<String> = ArrayList()
 
     override fun getItem(position: Int): Fragment {
-        return fragment[position]
+        return mFragmentList[position]
+    }
+
+    override fun getCount(): Int {
+        return mFragmentList.size
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        return tabTitle[position]
+        return mFragmentTitleList[position]
     }
 
+    fun addFrag(fragment: Fragment) {
+        mFragmentList.add(fragment)
+        mFragmentTitleList.add("")
+    }
 
+    fun addFrag(fragment: Fragment, title: String) {
+        mFragmentList.add(fragment)
+        mFragmentTitleList.add(title)
+    }
 }

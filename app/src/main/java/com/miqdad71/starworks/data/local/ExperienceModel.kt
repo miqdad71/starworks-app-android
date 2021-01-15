@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.data.model
+package com.miqdad71.starworks.data.local
 
 data class Experience(
     val image: Int,

@@ -54,4 +54,20 @@ class SkillViewModel : ViewModel(), CoroutineScope {
             }
         }
     }
+
+    fun deleteAPI(
+        skId: Int
+    ) {
+        launch {
+            try {
+                service.deleteSkill(
+                    skId = skId
+                )
+                onSuccessLiveData.value = true
+            } catch (e: HttpException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
 }

@@ -72,7 +72,9 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-                    <!--                    app:loadImage="@{imageUrl}"-->
+<!--                    app:loadImage="@{imageUrl}"-->
+
+
                     <TextView
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
@@ -504,10 +506,10 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.miqdad71.starworks.util.WrapContentViewPager
+                    <androidx.viewpager.widget.ViewPager
                         android:id="@+id/view_pager"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="500dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tab_layout" />

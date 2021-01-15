@@ -140,4 +140,5 @@
     <string name="eamwme">eamwme</string>
     <string name="image_phone">Image Phone</string>
     <string name="edit_skill">Edit Skill</string>
+    <string name="delete_skill">Delete Skill</string>
 </resources>

@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemEngineerExperienceBinding
-import com.miqdad71.starworks.data.model.Experience
+import com.miqdad71.starworks.data.local.Experience
 import kotlin.collections.ArrayList
 
 class ListExperienceRecycleViewAdapter(private val listExperience: ArrayList<Experience>) :

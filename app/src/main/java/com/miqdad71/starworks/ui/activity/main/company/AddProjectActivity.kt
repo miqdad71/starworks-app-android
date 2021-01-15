@@ -36,9 +36,9 @@ import java.util.*
 
 class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityAddProjectBinding
+
     private lateinit var preference: SharedPreference
     private lateinit var userDetail: HashMap<String, String>
-
     private lateinit var viewModel: ProjectViewModel
     private lateinit var myCalendar: Calendar
     private lateinit var deadline: DatePickerDialog.OnDateSetListener
@@ -81,6 +81,15 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
         deadlineProject()
         setViewModel()
         subscribeLiveData()
+    }
+
+    private fun setToolbarActionBar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Add Project"
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onClick(v: View?) {
@@ -191,14 +200,6 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
         return realPath
     }
 
-    private fun setToolbarActionBar() {
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Add Project"
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
-    }
 
     private fun setDataFromIntent() {
         if (pjId != 0) {

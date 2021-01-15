@@ -24,8 +24,8 @@ import kotlinx.coroutines.*
 class ProjectCompanyFragment : Fragment() {
 
     private lateinit var binding: FragmentProjectCompanyBinding
-    private lateinit var coroutineScope: CoroutineScope
 
+    private lateinit var coroutineScope: CoroutineScope
     private lateinit var sharedPref: SharedPreference
     private lateinit var service: ProjectAPI
 
@@ -39,8 +39,7 @@ class ProjectCompanyFragment : Fragment() {
 
         sharedPref = SharedPreference(requireContext())
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-        service = ApiClient.getApiClient(requireActivity())
-            .create(ProjectAPI::class.java)
+        service = ApiClient.getApiClient(requireActivity()).create(ProjectAPI::class.java)
 
         binding.btnCreateProject.setOnClickListener {
             val intent = Intent(activity, AddProjectActivity::class.java)
@@ -68,7 +67,6 @@ class ProjectCompanyFragment : Fragment() {
         getAllProject()
 
         return binding.root
-
     }
 
 

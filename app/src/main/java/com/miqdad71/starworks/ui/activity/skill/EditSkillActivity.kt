@@ -42,10 +42,12 @@ class EditSkillActivity : AppCompatActivity(), View.OnClickListener {
             onBackPressed()
         }
     }
+
     private fun setViewModel() {
         viewModel = ViewModelProvider(this).get(SkillViewModel::class.java)
         viewModel.setService(createApi(this))
     }
+
     private fun subscribeLiveData() {
         viewModel.onSuccessLiveData.observe(this) {
             if (it) {
@@ -73,9 +75,13 @@ class EditSkillActivity : AppCompatActivity(), View.OnClickListener {
                     skId = skId!!,
                     skSkillName = skSkillName
                 )
+                finish()
             }
-            R.id.ln_back -> {
-                this@EditSkillActivity.finish()
+            R.id.btn_delete_skill -> {
+                viewModel.deleteAPI(
+                    skId = skId!!
+                )
+                finish()
             }
         }
     }

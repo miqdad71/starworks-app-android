@@ -7,12 +7,14 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.account.AccountModel
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.data.model.skill.SkillModel
 import com.miqdad71.starworks.data.remote.ApiClient
+import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE
 import com.miqdad71.starworks.databinding.FragmentProfileEngineerBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.EngineerAPI
@@ -21,8 +23,11 @@ import com.miqdad71.starworks.ui.activity.skill.EditSkillActivity
 import com.miqdad71.starworks.ui.activity.skill.SkillActivity
 import com.miqdad71.starworks.ui.adapter.engineer.EngineerPagerAdapter
 import com.miqdad71.starworks.ui.adapter.skill.ProfileSkillAdapter
+import com.miqdad71.starworks.ui.fragments.engineer.profile.experience.ExperienceEngineerFragment
+import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment
 import com.miqdad71.starworks.ui.webview.WebViewActivity
 import com.miqdad71.starworks.util.SharedPreference
+import com.miqdad71.starworks.util.ViewPagerAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -39,20 +44,20 @@ class ProfileEngineerFragment : Fragment() {
     private lateinit var serviceEngineer: EngineerAPI
     private lateinit var serviceSkill: SkillAPI
 
-    private lateinit var adapter: EngineerPagerAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         sharedPref = SharedPreference(requireActivity())
         userDetail = sharedPref.getAccountUser()
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -76,12 +81,14 @@ class ProfileEngineerFragment : Fragment() {
             acPhone = "${userDetail[SharedPreference.AC_PHONE]}"
         )
 
-        binding.engineerModel = EngineerModel(
-            enJobTitle = "${userDetail[SharedPreference.EN_JOB_TITLE]}",
-            enJobType = "${userDetail[SharedPreference.EN_JOB_TYPE]}",
-            enDomicile = "${userDetail[SharedPreference.EN_DOMICILE]}",
-            enDescription = "${userDetail[SharedPreference.EN_DESCRIPTION]}"
-        )
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        val adapterPager = ViewPagerAdapter(parentFragmentManager)
+
+        adapterPager.addFrag(PortfolioEngineerFragment(), "Portfolio")
+        adapterPager.addFrag(ExperienceEngineerFragment(), "Experience")
+        binding.viewPager.adapter = adapterPager
+
+
         setToolbarActionBar()
         getDataUser()
 
@@ -89,6 +96,7 @@ class ProfileEngineerFragment : Fragment() {
 
         val adapter = ProfileSkillAdapter()
         binding.rvSkill.adapter = adapter
+
 
         adapter.setOnItemClickCallback(object: ProfileSkillAdapter.OnItemClickCallback {
             override fun onItemClick(data: SkillModel) {
@@ -100,9 +108,6 @@ class ProfileEngineerFragment : Fragment() {
         })
 
         getAllSkill()
-
-
-        return binding.root
     }
 
     private fun setToolbarActionBar() {
@@ -111,7 +116,6 @@ class ProfileEngineerFragment : Fragment() {
         tb.setSupportActionBar(binding.toolbar)
         tb.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         tb.supportActionBar?.title = ""
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -120,7 +124,6 @@ class ProfileEngineerFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         return when(item.itemId){
             R.id.miSetting -> {
                 Log.d("Message : ", " Setting ")
@@ -149,21 +152,14 @@ class ProfileEngineerFragment : Fragment() {
                     enDomicile = dataFromResult.enDomicile,
                     enDescription = dataFromResult.enDescription
                 )
-
+                Glide.with(this@ProfileEngineerFragment).load(BASE_URL_IMAGE + dataFromResult.enProfile).placeholder(R.drawable.img_profile_miqdad).into(binding.ivImageProfile)
             } catch (e: Throwable) {
                 Log.d("message", e.toString())
             }
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        @Suppress("DEPRECATION")
-        adapter = EngineerPagerAdapter(requireFragmentManager())
-        binding.viewPager.adapter = adapter
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
-    }
 
     private fun getAllSkill() {
 
