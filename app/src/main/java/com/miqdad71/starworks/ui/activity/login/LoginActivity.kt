@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
         supportActionBar?.hide()
+        @Suppress("DEPRECATION")
         window.setFlags(
             WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
             WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
@@ -105,10 +106,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                             acId = data.acId,
                             enId = data.enId,
                             acLevel = data.acLevel,
-                            acEmail = data.acEmail
+                            acEmail = data.acEmail,
+                            acPhone = data.acPhone
                         )
-                        val sendIntent =
-                            Intent(this@LoginActivity, EngineerMainActivity::class.java)
+                        val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
                         startActivity(sendIntent)
                         this@LoginActivity.finish()
                     }

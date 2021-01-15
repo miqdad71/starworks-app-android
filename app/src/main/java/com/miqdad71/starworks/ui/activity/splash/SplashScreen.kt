@@ -7,9 +7,14 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.ui.activity.OnboardActivity
+import com.miqdad71.starworks.ui.activity.main.company.CompanyMainActivity
+import com.miqdad71.starworks.ui.activity.main.engineer.EngineerMainActivity
+import com.miqdad71.starworks.util.SharedPreference
 
 
 class SplashScreen : AppCompatActivity() {
+    private lateinit var sharedPref: SharedPreference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -18,12 +23,17 @@ class SplashScreen : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         )
 
-        //menghilangkan ActionBar
+        sharedPref = SharedPreference(this)
+
         setContentView(R.layout.activity_splash_screen)
-        val handler = Handler()
-        handler.postDelayed({
-            startActivity(Intent(applicationContext, OnboardActivity::class.java))
+        Handler().postDelayed({
+
+            if (sharedPref.getIsLogin() && sharedPref.getLevelUser() == 0){
+                startActivity(Intent(applicationContext, EngineerMainActivity::class.java))
+            } else {
+                startActivity(Intent(applicationContext, CompanyMainActivity::class.java))
+            }
             finish()
-        }, 3000L) //2000 L = 3 detik
+        }, 3000)
     }
 }

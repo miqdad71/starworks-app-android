@@ -6,12 +6,10 @@ import retrofit2.http.*
 
 interface AccountAPI {
     @FormUrlEncoded
-//    endpoint
     @POST("account/login")
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String
-
     ): LoginResponse
 
     @FormUrlEncoded

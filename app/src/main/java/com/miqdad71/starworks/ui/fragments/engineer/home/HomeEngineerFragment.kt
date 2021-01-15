@@ -37,12 +37,12 @@ class HomeEngineerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_engineer, container, false)
+
         sharedPref = SharedPreference(requireContext())
         userDetail = sharedPref.getAccountUser()
-
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
+
         service = ApiClient.getApiClient(requireActivity()).create(EngineerAPI::class.java)
         binding.accountModel = AccountModel(acName = "Hai, ${userDetail[SharedPreference.AC_NAME]}")
 

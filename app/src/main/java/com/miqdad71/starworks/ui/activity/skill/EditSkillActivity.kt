@@ -1,34 +1,37 @@
 package com.miqdad71.starworks.ui.activity.skill
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.remote.ApiClient
+import com.miqdad71.starworks.databinding.ActivityEditSkillBinding
 import com.miqdad71.starworks.databinding.ActivitySkillBinding
-import com.miqdad71.starworks.ui.activity.main.company.ProjectViewModel
 import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
 import com.miqdad71.starworks.util.SharedPreference
 
-class SkillActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding: ActivitySkillBinding
+class EditSkillActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityEditSkillBinding
 
     private lateinit var preference: SharedPreference
     private lateinit var viewModel: SkillViewModel
+    private var skId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_skill)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_skill)
         super.onCreate(savedInstanceState)
         preference = SharedPreference(this)
+        skId = intent.getIntExtra("sk_id", 0)
+
+        binding.etSkill.setText(intent.getStringExtra("sk_skill_name"))
 
         setToolbarActionBar()
         setViewModel()
         subscribeLiveData()
-
     }
 
     private fun setToolbarActionBar() {
@@ -59,20 +62,20 @@ class SkillActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_add_skill -> {
+            R.id.btn_edit_skill -> {
                 val skSkillName = binding.etSkill.text.toString()
                 if (skSkillName.isEmpty()) {
                     binding.etSkill.error = SignUpActivity.FIELD_REQUIRED
                     return
                 }
 
-                viewModel.createAPI(
-                    enId = preference.getIdEngineer(),
+                viewModel.updateAPI(
+                    skId = skId!!,
                     skSkillName = skSkillName
                 )
             }
             R.id.ln_back -> {
-                this@SkillActivity.finish()
+                this@EditSkillActivity.finish()
             }
         }
     }

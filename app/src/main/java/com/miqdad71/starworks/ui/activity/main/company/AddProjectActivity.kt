@@ -125,24 +125,6 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /*override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            PERMISSION_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] ==
-                    PackageManager.PERMISSION_GRANTED
-                ) {
-                    pickImageFromGallery()
-                } else {
-                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }*/
-
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -154,7 +136,6 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
 
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             binding.ibChooseImage.setImageURI(data?.data)
-            val filePath = data?.data?.let { getPath(this, it) }
             pathImage = getPath(this, data?.data!!)
         }
     }

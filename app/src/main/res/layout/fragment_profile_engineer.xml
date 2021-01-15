@@ -211,7 +211,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_contact" />
 
                     <LinearLayout
-                        android:id="@+id/ln_email"
+                        android:id="@+id/ln_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
@@ -229,7 +229,7 @@
                             android:src="@drawable/ic_email" />
 
                         <TextView
-                            android:id="@+id/tv_email"
+                            android:id="@+id/tv_phone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
@@ -239,6 +239,37 @@
                             android:textColor="@color/gray"
                             android:textSize="16sp"
                             tools:text="Email" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ln_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ln_phone"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="@string/image_phone"
+                            android:src="@drawable/ic_phone" />
+
+                        <TextView
+                            android:id="@+id/tv_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="16dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:text="@{accountModel.acPhone}"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/gray"
+                            android:textSize="16sp"
+                            tools:text="Phone" />
                     </LinearLayout>
 
                     <LinearLayout

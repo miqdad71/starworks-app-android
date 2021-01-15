@@ -41,7 +41,8 @@
                     android:layout_marginTop="56dp"
                     android:src="@drawable/logo"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/my_logo" />
 
                 <TextView
                     android:id="@+id/tv_logo"

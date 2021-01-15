@@ -77,14 +77,14 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="20dp"
-                    android:gravity="center"
                     android:letterSpacing="0.1"
                     android:text="@{accountModel.acName}"
                     android:textColor="@color/white"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/tv_company"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_company" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_company"
+                    tools:text="Name User" />
 
                 <TextView
                     android:id="@+id/tv_web"
@@ -105,11 +105,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_web" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

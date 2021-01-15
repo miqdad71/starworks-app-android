@@ -1,20 +1,19 @@
 package com.miqdad71.starworks.util
 
-import android.content.ClipDescription
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.icu.text.CaseMap
-import com.miqdad71.starworks.data.model.engineer.EngineerModel
+import com.miqdad71.starworks.ui.activity.OnboardActivity
+import com.miqdad71.starworks.ui.activity.main.company.CompanyMainActivity
+import com.miqdad71.starworks.ui.activity.main.engineer.EngineerMainActivity
 
-class SharedPreference(context: Context) {
+class SharedPreference(private val context: Context) {
     companion object {
         const val TOKEN = "token"
         const val PREF_NAME = "PREF_NAME"
         const val AC_EMAIL = "AC_EMAIL"
         const val AC_NAME = "AC_NAME"
         const val AC_PHONE = "AC_PHONE"
-
 
         const val AC_ID = "AC_ID"
         const val EN_ID = "EN_ID"
@@ -53,6 +52,7 @@ class SharedPreference(context: Context) {
         val user: HashMap<String, String> = HashMap()
         user[AC_NAME] = sharedPreferences.getString(AC_NAME, "Not set")!!
         user[AC_EMAIL] = sharedPreferences.getString(AC_EMAIL, "Not set")!!
+        user[AC_PHONE] = sharedPreferences.getString(AC_PHONE, "Not set")!!
         user[TOKEN] = sharedPreferences.getString(TOKEN, "Not set")!!
 
         return user
@@ -93,21 +93,14 @@ class SharedPreference(context: Context) {
         return sharedPreferences.getInt(CN_ID, 0)
     }
 
-    fun setAccountEngineer(
-        acName: String,
-        acId: Int,
-        enId: Int,
-        acLevel: Int,
-        acEmail: String
-
-    ) {
+    fun setAccountEngineer(acName: String, acId: Int, enId: Int, acLevel: Int, acEmail: String, acPhone: String) {
         val editor = sharedPreferences.edit()
         editor.putString(AC_NAME, acName)
-        editor.putString(AC_EMAIL, acEmail)
-
         editor.putInt(AC_ID, acId)
         editor.putInt(EN_ID, enId)
         editor.putInt(AC_LEVEL, acLevel)
+        editor.putString(AC_EMAIL, acEmail)
+        editor.putString(AC_PHONE, acPhone)
         editor.putBoolean(LOGIN, true)
         editor.apply()
     }
@@ -123,11 +116,15 @@ class SharedPreference(context: Context) {
         editor.apply()
     }
 
-//    fun accountLogout() {
-//        editor.clear()
-//        editor.commit()
-//
-//        context.startActivity(Intent(context, OnboardingActivity::class.java))
-//        (context as MainActivity).finish()
-//    }
+    fun accountLogout() {
+        editor.clear()
+        editor.commit()
+
+        context.startActivity(Intent(context, OnboardActivity::class.java))
+        if (getLevelUser() == 0){
+            (context as EngineerMainActivity).finish()
+        } else {
+            (context as CompanyMainActivity).finish()
+        }
+    }
 }
