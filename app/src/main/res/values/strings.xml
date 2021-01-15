@@ -141,4 +141,5 @@
     <string name="image_phone">Image Phone</string>
     <string name="edit_skill">Edit Skill</string>
     <string name="delete_skill">Delete Skill</string>
+    <string name="please_fill_in_the_form_data_correctly">Please fill in the form data correctly</string>
 </resources>

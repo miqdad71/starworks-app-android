@@ -68,11 +68,10 @@
                         android:contentDescription="@string/img_profile"
                         android:orientation="horizontal"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img_profile_miqdad"
+                        android:src="@drawable/ic_backround_user"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-<!--                    app:loadImage="@{imageUrl}"-->
 
 
                     <TextView

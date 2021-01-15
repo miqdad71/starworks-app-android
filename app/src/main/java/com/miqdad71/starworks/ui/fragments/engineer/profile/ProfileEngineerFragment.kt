@@ -19,9 +19,10 @@ import com.miqdad71.starworks.databinding.FragmentProfileEngineerBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.EngineerAPI
 import com.miqdad71.starworks.serviceapi.SkillAPI
+import com.miqdad71.starworks.ui.activity.main.engineer.EngineerMainActivity
+import com.miqdad71.starworks.ui.activity.main.engineer.EngineerSettingActivity
 import com.miqdad71.starworks.ui.activity.skill.EditSkillActivity
 import com.miqdad71.starworks.ui.activity.skill.SkillActivity
-import com.miqdad71.starworks.ui.adapter.engineer.EngineerPagerAdapter
 import com.miqdad71.starworks.ui.adapter.skill.ProfileSkillAdapter
 import com.miqdad71.starworks.ui.fragments.engineer.profile.experience.ExperienceEngineerFragment
 import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment
@@ -126,7 +127,7 @@ class ProfileEngineerFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.miSetting -> {
-                Log.d("Message : ", " Setting ")
+                startActivity(Intent(context, EngineerSettingActivity::class.java))
                 true
             }
             R.id.miLogout -> {
@@ -152,14 +153,12 @@ class ProfileEngineerFragment : Fragment() {
                     enDomicile = dataFromResult.enDomicile,
                     enDescription = dataFromResult.enDescription
                 )
-                Glide.with(this@ProfileEngineerFragment).load(BASE_URL_IMAGE + dataFromResult.enProfile).placeholder(R.drawable.img_profile_miqdad).into(binding.ivImageProfile)
+                Glide.with(this@ProfileEngineerFragment).load(BASE_URL_IMAGE + dataFromResult.enProfile).placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
             } catch (e: Throwable) {
                 Log.d("message", e.toString())
             }
         }
     }
-
-
 
     private fun getAllSkill() {
 

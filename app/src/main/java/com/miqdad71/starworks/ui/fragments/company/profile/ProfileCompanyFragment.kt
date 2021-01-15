@@ -2,11 +2,11 @@ package com.miqdad71.starworks.ui.fragments.company.profile
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.account.AccountModel
 import com.miqdad71.starworks.data.model.company.CompanyModel
@@ -30,14 +30,20 @@ class ProfileCompanyFragment : Fragment() {
     private lateinit var serviceAccount: AccountAPI
     private lateinit var serviceCompany: CompanyAPI
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         sharedPref = SharedPreference(requireContext())
         userDetail = sharedPref.getAccountUser()
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -49,29 +55,44 @@ class ProfileCompanyFragment : Fragment() {
             acName = "${userDetail[SharedPreference.AC_NAME]}",
             acEmail = "${userDetail[SharedPreference.AC_EMAIL]}",
             acPhone = "${userDetail[SharedPreference.AC_PHONE]}"
-
         )
-
-        binding.companyModel = CompanyModel(
-            cn_company = "${userDetail[SharedPreference.CN_COMPANY]}",
-            cn_position = "${userDetail[SharedPreference.CN_POSITION]}",
-            cn_field = "${userDetail[SharedPreference.CN_FIELD]}",
-            cn_city = "${userDetail[SharedPreference.CN_CITY]}",
-            cn_description = "${userDetail[SharedPreference.CN_DESCRIPTION]}",
-            cn_instagram = "${userDetail[SharedPreference.CN_INSTAGRAM]}",
-            cn_linkedin = "${userDetail[SharedPreference.CN_LINKEDIN]}",
-            cn_profile = "${userDetail[SharedPreference.CN_PROFILE]}"
-        )
-
         getDataUser()
+        setToolbarActionBar()
+    }
 
-        return binding.root
+    private fun setToolbarActionBar() {
+        val tb = (activity as AppCompatActivity)
+
+        tb.setSupportActionBar(binding.toolbar)
+        tb.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        tb.supportActionBar?.title = ""
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_profile, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.miSetting -> {
+                Log.d("Message : ", " Setting ")
+                true
+            }
+            R.id.miLogout -> {
+                sharedPref.accountLogout()
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 
     private fun getDataUser() {
         coroutineScope.launch {
             try {
-                val resultData = serviceCompany.getDetailCompany(sharedPref.getIdCompany())
+                val resultData = serviceCompany.getDetailCompany(sharedPref.getIdAccount())
                 val dataFromResult = resultData.data[0]
                 Log.d("msg", "$dataFromResult")
 
@@ -85,6 +106,7 @@ class ProfileCompanyFragment : Fragment() {
                     cn_linkedin = dataFromResult.cnLinkedin,
                     cn_profile = dataFromResult.cnProfile
                 )
+                Glide.with(this@ProfileCompanyFragment).load(ApiClient.BASE_URL_IMAGE + dataFromResult.cnProfile).placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
             } catch (e: Throwable) {
                 Log.d("message", e.toString())
             }
@@ -92,3 +114,4 @@ class ProfileCompanyFragment : Fragment() {
     }
 
 }
+
