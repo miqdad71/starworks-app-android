@@ -36,11 +36,7 @@ class PortfolioEngineerFragment : Fragment() {
         const val INTENT_EDIT = 200
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_portfolio, container, false)
 
@@ -65,14 +61,11 @@ class PortfolioEngineerFragment : Fragment() {
                 startActivity(intent)
             }
         })*/
-
         getAllPortfolio()
-
         return binding.root
     }
 
     private fun getAllPortfolio() {
-
         coroutineScope.launch {
             try {
                 val resultData = service.getAllPortfolio(sharedPref.getIdEngineer())

@@ -83,7 +83,7 @@ class ProfileEngineerFragment : Fragment() {
         )
 
         binding.tabLayout.setupWithViewPager(binding.viewPager)
-        val adapterPager = ViewPagerAdapter(parentFragmentManager)
+        val adapterPager = ViewPagerAdapter(childFragmentManager)
 
         adapterPager.addFrag(PortfolioEngineerFragment(), "Portfolio")
         adapterPager.addFrag(ExperienceEngineerFragment(), "Experience")

@@ -5,7 +5,7 @@ import com.miqdad71.starworks.data.local.Experience
 
 object Databases {
     private val portfolio = intArrayOf(
-        R.drawable.portofolio1,
+        R.drawable.portfolio1,
         R.drawable.portofolio2,
         R.drawable.portofolio3,
         R.drawable.portofolio4,

@@ -55,20 +55,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_add_portfolio" />
 
             <TextView
-                android:id="@+id/tv_app"
+                android:id="@+id/tv_edit_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="40dp"
                 android:fontFamily="sans-serif"
-                android:text="@string/app_name_portfolio"
+                android:text="Name"
                 android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_instruction" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout_app"
+                android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -76,14 +77,130 @@
                 app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_app">
+                app:layout_constraintTop_toBottomOf="@+id/tv_edit_name">
 
                 <EditText
-                    android:id="@+id/et_app"
+                    android:id="@+id/et_edit_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_input_white"
-                    android:hint="@string/app_hint"
+                    android:hint="Your Name"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:padding="18dp"
+                    android:paddingBottom="10dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_job_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif"
+                android:text="Job Title"
+                android:textColor="@color/gray_500"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_name" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_job_title">
+
+                <EditText
+                    android:id="@+id/et_job_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_input_white"
+                    android:gravity="top"
+                    android:hint="Your Job Title"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:maxLength="5"
+                    android:minLines="5"
+                    android:padding="18dp"
+                    android:paddingBottom="10dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_job_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif"
+                android:text="Job Type"
+                android:textColor="@color/gray_500"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_layout_description" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_pub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_job_type">
+
+                <EditText
+                    android:id="@+id/et_job_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_input_white"
+                    android:gravity="top"
+                    android:hint="Your Job Type"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:padding="18dp"
+                    android:paddingBottom="10dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_domicile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif"
+                android:text="Domicile"
+                android:textColor="@color/gray_500"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_layout_pub" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_repo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingHorizontal="16dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_domicile">
+
+                <EditText
+                    android:id="@+id/et_domicile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/form_input_white"
+                    android:gravity="top"
+                    android:hint="Domicile"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="18dp"
@@ -98,14 +215,14 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
-                android:text="@string/description"
+                android:text="Description"
                 android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout_app" />
+                app:layout_constraintTop_toBottomOf="@+id/input_layout_repo" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout_description"
+                android:id="@+id/input_layout_workplace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -121,47 +238,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_input_white"
                     android:gravity="top"
-                    android:hint="@string/description_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="textMultiLine"
-                    android:maxLength="5"
-                    android:minLines="5"
-                    android:padding="18dp"
-                    android:paddingBottom="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tv_link_pub"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="18dp"
-                android:fontFamily="sans-serif"
-                android:text="@string/pub"
-                android:textColor="@color/gray_500"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout_description" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout_pub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingHorizontal="16dp"
-                app:hintEnabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_link_pub">
-
-                <EditText
-                    android:id="@+id/et_pub_link"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/form_input_white"
-                    android:gravity="top"
-                    android:hint="@string/link_pub_hint"
+                    android:hint="Short Description"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="18dp"
@@ -169,124 +246,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/tv_link_repo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="18dp"
-                android:fontFamily="sans-serif"
-                android:text="@string/repo"
-                android:textColor="@color/gray_500"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout_pub" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout_repo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingHorizontal="16dp"
-                app:hintEnabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_link_repo">
-
-                <EditText
-                    android:id="@+id/et_repo_link"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/form_input_white"
-                    android:gravity="top"
-                    android:hint="@string/link_repo_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:padding="18dp"
-                    android:paddingBottom="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tv_workplace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="18dp"
-                android:fontFamily="sans-serif"
-                android:text="@string/workplace"
-                android:textColor="@color/gray_500"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout_repo" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/input_layout_workplace"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingHorizontal="16dp"
-                app:hintEnabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_workplace">
-
-                <EditText
-                    android:id="@+id/et_work_place"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/form_input_white"
-                    android:gravity="top"
-                    android:hint="@string/work_place_hint"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    android:padding="18dp"
-                    android:paddingBottom="10dp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tv_portfolio_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="18dp"
-                android:fontFamily="sans-serif"
-                android:text="@string/portfolio_type"
-                android:textColor="@color/gray_500"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout_workplace" />
-
-            <RadioGroup
-                android:id="@+id/rg_portfolio_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:paddingHorizontal="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_portfolio_type">
-
-                <RadioButton
-                    android:id="@+id/rb_mobile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/mobile_application"
-                    android:textColor="@color/gray_500" />
-
-                <RadioButton
-                    android:id="@+id/rb_web"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/web_application"
-                    android:textColor="@color/gray_500" />
-
-            </RadioGroup>
-
+           
             <TextView
                 android:id="@+id/tv_image_upload"
                 android:layout_width="wrap_content"
@@ -298,7 +258,7 @@
                 android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rg_portfolio_type" />
+                app:layout_constraintTop_toBottomOf="@+id/input_layout_workplace" />
 
             <ImageButton
                 android:id="@+id/ib_choose_image"
@@ -316,7 +276,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_image_upload" />
 
             <Button
-                android:id="@+id/btn_add_portfolio"
+                android:id="@+id/btn_edit_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -324,7 +284,7 @@
                 android:backgroundTint="@color/btn_maincolor"
                 android:onClick="onClick"
                 android:padding="14dp"
-                android:text="@string/add_portfolio"
+                android:text="Update Profile"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -30,12 +30,12 @@
                     android:layout_height="200dp"
                     android:contentDescription="@string/img_background"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/portofolio1"
+                    android:src="@drawable/portfolio1"
                     android:transitionName="img"
                     />
 
                 <TextView
-                    android:id="@+id/tv_aplication_name"
+                    android:id="@+id/tv_application_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/iv_image_project"
@@ -51,7 +51,7 @@
                     android:id="@+id/tv_type_portfolio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_aplication_name"
+                    android:layout_below="@+id/tv_application_name"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="15dp"

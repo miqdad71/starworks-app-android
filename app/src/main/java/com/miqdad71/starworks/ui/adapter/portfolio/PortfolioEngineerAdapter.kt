@@ -23,7 +23,7 @@ class PortfolioEngineerAdapter: RecyclerView.Adapter<PortfolioEngineerAdapter.Re
     inner class RecyclerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun binding(portfolio: PortfolioModel) {
 
-            binding.tvAplicationName.text = portfolio.pr_app
+            binding.tvApplicationName.text = portfolio.pr_app
 
             if (portfolio.pr_type == "aplikasi mobile") {
                 binding.tvTypePortfolio.text = "Mobile"
