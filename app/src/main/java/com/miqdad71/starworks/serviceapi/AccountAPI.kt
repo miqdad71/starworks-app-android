@@ -38,8 +38,9 @@ interface AccountAPI {
     @PUT("account/{acId}")
     suspend fun updateAccount(
         @Path("acId") acId: Int,
-        @FieldMap fields: Map<String, String>
-    ): AccountResponse
+        @Field("ac_name") acName: String
+
+        ): AccountResponse
 
     @FormUrlEncoded
     @PUT("account/password/{acId}")

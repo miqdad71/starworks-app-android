@@ -321,7 +321,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/btn_maincolor"
+                android:backgroundTint="@color/btn_mainColor"
                 android:onClick="onClick"
                 android:padding="14dp"
                 android:text="@string/add_portfolio"
@@ -343,25 +343,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_add_skill"
-                tools:ignore="UseCompoundDrawables">
-
-                <!--                <ImageView-->
-                <!--                    android:layout_width="20dp"-->
-                <!--                    android:layout_height="20dp"-->
-                <!--                    android:layout_marginEnd="8dp"-->
-                <!--                    android:layout_marginBottom="24dp"-->
-                <!--                    android:contentDescription="@string/img_icon"-->
-                <!--                    android:src="@drawable/ic_arrow_left_gray" />-->
-
-                <!--                <TextView-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginBottom="24dp"-->
-                <!--                    android:fontFamily="sans-serif"-->
-                <!--                    android:text="@string/back_to_profile"-->
-                <!--                    android:textColor="@color/gray_500"-->
-                <!--                    android:textSize="14sp"-->
-                <!--                    android:textStyle="bold" />-->
+                tools:ignore="UnknownIdInLayout,UseCompoundDrawables">
 
             </LinearLayout>
 

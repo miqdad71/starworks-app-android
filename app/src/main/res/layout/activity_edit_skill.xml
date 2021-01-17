@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -9,8 +8,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -103,9 +101,8 @@
                 android:padding="14dp"
                 android:text="@string/add_skill"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout_skill"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/input_layout_skill" />
 
             <Button
                 android:id="@+id/btn_delete_skill"
@@ -119,9 +116,8 @@
                 android:padding="14dp"
                 android:text="@string/delete_skill"
                 android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@id/btn_edit_skill"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintTop_toBottomOf="@id/btn_edit_skill" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

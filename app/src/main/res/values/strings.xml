@@ -71,7 +71,6 @@
     <string name="add_portfolio">Add Portofolio</string>
     <string name="instruction_add_portfolio">Please fill the portfolio for add new portfolio below</string>
     <string name="app_name_portfolio">App Name</string>
-    <string name="description">Description</string>
     <string name="pub">Publication</string>
     <string name="repo">Repository</string>
     <string name="workplace">Workplace</string>
@@ -120,7 +119,7 @@
     <string name="freelance">Freelance</string>
     <string name="junior_android_developer">Junior Android Developer</string>
     <string name="gohipe_teknologi">PT. Wasa Mitra Engineering</string>
-    <string name="february_2021_oktober_2022">Januari 2018 - November 2020</string>
+    <string name="february_2021_october_2022">Januari 2018 - November 2020</string>
     <string name="total_months">22 Month</string>
     <string name="img_icon">IMG Icon</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -130,7 +129,6 @@
     <string name="Approve">Approve</string>
     <string name="floatingaction">Floating Action</string>
     <string name="approve">Approve</string>
-    <string name="waiting">Waiting</string>
     <string name="engineer_name">Engineer Name</string>
     <string name="miqdad_ihbs71777">miqdad.ihbs71777</string>
     <string name="miqdad_aja7">miqdad_aja7</string>
@@ -142,4 +140,17 @@
     <string name="edit_skill">Edit Skill</string>
     <string name="delete_skill">Delete Skill</string>
     <string name="please_fill_in_the_form_data_correctly">Please fill in the form data correctly</string>
+    <string name="name">Name</string>
+    <string name="your_name">Your Name</string>
+    <string name="job_title">Job Title</string>
+    <string name="your_job_title">Your Job Title</string>
+    <string name="job_type">Job Type</string>
+    <string name="your_job_type">Your Job Type</string>
+    <string name="domicile">Domicile</string>
+    <string name="description">Description</string>
+    <string name="short_description">Short Description</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="project_name">Project name</string>
+    <string name="message">Message</string>
+    <string name="waiting">Waiting</string>
 </resources>

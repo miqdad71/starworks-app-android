@@ -13,7 +13,7 @@
     <color name="color_favorite">#F51A51</color>
     <color name="ic_launcher_starworks_background">#FFFFFF</color>
     <color name="maincolor">#2B2B2B</color>
-    <color name="btn_maincolor">#FF9800</color>
+    <color name="btn_mainColor">#FF9800</color>
     <color name="gray">#837D8F</color>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorAccent">#EF5350</color>

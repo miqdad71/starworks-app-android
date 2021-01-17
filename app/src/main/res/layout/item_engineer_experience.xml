@@ -2,72 +2,79 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="experience"
+            type="com.miqdad71.starworks.data.model.experience.ExperienceModel" />
+
+        <variable
+            name="rangeDate"
+            type="String" />
+    </data>
+    
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/img_item_row_experience"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/logo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/linearLayout_item_row_engineer"
+            android:id="@+id/ln_exp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_item_row_experience"
-            app:layout_constraintTop_toTopOf="@+id/img_item_row_experience">
+            app:layout_constraintStart_toStartOf="parent"
+            >
 
             <TextView
-                android:id="@+id/tv_item_row_experience_job"
+                android:id="@+id/tv_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/junior_android_developer"
+                android:text="@{experience.ex_position}"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_item_row_experience_company"
+                android:id="@+id/tv_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="@string/gohipe_teknologi"
+                android:text="@{experience.ex_company}"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/tv_item_row_experience_startenddate"
+                android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/february_2021_oktober_2022"
+                android:text="@{experience.ex_start + ` - ` + experience.ex_end}"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/tv_item_row_experience_totalmonths"
+                android:id="@+id/tv_total_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="@string/total_months"
+                android:text="@{rangeDate}"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/tv_item_row_experience_desc"
+                android:id="@+id/tv_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/description" />
+                android:text="@{experience.ex_description}"
+                />
 
         </LinearLayout>
 
@@ -79,7 +86,7 @@
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout_item_row_engineer" />
+            app:layout_constraintTop_toBottomOf="@+id/ln_exp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

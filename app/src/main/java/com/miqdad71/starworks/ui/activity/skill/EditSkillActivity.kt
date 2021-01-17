@@ -24,6 +24,7 @@ class EditSkillActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_skill)
         super.onCreate(savedInstanceState)
+
         preference = SharedPreference(this)
         skId = intent.getIntExtra("sk_id", 0)
 

@@ -33,6 +33,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="56dp"
             android:src="@drawable/logo"
+            android:contentDescription="@string/image_upload"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/img_bg" />
 
@@ -128,7 +129,7 @@
             android:text="@string/logcomp"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            app:backgroundTint="@color/btn_maincolor"
+            app:backgroundTint="@color/btn_mainColor"
             app:layout_constraintBottom_toBottomOf="@+id/img_bg"
             app:layout_constraintStart_toStartOf="parent" />
 
