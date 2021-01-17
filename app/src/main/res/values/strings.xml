@@ -156,4 +156,5 @@
     <string name="update_image_profile">Update Image</string>
     <string name="update_image_upload">Update Image</string>
     <string name="instruction_update_image_profile">Choose image for your profile photo</string>
+    <string name="add_portfolio_experience">Add Portfolio/Experience</string>
 </resources>
