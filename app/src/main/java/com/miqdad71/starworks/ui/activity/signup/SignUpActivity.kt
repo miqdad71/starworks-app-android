@@ -36,6 +36,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
 
         supportActionBar?.hide()
+        @Suppress("DEPRECATION")
         window.setFlags(
             WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
             WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
@@ -56,6 +57,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.btn_sign_up -> {
                 signUp(v)
+                Toast.makeText(this, "Register Success!", Toast.LENGTH_SHORT).show()
             }
             R.id.tv_login -> {
                 startActivity(Intent(this, LoginActivity::class.java))
@@ -70,7 +72,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         val position = binding.etPosition.text.toString()
         val phone = binding.etPhoneNumber.text.toString()
         val password = binding.etPassword.text.toString()
-        val passwordconfirmation = binding.etPasswordConfirm.text.toString()
+        val passwordConfirmation = binding.etPasswordConfirm.text.toString()
 
         preference = SharedPreference(view.context)
 
@@ -92,7 +94,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 binding.etPassword.error = FIELD_REQUIRED
                 return
             }
-            if (password != passwordconfirmation) {
+            if (password != passwordConfirmation) {
                 binding.etPasswordConfirm.error = FIELD_MUST_MATCH
                 return
             }
@@ -121,7 +123,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 binding.etPassword.error = FIELD_REQUIRED
                 return
             }
-            if (password != passwordconfirmation) {
+            if (password != passwordConfirmation) {
                 binding.etPasswordConfirm.error = FIELD_MUST_MATCH
                 return
             }
@@ -129,7 +131,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         signUpAccount()
     }
 
-    fun signUpAccount() {
+    private fun signUpAccount() {
         val api = ApiClient.getApiClient(this).create(AccountAPI::class.java)
         coroutineScope.launch {
             val res = withContext(Dispatchers.IO) {
@@ -172,6 +174,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(this@SignUpActivity, res.message, Toast.LENGTH_SHORT).show()
                 }
             }
+            finish()
         }
     }
 
