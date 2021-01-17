@@ -16,7 +16,7 @@
                 android:id="@+id/cl_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/maincolor"
+                android:background="@color/mainColor"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="-29dp"
                 tools:layout_editor_absoluteY="0dp">

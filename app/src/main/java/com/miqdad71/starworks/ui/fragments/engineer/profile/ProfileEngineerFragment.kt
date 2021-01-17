@@ -21,6 +21,7 @@ import com.miqdad71.starworks.serviceapi.EngineerAPI
 import com.miqdad71.starworks.serviceapi.SkillAPI
 import com.miqdad71.starworks.ui.activity.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.ui.activity.main.engineer.EngineerSettingActivity
+import com.miqdad71.starworks.ui.activity.main.engineer.img_profile.ImageProfileEngineer
 import com.miqdad71.starworks.ui.activity.skill.EditSkillActivity
 import com.miqdad71.starworks.ui.activity.skill.SkillActivity
 import com.miqdad71.starworks.ui.adapter.skill.ProfileSkillAdapter
@@ -75,6 +76,13 @@ class ProfileEngineerFragment : Fragment() {
             val intent = Intent(context, SkillActivity::class.java)
             startActivity(intent)
         }
+        binding.ivImageProfile.setOnClickListener {
+            val intent = Intent(activity, ImageProfileEngineer::class.java)
+            startActivity(intent)
+
+            /*intent.putExtra("en_id", data.enId)
+            intent.putExtra("en_profile", data.enProfile)*/
+        }
 
         binding.accountModel = AccountModel(
             acName = "${userDetail[SharedPreference.AC_NAME]}",
@@ -83,7 +91,7 @@ class ProfileEngineerFragment : Fragment() {
         )
 
         binding.tabLayout.setupWithViewPager(binding.viewPager)
-        val adapterPager = ViewPagerAdapter(childFragmentManager)
+        val adapterPager = ViewPagerAdapter(parentFragmentManager)
 
         adapterPager.addFrag(PortfolioEngineerFragment(), "Portfolio")
         adapterPager.addFrag(ExperienceEngineerFragment(), "Experience")

@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
     <application
@@ -18,8 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.main.engineer.EngineerSettingActivity"
+        <activity android:name=".ui.activity.main.engineer.img_profile.ImageProfileEngineer"
             android:theme="@style/Theme.StarworkS.NoActionBar"/>
+        <activity
+            android:name=".ui.activity.main.engineer.EngineerSettingActivity"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
             android:name=".ui.activity.skill.EditSkillActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />

@@ -5,7 +5,7 @@
     <stroke
         android:color="@color/transparent" />
 
-    <solid android:color="@color/maincolor"/>
+    <solid android:color="@color/mainColor"/>
 
     <corners
         android:bottomRightRadius="32dp" />
