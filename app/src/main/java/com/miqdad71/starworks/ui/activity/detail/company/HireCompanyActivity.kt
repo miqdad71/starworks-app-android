@@ -1,34 +1,30 @@
 package com.miqdad71.starworks.ui.activity.detail.company
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.serviceapi.HireAPI
-import com.miqdad71.starworks.serviceapi.ProjectAPI
-import com.miqdad71.starworks.data.model.hire.HireResponse
 import com.miqdad71.starworks.data.model.project.ProjectModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityHireCompanyBinding
+import com.miqdad71.starworks.serviceapi.ProjectAPI
 import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
 import com.miqdad71.starworks.ui.adapter.project.ProjectSpinnerAdapter
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*
-import java.util.HashMap
 
 class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityHireCompanyBinding
     
     private lateinit var coroutineScope: CoroutineScope
     private lateinit var sharedPref: SharedPreference
-    
     private lateinit var viewModel: HireViewModel
     private var pjId: Int? = 0
-    private var enId: Int? = 0
+    private var enId: Int? = null
     
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hire_company)
@@ -36,13 +32,14 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
         sharedPref = SharedPreference(this)
         enId = intent.getIntExtra("en_id", 0)
+        pjId = intent.getIntExtra("pj_id", 0)
 
-        getAllProject()
         setToolbarActionBar()
         setProjectAdapter()
+        getAllProject()
 
         setViewModel()
-//        subscribeLiveData()
+        subscribeLiveData()
         
 
     }
@@ -50,52 +47,31 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
     private fun setToolbarActionBar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = ""
+        supportActionBar?.title = "Hire"
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
     }
     private fun setProjectAdapter() {
-        val adapter = ProjectSpinnerAdapter(this@HireCompanyActivity)
+        val adapter = ProjectSpinnerAdapter(this)
         binding.spProject.adapter = adapter
     }
 
     private fun setViewModel() {
-        viewModel = ViewModelProvider(this@HireCompanyActivity).get(HireViewModel::class.java)
-        viewModel.setService(createApi(this@HireCompanyActivity))
+        viewModel = ViewModelProvider(this).get(HireViewModel::class.java)
+        viewModel.setService(createApi(this))
     }
-    
+    private fun subscribeLiveData() {
+        viewModel.onSuccessLiveData.observe(this) {
+            if (it) {
+                setResult(RESULT_OK)
+                this.finish()
+            }
+        }
+    }
     private inline fun <reified ApiService> createApi(context: Context): ApiService {
         return ApiClient.getApiClient(context).create(ApiService::class.java)
     }
-
-    /*private fun subscribeLiveData() {
-        viewModel.isLoadingLiveData.observe(this@HireCompanyActivity, {
-            binding.btnProcessHire.visibility = View.GONE
-            binding.progressBar.visibility = View.VISIBLE
-        })
-
-        viewModel.onSuccessLiveData.observe(this@HireCompanyActivity, {
-            if (it) {
-                setResult(RESULT_OK)
-                this@HireCompanyActivity.finish()
-
-                binding.progressBar.visibility = View.GONE
-                binding.btnProcessHire.visibility = View.VISIBLE
-            } else {
-                binding.progressBar.visibility = View.GONE
-                binding.btnProcessHire.visibility = View.VISIBLE
-            }
-        })
-
-        viewModel.onMessageLiveData.observe(this@HireActivity, {
-            noticeToast(it)
-        })
-
-        viewModel.onFailLiveData.observe(this@HireActivity, {
-            noticeToast(it)
-        })
-    }*/
 
     private fun getAllProject() {
         val service = ApiClient.getApiClient(this).create(ProjectAPI::class.java)
@@ -115,7 +91,6 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
                     )
                 }
                 (binding.spProject.adapter as ProjectSpinnerAdapter).addList(list)
-
             }catch (e: Throwable) {
 
             }
@@ -129,7 +104,7 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
                 val desc = binding.etDescription.text.toString()
 
                 if (price.isEmpty()) {
-                    binding.etPrice.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etPrice.error = SignUpActivity.FIELD_DIGITS_ONLY
                     return
                 }
 
@@ -137,32 +112,16 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
                     binding.etDescription.error = SignUpActivity.FIELD_REQUIRED
                     return
                 }
-                hireEngineer(enId = Int, pjId = Int, hrPrice = Long, hrMessage = String)
-            }
-        }
-    }
-
-    private fun hireEngineer(enId: Int.Companion, pjId: Int.Companion, hrPrice: Long.Companion, hrMessage: String.Companion) {
-        val service = ApiClient.getApiClient(this).create(HireAPI::class.java)
-        coroutineScope.launch {
-            val res = withContext(Dispatchers.IO) {
-                try {
-                    service.createHire(
-                        enId = enId,
-                        pjId = pjId,
-                        hrPrice = hrPrice,
-                        hrMessage = hrMessage
-                        )
-
-                } catch (t: Exception) {
-                    Log.e("Error", t.localizedMessage)
+                if(enId != 0){
+                    viewModel.createAPI(
+                        enId = enId!!,
+                        pjId = sharedPref.getIdCompany(),
+                        hrPrice = binding.etPrice.text.toString().toLong(),
+                        hrMessage = binding.etDescription.text.toString()
+                    )
                 }
-            }
 
-            if (res is HireResponse) {
-                    finish()
             }
-
         }
     }
 }

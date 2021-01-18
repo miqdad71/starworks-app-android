@@ -17,13 +17,14 @@ import com.miqdad71.starworks.util.SharedPreference
 class SkillActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivitySkillBinding
 
-    private lateinit var preference: SharedPreference
+    private lateinit var sharedPref: SharedPreference
     private lateinit var viewModel: SkillViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_skill)
         super.onCreate(savedInstanceState)
-        preference = SharedPreference(this)
+
+        sharedPref = SharedPreference(this)
 
         setToolbarActionBar()
         setViewModel()
@@ -65,9 +66,8 @@ class SkillActivity : AppCompatActivity(), View.OnClickListener {
                     binding.etSkill.error = SignUpActivity.FIELD_REQUIRED
                     return
                 }
-
                 viewModel.createAPI(
-                    enId = preference.getIdEngineer(),
+                    enId = sharedPref.getIdEngineer(),
                     skSkillName = skSkillName
                 )
             }

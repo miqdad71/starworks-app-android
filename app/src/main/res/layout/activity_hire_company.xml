@@ -125,7 +125,7 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="18dp"
                 android:fontFamily="sans-serif"
-                android:text="@string/description"
+                android:text="@string/message"
                 android:textColor="@color/gray_500"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"

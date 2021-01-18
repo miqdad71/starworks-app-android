@@ -84,11 +84,11 @@ class ProfileEngineerFragment : Fragment() {
             intent.putExtra("en_profile", data.enProfile)*/
         }
 
-        binding.accountModel = AccountModel(
+        /*binding.accountModel = AccountModel(
             acName = "${userDetail[SharedPreference.AC_NAME]}",
             acEmail = "${userDetail[SharedPreference.AC_EMAIL]}",
             acPhone = "${userDetail[SharedPreference.AC_PHONE]}"
-        )
+        )*/
 
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         val adapterPager = ViewPagerAdapter(parentFragmentManager)
@@ -99,6 +99,7 @@ class ProfileEngineerFragment : Fragment() {
 
 
         setToolbarActionBar()
+        getDataAccount()
         getDataUser()
 
         binding.rvSkill.layoutManager = FlexboxLayoutManager(context)
@@ -162,6 +163,25 @@ class ProfileEngineerFragment : Fragment() {
                     enDescription = dataFromResult.enDescription
                 )
                 Glide.with(this@ProfileEngineerFragment).load(BASE_URL_IMAGE + dataFromResult.enProfile).placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
+            } catch (e: Throwable) {
+                Log.d("message", e.toString())
+            }
+        }
+    }
+
+    private fun getDataAccount() {
+        coroutineScope.launch {
+            try {
+                val resultData = serviceAccount.detailAccount(sharedPref.getIdAccount())
+                val dataFromResult = resultData.data[0]
+                Log.d("msg", "$dataFromResult")
+
+                binding.accountModel = AccountModel(
+                    acName = dataFromResult.acName,
+                    acId = dataFromResult.acId,
+                    acEmail = dataFromResult.acEmail,
+                    acPhone = dataFromResult.acPhone
+                )
             } catch (e: Throwable) {
                 Log.d("message", e.toString())
             }

@@ -41,4 +41,5 @@ interface HireAPI {
         @Path("hrId") hrId: Int,
         @Field("hr_status") hrStatus: String
     ): HireResponse
+
 }

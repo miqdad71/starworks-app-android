@@ -29,14 +29,12 @@ class HireCompanyFragment : Fragment() {
     private lateinit var sharedPref: SharedPreference
     private lateinit var userDetail: HashMap<String, String>
     private lateinit var service: HireAPI
+    private var cnId: Int? = 0
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?  ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hire_company, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
 
         sharedPref = SharedPreference(requireActivity())
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
@@ -58,7 +56,7 @@ class HireCompanyFragment : Fragment() {
 
         coroutineScope.launch {
             try {
-                val resultData = service.getAllHireCompany(sharedPref.getIdCompany())
+                val resultData = service.getAllHireCompany(sharedPref.getIdCompany(),"wait")
                 val dataFromResult = resultData.data
 
                 val list = dataFromResult.map {

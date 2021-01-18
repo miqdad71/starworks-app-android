@@ -7,20 +7,24 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityEngineerEditProfileBinding
 import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
 import com.miqdad71.starworks.ui.activity.skill.SkillViewModel
 import com.miqdad71.starworks.util.SharedPreference
+import java.util.HashMap
 
 class EngineerSettingActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityEngineerEditProfileBinding
 
     private lateinit var preference: SharedPreference
+    private lateinit var userDetail: HashMap<String, String>
     private lateinit var viewModel: EngineerViewModel
-    private var enId: Int? = null
-    private var acId: Int? = null
+
+    private var enId: Int? = 0
+    private var acId: Int? = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,16 +32,13 @@ class EngineerSettingActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         preference = SharedPreference(this)
-        enId = intent.getIntExtra("en_id", 0)
+        userDetail = preference.getAccountUser()
         acId = intent.getIntExtra("ac_id", 0)
-
-
-        binding.etJobTitle.setText(intent.getStringExtra("en_job_title"))
-        binding.etJobType.setText(intent.getStringExtra("en_job_type"))
-        binding.etDomicile.setText(intent.getStringExtra("en_domicile"))
-        binding.etDescription.setText(intent.getStringExtra("en_description"))
+        enId = intent.getIntExtra("en_id", 0)
 
         setToolbarActionBar()
+        setDataFromIntent()
+
         setViewModel()
         subscribeLiveData()
     }
@@ -47,6 +48,16 @@ class EngineerSettingActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.title = "Profile"
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
+        }
+    }
+
+    private fun setDataFromIntent() {
+        if (enId != 0) {
+            binding.etEditName.setText(intent.getStringExtra("ac_name"))
+            binding.etJobTitle.setText(intent.getStringExtra("en_job_title"))
+            binding.etJobType.setText(intent.getStringExtra("en_job_type"))
+            binding.etDomicile.setText(intent.getStringExtra("en_domicile"))
+            binding.etDescription.setText(intent.getStringExtra("en_description"))
         }
     }
 
@@ -99,12 +110,12 @@ class EngineerSettingActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 viewModel.updateAPI(
-                    enId = enId!!,
+                    enId = preference.getIdEngineer(),
+                    acId = preference.getIdAccount(),
                     enJobTitle = enJobTitle,
                     enJobType = enJobType,
                     enDomicile = enDomicile,
                     enDescription = enDescription,
-                    acId = acId!!,
                     acName = acName
                     )
                 finish()

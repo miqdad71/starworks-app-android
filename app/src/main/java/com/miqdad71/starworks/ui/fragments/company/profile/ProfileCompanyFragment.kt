@@ -107,6 +107,7 @@ class ProfileCompanyFragment : Fragment() {
                     cn_profile = dataFromResult.cnProfile
                 )
                 Glide.with(this@ProfileCompanyFragment).load(ApiClient.BASE_URL_IMAGE + dataFromResult.cnProfile).placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
+
             } catch (e: Throwable) {
                 Log.d("message", e.toString())
             }
