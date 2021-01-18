@@ -4,7 +4,6 @@ import com.miqdad71.starworks.data.model.hire.HireResponse
 import retrofit2.http.*
 
 interface HireAPI {
-
     @GET("hire/engineer/{enId}")
     suspend fun getAllHire(
         @Path("enId") enId: Int
@@ -12,16 +11,28 @@ interface HireAPI {
 
     @GET("hire/company/{cnId}")
     suspend fun getAllHireCompany(
-        @Path("cnId") cnId: Int
+        @Path("cnId") cnId: Int,
+        @Query("status") status: String
+    ): HireResponse
+
+    @GET("hire/project/{pjId}")
+    suspend fun getAllHireByProject(
+        @Path("pjId") pjId: Int
+    ): HireResponse
+
+    @GET("hire/check")
+    suspend fun checkIsHire(
+        @Query("enId") enId: Int,
+        @Query("cnId") cnId: Int
     ): HireResponse
 
     @FormUrlEncoded
     @POST("hire")
-    suspend fun hire(
-        @Field("en_id") enId: Int.Companion,
-        @Field("pj_id") pjId: Int.Companion,
-        @Field("hr_price") hrPrice: Long.Companion,
-        @Field("hr_message") hrMessage: String.Companion
+    suspend fun createHire(
+        @Field("en_id") enId: Int,
+        @Field("pj_id") pjId: Int,
+        @Field("hr_price") hrPrice: Long,
+        @Field("hr_message") hrMessage: String
     ): HireResponse
 
     @FormUrlEncoded

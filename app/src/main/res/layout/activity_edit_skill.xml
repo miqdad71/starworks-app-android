@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/form_input_white"
-                    android:hint="@string/skill_hint"
+                    android:hint="ex: Kotlin"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="18dp"

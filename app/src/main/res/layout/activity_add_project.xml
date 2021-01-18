@@ -126,7 +126,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="false"
                     android:gravity="top"
-                    android:hint="Project Deadline"
+                    android:hint="Click this column"
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:onClick="onClick"

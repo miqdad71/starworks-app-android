@@ -27,11 +27,13 @@ class SplashScreen : AppCompatActivity() {
 
         setContentView(R.layout.activity_splash_screen)
         Handler().postDelayed({
-
             if (sharedPref.getIsLogin() && sharedPref.getLevelUser() == 0){
                 startActivity(Intent(applicationContext, EngineerMainActivity::class.java))
-            } else {
+            }
+            else if (sharedPref.getIsLogin() && sharedPref.getLevelUser() == 1){
                 startActivity(Intent(applicationContext, CompanyMainActivity::class.java))
+            } else {
+                startActivity(Intent(applicationContext, OnboardActivity::class.java))
             }
             finish()
         }, 3000)
