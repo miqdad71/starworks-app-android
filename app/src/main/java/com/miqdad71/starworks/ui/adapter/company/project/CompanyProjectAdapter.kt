@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemListHireCompanyBinding
 import com.miqdad71.starworks.data.model.project.ProjectModel
+import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ItemListProjectCompanyBinding
 
 class CompanyProjectAdapter : RecyclerView.Adapter<CompanyProjectAdapter.ProjectHolder>() {
@@ -45,6 +47,7 @@ class CompanyProjectAdapter : RecyclerView.Adapter<CompanyProjectAdapter.Project
         }
         holder.binding.tvProjectName.text = item.pjProjectName
         holder.binding.tvProjectDesc.text = item.pjDescription
+        Glide.with(holder.itemView.context).load(ApiClient.BASE_URL_IMAGE + item.pjImage).placeholder(R.drawable.ic_backround_user).into(holder.binding.imgListSearchProject)
 
     }
 

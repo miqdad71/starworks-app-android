@@ -11,18 +11,21 @@ import android.os.Bundle
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.remote.ApiClient
+import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE
 import com.miqdad71.starworks.databinding.ActivityPortfolioBinding
-import com.miqdad71.starworks.ui.activity.main.company.AddProjectActivity
-import com.miqdad71.starworks.ui.activity.main.company.ProjectViewModel
 import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
-import com.miqdad71.starworks.ui.activity.skill.SkillViewModel
 import com.miqdad71.starworks.util.SharedPreference
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -37,9 +40,11 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var preference: SharedPreference
     private lateinit var userDetail: HashMap<String, String>
     private lateinit var viewModel: PortfolioViewModel
+    private lateinit var coroutineScope: CoroutineScope
 
     private var prId: Int? = null
     private var pathImage: String? = null
+    private var typePortfolio: String? = null
 
     companion object {
         private const val IMAGE_PICK_CODE = 1000;
@@ -47,8 +52,10 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_portfolio)
+        super.onCreate(savedInstanceState)
+
+        coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
         preference = SharedPreference(this)
         userDetail = preference.getAccountUser()
         prId = intent.getIntExtra("pj_id", 0)
@@ -59,7 +66,7 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
                     PackageManager.PERMISSION_DENIED
                 ) {
                     val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-                    requestPermissions(permissions, PortfolioActivity.PERMISSION_CODE);
+                    requestPermissions(permissions, PERMISSION_CODE);
                 } else {
                     pickImageFromGallery();
                 }
@@ -69,6 +76,7 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         setToolbarActionBar()
+        setDataFromIntent()
         setViewModel()
         subscribeLiveData()
     }
@@ -112,19 +120,59 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
                     return
                 }
 
-                /*if (pathImage != null) {
-                    viewModel.createAPI(
-                        enId = createPartFromString(preference.getIdEngineer().toString()),
-                        prApp = createPartFromString(binding.etApp.text.toString()),
-                        prDescription = createPartFromString(binding.etDescription.text.toString()),
-                        prLinkPub = createPartFromString(binding.etPubLink.text.toString()),
-                        prLinkRepo = createPartFromString(binding.etRepoLink.text.toString()),
-                        prWorkPlace = createPartFromString(binding.etWorkPlace.text.toString()),
-                        prType = createPartFromString(binding.rgPortfolioType.text.toString()),
-                        image = createPartFromFile(pathImage!!)
-                    )
+                when (binding.rgPortfolioType.checkedRadioButtonId) {
+                    binding.rbWeb.id -> {
+                        typePortfolio = "aplikasi web"
+                    }
+                    binding.rbMobile.id -> {
+                        typePortfolio = "aplikasi mobile"
+                    }
                 }
-*/
+                
+                if (prId != 0){
+                    if (pathImage == null) {
+                        viewModel.updateAPI(
+                            prId = prId!!,
+                            prApp = createPartFromString(binding.etApp.text.toString()),
+                            prDescription = createPartFromString(binding.etDescription.text.toString()),
+                            prLinkPub = createPartFromString(binding.etPubLink.text.toString()),
+                            prLinkRepo = createPartFromString(binding.etRepoLink.text.toString()),
+                            prWorkPlace = createPartFromString(binding.etWorkPlace.text.toString()),
+                            prType = createPartFromString(typePortfolio!!)
+                        )
+                    } else {
+                        viewModel.updateAPI(
+                            prId = prId!!,
+                            prApp = createPartFromString(binding.etApp.text.toString()),
+                            prDescription = createPartFromString(binding.etDescription.text.toString()),
+                            prLinkPub = createPartFromString(binding.etPubLink.text.toString()),
+                            prLinkRepo = createPartFromString(binding.etRepoLink.text.toString()),
+                            prWorkPlace = createPartFromString(binding.etWorkPlace.text.toString()),
+                            prType = createPartFromString(typePortfolio!!),
+                            image = createPartFromFile(pathImage!!)
+                        )
+                    }
+                } else {
+                    if (pathImage != null) {
+                        viewModel.createAPI(
+                            enId = createPartFromString(preference.getIdEngineer().toString()),
+                            prApp = createPartFromString(binding.etApp.text.toString()),
+                            prDescription = createPartFromString(binding.etDescription.text.toString()),
+                            prLinkPub = createPartFromString(binding.etPubLink.text.toString()),
+                            prLinkRepo = createPartFromString(binding.etRepoLink.text.toString()),
+                            prWorkPlace = createPartFromString(binding.etWorkPlace.text.toString()),
+                            prType = createPartFromString(typePortfolio!!),
+
+                            image = createPartFromFile(pathImage!!)
+                        )
+                    } else {
+                        Toast.makeText(this, "Please select image!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                
+            }
+            R.id.btn_delete_portfolio -> {
+                deleteConfirmation()
             }
             R.id.ln_back -> {
                 this@PortfolioActivity.finish()
@@ -135,13 +183,13 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, PortfolioActivity.IMAGE_PICK_CODE)
+        startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (resultCode == Activity.RESULT_OK && requestCode == PortfolioActivity.IMAGE_PICK_CODE) {
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             binding.ibChooseImage.setImageURI(data?.data)
             pathImage = getPath(this, data?.data!!)
         }
@@ -199,15 +247,48 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setDataFromIntent() {
         if (prId != 0) {
-            binding.etApp.setText(intent.getStringExtra("pj_project_name"))
-            binding.etDescription.setText(intent.getStringExtra("pj_deadline"))
-            binding.etPubLink.setText(intent.getStringExtra("pj_description"))
-            binding.etRepoLink.setText(intent.getStringExtra("pj_description"))
-            binding.etWorkPlace.setText(intent.getStringExtra("pj_description"))
+            binding.ibChooseImage.visibility = View.GONE
+            binding.ivImageView.visibility = View.VISIBLE
+            binding.btnDeletePortfolio.visibility = View.VISIBLE
+            binding.tvAddPortfolio.text = getString(R.string.update_portfolio)
+            binding.btnAddPortfolio.text = getString(R.string.update_portfolio)
+
+            binding.etApp.setText(intent.getStringExtra("pr_app"))
+            binding.etDescription.setText(intent.getStringExtra("pr_description"))
+            binding.etPubLink.setText(intent.getStringExtra("pr_link_pub"))
+            binding.etRepoLink.setText(intent.getStringExtra("pr_link_repo"))
+            binding.etWorkPlace.setText(intent.getStringExtra("pr_work_place"))
+
+            if (intent.getStringExtra("pr_type") == "aplikasi mobile") {
+                binding.rbMobile.isChecked = true
+            } else {
+                binding.rbWeb.isChecked = true
+            }
+
+            if (intent.getStringExtra("pr_image") != null) {
+                binding.imageUrl = BASE_URL_IMAGE + intent.getStringExtra("pr_image")
+            }
+//            else {
+//                binding.imageUrl = ApiClient.BASE_URL_IMAGE_DEFAULT_BACKGROUND
+//            }
 
         }
     }
+    private fun deleteConfirmation() {
+        val dialog = AlertDialog
+            .Builder(this@PortfolioActivity)
+            .setTitle("Notice!")
+            .setMessage("Are you sure to delete this portfolio?")
+            .setPositiveButton("OK") { _, _ ->
+                viewModel.deleteAPI(prId!!)
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
 
+        dialog?.show()
+    }
+    
     private fun setViewModel() {
         viewModel = ViewModelProvider(this).get(PortfolioViewModel::class.java)
         viewModel.setService(createApi(this))

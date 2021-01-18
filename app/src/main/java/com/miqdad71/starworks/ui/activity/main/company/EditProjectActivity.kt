@@ -14,15 +14,15 @@ import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-import androidx.loader.content.CursorLoader
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityAddProjectBinding
+import com.miqdad71.starworks.databinding.ActivityEditProjectBinding
 import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
 import com.miqdad71.starworks.util.SharedPreference
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -34,8 +34,8 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding: ActivityAddProjectBinding
+class EditProjectActivity() : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityEditProjectBinding
 
     private lateinit var preference: SharedPreference
     private lateinit var userDetail: HashMap<String, String>
@@ -53,7 +53,7 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("ObsoleteSdkInt")
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_project)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_project)
         super.onCreate(savedInstanceState)
 
         preference = SharedPreference(this)
@@ -61,6 +61,21 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
         pjId = intent.getIntExtra("pj_id", 0)
 
         binding.ibChooseImage.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED
+                ) {
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                    requestPermissions(permissions, PERMISSION_CODE);
+                } else {
+                    pickImageFromGallery();
+                }
+            } else {
+                pickImageFromGallery();
+            }
+        }
+
+        binding.ivImageLoad.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED
@@ -87,7 +102,7 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
     private fun setToolbarActionBar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Add Project"
+        supportActionBar?.title = "Edit Project"
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -102,7 +117,7 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
                     myCalendar.get(Calendar.DAY_OF_MONTH)
                 ).show()
             }
-            R.id.btn_add_project -> {
+            R.id.btn_edit_project -> {
                 val projectName = binding.etProjectName.text.toString()
                 val projectDeadline = binding.etDeadline.text.toString()
                 val description = binding.etDescription.text.toString()
@@ -120,12 +135,19 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
                     return
                 }
                 if (pathImage != null) {
-                    viewModel.createAPI(
-                        cnId = createPartFromString(preference.getIdCompany().toString()),
+                    viewModel.updateAPI(
+                        pjId = pjId!!,
                         pjProjectName = createPartFromString(binding.etProjectName.text.toString()),
                         pjDeadline = createPartFromString(binding.etDeadline.text.toString()),
                         pjDescription = createPartFromString(binding.etDescription.text.toString()),
                         image = createPartFromFile(pathImage!!)
+                    )
+                } else {
+                    viewModel.updateAPI(
+                        pjId = pjId!!,
+                        pjProjectName = createPartFromString(binding.etProjectName.text.toString()),
+                        pjDeadline = createPartFromString(binding.etDeadline.text.toString()),
+                        pjDescription = createPartFromString(binding.etDescription.text.toString())
                     )
                 }
             }
@@ -146,6 +168,8 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
 
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             binding.ibChooseImage.setImageURI(data?.data)
+            binding.ibChooseImage.visibility = View.VISIBLE
+            binding.ivImageLoad.visibility = View.GONE
             pathImage = getPath(this, data?.data!!)
         }
     }
@@ -201,12 +225,14 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
         return realPath
     }
 
-
     private fun setDataFromIntent() {
         if (pjId != 0) {
             binding.etProjectName.setText(intent.getStringExtra("pj_project_name"))
             binding.etDeadline.setText(intent.getStringExtra("pj_deadline"))
             binding.etDescription.setText(intent.getStringExtra("pj_description"))
+            Glide.with(this@EditProjectActivity).load(ApiClient.BASE_URL_IMAGE + intent.getStringExtra("pj_image")).placeholder(R.drawable.ic_backround_user).into(binding.ivImageLoad)
+            binding.ibChooseImage.visibility = View.GONE
+            binding.ivImageLoad.visibility = View.VISIBLE
         }
     }
 
@@ -232,7 +258,6 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
     private fun subscribeLiveData() {
         viewModel.onSuccessLiveData.observe(this) {
             if (it) {
-                setResult(RESULT_OK)
                 this.finish()
             }
         }
@@ -242,5 +267,4 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
     private inline fun <reified ApiService> createApi(context: Context): ApiService {
         return ApiClient.getApiClient(context).create(ApiService::class.java)
     }
-
 }

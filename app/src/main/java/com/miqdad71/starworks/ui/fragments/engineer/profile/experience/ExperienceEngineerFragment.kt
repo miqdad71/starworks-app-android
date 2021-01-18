@@ -1,5 +1,6 @@
 package com.miqdad71.starworks.ui.fragments.engineer.profile.experience
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,10 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.experience.ExperienceModel
+import com.miqdad71.starworks.data.model.portfolio.PortfolioModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentExperienceBinding
 import com.miqdad71.starworks.serviceapi.ExperienceAPI
+import com.miqdad71.starworks.ui.activity.experience.ExperienceActivity
+import com.miqdad71.starworks.ui.activity.portfolio.PortfolioActivity
 import com.miqdad71.starworks.ui.adapter.experience.ExperienceEngineerAdapter
+import com.miqdad71.starworks.ui.adapter.portfolio.PortfolioEngineerAdapter
+import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment
+import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment.Companion.INTENT_EDIT
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*
 
@@ -33,16 +40,32 @@ class ExperienceEngineerFragment : Fragment() {
         coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
         service = ApiClient.getApiClient(requireActivity()).create(ExperienceAPI::class.java)
 
-        binding.rvExperience.layoutManager = LinearLayoutManager(requireActivity().applicationContext,
-            RecyclerView.VERTICAL,false)
-        val adapter = ExperienceEngineerAdapter()
-        binding.rvExperience.adapter = adapter
-
+        setupExperienceRecyclerView()
         getAllExperience()
 
         return binding.root
     }
 
+    private fun setupExperienceRecyclerView() {
+        binding.rvExperience.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+
+        val adapter = ExperienceEngineerAdapter()
+        binding.rvExperience.adapter = adapter
+
+        adapter.setOnItemClickCallback(object : ExperienceEngineerAdapter.OnItemClickCallback {
+            override fun onItemClick(data: ExperienceModel) {
+                val intent = Intent(activity, ExperienceActivity::class.java)
+                intent.putExtra("en_id", data.en_id)
+                intent.putExtra("ex_id", data.ex_id)
+                intent.putExtra("ex_position", data.ex_position)
+                intent.putExtra("ex_company", data.ex_company)
+                intent.putExtra("ex_start", data.ex_start)
+                intent.putExtra("ex_end", data.ex_end)
+                intent.putExtra("ex_description", data.ex_description)
+                startActivityForResult(intent, INTENT_EDIT)
+            }
+        })
+    }
 
     private fun getAllExperience() {
         coroutineScope.launch {

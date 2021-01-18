@@ -42,4 +42,26 @@ class ProjectViewModel : ViewModel(), CoroutineScope {
             }
         }
     }
+    fun updateAPI(
+        pjId: Int,
+        pjProjectName: RequestBody,
+        pjDeadline: RequestBody,
+        pjDescription: RequestBody,
+        image: MultipartBody.Part? = null
+    ) {
+        launch {
+            try {
+                service.updateProject(
+                    pjId = pjId,
+                    pjProjectName = pjProjectName,
+                    pjDeadline = pjDeadline,
+                    pjDescription = pjDescription,
+                    image = image
+                )
+                onSuccessLiveData.value=true
+            } catch (e: HttpException) {
+                e.printStackTrace()
+            }
+        }
+    }
 }

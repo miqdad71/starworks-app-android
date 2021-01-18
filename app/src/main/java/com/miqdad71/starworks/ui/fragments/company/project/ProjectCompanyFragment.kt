@@ -17,6 +17,7 @@ import com.miqdad71.starworks.databinding.FragmentProjectCompanyBinding
 import com.miqdad71.starworks.serviceapi.ProjectAPI
 import com.miqdad71.starworks.ui.activity.detail.company.ProjectDetailActivity
 import com.miqdad71.starworks.ui.activity.main.company.AddProjectActivity
+import com.miqdad71.starworks.ui.activity.main.company.EditProjectActivity
 import com.miqdad71.starworks.ui.adapter.company.project.CompanyProjectAdapter
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*
@@ -53,7 +54,7 @@ class ProjectCompanyFragment : Fragment() {
 
         adapter.setOnItemClickCallback(object : CompanyProjectAdapter.OnItemClickCallback {
             override fun onItemClick(data: ProjectModel) {
-                val intent = Intent(activity, ProjectDetailActivity::class.java)
+                val intent = Intent(activity, EditProjectActivity::class.java)
                 intent.putExtra("pj_id", data.pjId)
                 intent.putExtra("cn_id", data.cnId)
                 intent.putExtra("pj_project_name", data.pjProjectName)
@@ -96,6 +97,10 @@ class ProjectCompanyFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        getAllProject()
+    }
 
     override fun onDestroy() {
         coroutineScope.cancel()

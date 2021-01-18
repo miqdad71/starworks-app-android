@@ -59,7 +59,7 @@ class PortfolioViewModel : ViewModel(), CoroutineScope {
         prLinkRepo: RequestBody,
         prWorkPlace: RequestBody,
         prType: RequestBody,
-        image: MultipartBody.Part
+        image: MultipartBody.Part? = null
     ) {
         launch {
             try {
@@ -72,6 +72,20 @@ class PortfolioViewModel : ViewModel(), CoroutineScope {
                     prWorkPlace = prWorkPlace,
                     prType = prType,
                     image = image
+                )
+                onSuccessLiveData.value = true
+            } catch (e: HttpException) {
+                e.printStackTrace()
+            }
+        }
+    }
+    fun deleteAPI(
+        prId: Int
+    ) {
+        launch {
+            try {
+                service.deletePortfolio(
+                    prId = prId
                 )
                 onSuccessLiveData.value = true
             } catch (e: HttpException) {
