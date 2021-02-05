@@ -19,20 +19,25 @@ import java.util.HashMap
 class EngineerSettingActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityEngineerEditProfileBinding
 
-    private lateinit var preference: SharedPreference
+    private lateinit var sharedPref: SharedPreference
     private lateinit var userDetail: HashMap<String, String>
     private lateinit var viewModel: EngineerViewModel
 
-    private var enId: Int? = 0
+    private var enId: Int? = null
     private var acId: Int? = 0
 
-
+    companion object {
+        const val FIELD_REQUIRED = "Fields cannot be empty"
+        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
+        const val FIELD_IS_NOT_VALID = "Invalid email"
+        const val FIELD_MUST_MATCH = "Password must be the same"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         binding =DataBindingUtil.setContentView(this, R.layout.activity_engineer_edit_profile)
         super.onCreate(savedInstanceState)
 
-        preference = SharedPreference(this)
-        userDetail = preference.getAccountUser()
+        sharedPref = SharedPreference(this)
+        userDetail = sharedPref.getAccountUser()
         acId = intent.getIntExtra("ac_id", 0)
         enId = intent.getIntExtra("en_id", 0)
 
@@ -89,29 +94,29 @@ class EngineerSettingActivity : AppCompatActivity(), View.OnClickListener {
 
 
                 if (enJobTitle.isEmpty()) {
-                    binding.etJobTitle.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etJobTitle.error = FIELD_REQUIRED
                     return
                 }
                 if (enJobType.isEmpty()) {
-                    binding.etJobType.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etJobType.error = FIELD_REQUIRED
                     return
                 }
                 if (enDomicile.isEmpty()) {
-                    binding.etDomicile.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etDomicile.error = FIELD_REQUIRED
                     return
                 }
                 if (enDescription.isEmpty()) {
-                    binding.etDescription.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etDescription.error = FIELD_REQUIRED
                     return
                 }
                 if (acName.isEmpty()) {
-                    binding.etEditName.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etEditName.error = FIELD_REQUIRED
                     return
                 }
 
                 viewModel.updateAPI(
-                    enId = preference.getIdEngineer(),
-                    acId = preference.getIdAccount(),
+                    enId = sharedPref.getIdEngineer(),
+                    acId = sharedPref.getIdAccount(),
                     enJobTitle = enJobTitle,
                     enJobType = enJobType,
                     enDomicile = enDomicile,

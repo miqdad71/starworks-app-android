@@ -2,45 +2,32 @@ package com.miqdad71.starworks.ui.activity.signup
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.view.WindowManager
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.serviceapi.AccountAPI
-import com.miqdad71.starworks.data.model.account.SignUpResponse
 import com.miqdad71.starworks.databinding.ActivitySignUpBinding
-import com.miqdad71.starworks.util.SharedPreference
+import com.miqdad71.starworks.ui.activity.OnboardActivity
 import com.miqdad71.starworks.ui.activity.login.LoginActivity
-import com.miqdad71.starworks.data.remote.ApiClient
+import com.miqdad71.starworks.ui.base.BaseActivityCoroutine
+import com.miqdad71.starworks.util.form_validate.ValidateAccount.Companion.valCompany
+import com.miqdad71.starworks.util.form_validate.ValidateAccount.Companion.valEmail
+import com.miqdad71.starworks.util.form_validate.ValidateAccount.Companion.valName
+import com.miqdad71.starworks.util.form_validate.ValidateAccount.Companion.valPassConf
+import com.miqdad71.starworks.util.form_validate.ValidateAccount.Companion.valPassword
+import com.miqdad71.starworks.util.form_validate.ValidateAccount.Companion.valPhoneNumber
+import com.miqdad71.starworks.util.form_validate.ValidateAccount.Companion.valPosition
 import kotlinx.coroutines.*
-import retrofit2.HttpException
 
-class SignUpActivity : AppCompatActivity(), View.OnClickListener {
-
-    companion object {
-        const val FIELD_REQUIRED = "Fields cannot be empty"
-        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
-        const val FIELD_IS_NOT_VALID = "Invalid email"
-        const val FIELD_MUST_MATCH = "Password must be the same"
-    }
-
-    private lateinit var binding: ActivitySignUpBinding
-    private lateinit var preference: SharedPreference
-    private lateinit var coroutineScope: CoroutineScope
+class SignUpActivity : BaseActivityCoroutine<ActivitySignUpBinding>(), View.OnClickListener {
+    private lateinit var viewModel: SignUpViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setLayout = R.layout.activity_sign_up
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
-        coroutineScope = CoroutineScope(Job() + Dispatchers.Main)
-
         supportActionBar?.hide()
-        @Suppress("DEPRECATION")
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-            WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-        )
 
         if (intent.getIntExtra("level", 0) == 1) {
             binding.clCompany.visibility = View.VISIBLE
@@ -48,134 +35,130 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             binding.clCompany.visibility = View.GONE
         }
 
-        binding.btnSignUp.setOnClickListener(this)
-        binding.tvLogin.setOnClickListener(this)
-
+        initTextWatcher()
+        setViewModel()
+        subscribeLiveData()
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_sign_up -> {
-                signUp(v)
-                Toast.makeText(this, "Register Success!", Toast.LENGTH_SHORT).show()
-            }
-            R.id.tv_login -> {
-                startActivity(Intent(this, LoginActivity::class.java))
-            }
-        }
-    }
-
-    private fun signUp(view: View) {
-        val name = binding.etName.text.toString()
-        val email = binding.etEmail.text.toString()
-        val company = binding.etCompany.text.toString()
-        val position = binding.etPosition.text.toString()
-        val phone = binding.etPhoneNumber.text.toString()
-        val password = binding.etPassword.text.toString()
-        val passwordConfirmation = binding.etPasswordConfirm.text.toString()
-
-        preference = SharedPreference(view.context)
-
-        if (intent.getIntExtra("level", 0) == 0) {
-
-            if (name.isEmpty()) {
-            binding.etName.error = FIELD_REQUIRED
-            return
-            }
-            if (email.isEmpty()) {
-            binding.etEmail.error = FIELD_IS_NOT_VALID
-            return
-            }
-            if (phone.isEmpty()) {
-                binding.etPhoneNumber.error = FIELD_DIGITS_ONLY
-                return
-            }
-            if (password.isEmpty()) {
-                binding.etPassword.error = FIELD_REQUIRED
-                return
-            }
-            if (password != passwordConfirmation) {
-                binding.etPasswordConfirm.error = FIELD_MUST_MATCH
-                return
-            }
-        } else {
-            if (name.isEmpty()) {
-                binding.etName.error = FIELD_REQUIRED
-                return
-            }
-            if (email.isEmpty()) {
-                binding.etEmail.error = FIELD_IS_NOT_VALID
-                return
-            }
-            if (company.isEmpty()) {
-                binding.etCompany.error = FIELD_IS_NOT_VALID
-                return
-            }
-            if (position.isEmpty()) {
-                binding.etPosition.error = FIELD_IS_NOT_VALID
-                return
-            }
-            if (phone.isEmpty()) {
-                binding.etPhoneNumber.error = FIELD_DIGITS_ONLY
-                return
-            }
-            if (password.isEmpty()) {
-                binding.etPassword.error = FIELD_REQUIRED
-                return
-            }
-            if (password != passwordConfirmation) {
-                binding.etPasswordConfirm.error = FIELD_MUST_MATCH
-                return
-            }
-        }
-        signUpAccount()
-    }
-
-    private fun signUpAccount() {
-        val api = ApiClient.getApiClient(this).create(AccountAPI::class.java)
-        coroutineScope.launch {
-            val res = withContext(Dispatchers.IO) {
-                try {
-                    if (intent.getIntExtra("level", 0) == 0) {
-                        api.signUpEngineerAccount(
-                            acName = binding.etName.text.toString(),
-                            acEmail = binding.etEmail.text.toString(),
-                            acPhone = binding.etPhoneNumber.text.toString(),
-                            acPassword = binding.etPassword.text.toString(),
-                            acLevel = 0
-                        )
-                    } else {
-                        api.signUpCompanyAccount(
-                            acName = binding.etName.text.toString(),
-                            acEmail = binding.etEmail.text.toString(),
-                            acPhone = binding.etPhoneNumber.text.toString(),
-                            acPassword = binding.etPassword.text.toString(),
-                            acLevel = 1,
-                            cnCompany = binding.etCompany.text.toString(),
-                            cnPosition = binding.etPosition.text.toString()
-                        )
+                if (intent.getIntExtra("level", 0) == 0) {
+                    when {
+                        !valName(binding.inputLayoutName, binding.etName) -> {}
+                        !valEmail(binding.inputLayoutEmail, binding.etEmail) -> {}
+                        !valPhoneNumber(binding.inputLayoutPhoneNumber, binding.etPhoneNumber) -> {}
+                        !valPassword(binding.inputLayoutPassword, binding.etPassword) -> {}
+                        !valPassConf(binding.inputLayoutPasswordConfirm, binding.etPasswordConfirm, binding.etPassword) -> {}
+                        else -> {
+                            viewModel.serviceEngineerApi(
+                                acName = binding.etName.text.toString(),
+                                acEmail = binding.etEmail.text.toString(),
+                                acPhone = binding.etPhoneNumber.text.toString(),
+                                acPassword = binding.etPassword.text.toString()
+                            )
+                        }
                     }
-                } catch (e: HttpException) {
-                    runOnUiThread {
-                        if (e.code() == 400) {
-                            Toast.makeText(this@SignUpActivity, "Email has registered!", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Toast.makeText(this@SignUpActivity, "Fail to registration! Please try again later!", Toast.LENGTH_SHORT).show()
+                } else {
+                    when {
+                        !valName(binding.inputLayoutName, binding.etName) -> {}
+                        !valEmail(binding.inputLayoutEmail, binding.etEmail) -> {}
+                        !valCompany(binding.inputLayoutCompany, binding.etCompany) -> {}
+                        !valPosition(binding.inputLayoutPosition, binding.etPosition) -> {}
+                        !valPhoneNumber(binding.inputLayoutPhoneNumber, binding.etPhoneNumber) -> {}
+                        !valPassword(binding.inputLayoutPassword, binding.etPassword) -> {}
+                        !valPassConf(binding.inputLayoutPasswordConfirm, binding.etPasswordConfirm, binding.etPassword) -> {}
+                        else -> {
+                            viewModel.serviceCompanyApi(
+                                acName = binding.etName.text.toString(),
+                                acEmail = binding.etEmail.text.toString(),
+                                acPhone = binding.etPhoneNumber.text.toString(),
+                                acPassword = binding.etPassword.text.toString(),
+                                cnCompany = binding.etCompany.text.toString(),
+                                cnPosition = binding.etPosition.text.toString()
+                            )
                         }
                     }
                 }
             }
+            R.id.tv_login -> {
+                this@SignUpActivity.finish()
+            }
+        }
+    }
 
-            if (res is SignUpResponse) {
-                if (res.success) {
-                    Toast.makeText(this@SignUpActivity, res.message, Toast.LENGTH_SHORT).show()
+    private fun initTextWatcher() {
+        binding.etName.addTextChangedListener(MyTextWatcher(binding.etName))
+        binding.etEmail.addTextChangedListener(MyTextWatcher(binding.etEmail))
+
+        if (intent.getIntExtra("level", 0) == 1) {
+            binding.etCompany.addTextChangedListener(MyTextWatcher(binding.etCompany))
+            binding.etPosition.addTextChangedListener(MyTextWatcher(binding.etPosition))
+        }
+
+        binding.etPhoneNumber.addTextChangedListener(MyTextWatcher(binding.etPhoneNumber))
+        binding.etPassword.addTextChangedListener(MyTextWatcher(binding.etPassword))
+        binding.etPasswordConfirm.addTextChangedListener(MyTextWatcher(binding.etPasswordConfirm))
+    }
+
+    private fun setViewModel() {
+        viewModel = ViewModelProvider(this@SignUpActivity).get(SignUpViewModel::class.java)
+        viewModel.setService(createApi(this@SignUpActivity))
+    }
+
+    private fun subscribeLiveData() {
+        viewModel.isLoadingLiveData.observe(this@SignUpActivity) {
+            binding.btnSignUp.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+        }
+
+        viewModel.onSuccessLiveData.observe(this@SignUpActivity) {
+            if (it) {
+                binding.progressBar.visibility = View.GONE
+                binding.btnSignUp.visibility = View.VISIBLE
+
+                if (intent.getIntExtra("onBoard", 0) == 1) {
+                    intents<LoginActivity>(this@SignUpActivity)
                     this@SignUpActivity.finish()
                 } else {
-                    Toast.makeText(this@SignUpActivity, res.message, Toast.LENGTH_SHORT).show()
+                    this@SignUpActivity.finish()
                 }
+
+            } else {
+                binding.progressBar.visibility = View.GONE
+                binding.btnSignUp.visibility = View.VISIBLE
             }
-            finish()
         }
+
+        viewModel.onMessageLiveData.observe(this@SignUpActivity) {
+            noticeToast(it)
+        }
+
+        viewModel.onFailLiveData.observe(this@SignUpActivity) {
+            noticeToast(it)
+        }
+    }
+
+    inner class MyTextWatcher(private val view: View) : TextWatcher {
+        override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+        override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+        override fun afterTextChanged(editable: Editable) {
+            when (view.id) {
+                R.id.et_name -> valName(binding.inputLayoutName, binding.etName)
+                R.id.et_email -> valEmail(binding.inputLayoutEmail, binding.etEmail)
+                R.id.et_company -> valCompany(binding.inputLayoutCompany, binding.etCompany)
+                R.id.et_position -> valPosition(binding.inputLayoutPosition, binding.etPosition)
+                R.id.et_phone_number -> valPhoneNumber(binding.inputLayoutPhoneNumber, binding.etPhoneNumber)
+                R.id.et_password -> valPassword(binding.inputLayoutPassword, binding.etPassword)
+                R.id.et_password_confirm -> valPassConf(binding.inputLayoutPasswordConfirm, binding.etPasswordConfirm, binding.etPassword)
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this@SignUpActivity, OnboardActivity::class.java))
+        this@SignUpActivity.finish()
     }
 
     override fun onDestroy() {
@@ -183,3 +166,5 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         coroutineScope.cancel()
     }
 }
+
+

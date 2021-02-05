@@ -35,7 +35,12 @@ class ExperienceActivity : AppCompatActivity(), View.OnClickListener {
 
     private var exId: Int? = null
 
-
+    companion object {
+        const val FIELD_REQUIRED = "Fields cannot be empty"
+        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
+        const val FIELD_IS_NOT_VALID = "Invalid email"
+        const val FIELD_MUST_MATCH = "Password must be the same"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_experience)
         super.onCreate(savedInstanceState)
@@ -81,23 +86,23 @@ class ExperienceActivity : AppCompatActivity(), View.OnClickListener {
                 val description = binding.etDescription.text.toString()
 
                 if (position.isEmpty()) {
-                    binding.etPosition.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etPosition.error = FIELD_REQUIRED
                     return
                 }
                 if (company.isEmpty()) {
-                    binding.etCompany.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etCompany.error = FIELD_REQUIRED
                     return
                 }
                 if (dateStart.isEmpty()) {
-                    binding.etStart.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etStart.error = FIELD_REQUIRED
                     return
                 }
                 if (dateEnd.isEmpty()) {
-                    binding.etEnd.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etEnd.error = FIELD_REQUIRED
                     return
                 }
                 if (description.isEmpty()) {
-                    binding.etDescription.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etDescription.error = FIELD_REQUIRED
                     return
                 }
 

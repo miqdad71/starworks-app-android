@@ -37,7 +37,7 @@ import java.util.*
 class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityAddProjectBinding
 
-    private lateinit var preference: SharedPreference
+    private lateinit var sharedPref: SharedPreference
     private lateinit var userDetail: HashMap<String, String>
     private lateinit var viewModel: ProjectViewModel
     private lateinit var myCalendar: Calendar
@@ -47,6 +47,12 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
     private var pathImage: String? = null
 
     companion object {
+
+        const val FIELD_REQUIRED = "Fields cannot be empty"
+        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
+        const val FIELD_IS_NOT_VALID = "Invalid email"
+        const val FIELD_MUST_MATCH = "Password must be the same"
+         
         private const val IMAGE_PICK_CODE = 1000;
         private const val PERMISSION_CODE = 1001;
     }
@@ -56,9 +62,17 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_project)
         super.onCreate(savedInstanceState)
 
-        preference = SharedPreference(this)
-        userDetail = preference.getAccountUser()
+        sharedPref = SharedPreference(this)
+        userDetail = sharedPref.getAccountUser()
         pjId = intent.getIntExtra("pj_id", 0)
+
+        setToolbarActionBar()
+        setDataFromIntent()
+
+        myCalendar = Calendar.getInstance()
+        deadlineProject()
+        setViewModel()
+        subscribeLiveData()
 
         binding.ibChooseImage.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -75,13 +89,7 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-        setToolbarActionBar()
-        setDataFromIntent()
 
-        myCalendar = Calendar.getInstance()
-        deadlineProject()
-        setViewModel()
-        subscribeLiveData()
     }
 
     private fun setToolbarActionBar() {
@@ -108,20 +116,20 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
                 val description = binding.etDescription.text.toString()
 
                 if (projectName.isEmpty()) {
-                    binding.etProjectName.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etProjectName.error = FIELD_REQUIRED
                     return
                 }
                 if (projectDeadline.isEmpty()) {
-                    binding.etDeadline.error = SignUpActivity.FIELD_IS_NOT_VALID
+                    binding.etDeadline.error = FIELD_IS_NOT_VALID
                     return
                 }
                 if (description.isEmpty()) {
-                    binding.etDescription.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etDescription.error = FIELD_REQUIRED
                     return
                 }
                 if (pathImage != null) {
                     viewModel.createAPI(
-                        cnId = createPartFromString(preference.getIdCompany().toString()),
+                        cnId = createPartFromString(sharedPref.getIdCompany().toString()),
                         pjProjectName = createPartFromString(binding.etProjectName.text.toString()),
                         pjDeadline = createPartFromString(binding.etDeadline.text.toString()),
                         pjDescription = createPartFromString(binding.etDescription.text.toString()),

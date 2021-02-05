@@ -14,15 +14,6 @@ data class AccountResponse(val success: Boolean, val message: String, val data: 
         val acEmail: String,
 
         @SerializedName("ac_phone")
-        val acPhone: String,
-
-        @SerializedName("ac_password")
-        val acPassword: String,
-
-        @SerializedName("ac_level")
-        val acLevel: Int,
-
-        @SerializedName("token")
-        val token: String
+        val acPhone: String
     )
 }

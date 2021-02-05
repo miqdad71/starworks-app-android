@@ -62,18 +62,18 @@
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btn_login"
+            app:layout_constraintBottom_toTopOf="@+id/btn_to_login"
             app:layout_constraintEnd_toEndOf="@+id/img_bg" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_to_login"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
             android:backgroundTint="@color/white"
             android:fontFamily="sans-serif-black"
             android:onClick="onClick"
-            android:text="@string/logemp"
+            android:text="@string/login"
             android:textAllCaps="false"
             android:textColor="@color/black"
             app:backgroundTint="@color/white"
@@ -86,11 +86,11 @@
             android:layout_height="0.7dp"
             android:layout_marginBottom="16dp"
             android:background="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/btn_company"
+            app:layout_constraintBottom_toTopOf="@+id/btn_register"
             app:layout_constraintEnd_toStartOf="@+id/tv_or"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@id/btn_company" />
+            app:layout_constraintStart_toStartOf="@id/btn_register" />
 
         <TextView
             android:id="@+id/tv_or"
@@ -102,7 +102,7 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_company"
+            app:layout_constraintBottom_toTopOf="@+id/btn_register"
             app:layout_constraintEnd_toStartOf="@+id/v_end"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/v_start" />
@@ -113,20 +113,20 @@
             android:layout_height="0.7dp"
             android:layout_marginBottom="16dp"
             android:background="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/btn_company"
-            app:layout_constraintEnd_toEndOf="@+id/btn_company"
+            app:layout_constraintBottom_toTopOf="@+id/btn_register"
+            app:layout_constraintEnd_toEndOf="@+id/btn_register"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/tv_or" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_company"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginBottom="80dp"
             android:fontFamily="sans-serif-black"
             android:onClick="onClick"
-            android:text="@string/logcomp"
+            android:text="@string/register_here"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:backgroundTint="@color/btn_mainColor"

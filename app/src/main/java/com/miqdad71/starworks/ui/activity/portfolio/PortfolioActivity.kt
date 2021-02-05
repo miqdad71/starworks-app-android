@@ -47,6 +47,12 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
     private var typePortfolio: String? = null
 
     companion object {
+        
+            const val FIELD_REQUIRED = "Fields cannot be empty"
+            const val FIELD_DIGITS_ONLY = "Can only contain numerics"
+            const val FIELD_IS_NOT_VALID = "Invalid email"
+            const val FIELD_MUST_MATCH = "Password must be the same"
+   
         private const val IMAGE_PICK_CODE = 1000;
         private const val PERMISSION_CODE = 1001;
     }
@@ -100,23 +106,23 @@ class PortfolioActivity : AppCompatActivity(), View.OnClickListener {
                 val workPlace = binding.etWorkPlace.text.toString()
 
                 if (appName.isEmpty()) {
-                    binding.etApp.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etApp.error = FIELD_REQUIRED
                     return
                 }
                 if (descPort.isEmpty()) {
-                    binding.etDescription.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etDescription.error = FIELD_REQUIRED
                     return
                 }
                 if (pubLink.isEmpty()) {
-                    binding.etPubLink.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etPubLink.error = FIELD_REQUIRED
                     return
                 }
                 if (repLink.isEmpty()) {
-                    binding.etRepoLink.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etRepoLink.error = FIELD_REQUIRED
                     return
                 }
                 if (workPlace.isEmpty()) {
-                    binding.etWorkPlace.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etWorkPlace.error = FIELD_REQUIRED
                     return
                 }
 

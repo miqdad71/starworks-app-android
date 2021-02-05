@@ -48,10 +48,8 @@
             android:name=".ui.activity.detail.engineer.ProfileEngineerDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
 
-        <activity android:name=".example.ListEngineerActivity" />
         <activity android:name=".ui.webview.WebViewActivity" />
         <activity android:name=".ui.adapter.engineer.EngineerLayoutActivity" />
-        <activity android:name=".example.dialog.DialogActivity" />
 
         <activity
             android:name=".ui.activity.main.engineer.EngineerMainActivity"

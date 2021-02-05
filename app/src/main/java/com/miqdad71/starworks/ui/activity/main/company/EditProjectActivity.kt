@@ -47,6 +47,12 @@ class EditProjectActivity() : AppCompatActivity(), View.OnClickListener {
     private var pathImage: String? = null
 
     companion object {
+         
+            const val FIELD_REQUIRED = "Fields cannot be empty"
+            const val FIELD_DIGITS_ONLY = "Can only contain numerics"
+            const val FIELD_IS_NOT_VALID = "Invalid email"
+            const val FIELD_MUST_MATCH = "Password must be the same"
+        
         private const val IMAGE_PICK_CODE = 1000;
         private const val PERMISSION_CODE = 1001;
     }
@@ -123,15 +129,15 @@ class EditProjectActivity() : AppCompatActivity(), View.OnClickListener {
                 val description = binding.etDescription.text.toString()
 
                 if (projectName.isEmpty()) {
-                    binding.etProjectName.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etProjectName.error = FIELD_REQUIRED
                     return
                 }
                 if (projectDeadline.isEmpty()) {
-                    binding.etDeadline.error = SignUpActivity.FIELD_IS_NOT_VALID
+                    binding.etDeadline.error = FIELD_IS_NOT_VALID
                     return
                 }
                 if (description.isEmpty()) {
-                    binding.etDescription.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etDescription.error = FIELD_REQUIRED
                     return
                 }
                 if (pathImage != null) {

@@ -84,12 +84,6 @@ class ProfileEngineerFragment : Fragment() {
             intent.putExtra("en_profile", data.enProfile)*/
         }
 
-        /*binding.accountModel = AccountModel(
-            acName = "${userDetail[SharedPreference.AC_NAME]}",
-            acEmail = "${userDetail[SharedPreference.AC_EMAIL]}",
-            acPhone = "${userDetail[SharedPreference.AC_PHONE]}"
-        )*/
-
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         val adapterPager = ViewPagerAdapter(parentFragmentManager)
 
@@ -97,26 +91,10 @@ class ProfileEngineerFragment : Fragment() {
         adapterPager.addFrag(ExperienceEngineerFragment(), "Experience")
         binding.viewPager.adapter = adapterPager
 
-
         setToolbarActionBar()
         getDataAccount()
         getDataUser()
-
-        binding.rvSkill.layoutManager = FlexboxLayoutManager(context)
-
-        val adapter = ProfileSkillAdapter()
-        binding.rvSkill.adapter = adapter
-
-
-        adapter.setOnItemClickCallback(object: ProfileSkillAdapter.OnItemClickCallback {
-            override fun onItemClick(data: SkillModel) {
-                val intent = Intent(activity, EditSkillActivity::class.java)
-                intent.putExtra("sk_id", data.sk_id)
-                intent.putExtra("sk_skill_name", data.sk_skill_name)
-                startActivityForResult(intent, 200)
-            }
-        })
-
+        getAdapterSkill()
         getAllSkill()
     }
 
@@ -136,7 +114,8 @@ class ProfileEngineerFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.miSetting -> {
-                startActivity(Intent(context, EngineerSettingActivity::class.java))
+                val intent = Intent(activity, EngineerSettingActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.miLogout -> {
@@ -147,6 +126,22 @@ class ProfileEngineerFragment : Fragment() {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    private fun getAdapterSkill(){
+        binding.rvSkill.layoutManager = FlexboxLayoutManager(context)
+
+        val adapter = ProfileSkillAdapter()
+        binding.rvSkill.adapter = adapter
+
+        adapter.setOnItemClickCallback(object: ProfileSkillAdapter.OnItemClickCallback {
+            override fun onItemClick(data: SkillModel) {
+                val intent = Intent(activity, EditSkillActivity::class.java)
+                intent.putExtra("sk_id", data.sk_id)
+                intent.putExtra("sk_skill_name", data.sk_skill_name)
+                startActivityForResult(intent, 200)
+            }
+        })
     }
 
     private fun getDataUser() {
@@ -213,6 +208,9 @@ class ProfileEngineerFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         getAllSkill()
+        getDataUser()
+        getDataAccount()
+        getAdapterSkill()
     }
 
 }

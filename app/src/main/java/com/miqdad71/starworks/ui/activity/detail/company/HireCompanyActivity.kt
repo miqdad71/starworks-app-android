@@ -25,7 +25,14 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewModel: HireViewModel
     private var pjId: Int? = 0
     private var enId: Int? = null
-    
+
+    companion object {
+        const val FIELD_REQUIRED = "Fields cannot be empty"
+        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
+        const val FIELD_IS_NOT_VALID = "Invalid email"
+        const val FIELD_MUST_MATCH = "Password must be the same"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hire_company)
         super.onCreate(savedInstanceState)
@@ -104,12 +111,12 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
                 val desc = binding.etDescription.text.toString()
 
                 if (price.isEmpty()) {
-                    binding.etPrice.error = SignUpActivity.FIELD_DIGITS_ONLY
+                    binding.etPrice.error = FIELD_DIGITS_ONLY
                     return
                 }
 
                 if (desc.isEmpty()) {
-                    binding.etDescription.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etDescription.error = FIELD_REQUIRED
                     return
                 }
                 if(enId != 0){

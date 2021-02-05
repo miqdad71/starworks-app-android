@@ -2,15 +2,23 @@ package com.miqdad71.starworks.serviceapi
 
 import com.miqdad71.starworks.data.model.account.AccountResponse
 import com.miqdad71.starworks.data.model.account.LoginResponse
+import com.miqdad71.starworks.data.model.account.SignUpResponse
+import com.miqdad71.starworks.data.model.account.VerifyResponse
 import retrofit2.http.*
 
 interface AccountAPI {
     @FormUrlEncoded
     @POST("account/login")
-    suspend fun login(
+    suspend fun loginAccount(
         @Field("email") email: String,
         @Field("password") password: String
     ): LoginResponse
+
+    @FormUrlEncoded
+    @POST("account/check")
+    suspend fun checkEmail(
+        @Field("email") email: String
+    ): VerifyResponse
 
     @FormUrlEncoded
     @POST("account")
@@ -20,7 +28,7 @@ interface AccountAPI {
         @Field("ac_phone") acPhone: String,
         @Field("ac_password") acPassword: String,
         @Field("ac_level") acLevel: Int
-    ): AccountResponse
+    ): SignUpResponse
 
     @FormUrlEncoded
     @POST("account")
@@ -32,14 +40,13 @@ interface AccountAPI {
         @Field("ac_level") acLevel: Int,
         @Field("cn_company") cnCompany: String,
         @Field("cn_position") cnPosition: String
-    ): AccountResponse
+    ): SignUpResponse
 
     @FormUrlEncoded
     @PUT("account/{acId}")
     suspend fun updateAccount(
         @Path("acId") acId: Int,
         @Field("ac_name") acName: String
-
         ): AccountResponse
 
     @FormUrlEncoded
@@ -53,5 +60,4 @@ interface AccountAPI {
     suspend fun detailAccount(
         @Path("acId") acId: Int
     ): AccountResponse
-
 }

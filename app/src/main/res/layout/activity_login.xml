@@ -160,25 +160,43 @@
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="18dp"
                     android:fontFamily="sans-serif"
-                    android:text="@string/forgot_password"
+                    android:text="@string/forget_password"
+                    android:onClick="onClick"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/input_layout_password" />
 
-                <Button
-                    android:id="@+id/login"
+                <LinearLayout
+                    android:id="@+id/ln_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="16dp"
-                    android:backgroundTint="@color/btn_mainColor"
-                    android:padding="14dp"
-                    android:text="@string/login"
-                    android:textColor="@color/white"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_forget_password" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_forget_password">
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/white"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/btn_login"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/btn_mainColor"
+                        android:onClick="onClick"
+                        android:padding="14dp"
+                        android:text="@string/login"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ln_divider"
@@ -190,7 +208,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/login">
+                    app:layout_constraintTop_toBottomOf="@+id/ln_login">
 
                     <TextView
                         android:id="@+id/tv_have_account"
@@ -199,7 +217,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="24dp"
                         android:fontFamily="sans-serif"
-                        android:text="@string/dont_have_an_account"
+                        android:text="@string/already_have_an_account"
                         android:textColor="@color/white"
                         android:textSize="14sp" />
 
@@ -208,6 +226,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="24dp"
+                        android:onClick="onClick"
                         android:fontFamily="sans-serif"
                         android:text="@string/action_sign_in_short"
                         android:textColor="@color/white"

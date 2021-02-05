@@ -19,7 +19,12 @@ class SkillActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var sharedPref: SharedPreference
     private lateinit var viewModel: SkillViewModel
-
+    companion object {
+        const val FIELD_REQUIRED = "Fields cannot be empty"
+        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
+        const val FIELD_IS_NOT_VALID = "Invalid email"
+        const val FIELD_MUST_MATCH = "Password must be the same"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_skill)
         super.onCreate(savedInstanceState)
@@ -63,7 +68,7 @@ class SkillActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_add_skill -> {
                 val skSkillName = binding.etSkill.text.toString()
                 if (skSkillName.isEmpty()) {
-                    binding.etSkill.error = SignUpActivity.FIELD_REQUIRED
+                    binding.etSkill.error = FIELD_REQUIRED
                     return
                 }
                 viewModel.createAPI(

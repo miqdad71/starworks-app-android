@@ -9,11 +9,13 @@ import com.miqdad71.starworks.ui.activity.main.engineer.EngineerMainActivity
 
 class SharedPreference(private val context: Context) {
     companion object {
+
         const val TOKEN = "token"
         const val PREF_NAME = "PREF_NAME"
         const val AC_EMAIL = "AC_EMAIL"
         const val AC_NAME = "AC_NAME"
         const val AC_PHONE = "AC_PHONE"
+        const val EXPIRED = "EXPIRED"
 
         const val AC_ID = "AC_ID"
         const val EN_ID = "EN_ID"
@@ -23,20 +25,6 @@ class SharedPreference(private val context: Context) {
         const val LOGIN = "isLogin"
         const val AC_DETAIL = "AC_DETAIL"
 
-        const val EN_JOB_TITLE = "EN_JOB_TITLE"
-        const val EN_JOB_TYPE = "EN_JOB_TYPE"
-        const val EN_DOMICILE = "EN_DOMICILE"
-        const val EN_DESCRIPTION = "EN_DESCRIPTION"
-
-        const val CN_COMPANY = "CN_COMPANY"
-        const val CN_POSITION = "CN_POSITION"
-        const val CN_FIELD = "CN_FIELD"
-        const val CN_CITY = "CN_CITY"
-        const val CN_DESCRIPTION = "CN_DESCRIPTION"
-        const val CN_INSTAGRAM = "CN_INSTAGRAM"
-        const val CN_LINKEDIN = "CN_LINKEDIN"
-        const val CN_PROFILE = "CN_PROFILE"
-
     }
 
     private val sharedPreferences: SharedPreferences =
@@ -45,6 +33,33 @@ class SharedPreference(private val context: Context) {
 
     fun createInDetail(acDetail: Int) {
         editor.putInt(AC_DETAIL, acDetail)
+        editor.commit()
+    }
+
+
+    fun createAccountUser(
+        id: Int,
+        acId: Int,
+        acLevel: Int,
+        acName: String,
+        acEmail: String,
+        token: String,
+        exp: Long
+    ) {
+        editor.putBoolean(LOGIN, true)
+        editor.putInt(AC_LEVEL, acLevel)
+        editor.putString(AC_NAME, acName)
+        editor.putString(AC_EMAIL, acEmail)
+        editor.putString(TOKEN, token)
+        editor.putLong(EXPIRED, exp)
+        editor.putInt(AC_ID, acId)
+
+        if (acLevel == 0) {
+            editor.putInt(EN_ID, id)
+        } else {
+            editor.putInt(CN_ID, id)
+        }
+
         editor.commit()
     }
 
