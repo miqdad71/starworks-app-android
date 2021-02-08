@@ -165,4 +165,7 @@
     <string name="already_have_an_account">Already have an account?</string>
     <string name="forget_password">Forget password?</string>
     <string name="sign_up">SIGN UP</string>
+    <string name="login_as_company">Login As Company</string>
+    <string name="all_talent">All Talent</string>
+    <string name="login_as_talent">Login As Talent</string>
 </resources>

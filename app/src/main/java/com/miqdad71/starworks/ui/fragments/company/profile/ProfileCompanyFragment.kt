@@ -35,9 +35,14 @@ class ProfileCompanyFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
 
         return binding.root
     }
@@ -74,7 +79,7 @@ class ProfileCompanyFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
             R.id.miSetting -> {
                 Log.d("Message : ", " Setting ")
                 true
@@ -106,7 +111,9 @@ class ProfileCompanyFragment : Fragment() {
                     cn_linkedin = dataFromResult.cnLinkedin,
                     cn_profile = dataFromResult.cnProfile
                 )
-                Glide.with(this@ProfileCompanyFragment).load(ApiClient.BASE_URL_IMAGE + dataFromResult.cnProfile).placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
+                Glide.with(this@ProfileCompanyFragment)
+                    .load(ApiClient.BASE_URL_IMAGE + dataFromResult.cnProfile)
+                    .placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
 
             } catch (e: Throwable) {
                 Log.d("message", e.toString())

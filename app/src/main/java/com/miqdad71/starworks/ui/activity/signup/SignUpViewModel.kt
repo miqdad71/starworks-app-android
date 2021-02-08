@@ -39,13 +39,15 @@ class SignUpViewModel : ViewModel(), CoroutineScope {
                 } catch (e: HttpException) {
                     withContext(Dispatchers.Main) {
                         onSuccessLiveData.value = false
-
-                        when {
-                            e.code() == 400 -> {
-                                onFailLiveData.value = "Email has registered!"
-                            }
-                            else -> {
-                                onFailLiveData.value = "Fail to registration! Please try again later!"
+                        withContext(Dispatchers.Main) {
+                            when {
+                                e.code() == 400 -> {
+                                    onFailLiveData.value = "Email has registered!"
+                                }
+                                else -> {
+                                    onFailLiveData.value =
+                                        "Fail to registration! Please try again later!"
+                                }
                             }
                         }
                     }
@@ -65,7 +67,14 @@ class SignUpViewModel : ViewModel(), CoroutineScope {
         }
     }
 
-    fun serviceCompanyApi(acName: String, acEmail: String, acPhone: String, acPassword: String, cnCompany: String, cnPosition: String) {
+    fun serviceCompanyApi(
+        acName: String,
+        acEmail: String,
+        acPhone: String,
+        acPassword: String,
+        cnCompany: String,
+        cnPosition: String
+    ) {
         launch {
             isLoadingLiveData.value = true
 
@@ -81,16 +90,15 @@ class SignUpViewModel : ViewModel(), CoroutineScope {
                         cnPosition = cnPosition
                     )
                 } catch (e: HttpException) {
-                    withContext(Dispatchers.Main) {
-                        onSuccessLiveData.value = false
+                    onSuccessLiveData.value = false
 
-                        when {
-                            e.code() == 400 -> {
-                                onFailLiveData.value = "Email has registered!"
-                            }
-                            else -> {
-                                onFailLiveData.value = "Fail to registration! Please try again later!"
-                            }
+                    when {
+                        e.code() == 400 -> {
+                            onFailLiveData.value = "Email has registered!"
+                        }
+                        else -> {
+                            onFailLiveData.value =
+                                "Fail to registration! Please try again later!"
                         }
                     }
                 }

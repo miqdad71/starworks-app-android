@@ -19,7 +19,6 @@ import com.miqdad71.starworks.databinding.FragmentProfileEngineerBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.EngineerAPI
 import com.miqdad71.starworks.serviceapi.SkillAPI
-import com.miqdad71.starworks.ui.activity.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.ui.activity.main.engineer.EngineerSettingActivity
 import com.miqdad71.starworks.ui.activity.main.engineer.img_profile.ImageProfileEngineer
 import com.miqdad71.starworks.ui.activity.skill.EditSkillActivity
@@ -51,9 +50,14 @@ class ProfileEngineerFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
 
         return binding.root
     }
@@ -78,10 +82,9 @@ class ProfileEngineerFragment : Fragment() {
         }
         binding.ivImageProfile.setOnClickListener {
             val intent = Intent(activity, ImageProfileEngineer::class.java)
-            startActivity(intent)
-
             /*intent.putExtra("en_id", data.enId)
             intent.putExtra("en_profile", data.enProfile)*/
+            startActivity(intent)
         }
 
         binding.tabLayout.setupWithViewPager(binding.viewPager)
@@ -112,7 +115,7 @@ class ProfileEngineerFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
             R.id.miSetting -> {
                 val intent = Intent(activity, EngineerSettingActivity::class.java)
                 startActivity(intent)
@@ -128,13 +131,13 @@ class ProfileEngineerFragment : Fragment() {
         }
     }
 
-    private fun getAdapterSkill(){
+    private fun getAdapterSkill() {
         binding.rvSkill.layoutManager = FlexboxLayoutManager(context)
 
         val adapter = ProfileSkillAdapter()
         binding.rvSkill.adapter = adapter
 
-        adapter.setOnItemClickCallback(object: ProfileSkillAdapter.OnItemClickCallback {
+        adapter.setOnItemClickCallback(object : ProfileSkillAdapter.OnItemClickCallback {
             override fun onItemClick(data: SkillModel) {
                 val intent = Intent(activity, EditSkillActivity::class.java)
                 intent.putExtra("sk_id", data.sk_id)
@@ -157,7 +160,9 @@ class ProfileEngineerFragment : Fragment() {
                     enDomicile = dataFromResult.enDomicile,
                     enDescription = dataFromResult.enDescription
                 )
-                Glide.with(this@ProfileEngineerFragment).load(BASE_URL_IMAGE + dataFromResult.enProfile).placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
+                Glide.with(this@ProfileEngineerFragment)
+                    .load(BASE_URL_IMAGE + dataFromResult.enProfile)
+                    .placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
             } catch (e: Throwable) {
                 Log.d("message", e.toString())
             }

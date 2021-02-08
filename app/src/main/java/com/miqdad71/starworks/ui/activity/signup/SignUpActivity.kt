@@ -1,6 +1,5 @@
 package com.miqdad71.starworks.ui.activity.signup
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -157,7 +156,7 @@ class SignUpActivity : BaseActivityCoroutine<ActivitySignUpBinding>(), View.OnCl
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this@SignUpActivity, OnboardActivity::class.java))
+        intents<OnboardActivity>(this@SignUpActivity)
         this@SignUpActivity.finish()
     }
 

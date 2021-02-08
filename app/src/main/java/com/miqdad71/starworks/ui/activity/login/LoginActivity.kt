@@ -87,13 +87,9 @@ open class LoginActivity : BaseActivityCoroutine<ActivityLoginBinding>(), View.O
                 binding.btnLogin.visibility = View.VISIBLE
 
                 if (sharedPref.getLevelUser() == 0) {
-                    val sendIntent = Intent(this@LoginActivity, EngineerMainActivity::class.java)
-                    startActivity(sendIntent)
-                    this@LoginActivity.finish()
+                    intents<EngineerMainActivity>(this@LoginActivity)
                 } else {
-                    val sendIntent = Intent(this@LoginActivity, CompanyMainActivity::class.java)
-                    startActivity(sendIntent)
-                    this@LoginActivity.finish()
+                    intents<CompanyMainActivity>(this@LoginActivity)
                 }
                 this@LoginActivity.finish()
             } else {
@@ -101,7 +97,9 @@ open class LoginActivity : BaseActivityCoroutine<ActivityLoginBinding>(), View.O
                 binding.btnLogin.visibility = View.VISIBLE
             }
         }
-
+        viewModel.onMessageLiveData.observe(this@LoginActivity) {
+            noticeToast(it)
+        }
         viewModel.onFailLiveData.observe(this@LoginActivity) {
             noticeToast(it)
         }

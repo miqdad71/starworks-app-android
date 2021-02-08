@@ -10,8 +10,6 @@ import androidx.lifecycle.observe
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivitySkillBinding
-import com.miqdad71.starworks.ui.activity.main.company.ProjectViewModel
-import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
 import com.miqdad71.starworks.util.SharedPreference
 
 class SkillActivity : AppCompatActivity(), View.OnClickListener {
@@ -21,9 +19,6 @@ class SkillActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewModel: SkillViewModel
     companion object {
         const val FIELD_REQUIRED = "Fields cannot be empty"
-        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
-        const val FIELD_IS_NOT_VALID = "Invalid email"
-        const val FIELD_MUST_MATCH = "Password must be the same"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_skill)

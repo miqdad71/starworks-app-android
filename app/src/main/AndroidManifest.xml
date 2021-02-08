@@ -59,10 +59,12 @@
             android:name=".ui.activity.main.company.CompanyMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
 
-        <activity android:name=".ui.activity.experience.ExperienceActivity"
+        <activity
+            android:name=".ui.activity.experience.ExperienceActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
 
-        <activity android:name=".ui.activity.portfolio.PortfolioActivity"
+        <activity
+            android:name=".ui.activity.portfolio.PortfolioActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
 
         <activity android:name=".ui.activity.signup.SignUpActivity" />

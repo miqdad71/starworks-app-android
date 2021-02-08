@@ -14,6 +14,7 @@ class LoginViewModel : ViewModel(), CoroutineScope {
     private lateinit var sharedPref: SharedPreference
 
     val onSuccessLiveData = MutableLiveData<Boolean>()
+    val onMessageLiveData = MutableLiveData<String>()
     val onFailLiveData = MutableLiveData<String>()
     val isLoadingLiveData = MutableLiveData<Boolean>()
 
@@ -56,7 +57,6 @@ class LoginViewModel : ViewModel(), CoroutineScope {
                     }
                 }
             }
-
             if (response is LoginResponse) {
                 isLoadingLiveData.value = false
 
@@ -81,6 +81,7 @@ class LoginViewModel : ViewModel(), CoroutineScope {
                     )
 
                     onSuccessLiveData.value = true
+                    onMessageLiveData.value = response.message
                 } else {
                     onFailLiveData.value = response.message
                 }
@@ -88,3 +89,4 @@ class LoginViewModel : ViewModel(), CoroutineScope {
         }
     }
 }
+

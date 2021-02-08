@@ -1,36 +1,31 @@
 package com.miqdad71.starworks.ui.activity.skill
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityEditSkillBinding
-import com.miqdad71.starworks.databinding.ActivitySkillBinding
-import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
 import com.miqdad71.starworks.util.SharedPreference
 
 class EditSkillActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityEditSkillBinding
 
-    private lateinit var preference: SharedPreference
+    private lateinit var sharedPref: SharedPreference
     private lateinit var viewModel: SkillViewModel
     private var skId: Int? = 0
     companion object {
         const val FIELD_REQUIRED = "Fields cannot be empty"
-        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
-        const val FIELD_IS_NOT_VALID = "Invalid email"
-        const val FIELD_MUST_MATCH = "Password must be the same"
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_skill)
         super.onCreate(savedInstanceState)
 
-        preference = SharedPreference(this)
+        sharedPref = SharedPreference(this)
         skId = intent.getIntExtra("sk_id", 0)
 
         binding.etSkill.setText(intent.getStringExtra("sk_skill_name"))
@@ -81,13 +76,11 @@ class EditSkillActivity : AppCompatActivity(), View.OnClickListener {
                     skId = skId!!,
                     skSkillName = skSkillName
                 )
-                finish()
             }
             R.id.btn_delete_skill -> {
                 viewModel.deleteAPI(
                     skId = skId!!
                 )
-                finish()
             }
         }
     }
