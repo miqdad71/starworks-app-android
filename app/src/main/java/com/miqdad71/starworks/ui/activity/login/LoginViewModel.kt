@@ -12,9 +12,8 @@ import kotlin.coroutines.CoroutineContext
 class LoginViewModel : ViewModel(), CoroutineScope {
     private lateinit var service: AccountAPI
     private lateinit var sharedPref: SharedPreference
-
-    val onSuccessLiveData = MutableLiveData<Boolean>()
-    val onMessageLiveData = MutableLiveData<String>()
+    private var failStatus = ""
+    val onSuccessLiveData = MutableLiveData<String>()
     val onFailLiveData = MutableLiveData<String>()
     val isLoadingLiveData = MutableLiveData<Boolean>()
 
@@ -40,25 +39,27 @@ class LoginViewModel : ViewModel(), CoroutineScope {
                         password = password
                     )
                 } catch (e: HttpException) {
-                    withContext(Dispatchers.Main) {
-                        onSuccessLiveData.value = false
-
-                        when {
-                            e.code() == 404 -> {
-                                onFailLiveData.value = "Account not registered"
-                            }
-                            e.code() == 400 -> {
-                                onFailLiveData.value = "Password is invalid!"
-                            }
-                            else -> {
-                                onFailLiveData.value = "Login is fail! Please try again later!"
-                            }
+                    when {
+                        e.code() == 404 -> {
+                            failStatus = "Account not registered"
+                        }
+                        e.code() == 400 -> {
+                            failStatus = "Password is invalid!"
+                        }
+                        else -> {
+                            failStatus = "Login is fail! Please try again later!"
                         }
                     }
                 }
             }
+
+            if (failStatus.isNotEmpty()) {
+                onSuccessLiveData.value = ""
+                onFailLiveData.value = failStatus
+                failStatus = ""
+            }
+
             if (response is LoginResponse) {
-                isLoadingLiveData.value = false
 
                 if (response.success) {
                     val data = response.data
@@ -79,11 +80,7 @@ class LoginViewModel : ViewModel(), CoroutineScope {
                         token = data.token,
                         exp = data.expired
                     )
-
-                    onSuccessLiveData.value = true
-                    onMessageLiveData.value = response.message
-                } else {
-                    onFailLiveData.value = response.message
+                    onSuccessLiveData.value = response.message
                 }
             }
         }

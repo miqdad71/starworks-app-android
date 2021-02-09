@@ -120,6 +120,9 @@ class ProfileCompanyFragment : Fragment() {
             }
         }
     }
-
+    override fun onResume() {
+        super.onResume()
+        getDataUser()
+    }
 }
 

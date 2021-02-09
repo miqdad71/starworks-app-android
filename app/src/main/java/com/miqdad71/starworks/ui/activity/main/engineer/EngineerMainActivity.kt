@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityEngineerMainBinding
 import com.miqdad71.starworks.ui.activity.experience.ExperienceActivity
-import com.miqdad71.starworks.ui.activity.forgetpassword.ForgetPasswordVerifyActivity
 import com.miqdad71.starworks.ui.activity.portfolio.PortfolioActivity
 import com.miqdad71.starworks.ui.fragments.engineer.hire.HireEngineerFragment
 import com.miqdad71.starworks.ui.fragments.engineer.home.HomeEngineerFragment
@@ -30,7 +29,6 @@ class EngineerMainActivity : AppCompatActivity() {
     private val toBottom: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim) }
 
     private var clicked = false
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_engineer_main)
@@ -52,8 +50,8 @@ class EngineerMainActivity : AppCompatActivity() {
 
         val firstFragment = HomeEngineerFragment()
         val secondFragment = SearchEngineerFragment()
-        val thirdFragment = ProfileEngineerFragment()
-        val fourthFragment = HireEngineerFragment()
+        val thirdFragment = HireEngineerFragment()
+        val fourthFragment = ProfileEngineerFragment()
 
         setCurrentFragment(firstFragment)
 
@@ -61,8 +59,8 @@ class EngineerMainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.miHome -> setCurrentFragment(firstFragment)
                 R.id.miSearch -> setCurrentFragment(secondFragment)
-                R.id.miProfile -> setCurrentFragment(thirdFragment)
-                R.id.miProject -> setCurrentFragment(fourthFragment)
+                R.id.miProject -> setCurrentFragment(thirdFragment)
+                R.id.miProfile -> setCurrentFragment(fourthFragment)
             }
             true
         }

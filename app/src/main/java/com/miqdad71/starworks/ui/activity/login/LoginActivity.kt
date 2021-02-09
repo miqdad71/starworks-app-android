@@ -76,16 +76,17 @@ open class LoginActivity : BaseActivityCoroutine<ActivityLoginBinding>(), View.O
     }
 
     private fun subscribeLiveData() {
+
         viewModel.isLoadingLiveData.observe(this@LoginActivity) {
             binding.btnLogin.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
         }
 
         viewModel.onSuccessLiveData.observe(this@LoginActivity) {
-            if (it) {
+            if (it.isNotEmpty()) {
                 binding.progressBar.visibility = View.GONE
                 binding.btnLogin.visibility = View.VISIBLE
-
+                noticeToast(it)
                 if (sharedPref.getLevelUser() == 0) {
                     intents<EngineerMainActivity>(this@LoginActivity)
                 } else {
@@ -97,12 +98,11 @@ open class LoginActivity : BaseActivityCoroutine<ActivityLoginBinding>(), View.O
                 binding.btnLogin.visibility = View.VISIBLE
             }
         }
-        viewModel.onMessageLiveData.observe(this@LoginActivity) {
-            noticeToast(it)
-        }
+
         viewModel.onFailLiveData.observe(this@LoginActivity) {
             noticeToast(it)
         }
+
     }
 
     private fun selectSignUpAs() {

@@ -11,8 +11,8 @@ import kotlin.coroutines.CoroutineContext
 class SignUpViewModel : ViewModel(), CoroutineScope {
     private lateinit var service: AccountAPI
 
-    val onSuccessLiveData = MutableLiveData<Boolean>()
-    val onMessageLiveData = MutableLiveData<String>()
+    private var failStatus = ""
+    val onSuccessLiveData = MutableLiveData<String>()
     val onFailLiveData = MutableLiveData<String>()
     val isLoadingLiveData = MutableLiveData<Boolean>()
 
@@ -37,31 +37,26 @@ class SignUpViewModel : ViewModel(), CoroutineScope {
                         acLevel = 0
                     )
                 } catch (e: HttpException) {
-                    withContext(Dispatchers.Main) {
-                        onSuccessLiveData.value = false
-                        withContext(Dispatchers.Main) {
-                            when {
-                                e.code() == 400 -> {
-                                    onFailLiveData.value = "Email has registered!"
-                                }
-                                else -> {
-                                    onFailLiveData.value =
-                                        "Fail to registration! Please try again later!"
-                                }
-                            }
+                    when {
+                        e.code() == 400 -> {
+                            failStatus = "Email has registered!"
+                        }
+                        else -> {
+                            failStatus = "Fail to registration! Please try again later!"
                         }
                     }
                 }
             }
 
-            if (response is SignUpResponse) {
-                isLoadingLiveData.value = false
+            if (failStatus.isNotEmpty()) {
+                onSuccessLiveData.value = ""
+                onFailLiveData.value = failStatus
+                failStatus = ""
+            }
 
+            if (response is SignUpResponse) {
                 if (response.success) {
-                    onSuccessLiveData.value = true
-                    onMessageLiveData.value = response.message
-                } else {
-                    onFailLiveData.value = response.message
+                    onSuccessLiveData.value = response.message
                 }
             }
         }
@@ -90,28 +85,26 @@ class SignUpViewModel : ViewModel(), CoroutineScope {
                         cnPosition = cnPosition
                     )
                 } catch (e: HttpException) {
-                    onSuccessLiveData.value = false
-
                     when {
                         e.code() == 400 -> {
-                            onFailLiveData.value = "Email has registered!"
+                            failStatus = "Email has registered!"
                         }
                         else -> {
-                            onFailLiveData.value =
-                                "Fail to registration! Please try again later!"
+                            failStatus = "Fail to registration! Please try again later!"
                         }
                     }
                 }
             }
 
-            if (response is SignUpResponse) {
-                isLoadingLiveData.value = false
+            if (failStatus.isNotEmpty()) {
+                onSuccessLiveData.value = ""
+                onFailLiveData.value = failStatus
+                failStatus = ""
+            }
 
+            if (response is SignUpResponse) {
                 if (response.success) {
-                    onSuccessLiveData.value = true
-                    onMessageLiveData.value = response.message
-                } else {
-                    onFailLiveData.value = response.message
+                    onSuccessLiveData.value = response.message
                 }
             }
         }

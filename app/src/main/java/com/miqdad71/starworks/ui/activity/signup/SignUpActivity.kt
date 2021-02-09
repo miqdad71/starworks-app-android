@@ -106,16 +106,17 @@ class SignUpActivity : BaseActivityCoroutine<ActivitySignUpBinding>(), View.OnCl
     }
 
     private fun subscribeLiveData() {
+
         viewModel.isLoadingLiveData.observe(this@SignUpActivity) {
             binding.btnSignUp.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
         }
 
         viewModel.onSuccessLiveData.observe(this@SignUpActivity) {
-            if (it) {
+            if (it.isNotEmpty()) {
                 binding.progressBar.visibility = View.GONE
                 binding.btnSignUp.visibility = View.VISIBLE
-
+                noticeToast(it)
                 if (intent.getIntExtra("onBoard", 0) == 1) {
                     intents<LoginActivity>(this@SignUpActivity)
                     this@SignUpActivity.finish()
@@ -129,13 +130,10 @@ class SignUpActivity : BaseActivityCoroutine<ActivitySignUpBinding>(), View.OnCl
             }
         }
 
-        viewModel.onMessageLiveData.observe(this@SignUpActivity) {
-            noticeToast(it)
-        }
-
         viewModel.onFailLiveData.observe(this@SignUpActivity) {
             noticeToast(it)
         }
+
     }
 
     inner class MyTextWatcher(private val view: View) : TextWatcher {
