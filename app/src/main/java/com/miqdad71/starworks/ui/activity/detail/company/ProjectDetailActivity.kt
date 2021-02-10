@@ -2,9 +2,11 @@ package com.miqdad71.starworks.ui.activity.detail.company
 
 import android.os.Bundle
 import android.view.View
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.hire.HireModel
 import com.miqdad71.starworks.data.model.hire.HireResponse
+import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE
 import com.miqdad71.starworks.databinding.ActivityProjectDetailBinding
 import com.miqdad71.starworks.serviceapi.HireAPI
@@ -64,11 +66,11 @@ class ProjectDetailActivity : BaseActivityCoroutine<ActivityProjectDetailBinding
             pjProjectName = intent.getStringExtra("pj_project_name"),
             pjDescription = intent.getStringExtra("pj_description"),
             pjDeadline = intent.getStringExtra("pj_deadline"),
+            pjImage = intent.getStringExtra("pj_image"),
             cnCompany = intent.getStringExtra("cn_company"),
             cnField = intent.getStringExtra("cn_field"),
             cnCity = intent.getStringExtra("cn_city")
-        )
-
+            )
         binding.imageUrl = BASE_URL_IMAGE + intent.getStringExtra("cn_profile")
     }
 

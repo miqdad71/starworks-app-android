@@ -15,7 +15,6 @@ import com.miqdad71.starworks.data.model.project.ProjectModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentProjectCompanyBinding
 import com.miqdad71.starworks.serviceapi.ProjectAPI
-import com.miqdad71.starworks.ui.activity.detail.company.ProjectDetailActivity
 import com.miqdad71.starworks.ui.activity.main.company.AddProjectActivity
 import com.miqdad71.starworks.ui.activity.main.company.EditProjectActivity
 import com.miqdad71.starworks.ui.adapter.company.project.CompanyProjectAdapter
@@ -34,7 +33,7 @@ class ProjectCompanyFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_project_company, container, false)
 
