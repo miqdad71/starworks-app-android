@@ -168,4 +168,10 @@
     <string name="login_as_company">Login As Company</string>
     <string name="all_talent">All Talent</string>
     <string name="login_as_talent">Login As Talent</string>
+    <string name="nama_aplikasi">Nama Aplikasi</string>
+    <string name="deskripsi_aplikasi">Deskripsi Aplikasi</string>
+    <string name="tanggal_deadline">Date</string>
+    <string name="deadline">Deadline : </string>
+    <string name="add_project">Add Project</string>
+    <string name="delete_project">Delete Project</string>
 </resources>

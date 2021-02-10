@@ -10,20 +10,16 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.loader.content.CursorLoader
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityAddProjectBinding
-import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
+import com.miqdad71.starworks.ui.base.BaseActivityCoroutine
 import com.miqdad71.starworks.util.SharedPreference
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -34,27 +30,17 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding: ActivityAddProjectBinding
+class AddProjectActivity() : BaseActivityCoroutine<ActivityAddProjectBinding>(), View.OnClickListener {
 
-    private lateinit var sharedPref: SharedPreference
-    private lateinit var userDetail: HashMap<String, String>
     private lateinit var viewModel: ProjectViewModel
     private lateinit var myCalendar: Calendar
     private lateinit var deadline: DatePickerDialog.OnDateSetListener
 
     private var pjId: Int? = null
-    private var pathImage: String? = null
 
     companion object {
-
         const val FIELD_REQUIRED = "Fields cannot be empty"
-        const val FIELD_DIGITS_ONLY = "Can only contain numerics"
         const val FIELD_IS_NOT_VALID = "Invalid email"
-        const val FIELD_MUST_MATCH = "Password must be the same"
-         
-        private const val IMAGE_PICK_CODE = 1000;
-        private const val PERMISSION_CODE = 1001;
     }
 
     @SuppressLint("ObsoleteSdkInt")
@@ -143,12 +129,6 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -168,45 +148,21 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
         return MultipartBody.Part.createFormData("image", file.name, reqFile)
     }
 
-    private fun getPath(context: Context, uri: Uri): String? {
-        var realPath = String()
-        uri.path?.let { path ->
+    private fun getPath(context: Context, contentUri: Uri): String? {
+        var result: String? = null
+        val imageProfile = arrayOf(MediaStore.Images.Media.DATA)
 
-            val databaseUri: Uri
-            val selection: String?
-            val selectionArgs: Array<String>?
-            if (path.contains("/document/image:")) {
-                databaseUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                selection = "_id=?"
-                selectionArgs = arrayOf(DocumentsContract.getDocumentId(uri).split(":")[1])
-            } else {
-                databaseUri = uri
-                selection = null
-                selectionArgs = null
-            }
+        val cursorLoader = CursorLoader(context, contentUri, imageProfile, null, null, null)
+        val cursor = cursorLoader.loadInBackground()
 
-            try {
-                val column = "_data"
-                val projection = arrayOf(column)
-                val cursor = context.contentResolver.query(
-                    databaseUri,
-                    projection,
-                    selection,
-                    selectionArgs,
-                    null
-                )
-                cursor?.let {
-                    if (it.moveToFirst()) {
-                        val columnIndex = cursor.getColumnIndexOrThrow(column)
-                        realPath = cursor.getString(columnIndex)
-                    }
-                    cursor.close()
-                }
-            } catch (e: Exception) {
-                println(e)
-            }
+        if (cursor != null) {
+            val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            result = cursor.getString(columnIndex)
+            cursor.close()
         }
-        return realPath
+
+        return result
     }
 
 
@@ -238,17 +194,32 @@ class AddProjectActivity() : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun subscribeLiveData() {
-        viewModel.onSuccessLiveData.observe(this) {
-            if (it) {
+        
+        viewModel.isLoadingLiveData.observe(this@AddProjectActivity) {
+            binding.btnAddProject.visibility = View.GONE
+            binding.btnDeleteProject.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+        }
+
+        viewModel.onSuccessLiveData.observe(this@AddProjectActivity) {
+            if (it.isNotEmpty()) {
                 setResult(RESULT_OK)
-                this.finish()
+                this@AddProjectActivity.finish()
+
+                binding.progressBar.visibility = View.GONE
+                binding.btnAddProject.visibility = View.VISIBLE
+                binding.btnDeleteProject.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+                binding.btnAddProject.visibility = View.VISIBLE
+                binding.btnDeleteProject.visibility = View.VISIBLE
             }
         }
 
-    }
-
-    private inline fun <reified ApiService> createApi(context: Context): ApiService {
-        return ApiClient.getApiClient(context).create(ApiService::class.java)
+        viewModel.onFailLiveData.observe(this@AddProjectActivity) {
+            noticeToast(it)
+        }
+        
     }
 
 }

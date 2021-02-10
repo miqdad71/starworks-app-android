@@ -42,12 +42,13 @@ class CompanyProjectAdapter : RecyclerView.Adapter<CompanyProjectAdapter.Project
 
     override fun onBindViewHolder(holder: ProjectHolder, position: Int) {
         val item = items[position]
-        holder.binding.itemProjectCompany.setOnClickListener {
+        holder.binding.cvProject.setOnClickListener {
             onItemClickCallback.onItemClick(item)
         }
         holder.binding.tvProjectName.text = item.pjProjectName
-        holder.binding.tvProjectDesc.text = item.pjDescription
-        Glide.with(holder.itemView.context).load(ApiClient.BASE_URL_IMAGE + item.pjImage).placeholder(R.drawable.ic_backround_user).into(holder.binding.imgListSearchProject)
+        holder.binding.tvDescription.text = item.pjDescription
+        holder.binding.tvDeadline.text = item.pjDeadline!!.split('T')[0]
+        Glide.with(holder.itemView.context).load(ApiClient.BASE_URL_IMAGE + item.pjImage).placeholder(R.drawable.ic_backround_user).into(holder.binding.ivImageProject)
 
     }
 

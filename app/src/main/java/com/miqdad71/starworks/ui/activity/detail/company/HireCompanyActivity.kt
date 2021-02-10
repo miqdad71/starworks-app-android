@@ -29,8 +29,6 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
         const val FIELD_REQUIRED = "Fields cannot be empty"
         const val FIELD_DIGITS_ONLY = "Can only contain numerics"
-        const val FIELD_IS_NOT_VALID = "Invalid email"
-        const val FIELD_MUST_MATCH = "Password must be the same"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

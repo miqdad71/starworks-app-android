@@ -72,10 +72,10 @@ class ProfileEngineerFragment : Fragment() {
         serviceEngineer = ApiClient.getApiClient(requireActivity()).create(EngineerAPI::class.java)
         serviceSkill = ApiClient.getApiClient(requireActivity()).create(SkillAPI::class.java)
 
-        binding.tvGithub.setOnClickListener {
+        /*binding.tvGithub.setOnClickListener {
             val intent = Intent(context, WebViewActivity::class.java)
             startActivity(intent)
-        }
+        }*/
         binding.ivAddSkill.setOnClickListener {
             val intent = Intent(context, SkillActivity::class.java)
             startActivity(intent)

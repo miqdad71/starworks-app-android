@@ -88,6 +88,7 @@
                         android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_image_profile"
                         tools:text="Name" />
 
@@ -103,6 +104,7 @@
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_name"
                         tools:text="Job Title" />
 
@@ -118,6 +120,7 @@
                         android:textColor="@color/gray"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_job_title"
                         tools:text="Job Type" />
 
@@ -129,6 +132,7 @@
                         android:gravity="center"
                         android:orientation="horizontal"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_job_type">
 
 
@@ -158,8 +162,10 @@
                         android:text="@{engineerModel.enDescription != null ? engineerModel.enDescription : @string/en_description_not_set}"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
+                        android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ln_domicile"
                         app:layout_constraintVertical_bias="0.0"
                         tools:text="Description" />
@@ -249,9 +255,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ln_phone"
                         tools:ignore="UseCompoundDrawables">
 
@@ -272,98 +280,6 @@
                             android:textColor="@color/gray"
                             android:textSize="16sp"
                             tools:text="Phone" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ln_github"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="14dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ln_email"
-                        tools:ignore="UseCompoundDrawables">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:contentDescription="@string/img_profile"
-                            android:src="@drawable/github" />
-
-                        <TextView
-                            android:id="@+id/tv_github"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="16dp"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="@string/miqdad71"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/gray"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ln_instagram"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="14dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ln_github"
-                        tools:ignore="UseCompoundDrawables">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:contentDescription="@string/img_profile"
-                            android:src="@drawable/instagram" />
-
-                        <TextView
-                            android:id="@+id/tv_instagram"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="16dp"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="@string/miqdad_aja7"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/gray"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ln_gitlab"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="14dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ln_instagram"
-                        tools:ignore="UseCompoundDrawables">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:backgroundTint="@color/gray"
-                            android:contentDescription="@string/img_profile"
-                            android:src="@drawable/gitlabgrey" />
-
-                        <TextView
-                            android:id="@+id/tv_gitlab"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:fontFamily="sans-serif-condensed"
-                            android:text="@string/miqdad_ihbs71777"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/gray"
-                            android:textSize="16sp" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
