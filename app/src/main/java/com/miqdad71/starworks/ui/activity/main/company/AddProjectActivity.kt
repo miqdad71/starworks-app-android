@@ -45,7 +45,7 @@ class AddProjectActivity() : BaseActivityCoroutine<ActivityAddProjectBinding>(),
 
     @SuppressLint("ObsoleteSdkInt")
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_project)
+        setLayout = R.layout.activity_add_project
         super.onCreate(savedInstanceState)
 
         sharedPref = SharedPreference(this)

@@ -174,4 +174,10 @@
     <string name="deadline">Deadline : </string>
     <string name="add_project">Add Project</string>
     <string name="delete_project">Delete Project</string>
+    <string name="hire_approve">Approve</string>
+    <string name="hire_reject">Reject</string>
+    <string name="hire_project_deadline">Deadline Project</string>
+    <string name="hire_project_description">Desc</string>
+    <string name="hire_project_name">Project Name</string>
+    <string name="detail_project">Detail Project</string>
 </resources>

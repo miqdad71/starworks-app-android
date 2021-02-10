@@ -1,27 +1,49 @@
 package com.miqdad71.starworks.ui.fragments.company.hire
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
-import com.miqdad71.starworks.data.model.hire.HireModel
-import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentHireCompanyBinding
-import com.miqdad71.starworks.serviceapi.HireAPI
-import com.miqdad71.starworks.ui.adapter.company.hire.CompanyHireAdapter
-import com.miqdad71.starworks.util.SharedPreference
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import com.miqdad71.starworks.ui.base.BaseFragmentCoroutine
+import com.miqdad71.starworks.ui.fragments.company.hire.approve.ApproveFragment
+import com.miqdad71.starworks.ui.fragments.company.hire.reject.RejectFragment
+import com.miqdad71.starworks.ui.fragments.company.hire.wait.WaitFragment
+import com.miqdad71.starworks.util.ViewPagerAdapter
 
+class HireCompanyFragment : BaseFragmentCoroutine<FragmentHireCompanyBinding>() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setLayout = R.layout.fragment_hire_company
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setToolbarActionBar()
+        setContentViewHiring()
+    }
+
+    private fun setToolbarActionBar() {
+        val tb = (activity as AppCompatActivity)
+
+        tb.setSupportActionBar(binding.toolbar)
+        tb.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        tb.supportActionBar?.title = "Hiring Project"
+    }
+
+    private fun setContentViewHiring() {
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        val adapter = ViewPagerAdapter(childFragmentManager)
+
+        adapter.addFrag(WaitFragment(), "Wait")
+        adapter.addFrag(ApproveFragment(), "Approve")
+        adapter.addFrag(RejectFragment(), "Reject")
+        binding.viewPager.adapter = adapter
+    }
+}
+
+/*
 class HireCompanyFragment : Fragment() {
 
     private lateinit var binding: FragmentHireCompanyBinding
@@ -95,4 +117,4 @@ class HireCompanyFragment : Fragment() {
         tb.supportActionBar?.title = "Hiring Project"
     }
 
-}
+}*/

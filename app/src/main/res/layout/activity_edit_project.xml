@@ -221,20 +221,49 @@
                     android:src="@drawable/ic_add_image" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_edit_project"
+            <LinearLayout
+                android:id="@+id/ln_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@android:color/holo_orange_light"
-                android:onClick="onClick"
-                android:padding="14dp"
-                android:text="@string/edit_project"
-                android:textColor="@color/white"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ln_imageView" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ln_imageView">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/btn_mainColor"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_edit_project"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/btn_mainColor"
+                    android:onClick="onClick"
+                    android:padding="14dp"
+                    android:text="@string/edit_project"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_delete_project"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:onClick="onClick"
+                    android:padding="14dp"
+                    android:text="@string/delete_project"
+                    android:textColor="@color/white"
+                    android:visibility="gone" />
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

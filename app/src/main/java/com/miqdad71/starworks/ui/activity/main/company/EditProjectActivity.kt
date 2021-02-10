@@ -24,6 +24,7 @@ import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityAddProjectBinding
 import com.miqdad71.starworks.databinding.ActivityEditProjectBinding
 import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
+import com.miqdad71.starworks.ui.base.BaseActivityCoroutine
 import com.miqdad71.starworks.util.SharedPreference
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -34,36 +35,26 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-class EditProjectActivity() : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding: ActivityEditProjectBinding
+class EditProjectActivity() : BaseActivityCoroutine<ActivityEditProjectBinding>(), View.OnClickListener {
 
-    private lateinit var preference: SharedPreference
-    private lateinit var userDetail: HashMap<String, String>
     private lateinit var viewModel: ProjectViewModel
     private lateinit var myCalendar: Calendar
     private lateinit var deadline: DatePickerDialog.OnDateSetListener
 
     private var pjId: Int? = null
-    private var pathImage: String? = null
 
     companion object {
-         
-            const val FIELD_REQUIRED = "Fields cannot be empty"
-            const val FIELD_DIGITS_ONLY = "Can only contain numerics"
-            const val FIELD_IS_NOT_VALID = "Invalid email"
-            const val FIELD_MUST_MATCH = "Password must be the same"
-        
-        private const val IMAGE_PICK_CODE = 1000;
-        private const val PERMISSION_CODE = 1001;
+        const val FIELD_REQUIRED = "Fields cannot be empty"
+        const val FIELD_IS_NOT_VALID = "Invalid email"
     }
 
     @SuppressLint("ObsoleteSdkInt")
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_project)
+        setLayout = R.layout.activity_edit_project
         super.onCreate(savedInstanceState)
 
-        preference = SharedPreference(this)
-        userDetail = preference.getAccountUser()
+        sharedPref = SharedPreference(this)
+        userDetail = sharedPref.getAccountUser()
         pjId = intent.getIntExtra("pj_id", 0)
 
         binding.ibChooseImage.setOnClickListener {
@@ -163,12 +154,6 @@ class EditProjectActivity() : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -236,7 +221,9 @@ class EditProjectActivity() : AppCompatActivity(), View.OnClickListener {
             binding.etProjectName.setText(intent.getStringExtra("pj_project_name"))
             binding.etDeadline.setText(intent.getStringExtra("pj_deadline"))
             binding.etDescription.setText(intent.getStringExtra("pj_description"))
-            Glide.with(this@EditProjectActivity).load(ApiClient.BASE_URL_IMAGE + intent.getStringExtra("pj_image")).placeholder(R.drawable.ic_backround_user).into(binding.ivImageLoad)
+            Glide.with(this@EditProjectActivity)
+                .load(ApiClient.BASE_URL_IMAGE + intent.getStringExtra("pj_image"))
+                .placeholder(R.drawable.ic_backround_user).into(binding.ivImageLoad)
             binding.ibChooseImage.visibility = View.GONE
             binding.ivImageLoad.visibility = View.VISIBLE
         }
@@ -262,15 +249,31 @@ class EditProjectActivity() : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun subscribeLiveData() {
-        viewModel.onSuccessLiveData.observe(this) {
-            if (it) {
-                this.finish()
+
+        viewModel.isLoadingLiveData.observe(this@EditProjectActivity) {
+            binding.btnEditProject.visibility = View.GONE
+            binding.btnDeleteProject.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+        }
+
+        viewModel.onSuccessLiveData.observe(this@EditProjectActivity) {
+            if (it.isNotEmpty()) {
+                setResult(RESULT_OK)
+                this@EditProjectActivity.finish()
+
+                binding.progressBar.visibility = View.GONE
+                binding.btnEditProject.visibility = View.VISIBLE
+                binding.btnDeleteProject.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.GONE
+                binding.btnEditProject.visibility = View.VISIBLE
+                binding.btnDeleteProject.visibility = View.VISIBLE
             }
         }
 
-    }
+        viewModel.onFailLiveData.observe(this@EditProjectActivity) {
+            noticeToast(it)
+        }
 
-    private inline fun <reified ApiService> createApi(context: Context): ApiService {
-        return ApiClient.getApiClient(context).create(ApiService::class.java)
     }
 }
