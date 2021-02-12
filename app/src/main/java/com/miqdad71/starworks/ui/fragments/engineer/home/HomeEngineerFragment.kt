@@ -37,7 +37,8 @@ class HomeEngineerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_engineer, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_home_engineer, container, false)
 
         sharedPref = SharedPreference(requireContext())
         userDetail = sharedPref.getAccountUser()
@@ -46,8 +47,10 @@ class HomeEngineerFragment : Fragment() {
         service = ApiClient.getApiClient(requireActivity()).create(EngineerAPI::class.java)
         binding.accountModel = AccountModel(acName = "Hai, ${userDetail[SharedPreference.AC_NAME]}")
 
-        binding.rvWeb.layoutManager = LinearLayoutManager(requireActivity().applicationContext,
-            RecyclerView.VERTICAL,false)
+        binding.rvWeb.layoutManager = LinearLayoutManager(
+            requireActivity().applicationContext,
+            RecyclerView.VERTICAL, false
+        )
         val adapter = HomeCompanyAdapter()
         binding.rvWeb.adapter = adapter
 

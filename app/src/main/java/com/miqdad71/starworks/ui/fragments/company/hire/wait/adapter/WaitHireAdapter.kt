@@ -5,15 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.hire.HireModel
+import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE
 import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE_DEFAULT_BACKGROUND
 import com.miqdad71.starworks.databinding.ItemHireCompanyBinding
 import com.miqdad71.starworks.util.Utils.Companion.currencyFormat
 
 class WaitHireAdapter : RecyclerView.Adapter<WaitHireAdapter.RecyclerViewHolder>() {
-    private lateinit var bind: ItemHireCompanyBinding
+    private lateinit var binding: ItemHireCompanyBinding
     private lateinit var onItemClickCallback: OnItemClickCallback
     private var items = mutableListOf<HireModel>()
 
@@ -22,22 +24,24 @@ class WaitHireAdapter : RecyclerView.Adapter<WaitHireAdapter.RecyclerViewHolder>
     }
 
     inner class RecyclerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(hire: HireModel) {
-            bind.hire = hire
+        fun binding(hire: HireModel) {
+            binding.hire = hire
 
-            if (hire.pjImage != null) {
-                bind.imageUrl = BASE_URL_IMAGE + hire.pjImage
+            if (hire.pjImage != null){
+                Glide.with(binding.root).load(BASE_URL_IMAGE + hire.pjImage)
+                    .placeholder(R.drawable.ic_backround_user).into(binding.ivImageProject)
             } else {
-                bind.imageUrl = BASE_URL_IMAGE_DEFAULT_BACKGROUND
+                Glide.with(binding.root).load(ApiClient.BASE_URL_IMAGE_DEFAULT_PROFILE)
+                    .placeholder(R.drawable.ic_backround_user).into(binding.ivImageProject)
             }
 
-            bind.tvConfirmDate.setTextColor(itemView.context.resources.getColor(R.color.yellow, itemView.context.theme))
-            bind.tvConfirmDate.visibility = View.VISIBLE
-            bind.date = "- waiting"
+            binding.tvConfirmDate.setTextColor(itemView.context.resources.getColor(R.color.yellow, itemView.context.theme))
+            binding.tvConfirmDate.visibility = View.VISIBLE
+            binding.date = "- waiting"
 
-            bind.price = "Rp. ${currencyFormat(hire.hrPrice.toString())}"
+            binding.price = "Rp. ${currencyFormat(hire.hrPrice.toString())}"
 
-            bind.executePendingBindings()
+            binding.executePendingBindings()
 
             itemView.setOnClickListener {
                 onItemClickCallback.onItemClick(hire)
@@ -46,18 +50,18 @@ class WaitHireAdapter : RecyclerView.Adapter<WaitHireAdapter.RecyclerViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
-        bind = DataBindingUtil.inflate(
+        binding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             R.layout.item_hire_company,
             parent,
             false
         )
-        return RecyclerViewHolder(bind.root)
+        return RecyclerViewHolder(binding.root)
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
         holder.setIsRecyclable(false)
-        holder.bind(items[position])
+        holder.binding(items[position])
     }
 
     override fun getItemCount(): Int {

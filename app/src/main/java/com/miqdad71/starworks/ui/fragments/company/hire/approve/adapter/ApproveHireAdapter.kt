@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.hire.HireModel
+import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE
 import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE_DEFAULT_BACKGROUND
 import com.miqdad71.starworks.databinding.ItemHireCompanyBinding
@@ -25,10 +27,12 @@ class ApproveHireAdapter : RecyclerView.Adapter<ApproveHireAdapter.RecyclerViewH
         fun binding(hire: HireModel) {
             binding.hire = hire
 
-            if (hire.pjImage != null) {
-                binding.imageUrl = BASE_URL_IMAGE + hire.pjImage
+            if (hire.pjImage != null){
+            Glide.with(binding.root).load(BASE_URL_IMAGE + hire.pjImage)
+                .placeholder(R.drawable.ic_backround_user).into(binding.ivImageProject)
             } else {
-                binding.imageUrl = BASE_URL_IMAGE_DEFAULT_BACKGROUND
+            Glide.with(binding.root).load(ApiClient.BASE_URL_IMAGE_DEFAULT_PROFILE)
+                .placeholder(R.drawable.ic_backround_user).into(binding.ivImageProject)
             }
 
             if (hire.hrDateConfirm != null) {

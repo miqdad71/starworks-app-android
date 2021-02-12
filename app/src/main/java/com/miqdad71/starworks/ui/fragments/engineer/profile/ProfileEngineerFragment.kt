@@ -26,7 +26,6 @@ import com.miqdad71.starworks.ui.activity.skill.SkillActivity
 import com.miqdad71.starworks.ui.adapter.skill.ProfileSkillAdapter
 import com.miqdad71.starworks.ui.fragments.engineer.profile.experience.ExperienceEngineerFragment
 import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment
-import com.miqdad71.starworks.ui.webview.WebViewActivity
 import com.miqdad71.starworks.util.SharedPreference
 import com.miqdad71.starworks.util.ViewPagerAdapter
 import kotlinx.coroutines.CoroutineScope
@@ -72,28 +71,17 @@ class ProfileEngineerFragment : Fragment() {
         serviceEngineer = ApiClient.getApiClient(requireActivity()).create(EngineerAPI::class.java)
         serviceSkill = ApiClient.getApiClient(requireActivity()).create(SkillAPI::class.java)
 
-        /*binding.tvGithub.setOnClickListener {
-            val intent = Intent(context, WebViewActivity::class.java)
-            startActivity(intent)
-        }*/
         binding.ivAddSkill.setOnClickListener {
             val intent = Intent(context, SkillActivity::class.java)
             startActivity(intent)
         }
         binding.ivImageProfile.setOnClickListener {
             val intent = Intent(activity, ImageProfileEngineer::class.java)
-            /*intent.putExtra("en_id", data.enId)
-            intent.putExtra("en_profile", data.enProfile)*/
             startActivity(intent)
         }
 
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
-        val adapterPager = ViewPagerAdapter(parentFragmentManager)
 
-        adapterPager.addFrag(PortfolioEngineerFragment(), "Portfolio")
-        adapterPager.addFrag(ExperienceEngineerFragment(), "Experience")
-        binding.viewPager.adapter = adapterPager
-
+        getAdapterPortExp()
         setToolbarActionBar()
         getDataAccount()
         getDataUser()
@@ -129,6 +117,15 @@ class ProfileEngineerFragment : Fragment() {
                 super.onOptionsItemSelected(item)
             }
         }
+    }
+
+    private fun getAdapterPortExp(){
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        val adapterPager = ViewPagerAdapter(parentFragmentManager)
+
+        adapterPager.addFrag(PortfolioEngineerFragment(), "Portfolio")
+        adapterPager.addFrag(ExperienceEngineerFragment(), "Experience")
+        binding.viewPager.adapter = adapterPager
     }
 
     private fun getAdapterSkill() {
@@ -216,6 +213,7 @@ class ProfileEngineerFragment : Fragment() {
         getDataUser()
         getDataAccount()
         getAdapterSkill()
+        getAdapterPortExp()
     }
 
 }

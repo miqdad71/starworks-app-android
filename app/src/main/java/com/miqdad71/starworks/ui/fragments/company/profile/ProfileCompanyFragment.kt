@@ -56,11 +56,7 @@ class ProfileCompanyFragment : Fragment() {
         serviceAccount = ApiClient.getApiClient(requireActivity()).create(AccountAPI::class.java)
         serviceCompany = ApiClient.getApiClient(requireActivity()).create(CompanyAPI::class.java)
 
-        binding.accountModel = AccountModel(
-            acName = "${userDetail[SharedPreference.AC_NAME]}",
-            acEmail = "${userDetail[SharedPreference.AC_EMAIL]}",
-            acPhone = "${userDetail[SharedPreference.AC_PHONE]}"
-        )
+        getDataAccount()
         getDataUser()
         setToolbarActionBar()
     }
@@ -120,9 +116,30 @@ class ProfileCompanyFragment : Fragment() {
             }
         }
     }
+
+    private fun getDataAccount() {
+        coroutineScope.launch {
+            try {
+                val resultData = serviceAccount.detailAccount(sharedPref.getIdAccount())
+                val dataFromResult = resultData.data[0]
+                Log.d("msg", "$dataFromResult")
+
+                binding.accountModel = AccountModel(
+                    acName = dataFromResult.acName,
+                    acId = dataFromResult.acId,
+                    acEmail = dataFromResult.acEmail,
+                    acPhone = dataFromResult.acPhone
+                )
+            } catch (e: Throwable) {
+                Log.d("message", e.toString())
+            }
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         getDataUser()
+        getDataAccount()
     }
 }
 

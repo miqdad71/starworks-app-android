@@ -9,6 +9,7 @@ import kotlin.coroutines.CoroutineContext
 
 class RejectPresenter(private val service: HireAPI) : CoroutineScope, RejectContract.Presenter {
     private var view: RejectContract.View? = null
+    private var failStatus = ""
 
     override val coroutineContext: CoroutineContext
         get() = Job() + Dispatchers.Main
@@ -36,16 +37,21 @@ class RejectPresenter(private val service: HireAPI) : CoroutineScope, RejectCont
 
                         when {
                             e.code() == 404 -> {
-                                view?.onResultFail("No Data Reject Hire!")
+                                failStatus = "No Data Reject Hire!"
                             }
                             e.code() == 400 -> {
-                                view?.onResultFail("expired")
+                                failStatus = "expired"
                             }
                             else -> {
-                                view?.onResultFail("Server under maintenance!")
+                                failStatus = "Server under maintenance!"
                             }
                         }
                 }
+            }
+
+            if (failStatus.isNotEmpty()) {
+                view?.onResultFail(failStatus)
+                failStatus = ""
             }
 
             if (response is HireResponse) {

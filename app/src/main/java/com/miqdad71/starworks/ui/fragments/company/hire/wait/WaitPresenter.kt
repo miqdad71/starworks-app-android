@@ -9,6 +9,7 @@ import kotlin.coroutines.CoroutineContext
 
 class WaitPresenter(private val service: HireAPI) : CoroutineScope, WaitContract.Presenter {
     private var view: WaitContract.View? = null
+    private var failStatus = ""
 
     override val coroutineContext: CoroutineContext
         get() = Job() + Dispatchers.Main
@@ -36,16 +37,21 @@ class WaitPresenter(private val service: HireAPI) : CoroutineScope, WaitContract
 
                         when {
                             e.code() == 404 -> {
-                                view?.onResultFail("No Data Wait Hire!")
+                                failStatus = "No Data Wait Hire!"
                             }
                             e.code() == 400 -> {
-                                view?.onResultFail("expired")
+                                failStatus = "expired"
                             }
                             else -> {
-                                view?.onResultFail("Server under maintenance!")
+                                failStatus = "Server under maintenance!"
                             }
                         }
                 }
+            }
+
+            if (failStatus.isNotEmpty()) {
+                view?.onResultFail(failStatus)
+                failStatus = ""
             }
 
             if (response is HireResponse) {

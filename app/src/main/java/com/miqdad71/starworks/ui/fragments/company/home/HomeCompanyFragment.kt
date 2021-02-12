@@ -36,8 +36,8 @@ class HomeCompanyFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_company, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
 
         sharedPref = SharedPreference(requireContext())
         userDetail = sharedPref.getAccountUser()
@@ -46,8 +46,10 @@ class HomeCompanyFragment : Fragment() {
         service = ApiClient.getApiClient(requireActivity()).create(EngineerAPI::class.java)
         binding.accountModel = AccountModel(acName = "Hai, ${userDetail[AC_NAME]}")
 
-        binding.rvWeb.layoutManager = LinearLayoutManager(requireActivity().applicationContext,
-            RecyclerView.VERTICAL,false)
+        binding.rvWeb.layoutManager = LinearLayoutManager(
+            requireActivity().applicationContext,
+            RecyclerView.VERTICAL, false
+        )
         val adapter = HomeCompanyAdapter()
         binding.rvWeb.adapter = adapter
 
