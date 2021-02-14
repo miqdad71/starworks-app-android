@@ -11,6 +11,7 @@ import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE
 import com.miqdad71.starworks.databinding.ActivityProjectDetailBinding
 import com.miqdad71.starworks.serviceapi.HireAPI
 import com.miqdad71.starworks.ui.base.BaseActivityCoroutine
+import kotlinx.android.synthetic.main.activity_project_detail.*
 import kotlinx.coroutines.*
 
 class ProjectDetailActivity : BaseActivityCoroutine<ActivityProjectDetailBinding>(), View.OnClickListener {
@@ -65,13 +66,13 @@ class ProjectDetailActivity : BaseActivityCoroutine<ActivityProjectDetailBinding
             hrDateConfirm = intent.getStringExtra("hr_date_confirm"),
             pjProjectName = intent.getStringExtra("pj_project_name"),
             pjDescription = intent.getStringExtra("pj_description"),
-            pjDeadline = intent.getStringExtra("pj_deadline"),
+            pjDeadline = intent.getStringExtra("pj_deadline")!!.split('T')[0],
             pjImage = intent.getStringExtra("pj_image"),
             cnCompany = intent.getStringExtra("cn_company"),
             cnField = intent.getStringExtra("cn_field"),
             cnCity = intent.getStringExtra("cn_city")
             )
-        binding.imageUrl = BASE_URL_IMAGE + intent.getStringExtra("cn_profile")
+        Glide.with(this).load(BASE_URL_IMAGE + intent.getStringExtra("cn_profile")).placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
     }
 
     private fun approveHire() {

@@ -63,7 +63,6 @@
                         android:contentDescription="@string/img_profile"
                         android:scaleType="centerCrop"
                          />
-<!--                    app:loadImage="@{imageUrl != null ? imageUrl : @drawable/logo}"-->
 
                     <LinearLayout
                         android:layout_width="match_parent"

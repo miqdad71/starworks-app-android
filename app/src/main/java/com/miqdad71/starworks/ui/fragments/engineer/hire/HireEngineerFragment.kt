@@ -89,7 +89,8 @@ class HireEngineerFragment : Fragment() {
                         cnCompany = it.cnCompany,
                         cnField = it.cnField,
                         cnCity = it.cnCity,
-                        cnProfile = it.cnProfile
+                        cnProfile = it.cnProfile,
+                        pjImage = it.pjImage
                     )
                 }
 

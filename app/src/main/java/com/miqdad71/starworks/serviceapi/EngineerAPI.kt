@@ -28,10 +28,7 @@ interface EngineerAPI {
     @PUT("engineer/{enId}")
     suspend fun updateEngineer(
         @Path("enId") enId: Int,
-        @Field("en_job_title") enJobTitle: String,
-        @Field("en_job_type") enJobType: String,
-        @Field("en_domicile") enDomicile: String,
-        @Field("en_description") enDescription: String
+        @FieldMap fields: Map<String, String>
     ): EngineerResponse
 
     @Multipart

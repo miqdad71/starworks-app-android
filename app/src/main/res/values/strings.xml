@@ -180,4 +180,20 @@
     <string name="hire_project_description">Desc</string>
     <string name="hire_project_name">Project Name</string>
     <string name="detail_project">Detail Project</string>
+    <string name="account_header">Account</string>
+    <string name="ac_name">Name</string>
+    <string name="ac_email">Email Address</string>
+    <string name="ac_phone">Phone Number</string>
+    <string name="personal_data_header">Personal Data</string>
+    <string name="en_job_title">Job Title</string>
+    <string name="en_job_type">Job Type</string>
+    <string name="en_domicile">Domicile</string>
+    <string name="en_description">Description</string>
+    <string name="cn_company">Company Name</string>
+    <string name="cn_position">Position in Company</string>
+    <string name="cn_field">Field</string>
+    <string name="cn_city">City</string>
+    <string name="cn_description">Description</string>
+    <string name="cn_instagram">Instagram</string>
+    <string name="cn_linkedin">LinkedIn</string>
 </resources>

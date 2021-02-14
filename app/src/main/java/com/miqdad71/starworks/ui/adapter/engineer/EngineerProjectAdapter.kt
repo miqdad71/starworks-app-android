@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ItemListHireCompanyBinding
 import com.miqdad71.starworks.data.model.hire.HireModel
+import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ItemListHireBinding
 import java.util.*
 
@@ -47,6 +49,7 @@ class EngineerProjectAdapter : RecyclerView.Adapter<EngineerProjectAdapter.Proje
         holder.binding.tvListSearchProjectName.text = item.pjProjectName
         holder.binding.tvListSearchProjectDesc.text = item.pjDescription
         holder.binding.tvListStatus.text = item.hrStatus!!.toUpperCase(Locale.ROOT)
+        Glide.with(holder.itemView.context).load(ApiClient.BASE_URL_IMAGE + item.pjImage).placeholder(R.drawable.ic_backround_user).into(holder.binding.imgListSearchProject)
     }
 
     interface OnItemClickCallback {

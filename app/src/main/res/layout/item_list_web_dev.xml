@@ -63,61 +63,6 @@
                     android:textStyle="bold"
                     tools:text="Android Developer" />
 
-                <!--<com.google.android.flexbox.FlexboxLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="8dp"
-                    app:flexWrap="wrap">
-
-                    <TextView
-                        android:id="@+id/tv_skill1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="2.5dp"
-                        android:layout_marginVertical="5dp"
-
-                        android:fontFamily="sans-serif-condensed"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        tools:text="Web" />
-
-                    <TextView
-                        android:id="@+id/tv_skill2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="2.5dp"
-                        android:layout_marginVertical="5dp"
-
-                        android:fontFamily="sans-serif-condensed"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        tools:text="Android" />
-
-                    <TextView
-                        android:id="@+id/tv_skill3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="2.5dp"
-                        android:layout_marginVertical="5dp"
-
-                        android:fontFamily="sans-serif-condensed"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        tools:text="Javascript" />
-
-                </com.google.android.flexbox.FlexboxLayout>-->
-
                 <LinearLayout
                     android:id="@+id/ln_domicile"
                     android:layout_width="match_parent"

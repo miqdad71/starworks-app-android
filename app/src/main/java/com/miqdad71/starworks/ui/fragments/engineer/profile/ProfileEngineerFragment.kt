@@ -19,7 +19,7 @@ import com.miqdad71.starworks.databinding.FragmentProfileEngineerBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.EngineerAPI
 import com.miqdad71.starworks.serviceapi.SkillAPI
-import com.miqdad71.starworks.ui.activity.main.engineer.EngineerSettingActivity
+import com.miqdad71.starworks.ui.activity.main.company.SettingsActivity
 import com.miqdad71.starworks.ui.activity.main.engineer.img_profile.ImageProfileEngineer
 import com.miqdad71.starworks.ui.activity.skill.EditSkillActivity
 import com.miqdad71.starworks.ui.activity.skill.SkillActivity
@@ -54,10 +54,8 @@ class ProfileEngineerFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
         super.onCreateView(inflater, container, savedInstanceState)
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
-
         return binding.root
     }
 
@@ -79,7 +77,6 @@ class ProfileEngineerFragment : Fragment() {
             val intent = Intent(activity, ImageProfileEngineer::class.java)
             startActivity(intent)
         }
-
 
         getAdapterPortExp()
         setToolbarActionBar()
@@ -105,8 +102,8 @@ class ProfileEngineerFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.miSetting -> {
-                val intent = Intent(activity, EngineerSettingActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(activity, SettingsActivity::class.java))
+                Log.d("Message : ", " Setting ")
                 true
             }
             R.id.miLogout -> {
@@ -213,7 +210,6 @@ class ProfileEngineerFragment : Fragment() {
         getDataUser()
         getDataAccount()
         getAdapterSkill()
-        getAdapterPortExp()
     }
 
 }

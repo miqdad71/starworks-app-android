@@ -19,13 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
-
-
         <activity
-            android:name=".ui.activity.main.engineer.img_profile.ImageProfileEngineer"
+            android:name=".ui.activity.main.company.SettingsActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
-            android:name=".ui.activity.main.engineer.EngineerSettingActivity"
+            android:name=".ui.activity.main.engineer.img_profile.ImageProfileEngineer"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
             android:name=".ui.activity.skill.EditSkillActivity"
@@ -48,26 +46,20 @@
         <activity
             android:name=".ui.activity.detail.engineer.ProfileEngineerDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
-
         <activity android:name=".ui.webview.WebViewActivity" />
         <activity android:name=".ui.adapter.engineer.EngineerLayoutActivity" />
-
         <activity
             android:name=".ui.activity.main.engineer.EngineerMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
-
         <activity
             android:name=".ui.activity.main.company.CompanyMainActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
-
         <activity
             android:name=".ui.activity.experience.ExperienceActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
-
         <activity
             android:name=".ui.activity.portfolio.PortfolioActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
-
         <activity android:name=".ui.activity.signup.SignUpActivity" />
         <activity android:name=".ui.activity.forgetpassword.ForgetPasswordVerifyActivity" />
         <activity android:name=".ui.activity.forgetpassword.ForgetPasswordActivity" />

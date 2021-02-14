@@ -1,5 +1,6 @@
 package com.miqdad71.starworks.ui.fragments.company.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -14,6 +15,7 @@ import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentProfileCompanyBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.CompanyAPI
+import com.miqdad71.starworks.ui.activity.main.company.SettingsActivity
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,10 +42,8 @@ class ProfileCompanyFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
         super.onCreateView(inflater, container, savedInstanceState)
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
-
         return binding.root
     }
 
@@ -77,6 +77,7 @@ class ProfileCompanyFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.miSetting -> {
+                startActivity(Intent(activity, SettingsActivity::class.java))
                 Log.d("Message : ", " Setting ")
                 true
             }
