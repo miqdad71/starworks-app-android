@@ -15,7 +15,7 @@ import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentProfileCompanyBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.CompanyAPI
-import com.miqdad71.starworks.ui.activity.main.company.SettingsActivity
+import com.miqdad71.starworks.ui.activity.main.SettingsActivity
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

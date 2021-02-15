@@ -1,4 +1,4 @@
-package com.miqdad71.starworks.ui.activity.main.company
+package com.miqdad71.starworks.ui.activity.main
 
 import android.os.Bundle
 import com.miqdad71.starworks.R

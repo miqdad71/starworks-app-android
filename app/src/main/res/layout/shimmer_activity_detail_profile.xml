@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activity.detail_profile.ProfileDetailActivity">
-
-    <data>
-
-        <variable
-            name="accountModel"
-            type="com.miqdad71.starworks.data.model.account.AccountModel" />
-
-        <variable
-            name="engineerModel"
-            type="com.miqdad71.starworks.data.model.engineer.EngineerModel" />
-
-        <variable
-            name="dataNotFound"
-            type="String" />
-    </data>
 
     <ScrollView
         android:id="@+id/nested_scroll"
@@ -30,22 +14,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.Toolbar
+            <View
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:background="@color/primary"
-                android:visibility="gone"
+                android:background="@color/shimmer"
                 android:elevation="8dp"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:titleTextColor="@color/white" />
+                app:titleTextColor="@color/shimmer" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_identity"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -63,7 +44,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:background="@color/primary"
+                        android:background="@color/shimmer"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -75,14 +56,13 @@
                         android:layout_marginTop="32dp"
                         android:contentDescription="@string/img_profile"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img_profile_miqdad"
-                        android:transitionName="image_profile"
+                        android:src="@color/shimmer"
                         app:barrierMargin="2dp"
                         app:civ_border_color="@color/white"
                         app:civ_border_width="4dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"  />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -90,10 +70,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="18dp"
+                        android:background="@color/shimmer"
                         android:fontFamily="sans-serif-thin"
-                        android:text="@{accountModel.acName}"
+                        android:text="Indra David Pesik"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="@color/shimmer"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -106,10 +87,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
+                        android:background="@color/shimmer"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@{engineerModel.enJobTitle != null ? engineerModel.enJobTitle : @string/en_job_title_not_set}"
+                        android:text="Android Developer"
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="@color/shimmer"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -121,10 +103,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="5dp"
+                        android:background="@color/shimmer"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@{engineerModel.enJobType != null ? engineerModel.enJobType : @string/en_job_type_not_set}"
+                        android:text="Freelance"
                         android:textAlignment="center"
-                        android:textColor="@color/gray_700"
+                        android:textColor="@color/shimmer"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -153,10 +136,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="5dp"
+                            android:background="@color/shimmer"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="@{engineerModel.enDomicile != null ? engineerModel.enDomicile : @string/en_domicile_not_set}"
+                            android:text="Manado, Sulawesi Utara"
                             android:textAlignment="center"
-                            android:textColor="@color/gray_700"
+                            android:textColor="@color/shimmer"
                             android:textSize="16sp" />
                     </LinearLayout>
 
@@ -167,10 +151,11 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
+                        android:background="@color/shimmer"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="@{engineerModel.enDescription != null ? engineerModel.enDescription : @string/en_description_not_set}"
+                        android:text="@string/shimmer_description"
                         android:textAlignment="center"
-                        android:textColor="@color/gray_700"
+                        android:textColor="@color/shimmer"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -187,19 +172,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@color/primary"
+                android:backgroundTint="@color/shimmer"
                 android:onClick="onClick"
                 android:padding="14dp"
-                android:visibility="gone"
                 android:text="@string/hire"
-                android:textColor="@color/white"
+                android:textColor="@color/shimmer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cv_identity" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_contact"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -217,18 +200,18 @@
 
                     <TextView
                         android:id="@+id/tv_contact"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="16dp"
+                        android:background="@color/shimmer"
                         android:fontFamily="sans-serif-thin"
                         android:text="@string/contact"
                         android:textAlignment="textStart"
-                        android:textColor="@color/black"
+                        android:textColor="@color/shimmer"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -265,10 +248,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
+                            android:background="@color/shimmer"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="@{accountModel.acEmail}"
+                            android:text="indradavidpesik@gmail.com"
                             android:textAlignment="textStart"
-                            android:textColor="@color/gray_700"
+                            android:textColor="@color/shimmer"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -297,10 +281,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="16dp"
                             android:layout_marginBottom="16dp"
+                            android:background="@color/shimmer"
                             android:fontFamily="sans-serif-condensed"
-                            android:text="@{accountModel.acPhone != null ? accountModel.acPhone : @string/ac_phone_number_not_set}"
+                            android:text="082292192488"
                             android:textAlignment="textStart"
-                            android:textColor="@color/gray_700"
+                            android:textColor="@color/shimmer"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -311,7 +296,6 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_skill"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -333,10 +317,11 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="16dp"
+                        android:background="@color/shimmer"
                         android:fontFamily="sans-serif-thin"
                         android:text="@string/skill"
                         android:textAlignment="textStart"
-                        android:textColor="@color/black"
+                        android:textColor="@color/shimmer"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -352,39 +337,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_skill" />
 
-                    <TextView
-                        android:id="@+id/tv_data_not_found"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:fontFamily="sans-serif"
-                        android:text="@{dataNotFound}"
-                        android:textAlignment="center"
-                        android:textColor="@color/gray_500"
-                        android:textSize="16sp"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/v_divider_skill" />
-
-                    <ProgressBar
-                        android:id="@+id/progress_bar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
-                        android:indeterminate="true"
-                        android:indeterminateTint="@color/primary"
-                        android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/v_divider_skill" />
-
                     <com.google.android.flexbox.FlexboxLayout
                         android:id="@+id/fl_skill"
                         android:layout_width="match_parent"
@@ -398,11 +350,50 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/v_divider_skill">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_skill"
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tv_skill1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:nestedScrollingEnabled="false" />
+                            android:layout_marginHorizontal="2.5dp"
+                            android:layout_marginVertical="5dp"
+                            android:background="@color/shimmer"
+                            android:fontFamily="sans-serif-condensed"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="2dp"
+                            android:text="Web"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/shimmer"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_skill2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2.5dp"
+                            android:layout_marginVertical="5dp"
+                            android:background="@color/shimmer"
+                            android:fontFamily="sans-serif-condensed"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="2dp"
+                            android:text="Android"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/shimmer"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_skill3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2.5dp"
+                            android:layout_marginVertical="5dp"
+                            android:background="@color/shimmer"
+                            android:fontFamily="sans-serif-condensed"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="2dp"
+                            android:text="Javascript"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/shimmer"
+                            android:textSize="12sp" />
 
                     </com.google.android.flexbox.FlexboxLayout>
 
@@ -410,61 +401,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_curriculum_vitae"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_skill">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tab_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.miqdad71.starworks.util.WrapContentViewPager
-                        android:id="@+id/view_pager"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_view_container"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                shimmer:duration="800">
-
-                <include layout="@layout/shimmer_activity_detail_profile" />
-
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
 </layout>

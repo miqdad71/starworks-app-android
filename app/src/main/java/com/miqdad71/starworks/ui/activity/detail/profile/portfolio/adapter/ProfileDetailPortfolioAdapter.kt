@@ -1,47 +1,36 @@
-package com.miqdad71.starworks.ui.adapter.portfolio
+package com.miqdad71.starworks.ui.activity.detail.profile.portfolio.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.portfolio.PortfolioModel
-import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE
 import com.miqdad71.starworks.databinding.ItemEngineerPortofolioBinding
 
-class PortfolioEngineerAdapter: RecyclerView.Adapter<PortfolioEngineerAdapter.RecyclerViewHolder>() {
+class ProfileDetailPortfolioAdapter : RecyclerView.Adapter<ProfileDetailPortfolioAdapter.RecyclerViewHolder>() {
     private lateinit var binding: ItemEngineerPortofolioBinding
-    private lateinit var onItemClickCallback: OnItemClickCallback
     private var items = mutableListOf<PortfolioModel>()
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
-
     inner class RecyclerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        @SuppressLint("SetTextI18n")
         fun binding(portfolio: PortfolioModel) {
 
-            binding.tvPrApp.text = portfolio.pr_app
+            binding.portfolio = portfolio
 
             if (portfolio.pr_type == "aplikasi mobile") {
-                binding.tvProjectType.text = "Mobile"
+                binding.projectType = "Mobile"
             } else {
-                binding.tvProjectType.text = "Web"
+                binding.projectType = "Web"
             }
 
-            if (portfolio.pr_image != null) {
-                Glide.with(itemView.context).load(BASE_URL_IMAGE + portfolio.pr_image).into(binding.ivImageProject)
-            }
+            /*if (portfolio.pr_image != null) {
+                binding.imageUrl = BASE_URL_IMAGE + portfolio.pr_image
+            } else {
+                binding.imageUrl = ApiClient.BASE_URL_IMAGE_DEFAULT_BACKGROUND
+            }*/
 
             binding.executePendingBindings()
-
-            binding.cvProject.setOnClickListener {
-                onItemClickCallback.onItemClick(portfolio)
-            }
         }
     }
 
@@ -57,10 +46,6 @@ class PortfolioEngineerAdapter: RecyclerView.Adapter<PortfolioEngineerAdapter.Re
 
     override fun getItemCount(): Int {
         return items.size
-    }
-
-    interface OnItemClickCallback {
-        fun onItemClick(data: PortfolioModel)
     }
 
     fun addList(list: List<PortfolioModel>) {

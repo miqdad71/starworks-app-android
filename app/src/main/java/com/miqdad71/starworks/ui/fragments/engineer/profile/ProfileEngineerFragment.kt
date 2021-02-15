@@ -19,7 +19,7 @@ import com.miqdad71.starworks.databinding.FragmentProfileEngineerBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.EngineerAPI
 import com.miqdad71.starworks.serviceapi.SkillAPI
-import com.miqdad71.starworks.ui.activity.main.company.SettingsActivity
+import com.miqdad71.starworks.ui.activity.main.SettingsActivity
 import com.miqdad71.starworks.ui.activity.main.engineer.img_profile.ImageProfileEngineer
 import com.miqdad71.starworks.ui.activity.skill.EditSkillActivity
 import com.miqdad71.starworks.ui.activity.skill.SkillActivity

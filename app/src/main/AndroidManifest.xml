@@ -20,7 +20,7 @@
         android:theme="@style/Theme.StarworkS"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.activity.main.company.SettingsActivity"
+            android:name=".ui.activity.main.SettingsActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
             android:name=".ui.activity.main.engineer.img_profile.ImageProfileEngineer"
@@ -44,7 +44,7 @@
             android:name=".ui.activity.detail.company.HireCompanyActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity
-            android:name=".ui.activity.detail.engineer.ProfileEngineerDetailActivity"
+            android:name=".ui.activity.detail.profile.ProfileEngineerDetailActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
         <activity android:name=".ui.webview.WebViewActivity" />
         <activity android:name=".ui.adapter.engineer.EngineerLayoutActivity" />

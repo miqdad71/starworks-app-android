@@ -15,8 +15,7 @@ import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentSearchCompanyBinding
 import com.miqdad71.starworks.serviceapi.EngineerAPI
-import com.miqdad71.starworks.ui.activity.detail.engineer.ProfileEngineerDetailActivity
-import com.miqdad71.starworks.ui.adapter.company.home.HomeCompanyAdapter
+import com.miqdad71.starworks.ui.activity.detail.profile.ProfileEngineerDetailActivity
 import com.miqdad71.starworks.ui.adapter.company.search.SearchCompanyAdapter
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*
