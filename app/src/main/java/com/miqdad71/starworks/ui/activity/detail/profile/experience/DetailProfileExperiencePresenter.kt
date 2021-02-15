@@ -7,9 +7,11 @@ import kotlinx.coroutines.*
 import retrofit2.HttpException
 import kotlin.coroutines.CoroutineContext
 
-class DetailProfileExperiencePresenter(private val service: ExperienceAPI) : CoroutineScope, DetailProfileExperienceContract.Presenter {
+class DetailProfileExperiencePresenter(private val service: ExperienceAPI) : CoroutineScope,
+    DetailProfileExperienceContract.Presenter {
 
     private var view: DetailProfileExperienceContract.View? = null
+    private var failStatus = ""
 
     override val coroutineContext: CoroutineContext
         get() = Job() + Dispatchers.Main
@@ -30,22 +32,25 @@ class DetailProfileExperiencePresenter(private val service: ExperienceAPI) : Cor
                 try {
                     service.getAllExperience(enId = enId!!)
                 } catch (e: HttpException) {
-                    withContext(Dispatchers.Main) {
-                        view?.hideLoading()
+                    view?.hideLoading()
 
-                        when {
-                            e.code() == 404 -> {
-                                view?.onResultFail("No data experience!")
-                            }
-                            e.code() == 400 -> {
-                                view?.onResultFail("expired")
-                            }
-                            else -> {
-                                view?.onResultFail("Server under maintenance!")
-                            }
+                    when {
+                        e.code() == 404 -> {
+                            failStatus = "No data experience!"
+                        }
+                        e.code() == 400 -> {
+                            failStatus = "expired"
+                        }
+                        else -> {
+                            failStatus = "Server under maintenance!"
                         }
                     }
                 }
+            }
+
+            if (failStatus.isNotEmpty()) {
+                view?.onResultFail(failStatus)
+                failStatus = ""
             }
 
             if (response is ExperienceResponse) {

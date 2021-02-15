@@ -2,17 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="portfolio"
-            type="com.miqdad71.starworks.data.model.portfolio.PortfolioModel" />
-
-        <variable
-            name="project_type"
-            type="String" />
-    </data>
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -26,12 +15,14 @@
             android:layout_marginBottom="8dp"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
             app:cardCornerRadius="10dp"
             app:cardElevation="5dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/iv_image_project"
@@ -39,58 +30,12 @@
                     android:layout_height="200dp"
                     android:contentDescription="@string/img_background"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_image"
-                    android:transitionName="img" />
-
-                <ImageView
-                    android:id="@+id/shadow_bottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_alignBottom="@+id/iv_image_project"
-                    android:contentDescription="@string/img_background"
-                    android:src="@drawable/shadow_bottom" />
+                    android:src="@drawable/portfolio1"
+                    android:transitionName="img"
+                    />
 
                 <TextView
-                    android:id="@+id/tv_pr_app"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_alignStart="@+id/tv_pr_work_place"
-                    android:layout_alignTop="@+id/layoutType"
-                    android:layout_alignEnd="@+id/layoutType"
-                    android:layout_alignParentStart="@+id/tv_pr_work_place"
-                    android:layout_alignParentEnd="@+id/layoutType"
-                    android:layout_marginEnd="160dp"
-                    android:drawablePadding="10dp"
-                    android:ellipsize="end"
-                    android:gravity="bottom"
-                    android:singleLine="true"
-                    android:text="@{portfolio.pr_app}"
-                    android:textColor="@color/white" />
-
-                <FrameLayout
-                    android:id="@+id/layoutType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/iv_image_project"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="-40dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/round_white"
-                    android:padding="3dp">
-
-                    <TextView
-                        android:id="@+id/tv_project_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:text="@{project_type}"
-                        android:textColor="@color/gray_700"
-                        android:textSize="12sp" />
-                </FrameLayout>
-
-                <TextView
-                    android:id="@+id/tv_pr_work_place"
+                    android:id="@+id/tv_application_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/iv_image_project"
@@ -98,41 +43,27 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
                     android:fontFamily="sans-serif-light"
-                    android:text="@{portfolio.pr_work_place}"
                     android:textColor="@color/black"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_pr_description"
+                    android:id="@+id/tv_type_portfolio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_pr_work_place"
+                    android:layout_below="@+id/tv_application_name"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="15dp"
-                    android:text="@{portfolio.pr_description}"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:minLines="2"
                     android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/tv_pr_link_pub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_below="@+id/tv_pr_description"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:drawablePadding="10dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:text="@{portfolio.pr_link_pub}"
-                    android:textSize="13sp" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
     </FrameLayout>
-
 
 </layout>

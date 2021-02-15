@@ -23,6 +23,7 @@ class ProfileDetailPresenter(
     ProfileDetailContract.Presenter {
 
     private var view: ProfileDetailContract.View? = null
+    private var failStatus = ""
 
     override val coroutineContext: CoroutineContext
         get() = Job() + Dispatchers.Main
@@ -41,9 +42,7 @@ class ProfileDetailPresenter(
                 try {
                     serviceAccount.detailAccount(acId = acId!!)
                 } catch (t: Throwable) {
-                    withContext(Dispatchers.Main) {
-                        Log.d("msg", "${t.message}")
-                    }
+                    Log.d("msg", "${t.message}")
                 }
             }
 
@@ -63,9 +62,7 @@ class ProfileDetailPresenter(
                 try {
                     serviceEngineer.getDetailEngineer(acId = acId!!)
                 } catch (t: Throwable) {
-                    withContext(Dispatchers.Main) {
-                        Log.d("msg", "${t.message}")
-                    }
+                    Log.d("msg", "${t.message}")
                 }
             }
 
@@ -87,22 +84,25 @@ class ProfileDetailPresenter(
                 try {
                     serviceSkill.getAllSkill(enId = enId!!)
                 } catch (e: HttpException) {
-                    withContext(Dispatchers.Main) {
-                        view?.hideLoading()
+//                    view?.hideLoading()
 
-                        when {
-                            e.code() == 404 -> {
-                                view?.onResultFail("No data skill!")
-                            }
-                            e.code() == 400 -> {
-                                view?.onResultFail("expired")
-                            }
-                            else -> {
-                                view?.onResultFail("Server under maintenance!")
-                            }
+                    when {
+                        e.code() == 404 -> {
+                            failStatus = "No data skill!"
+                        }
+                        e.code() == 400 -> {
+                            failStatus = "expired"
+                        }
+                        else -> {
+                            failStatus = "Server under maintenance!"
                         }
                     }
                 }
+            }
+
+            if (failStatus.isNotEmpty()) {
+                view?.onResultFail(failStatus)
+                failStatus = ""
             }
 
             if (response is SkillResponse) {
@@ -135,22 +135,25 @@ class ProfileDetailPresenter(
                         enId = enId!!
                     )
                 } catch (e: HttpException) {
-                    withContext(Dispatchers.Main) {
-                        view?.hideLoading()
+//                    view?.hideLoading()
 
-                        when {
-                            e.code() == 404 -> {
-                                view?.onResultFailHire("No Data Hire!")
-                            }
-                            e.code() == 400 -> {
-                                view?.onResultFailHire("expired")
-                            }
-                            else -> {
-                                view?.onResultFailHire("Server under maintenance!")
-                            }
+                    when {
+                        e.code() == 404 -> {
+                            failStatus = "No Data Hire!"
+                        }
+                        e.code() == 400 -> {
+                            failStatus = "expired"
+                        }
+                        else -> {
+                            failStatus = "Server under maintenance!"
                         }
                     }
                 }
+            }
+
+            if (failStatus.isNotEmpty()) {
+                view?.onResultFail(failStatus)
+                failStatus = ""
             }
 
             if (response is HireResponse) {
@@ -159,7 +162,7 @@ class ProfileDetailPresenter(
                 if (response.success) {
                     if (response.data[0].hrStatus == "wait" || response.data[0].hrStatus == "approve") {
                         if (response.data[0].cnId != cnId)
-                        view?.onResultSuccessHire(false)
+                            view?.onResultSuccessHire(false)
                     } else {
                         view?.onResultSuccessHire(true)
                     }

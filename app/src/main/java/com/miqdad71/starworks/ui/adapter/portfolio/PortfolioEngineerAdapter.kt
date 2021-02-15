@@ -11,6 +11,7 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.portfolio.PortfolioModel
 import com.miqdad71.starworks.data.remote.ApiClient.Companion.BASE_URL_IMAGE
 import com.miqdad71.starworks.databinding.ItemEngineerPortofolioBinding
+import com.miqdad71.starworks.databinding.ItemPortfolioDetailBinding
 
 class PortfolioEngineerAdapter: RecyclerView.Adapter<PortfolioEngineerAdapter.RecyclerViewHolder>() {
     private lateinit var binding: ItemEngineerPortofolioBinding
@@ -25,12 +26,12 @@ class PortfolioEngineerAdapter: RecyclerView.Adapter<PortfolioEngineerAdapter.Re
         @SuppressLint("SetTextI18n")
         fun binding(portfolio: PortfolioModel) {
 
-            binding.tvPrApp.text = portfolio.pr_app
+            binding.tvTypePortfolio.text = portfolio.pr_app
 
             if (portfolio.pr_type == "aplikasi mobile") {
-                binding.tvProjectType.text = "Mobile"
+                binding.tvApplicationName.text = "Mobile"
             } else {
-                binding.tvProjectType.text = "Web"
+                binding.tvApplicationName.text = "Web"
             }
 
             if (portfolio.pr_image != null) {

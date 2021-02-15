@@ -126,12 +126,10 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
     }
 
     override fun showLoading() {
-        binding.shimmerViewContainer.visibility = View.VISIBLE
         binding.progressBar.visibility = View.VISIBLE
 
         binding.toolbar.visibility = View.GONE
         binding.cvIdentity.visibility = View.GONE
-        binding.cvContact.visibility = View.GONE
         binding.cvSkill.visibility = View.GONE
         binding.cvCurriculumVitae.visibility = View.GONE
         binding.flSkill.visibility = View.GONE
@@ -141,19 +139,15 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
     override fun hideLoading() {
         binding.toolbar.visibility = View.VISIBLE
         binding.cvIdentity.visibility = View.VISIBLE
-        binding.cvContact.visibility = View.VISIBLE
         binding.cvSkill.visibility = View.VISIBLE
         binding.cvCurriculumVitae.visibility = View.VISIBLE
         binding.progressBar.visibility = View.GONE
 
-        binding.shimmerViewContainer.stopShimmerAnimation()
-        binding.shimmerViewContainer.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
     }
 
     override fun onStart() {
         super.onStart()
-        binding.shimmerViewContainer.startShimmerAnimation()
         sharedPref.createInDetail(1)
 
         presenter?.bindToView(this@ProfileEngineerDetailActivity)
@@ -168,7 +162,7 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
 
     override fun onPause() {
         super.onPause()
-        binding.shimmerViewContainer.stopShimmerAnimation()
+//        binding.shimmerViewContainer.stopShimmerAnimation()
     }
 
     override fun onStop() {
