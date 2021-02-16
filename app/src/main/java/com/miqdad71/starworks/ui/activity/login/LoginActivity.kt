@@ -11,7 +11,7 @@ import androidx.lifecycle.observe
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityLoginBinding
 import com.miqdad71.starworks.ui.activity.OnboardActivity
-import com.miqdad71.starworks.ui.activity.forgetpassword.ForgetPasswordVerifyActivity
+import com.miqdad71.starworks.ui.activity.forgetpassword.check_email.CheckEmailActivity
 import com.miqdad71.starworks.ui.activity.main.company.CompanyMainActivity
 import com.miqdad71.starworks.ui.activity.main.engineer.EngineerMainActivity
 import com.miqdad71.starworks.ui.activity.signup.SignUpActivity
@@ -36,7 +36,7 @@ open class LoginActivity : BaseActivityCoroutine<ActivityLoginBinding>(), View.O
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.tv_forget_password -> {
-                intents<ForgetPasswordVerifyActivity>(this@LoginActivity)
+                intents<CheckEmailActivity>(this@LoginActivity)
             }
             R.id.tv_sign_up -> {
                 selectSignUpAs()

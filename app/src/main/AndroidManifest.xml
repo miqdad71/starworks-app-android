@@ -61,9 +61,14 @@
         <activity
             android:name=".ui.activity.portfolio.PortfolioActivity"
             android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name=".ui.activity.forgetpassword.check_email.CheckEmailActivity"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name=".ui.activity.forgetpassword.reset_password.ResetPasswordActivity"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+
         <activity android:name=".ui.activity.signup.SignUpActivity" />
-        <activity android:name=".ui.activity.forgetpassword.ForgetPasswordVerifyActivity" />
-        <activity android:name=".ui.activity.forgetpassword.ForgetPasswordActivity" />
         <activity android:name=".ui.activity.OnboardActivity" />
         <activity android:name=".ui.activity.login.LoginActivity" />
         <activity android:name=".ui.activity.splash.SplashScreen">
