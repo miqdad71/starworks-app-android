@@ -35,21 +35,19 @@ class ResetPasswordViewModel : ViewModel(), CoroutineScope {
                         acPassword = acPassword
                     )
                 } catch (e: HttpException) {
-                    withContext(Dispatchers.Main) {
-                        isLoadingLiveData.value = false
 
-                        when {
-                            e.code() == 404 -> {
-                                failStatus = "Data not found!"
-                            }
-                            e.code() == 400 -> {
-                                failStatus = "Fail to reset password!"
-                            }
-                            else -> {
-                                failStatus = "Internal Server Error!"
-                            }
+                    when {
+                        e.code() == 404 -> {
+                            failStatus = "Data not found!"
+                        }
+                        e.code() == 400 -> {
+                            failStatus = "Fail to reset password!"
+                        }
+                        else -> {
+                            failStatus = "Internal Server Error!"
                         }
                     }
+
                 }
             }
 
