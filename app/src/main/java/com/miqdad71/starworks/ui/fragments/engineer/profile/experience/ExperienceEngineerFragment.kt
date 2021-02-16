@@ -12,15 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.experience.ExperienceModel
-import com.miqdad71.starworks.data.model.portfolio.PortfolioModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentExperienceBinding
 import com.miqdad71.starworks.serviceapi.ExperienceAPI
 import com.miqdad71.starworks.ui.activity.experience.ExperienceActivity
-import com.miqdad71.starworks.ui.activity.portfolio.PortfolioActivity
 import com.miqdad71.starworks.ui.adapter.experience.ExperienceEngineerAdapter
-import com.miqdad71.starworks.ui.adapter.portfolio.PortfolioEngineerAdapter
-import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment
 import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment.Companion.INTENT_EDIT
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*
@@ -59,8 +55,8 @@ class ExperienceEngineerFragment : Fragment() {
                 intent.putExtra("ex_id", data.ex_id)
                 intent.putExtra("ex_position", data.ex_position)
                 intent.putExtra("ex_company", data.ex_company)
-                intent.putExtra("ex_start", data.ex_start)
-                intent.putExtra("ex_end", data.ex_end)
+                intent.putExtra("ex_start", data.ex_start!!.split('T')[0])
+                intent.putExtra("ex_end", data.ex_end!!.split('T')[0])
                 intent.putExtra("ex_description", data.ex_description)
                 startActivityForResult(intent, INTENT_EDIT)
             }
@@ -79,8 +75,8 @@ class ExperienceEngineerFragment : Fragment() {
                         en_id = it.enId,
                         ex_position = it.exPosition,
                         ex_company = it.exCompany,
-                        ex_start = it.exStart,
-                        ex_end = it.exEnd,
+                        ex_start = it.exStart.split('T')[0],
+                        ex_end = it.exEnd.split('T')[0],
                         ex_description = it.exDescription
                         )
                 }

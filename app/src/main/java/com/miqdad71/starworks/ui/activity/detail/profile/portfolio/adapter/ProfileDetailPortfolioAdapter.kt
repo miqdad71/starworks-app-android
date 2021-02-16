@@ -5,9 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.portfolio.PortfolioModel
+import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ItemPortfolioDetailBinding
+import com.miqdad71.starworks.ui.adapter.portfolio.PortfolioEngineerAdapter
 
 class ProfileDetailPortfolioAdapter : RecyclerView.Adapter<ProfileDetailPortfolioAdapter.RecyclerViewHolder>() {
     private lateinit var binding: ItemPortfolioDetailBinding
@@ -19,16 +22,16 @@ class ProfileDetailPortfolioAdapter : RecyclerView.Adapter<ProfileDetailPortfoli
             binding.portfolio = portfolio
 
             if (portfolio.pr_type == "aplikasi mobile") {
-                binding.tvProjectType.text = "Mobile"
+                binding.projectType = "Mobile"
             } else {
-                binding.tvProjectType.text = "Web"
+                binding.projectType= "Web"
             }
 
-            /*if (portfolio.pr_image != null) {
-                binding.imageUrl = BASE_URL_IMAGE + portfolio.pr_image
+            if (portfolio.pr_image != null) {
+                Glide.with(itemView.context).load(ApiClient.BASE_URL_IMAGE + portfolio.pr_image).into(binding.ivImageProject)
             } else {
-                binding.imageUrl = ApiClient.BASE_URL_IMAGE_DEFAULT_BACKGROUND
-            }*/
+                Glide.with(itemView.context).load(ApiClient.BASE_URL_IMAGE_DEFAULT_BACKGROUND).into(binding.ivImageProject)
+            }
 
             binding.executePendingBindings()
         }

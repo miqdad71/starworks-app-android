@@ -3,8 +3,6 @@ package com.miqdad71.starworks.ui.adapter.engineer
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.miqdad71.starworks.ui.fragments.engineer.profile.experience.ExperienceEngineerFragment
-import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment
 
 class EngineerPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private val mFragmentList: MutableList<Fragment> = ArrayList()

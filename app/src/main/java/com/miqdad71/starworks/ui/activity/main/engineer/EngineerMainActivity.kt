@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.databinding.ActivityEngineerMainBinding
 import com.miqdad71.starworks.ui.activity.experience.ExperienceActivity
-import com.miqdad71.starworks.ui.activity.portfolio.PortfolioActivity
 import com.miqdad71.starworks.ui.fragments.engineer.hire.HireEngineerFragment
 import com.miqdad71.starworks.ui.fragments.engineer.home.HomeEngineerFragment
 import com.miqdad71.starworks.ui.fragments.engineer.profile.ProfileEngineerFragment
+import com.miqdad71.starworks.ui.activity.portfolio.PortfolioActivity
 import com.miqdad71.starworks.ui.fragments.engineer.search.SearchEngineerFragment
 import kotlinx.android.synthetic.main.activity_engineer_main.*
 

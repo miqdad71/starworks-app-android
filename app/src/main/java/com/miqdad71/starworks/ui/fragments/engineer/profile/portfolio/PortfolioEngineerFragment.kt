@@ -12,14 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.portfolio.PortfolioModel
-import com.miqdad71.starworks.data.model.project.ProjectModel
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.FragmentPortfolioBinding
 import com.miqdad71.starworks.serviceapi.PortfolioAPI
-import com.miqdad71.starworks.ui.activity.detail.company.ProjectDetailActivity
-import com.miqdad71.starworks.ui.activity.main.company.AddProjectActivity
 import com.miqdad71.starworks.ui.activity.portfolio.PortfolioActivity
-import com.miqdad71.starworks.ui.adapter.company.project.CompanyProjectAdapter
 import com.miqdad71.starworks.ui.adapter.portfolio.PortfolioEngineerAdapter
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.*
@@ -36,7 +32,7 @@ class PortfolioEngineerFragment : Fragment() {
         const val INTENT_ADD = 100
         const val INTENT_EDIT = 200
     }
-    
+
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_portfolio, container, false)
@@ -49,7 +45,7 @@ class PortfolioEngineerFragment : Fragment() {
         getAllPortfolio()
         return binding.root
     }
-    
+
     private fun setupPortfolioRecyclerView() {
         binding.rvPortfolio.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
 
