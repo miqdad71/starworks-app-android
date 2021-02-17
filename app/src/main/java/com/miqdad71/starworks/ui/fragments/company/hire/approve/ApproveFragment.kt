@@ -57,7 +57,8 @@ class ApproveFragment : BaseFragmentCoroutine<FragmentApproveBinding>(), Approve
 
     override fun onStart() {
         super.onStart()
-        binding.shimmerViewContainer.startShimmerAnimation()
+//        binding.shimmerViewContainer.startShimmerAnimation()
+        binding.shimmerViewContainer.visibility = View.GONE
 
         presenter?.bindToView(this@ApproveFragment)
         presenter?.callService(sharedPref.getIdCompany())

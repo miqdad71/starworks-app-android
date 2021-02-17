@@ -1,36 +1,25 @@
 package com.miqdad71.starworks.ui.activity.main.engineer.img_profile
 
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.remote.ApiClient
-import com.miqdad71.starworks.databinding.ActivityImageProfileEngineerBinding
+import com.miqdad71.starworks.databinding.ActivityImageProfileBinding
+import com.miqdad71.starworks.ui.base.BaseActivityCoroutine
 import com.miqdad71.starworks.util.FileHelper
 import com.miqdad71.starworks.util.FileHelper.Companion.createPartFromFile
 
-open class ImageProfileEngineer : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding: ActivityImageProfileEngineerBinding
-
+class ImageProfileEngineerActivity : BaseActivityCoroutine<ActivityImageProfileBinding>(), View.OnClickListener {
     private lateinit var viewModel: ImageProfileEngineerViewModel
     private var enId: Int? = null
     private var enProfile: String? = null
-    private var pathImage: String? = null
-
-    companion object {
-        const val IMAGE_PICK_CODE = 100
-        const val PERMISSION_CODE = 200
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_image_profile_engineer)
+        setLayout = R.layout.activity_image_profile
         super.onCreate(savedInstanceState)
 
         enId = intent.getIntExtra("en_id", 0)
@@ -40,12 +29,6 @@ open class ImageProfileEngineer : AppCompatActivity(), View.OnClickListener {
         setDataFromIntent()
         setViewModel()
         subscribeLiveData()
-    }
-
-    private fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
     override fun onClick(v: View?) {
@@ -63,7 +46,7 @@ open class ImageProfileEngineer : AppCompatActivity(), View.OnClickListener {
                 if (enId != 0) {
                     if (pathImage == null) {
                         setResult(RESULT_OK)
-                        this@ImageProfileEngineer.finish()
+                        this@ImageProfileEngineerActivity.finish()
                     } else {
                         viewModel.serviceUpdateImageEngineer(
                             enId = enId!!,
@@ -71,11 +54,11 @@ open class ImageProfileEngineer : AppCompatActivity(), View.OnClickListener {
                         )
                     }
                 } else {
-                    Toast.makeText(this@ImageProfileEngineer, "Please login again!", Toast.LENGTH_SHORT).show()
+                    noticeToast("Please login again!")
                 }
             }
             R.id.ln_back -> {
-                this@ImageProfileEngineer.finish()
+                this@ImageProfileEngineerActivity.finish()
             }
         }
     }
@@ -92,7 +75,7 @@ open class ImageProfileEngineer : AppCompatActivity(), View.OnClickListener {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     pickImageFromGallery()
                 } else {
-                    Toast.makeText(this@ImageProfileEngineer, "Permission denied...!", Toast.LENGTH_SHORT).show()
+                    noticeToast("Permission denied...!")
                 }
             }
         }
@@ -107,7 +90,7 @@ open class ImageProfileEngineer : AppCompatActivity(), View.OnClickListener {
             binding.ivImageLoad.visibility = View.VISIBLE
             binding.ivImageLoad.setImageURI(data?.data)
 
-            pathImage = FileHelper.getPathFromURI(this@ImageProfileEngineer, data?.data!!)
+            pathImage = FileHelper.getPathFromURI(this@ImageProfileEngineerActivity, data?.data!!)
         }
     }
 
@@ -127,29 +110,27 @@ open class ImageProfileEngineer : AppCompatActivity(), View.OnClickListener {
 
             if (enProfile != null) {
                 binding.imageUrl = ApiClient.BASE_URL_IMAGE + enProfile
+            } else {
+                binding.imageUrl = ApiClient.BASE_URL_IMAGE_DEFAULT_PROFILE_2
             }
-
         }
     }
 
     private fun setViewModel() {
-        viewModel = ViewModelProvider(this@ImageProfileEngineer).get(ImageProfileEngineerViewModel::class.java)
-        viewModel.setService(createApi(this@ImageProfileEngineer))
-    }
-    private inline fun <reified ApiService> createApi(context: Context): ApiService {
-        return ApiClient.getApiClient(context).create(ApiService::class.java)
+        viewModel = ViewModelProvider(this@ImageProfileEngineerActivity).get(ImageProfileEngineerViewModel::class.java)
+        viewModel.setService(createApi(this@ImageProfileEngineerActivity))
     }
 
     private fun subscribeLiveData() {
-        viewModel.isLoadingLiveData.observe(this@ImageProfileEngineer) {
+        viewModel.isLoadingLiveData.observe(this@ImageProfileEngineerActivity) {
             binding.btnUpdateImage.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
         }
 
-        viewModel.onSuccessLiveData.observe(this@ImageProfileEngineer) {
+        viewModel.onSuccessLiveData.observe(this@ImageProfileEngineerActivity) {
             if (it) {
                 setResult(RESULT_OK)
-                this@ImageProfileEngineer.finish()
+                this@ImageProfileEngineerActivity.finish()
 
                 binding.progressBar.visibility = View.GONE
                 binding.btnUpdateImage.visibility = View.VISIBLE
@@ -159,15 +140,12 @@ open class ImageProfileEngineer : AppCompatActivity(), View.OnClickListener {
             }
         }
 
-         viewModel.onMessageLiveData.observe(this@ImageProfileEngineer) {
-             Toast.makeText(this@ImageProfileEngineer, "Upload Success", Toast.LENGTH_SHORT)
-                 .show()
+        viewModel.onMessageLiveData.observe(this@ImageProfileEngineerActivity) {
+            noticeToast(it)
+        }
 
-         }
-
-        viewModel.onFailLiveData.observe(this@ImageProfileEngineer) {
-            Toast.makeText(this@ImageProfileEngineer, "Upload Failed", Toast.LENGTH_SHORT)
-                .show()
+        viewModel.onFailLiveData.observe(this@ImageProfileEngineerActivity) {
+            noticeToast(it)
         }
     }
 }

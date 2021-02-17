@@ -33,7 +33,7 @@ class RejectPresenter(private val service: HireAPI) : CoroutineScope, RejectCont
                         status = "reject"
                     )
                 } catch (e: HttpException) {
-                        view?.hideLoading()
+                        
 
                         when {
                             e.code() == 404 -> {
@@ -55,7 +55,7 @@ class RejectPresenter(private val service: HireAPI) : CoroutineScope, RejectCont
             }
 
             if (response is HireResponse) {
-                view?.hideLoading()
+                
 
                 if (response.success) {
                     val list = response.data.map {

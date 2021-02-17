@@ -33,7 +33,7 @@ class WaitPresenter(private val service: HireAPI) : CoroutineScope, WaitContract
                         status = "wait"
                     )
                 } catch (e: HttpException) {
-                        view?.hideLoading()
+                        
 
                         when {
                             e.code() == 404 -> {
@@ -55,7 +55,7 @@ class WaitPresenter(private val service: HireAPI) : CoroutineScope, WaitContract
             }
 
             if (response is HireResponse) {
-                view?.hideLoading()
+                
 
                 if (response.success) {
                     val list = response.data.map {

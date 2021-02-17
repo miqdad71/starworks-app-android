@@ -58,7 +58,8 @@ class RejectFragment : BaseFragmentCoroutine<FragmentRejectBinding>(), RejectCon
 
     override fun onStart() {
         super.onStart()
-        binding.shimmerViewContainer.startShimmerAnimation()
+//        binding.shimmerViewContainer.startShimmerAnimation()
+        binding.shimmerViewContainer.visibility = View.GONE
 
         presenter?.bindToView(this@RejectFragment)
         presenter?.callService(sharedPref.getIdCompany())

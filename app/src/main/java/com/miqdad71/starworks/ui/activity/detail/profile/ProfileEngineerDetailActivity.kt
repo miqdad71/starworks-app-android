@@ -10,11 +10,12 @@ import com.miqdad71.starworks.data.model.account.AccountResponse
 import com.miqdad71.starworks.data.model.engineer.EngineerModel
 import com.miqdad71.starworks.data.model.engineer.EngineerResponse
 import com.miqdad71.starworks.data.model.skill.SkillModel
+import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityProfileDetailBinding
 import com.miqdad71.starworks.ui.activity.detail.company.HireCompanyActivity
 import com.miqdad71.starworks.ui.activity.detail.profile.experience.DetailProfileExperienceFragment
 import com.miqdad71.starworks.ui.activity.detail.profile.portfolio.DetailProfilePortfolioFragment
-import com.miqdad71.starworks.ui.adapter.skill.ProfileSkillAdapter
+import com.miqdad71.starworks.ui.adapter.skill.ProfileSkillViewAdapter
 import com.miqdad71.starworks.ui.base.BaseActivityCoroutine
 import com.miqdad71.starworks.util.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_profile_detail.*
@@ -81,23 +82,20 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
             enId = data.enId
         )
 
-        /*if (data.enProfile != null) {
-            binding.imageUrl = ApiClient.BASE_URL_IMAGE + data.enProfile
-        } else {
-            binding.imageUrl = ApiClient.BASE_URL_IMAGE_DEFAULT_PROFILE_2
-        }*/
+        binding.imageUrl = ApiClient.BASE_URL_IMAGE + data.enProfile
     }
 
     override fun onResultSuccessSkill(list: List<SkillModel>) {
-        (binding.rvSkill.adapter as ProfileSkillAdapter).addList(list)
+        (binding.rvSkill.adapter as ProfileSkillViewAdapter).addList(list)
         binding.flSkill.visibility = View.VISIBLE
+        binding.tvDataNotFound.visibility = View.GONE
     }
 
     override fun onResultSuccessHire(status: Boolean) {
         if (status) {
-            binding.btnHire.visibility = View.VISIBLE
-        } else {
             binding.btnHire.visibility = View.GONE
+        } else {
+            binding.btnHire.visibility = View.VISIBLE
         }
     }
 
@@ -112,11 +110,8 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
         }
     }
 
-    override fun onResultFailHire(message: String) {
-        if (message == "expired") {
-            noticeToast("Please sign back in!")
-            sharedPref.accountLogout()
-        } else {
+    override fun onResultFailHire(result: Boolean) {
+        if (!result) {
             if (sharedPref.getLevelUser() == 0) {
                 binding.btnHire.visibility = View.GONE
             } else {
@@ -128,12 +123,12 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
     override fun showLoading() {
         binding.progressBar.visibility = View.VISIBLE
 
-        binding.toolbar.visibility = View.GONE
+       /* binding.toolbar.visibility = View.GONE
         binding.cvIdentity.visibility = View.GONE
         binding.cvSkill.visibility = View.GONE
         binding.cvCurriculumVitae.visibility = View.GONE
         binding.flSkill.visibility = View.GONE
-        binding.btnHire.visibility = View.GONE
+        binding.btnHire.visibility = View.GONE*/
     }
 
     override fun hideLoading() {
@@ -141,8 +136,6 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
         binding.cvIdentity.visibility = View.VISIBLE
         binding.cvSkill.visibility = View.VISIBLE
         binding.cvCurriculumVitae.visibility = View.VISIBLE
-        binding.progressBar.visibility = View.GONE
-
         binding.progressBar.visibility = View.GONE
     }
 
@@ -160,10 +153,10 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
         )
     }
 
-    override fun onPause() {
+    /*override fun onPause() {
         super.onPause()
-//        binding.shimmerViewContainer.stopShimmerAnimation()
-    }
+        binding.shimmerViewContainer.stopShimmerAnimation()
+    }*/
 
     override fun onStop() {
         super.onStop()
@@ -196,7 +189,7 @@ class ProfileEngineerDetailActivity : BaseActivityCoroutine<ActivityProfileDetai
     private fun setSkillRecyclerView() {
         binding.rvSkill.layoutManager = FlexboxLayoutManager(this@ProfileEngineerDetailActivity)
 
-        val adapter = ProfileSkillAdapter()
+        val adapter = ProfileSkillViewAdapter()
         binding.rvSkill.adapter = adapter
     }
 }

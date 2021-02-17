@@ -3,6 +3,7 @@ package com.miqdad71.starworks.ui.activity.detail.company
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -42,11 +43,8 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
         setToolbarActionBar()
         setProjectAdapter()
         getAllProject()
-
         setViewModel()
         subscribeLiveData()
-        
-
     }
 
     private fun setToolbarActionBar() {
@@ -96,8 +94,24 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
                     )
                 }
                 (binding.spProject.adapter as ProjectSpinnerAdapter).addList(list)
-            }catch (e: Throwable) {
+                binding.spProject.onItemSelectedListener = object :
+                    AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+                        val sp = list[position]
+                        pjId = sp.pjId
+                    }
 
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        return
+                    }
+                }
+            }catch (e: Throwable) {
+                e.printStackTrace()
             }
         }
     }
@@ -120,7 +134,7 @@ class HireCompanyActivity : AppCompatActivity(), View.OnClickListener {
                 if(enId != 0){
                     viewModel.createAPI(
                         enId = enId!!,
-                        pjId = sharedPref.getIdCompany(),
+                        pjId = pjId!!,
                         hrPrice = binding.etPrice.text.toString().toLong(),
                         hrMessage = binding.etDescription.text.toString()
                     )

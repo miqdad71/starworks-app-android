@@ -24,6 +24,7 @@ class ProfileDetailPresenter(
 
     private var view: ProfileDetailContract.View? = null
     private var failStatus = ""
+    private var failStatusHire = false
 
     override val coroutineContext: CoroutineContext
         get() = Job() + Dispatchers.Main
@@ -78,7 +79,7 @@ class ProfileDetailPresenter(
 
     override fun callServiceSkill(enId: Int?) {
         launch {
-            view?.showLoading()
+//            view?.showLoading()
 
             val response = withContext(Dispatchers.IO) {
                 try {
@@ -126,7 +127,7 @@ class ProfileDetailPresenter(
 
     override fun callServiceIsHire(cnId: Int?, enId: Int?) {
         launch {
-            view?.showLoading()
+//            view?.showLoading()
 
             val response = withContext(Dispatchers.IO) {
                 try {
@@ -135,25 +136,13 @@ class ProfileDetailPresenter(
                         enId = enId!!
                     )
                 } catch (e: HttpException) {
-//                    view?.hideLoading()
+                    failStatusHire = false
 
-                    when {
-                        e.code() == 404 -> {
-                            failStatus = "No Data Hire!"
-                        }
-                        e.code() == 400 -> {
-                            failStatus = "expired"
-                        }
-                        else -> {
-                            failStatus = "Server under maintenance!"
-                        }
-                    }
                 }
             }
 
-            if (failStatus.isNotEmpty()) {
-                view?.onResultFail(failStatus)
-                failStatus = ""
+            if (!failStatusHire) {
+                view?.onResultFailHire(failStatusHire)
             }
 
             if (response is HireResponse) {
@@ -167,7 +156,7 @@ class ProfileDetailPresenter(
                         view?.onResultSuccessHire(true)
                     }
                 } else {
-                    view?.onResultFailHire(response.message)
+                    view?.onResultFailHire(false)
                 }
             }
         }

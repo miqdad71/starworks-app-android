@@ -32,9 +32,12 @@ class DetailProfileExperiencePresenter(private val service: ExperienceAPI) : Cor
                 try {
                     service.getAllExperience(enId = enId!!)
                 } catch (e: HttpException) {
-                    view?.hideLoading()
+                    withContext(Dispatchers.Main){
+                        view?.hideLoading()
 
-                    when {
+                    }
+
+                   /* when {
                         e.code() == 404 -> {
                             failStatus = "No data experience!"
                         }
@@ -44,7 +47,7 @@ class DetailProfileExperiencePresenter(private val service: ExperienceAPI) : Cor
                         else -> {
                             failStatus = "Server under maintenance!"
                         }
-                    }
+                    }*/
                 }
             }
 

@@ -18,13 +18,18 @@
             name="dataNotFound"
             type="String" />
 
+        <variable
+            name="imageUrl"
+            type="String" />
+
     </data>
 
     <ScrollView
         android:id="@+id/nested_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_profile">
+        android:background="@color/background_profile"
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -69,7 +74,8 @@
                         android:src="@drawable/img_profile_miqdad"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:loadImage="@{imageUrl}" />
 
                     <TextView
                         android:id="@+id/tv_name"
@@ -84,11 +90,10 @@
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_image_profile"
-                        tools:text="Name"
-
-                        />
+                        tools:text="Name" />
 
                     <TextView
                         android:id="@+id/tv_job_title"
@@ -101,6 +106,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_name"
                         tools:text="Job Title" />
@@ -112,6 +118,7 @@
                         android:layout_marginTop="5dp"
                         android:gravity="center"
                         android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_job_title">
 
@@ -141,6 +148,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ln_domicile"
                         tools:text="Job Type" />
@@ -157,7 +165,9 @@
                         android:text="@{engineerModel.enDescription != null ? engineerModel.enDescription : @string/en_description_not_set}"
                         android:textColor="@color/gray"
                         android:textSize="16sp"
+                        android:textAlignment="center"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_job_type"
                         app:layout_constraintVertical_bias="0.0"
@@ -306,19 +316,19 @@
                         android:id="@+id/tab_layout"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        app:tabSelectedTextColor="@android:color/holo_orange_light"
-                        app:tabIndicatorColor="@android:color/holo_orange_light"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tabIndicatorColor="@android:color/holo_orange_light"
+                        app:tabSelectedTextColor="@android:color/holo_orange_light" />
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/view_pager"
                         android:layout_width="match_parent"
                         android:layout_height="500dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

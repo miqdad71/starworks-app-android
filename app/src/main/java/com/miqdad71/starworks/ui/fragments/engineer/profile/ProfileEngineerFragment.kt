@@ -20,7 +20,7 @@ import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.EngineerAPI
 import com.miqdad71.starworks.serviceapi.SkillAPI
 import com.miqdad71.starworks.ui.activity.main.SettingsActivity
-import com.miqdad71.starworks.ui.activity.main.engineer.img_profile.ImageProfileEngineer
+import com.miqdad71.starworks.ui.activity.main.engineer.img_profile.ImageProfileEngineerActivity
 import com.miqdad71.starworks.ui.activity.skill.EditSkillActivity
 import com.miqdad71.starworks.ui.activity.skill.SkillActivity
 import com.miqdad71.starworks.ui.adapter.skill.ProfileSkillAdapter
@@ -73,10 +73,8 @@ class ProfileEngineerFragment : Fragment() {
             val intent = Intent(context, SkillActivity::class.java)
             startActivity(intent)
         }
-        binding.ivImageProfile.setOnClickListener {
-            val intent = Intent(activity, ImageProfileEngineer::class.java)
-            startActivity(intent)
-        }
+
+
 
         getAdapterPortExp()
         setToolbarActionBar()
@@ -157,6 +155,14 @@ class ProfileEngineerFragment : Fragment() {
                 Glide.with(this@ProfileEngineerFragment)
                     .load(BASE_URL_IMAGE + dataFromResult.enProfile)
                     .placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
+
+                binding.ivImageProfile.setOnClickListener {
+                    val intent = Intent(context, ImageProfileEngineerActivity::class.java)
+                    intent.putExtra("en_id", dataFromResult.enId)
+                    intent.putExtra("en_profile", dataFromResult.enProfile)
+                    startActivity(intent)
+                }
+
             } catch (e: Throwable) {
                 Log.d("message", e.toString())
             }

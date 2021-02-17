@@ -11,7 +11,7 @@ interface ProfileDetailContract {
         fun onResultSuccessSkill(list: List<SkillModel>)
         fun onResultSuccessHire(status: Boolean)
         fun onResultFail(message: String)
-        fun onResultFailHire(message: String)
+        fun onResultFailHire(result: Boolean)
         fun showLoading()
         fun hideLoading()
     }

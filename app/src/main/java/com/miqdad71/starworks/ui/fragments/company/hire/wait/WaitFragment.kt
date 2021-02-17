@@ -57,7 +57,8 @@ class WaitFragment : BaseFragmentCoroutine<FragmentWaitBinding>(), WaitContract.
 
     override fun onStart() {
         super.onStart()
-        binding.shimmerViewContainer.startShimmerAnimation()
+//        binding.shimmerViewContainer.startShimmerAnimation()
+        binding.shimmerViewContainer.visibility = View.GONE
 
         presenter?.bindToView(this@WaitFragment)
         presenter?.callService(sharedPref.getIdCompany())

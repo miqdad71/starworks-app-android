@@ -32,9 +32,12 @@ class DetailProfilePortfolioPresenter(private val service: PortfolioAPI) : Corou
                 try {
                     service.getAllPortfolio(enId = enId!!)
                 } catch (e: HttpException) {
-                    view?.hideLoading()
+                    withContext(Dispatchers.Main){
+                        view?.hideLoading()
 
-                    when {
+                    }
+
+                    /*when {
                         e.code() == 404 -> {
                             failStatus = "No data portfolio!"
                         }
@@ -44,7 +47,7 @@ class DetailProfilePortfolioPresenter(private val service: PortfolioAPI) : Corou
                         else -> {
                             failStatus = "Server under maintenance!"
                         }
-                    }
+                    }*/
                 }
             }
 

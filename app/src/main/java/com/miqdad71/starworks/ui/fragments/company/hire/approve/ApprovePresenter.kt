@@ -33,7 +33,7 @@ class ApprovePresenter(private val service: HireAPI) : CoroutineScope, ApproveCo
                         status = "approve"
                     )
                 } catch (e: HttpException) {
-                        view?.hideLoading()
+
 
                         when {
                             e.code() == 404 -> {
@@ -53,7 +53,7 @@ class ApprovePresenter(private val service: HireAPI) : CoroutineScope, ApproveCo
                 failStatus = ""
             }
             if (response is HireResponse) {
-                view?.hideLoading()
+
 
                 if (response.success) {
                     val list = response.data.map {
