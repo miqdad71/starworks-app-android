@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.account.AccountModel
@@ -16,23 +15,21 @@ import com.miqdad71.starworks.databinding.FragmentProfileCompanyBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.CompanyAPI
 import com.miqdad71.starworks.ui.activity.main.SettingsActivity
+import com.miqdad71.starworks.ui.base.BaseFragmentCoroutine
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ProfileCompanyFragment : Fragment() {
-    private lateinit var binding: FragmentProfileCompanyBinding
-
+class ProfileCompanyFragment : BaseFragmentCoroutine<FragmentProfileCompanyBinding>() {
     private lateinit var coroutineScope: CoroutineScope
-    private lateinit var userDetail: HashMap<String, String>
-    private lateinit var sharedPref: SharedPreference
 
     private lateinit var serviceAccount: AccountAPI
     private lateinit var serviceCompany: CompanyAPI
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setLayout = R.layout.fragment_profile_company
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
@@ -42,7 +39,6 @@ class ProfileCompanyFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_company, container, false)
         super.onCreateView(inflater, container, savedInstanceState)
         return binding.root
     }
@@ -82,7 +78,7 @@ class ProfileCompanyFragment : Fragment() {
                 true
             }
             R.id.miLogout -> {
-                sharedPref.accountLogout()
+                logoutConf(activity)
                 true
             }
             else -> {

@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.miqdad71.starworks.R
@@ -24,6 +23,7 @@ import com.miqdad71.starworks.ui.activity.main.engineer.img_profile.ImageProfile
 import com.miqdad71.starworks.ui.activity.skill.EditSkillActivity
 import com.miqdad71.starworks.ui.activity.skill.SkillActivity
 import com.miqdad71.starworks.ui.adapter.skill.ProfileSkillAdapter
+import com.miqdad71.starworks.ui.base.BaseFragmentCoroutine
 import com.miqdad71.starworks.ui.fragments.engineer.profile.experience.ExperienceEngineerFragment
 import com.miqdad71.starworks.ui.fragments.engineer.profile.portfolio.PortfolioEngineerFragment
 import com.miqdad71.starworks.util.SharedPreference
@@ -33,18 +33,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ProfileEngineerFragment : Fragment() {
-    private lateinit var binding: FragmentProfileEngineerBinding
-
+class ProfileEngineerFragment : BaseFragmentCoroutine<FragmentProfileEngineerBinding>() {
     private lateinit var coroutineScope: CoroutineScope
-    private lateinit var userDetail: HashMap<String, String>
-    private lateinit var sharedPref: SharedPreference
 
     private lateinit var serviceAccount: AccountAPI
     private lateinit var serviceEngineer: EngineerAPI
     private lateinit var serviceSkill: SkillAPI
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setLayout = R.layout.fragment_profile_engineer
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
@@ -54,7 +51,6 @@ class ProfileEngineerFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile_engineer, container, false)
         super.onCreateView(inflater, container, savedInstanceState)
         return binding.root
     }
@@ -105,7 +101,7 @@ class ProfileEngineerFragment : Fragment() {
                 true
             }
             R.id.miLogout -> {
-                sharedPref.accountLogout()
+                logoutConf(activity)
                 true
             }
             else -> {
