@@ -70,8 +70,6 @@ class ProfileEngineerFragment : BaseFragmentCoroutine<FragmentProfileEngineerBin
             startActivity(intent)
         }
 
-
-
         getAdapterPortExp()
         setToolbarActionBar()
         getDataAccount()

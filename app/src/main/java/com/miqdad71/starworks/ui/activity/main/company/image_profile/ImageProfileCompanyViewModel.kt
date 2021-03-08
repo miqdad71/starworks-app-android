@@ -12,6 +12,7 @@ import kotlin.coroutines.CoroutineContext
 class ImageProfileCompanyViewModel : ViewModel(), CoroutineScope {
     private lateinit var service: CompanyAPI
 
+    private var failStatus = ""
     val onSuccessLiveData = MutableLiveData<Boolean>()
     val onMessageLiveData = MutableLiveData<String>()
     val onFailLiveData = MutableLiveData<String>()
@@ -24,7 +25,7 @@ class ImageProfileCompanyViewModel : ViewModel(), CoroutineScope {
         this@ImageProfileCompanyViewModel.service = service
     }
 
-    fun serviceUpdateImageEngineer(cnId: Int, image: MultipartBody.Part? = null) {
+    fun serviceUpdateImageCompany(cnId: Int, image: MultipartBody.Part? = null) {
         launch {
             isLoadingLiveData.value = true
 
@@ -35,22 +36,24 @@ class ImageProfileCompanyViewModel : ViewModel(), CoroutineScope {
                         image = image
                     )
                 } catch (e: HttpException) {
-                    withContext(Dispatchers.Main) {
-                        onSuccessLiveData.value = false
 
-                        when {
-                            e.code() == 404 -> {
-                                onFailLiveData.value = "Data not found!"
-                            }
-                            e.code() == 400 -> {
-                                onFailLiveData.value = "Fail to update data!"
-                            }
-                            else -> {
-                                onFailLiveData.value = "Internal Server Error!"
-                            }
+                    when {
+                        e.code() == 404 -> {
+                            failStatus = "Data not found!"
+                        }
+                        e.code() == 400 -> {
+                            failStatus = "Fail to update data!"
+                        }
+                        else -> {
+                            failStatus = "Internal Server Error!"
                         }
                     }
                 }
+            }
+
+            if (failStatus.isNotEmpty()) {
+                onFailLiveData.value = failStatus
+                failStatus = ""
             }
 
             if (response is CompanyResponse) {
@@ -59,8 +62,6 @@ class ImageProfileCompanyViewModel : ViewModel(), CoroutineScope {
                 if (response.success) {
                     onSuccessLiveData.value = true
                     onMessageLiveData.value = response.message
-                } else {
-                    onFailLiveData.value = response.message
                 }
             }
         }

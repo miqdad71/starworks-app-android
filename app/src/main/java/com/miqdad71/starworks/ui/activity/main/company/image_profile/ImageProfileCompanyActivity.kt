@@ -1,9 +1,7 @@
 package com.miqdad71.starworks.ui.activity.main.company.image_profile
 
-import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +10,7 @@ import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.remote.ApiClient
 import com.miqdad71.starworks.databinding.ActivityImageProfileBinding
 import com.miqdad71.starworks.ui.base.BaseActivityCoroutine
+import com.miqdad71.starworks.util.FileHelper
 import com.miqdad71.starworks.util.FileHelper.Companion.createPartFromFile
 import com.miqdad71.starworks.util.FileHelper.Companion.getPathFromURI
 import java.util.*
@@ -40,12 +39,7 @@ class ImageProfileCompanyActivity : BaseActivityCoroutine<ActivityImageProfileBi
                 pickImageFromGallery()
             }
             R.id.iv_image_view -> {
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    requestPermissions(permissions, PERMISSION_CODE)
-                } else {
-                    pickImageFromGallery()
-                }
+                pickImageFromGallery()
             }
             R.id.iv_image_load -> {
                 pickImageFromGallery()
@@ -56,13 +50,13 @@ class ImageProfileCompanyActivity : BaseActivityCoroutine<ActivityImageProfileBi
                         setResult(RESULT_OK)
                         this@ImageProfileCompanyActivity.finish()
                     } else {
-                        viewModel.serviceUpdateImageEngineer(
+                        viewModel.serviceUpdateImageCompany(
                             cnId = cnId!!,
                             image = createPartFromFile(pathImage!!)
                         )
                     }
                 } else {
-                    noticeToast("Please login again!")
+                    noticeToast("Please login")
                 }
             }
             R.id.ln_back -> {
@@ -125,9 +119,7 @@ class ImageProfileCompanyActivity : BaseActivityCoroutine<ActivityImageProfileBi
     }
 
     private fun setViewModel() {
-        viewModel = ViewModelProvider(this@ImageProfileCompanyActivity).get(
-            ImageProfileCompanyViewModel::class.java
-        )
+        viewModel = ViewModelProvider(this@ImageProfileCompanyActivity).get(ImageProfileCompanyViewModel::class.java)
         viewModel.setService(createApi(this@ImageProfileCompanyActivity))
     }
 

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.miqdad71.starworks.R
 import com.miqdad71.starworks.data.model.account.AccountModel
@@ -15,6 +14,8 @@ import com.miqdad71.starworks.databinding.FragmentProfileCompanyBinding
 import com.miqdad71.starworks.serviceapi.AccountAPI
 import com.miqdad71.starworks.serviceapi.CompanyAPI
 import com.miqdad71.starworks.ui.activity.main.SettingsActivity
+import com.miqdad71.starworks.ui.activity.main.company.image_profile.ImageProfileCompanyActivity
+import com.miqdad71.starworks.ui.activity.main.engineer.img_profile.ImageProfileEngineerActivity
 import com.miqdad71.starworks.ui.base.BaseFragmentCoroutine
 import com.miqdad71.starworks.util.SharedPreference
 import kotlinx.coroutines.CoroutineScope
@@ -107,6 +108,13 @@ class ProfileCompanyFragment : BaseFragmentCoroutine<FragmentProfileCompanyBindi
                 Glide.with(this@ProfileCompanyFragment)
                     .load(ApiClient.BASE_URL_IMAGE + dataFromResult.cnProfile)
                     .placeholder(R.drawable.ic_backround_user).into(binding.ivImageProfile)
+
+                binding.ivImageProfile.setOnClickListener {
+                    val intent = Intent(context, ImageProfileCompanyActivity::class.java)
+                    intent.putExtra("cn_id", dataFromResult.cnId)
+                    intent.putExtra("cn_profile", dataFromResult.cnProfile)
+                    startActivity(intent)
+                }
 
             } catch (e: Throwable) {
                 Log.d("message", e.toString())
