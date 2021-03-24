@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/menu_home">
+
+    <fragment
+        android:id="@+id/menu_home"
+        android:name="com.miq71.starworks.activity.main.fragment.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_menu_home_to_menu_search"
+            app:destination="@id/menu_search" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_search"
+        android:name="com.miq71.starworks.activity.main.fragment.search.SearchFragment"
+        android:label="@string/search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_menu_search_to_menu_hiring"
+            app:destination="@id/menu_hiring" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_hiring"
+        android:name="com.miq71.starworks.activity.main.fragment.hiring.HiringFragment"
+        android:label="@string/hiring"
+        tools:layout="@layout/fragment_hiring">
+        <action
+            android:id="@+id/action_menu_hiring_to_menu_project"
+            app:destination="@id/menu_project" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_project"
+        android:name="com.miq71.starworks.activity.main.fragment.project.company.ProjectCompanyFragment"
+        android:label="@string/project"
+        tools:layout="@layout/fragment_company_project">
+        <action
+            android:id="@+id/action_menu_project_to_menu_profile"
+            app:destination="@id/menu_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menu_profile"
+        android:name="com.miq71.starworks.activity.main.fragment.profile.company.ProfileCompanyFragment"
+        android:label="@string/search"
+        tools:layout="@layout/fragment_home" />
+
+</navigation>

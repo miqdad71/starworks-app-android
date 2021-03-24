@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.miq71.starworks">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.StarworkS"
+        android:usesCleartextTraffic="true">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name="com.miq71.starworks.activity.image_profile.company.ImageProfileCompanyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.image_profile.engineer.ImageProfileEngineerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.detail_project.DetailProjectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.project.ProjectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.hire.HireActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.github.GithubActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.experience.ExperienceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.portfolio.PortfolioActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.skill.SkillActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.detail_profile.ProfileDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.settings.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.forget_password.check_email.CheckEmailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.forget_password.reset_password.ResetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.signup.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.onboarding.OnboardingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.Fullscreen" />
+        <activity
+            android:name="com.miq71.starworks.activity.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.NoActionBar" />
+        <activity
+            android:name="com.miq71.starworks.activity.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.StarworkS.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

@@ -1,0 +1,30 @@
+<resources>
+    <string-array name="job_title_entries">
+        <item>Web Developer</item>
+        <item>Android Developer</item>
+    </string-array>
+
+    <string-array name="job_title_values">
+        <item>Web Developer</item>
+        <item>Android Developer</item>
+    </string-array>
+
+    <string-array name="job_type_entries">
+        <item>Freelance</item>
+        <item>Full Time</item>
+    </string-array>
+
+    <string-array name="job_type_values">
+        <item>freelance</item>
+        <item>full time</item>
+    </string-array>
+
+    <string-array name="project_list_entries">
+        <item>- Project -</item>
+        <item>Aplikasi Android - Pendeteksi Kejombloan</item>
+        <item>Aplikasi Android - Mamalemon</item>
+        <item>Aplikasi IOS - Ramalan Masa Depan</item>
+        <item>Perancangan Sistem Teleportasi Dengan Kecerdasan Buatan</item>
+        <item>Implementasi Server Tercepat Di Seluruh Dunia</item>
+    </string-array>
+</resources>

@@ -1,0 +1,197 @@
+<resources>
+    <string name="app_name">StarworkS</string>
+    <string name="my_logo">My Logo</string>
+    <string name="img_background">IMG Background</string>
+    <string name="img_icon">IMG Icon</string>
+    <string name="img_profile">IMG Profile</string>
+    <string name="hire">HIRE</string>
+    <string name="logout">LOGOUT</string>
+    <string name="web_developer">Web Developer</string>
+    <string name="android_developer">Android Developer</string>
+    <string name="dummy_date">Monday, 07 December 2020</string>
+    <string name="permission_dialog">Accessing Location Permissions required</string>
+    <string name="go_to_permissions_settings">Go to App settings and enable permissions</string>
+    <string name="item_edit">Edit</string>
+    <string name="item_delete">Delete</string>
+    <string name="item_update">Update</string>
+    <string name="item_save">Save</string>
+    <string name="item_loading">Loading</string>
+    <string name="item_cancel">Cancel</string>
+
+    <!-- Menu Bottom Navigation -->
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="project">Project</string>
+    <string name="profile">Profile</string>
+    <string name="hiring">Hiring</string>
+
+    <!-- Onboarding Page -->
+    <string name="quotes_onboarding1">FIND TALENTED &amp; BEST DEVELOPERS IN VARIOUS FIELDS OF EXPERTISE</string>
+    <string name="or">or</string>
+
+    <!-- Login Page -->
+    <string name="login">LOGIN</string>
+    <string name="instruction_login">Please login with your email and password</string>
+    <string name="email">Email</string>
+    <string name="email_hint">Email address</string>
+    <string name="password">Password</string>
+    <string name="password_hint">Your password</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="don_t_have_an_account">You don\'t have an account?</string>
+
+    <!-- Sign Up Page -->
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_now">Sign Up</string>
+    <string name="instruction_sign_up">Please fill the form below correctly</string>
+    <string name="full_name">Full Name</string>
+    <string name="company">Company</string>
+    <string name="position">Position</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="have_an_account">You have an account?</string>
+    <string name="login_here">Login here</string>
+    <string name="password_confirmation">Password Confirmation</string>
+
+    <!-- Profile Page -->
+    <string name="edit_profile">Edit Profile</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back">Back</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="back_to_profile">Back to profile</string>
+    <string name="contact">Contact</string>
+    <string name="update_image_profile">SELECT IMAGE</string>
+    <string name="update_image_upload">UPDATE IMAGE</string>
+    <string name="instruction_update_image_profile">Please choose image if you want to change</string>
+
+    <!-- Preference Titles -->
+    <string name="account_header">Account</string>
+    <string name="personal_data_header">Personal Data</string>
+
+    <!-- Account Data -->
+    <string name="ac_name">Name</string>
+    <string name="ac_email">Email Address</string>
+    <string name="ac_phone">Phone Number</string>
+
+    <!-- Engineer Data -->
+    <string name="en_job_title">Job Title</string>
+    <string name="en_job_type">Job Type</string>
+    <string name="en_domicile">Domicile</string>
+    <string name="en_description">Description</string>
+    <string name="en_description_example">Only download attachments when manually requested</string>
+
+    <!-- Company Data -->
+    <string name="cn_company">Company Name</string>
+    <string name="cn_position">Position in Company</string>
+    <string name="cn_field">Field</string>
+    <string name="cn_city">City</string>
+    <string name="cn_description">Description</string>
+    <string name="cn_instagram">Instagram</string>
+    <string name="cn_linkedin">LinkedIn</string>
+
+    <!-- Reset Password -->
+    <string name="instruction_verify_email">Please fill the email below correctly</string>
+    <string name="instruction_reset_password">Please fill the new password and password confirmation below correctly</string>
+    <string name="reset_password">RESET PASSWORD</string>
+    <string name="next">NEXT</string>
+    <string name="back_to_login">Back to login</string>
+    <string name="back_to_verify">Back to verify email</string>
+    <string name="new_password">New Password</string>
+
+    <!-- Skill -->
+    <string name="add_skill">ADD SKILL</string>
+    <string name="update_skill">UPDATE SKILL</string>
+    <string name="delete_skill">DELETE SKILL</string>
+    <string name="detail_skill">DETAIL SKILL</string>
+    <string name="instruction_add_skill">Please fill the skill for add new skill below</string>
+    <string name="new_skill">New Skill</string>
+    <string name="skill_hint">Your new skill</string>
+    <string name="skill">Skill</string>
+
+    <!-- Portfolio -->
+    <string name="add_portfolio">ADD PORTFOLIO</string>
+    <string name="update_portfolio">UPDATE PORTFOLIO</string>
+    <string name="delete_portfolio">DELETE PORTFOLIO</string>
+    <string name="detail_portfolio">DETAIL PORTFOLIO</string>
+    <string name="instruction_add_portfolio">Please fill the portfolio for add new portfolio below</string>
+    <string name="app_name_portfolio">App Name</string>
+    <string name="description">Description</string>
+    <string name="pub">Publication</string>
+    <string name="repo">Repository</string>
+    <string name="workplace">Workplace</string>
+    <string name="portfolio_type">Portfolio Type</string>
+    <string name="app_hint">Your app name</string>
+    <string name="description_hint">Short description</string>
+    <string name="link_pub_hint">Publication link</string>
+    <string name="link_repo_hint">Repository link</string>
+    <string name="work_place_hint">Related workplace</string>
+    <string name="portfolio_type_hint">Portfolio type</string>
+    <string name="image_upload">Choose Image</string>
+    <string name="mobile_application">Mobile Application</string>
+    <string name="web_application">Web Application</string>
+
+    <!-- Experience -->
+    <string name="add_experience">ADD EXPERIENCE</string>
+    <string name="update_experience">UPDATE EXPERIENCE</string>
+    <string name="delete_experience">DELETE EXPERIENCE</string>
+    <string name="detail_exp">DETAIL EXPERIENCE</string>
+    <string name="instruction_add_experience">Please fill the experience for add new experience below</string>
+    <string name="position_exp">Position</string>
+    <string name="company_exp">Company</string>
+    <string name="start_exp">Date Start</string>
+    <string name="end_exp">Date End</string>
+    <string name="description_exp">Description</string>
+
+    <!-- Hire -->
+    <string name="project_hire">PROJECT HIRE</string>
+    <string name="detail_hire">DETAIL HIRE</string>
+    <string name="instruction_hire">Please fill the project hire below</string>
+    <string name="select_project">Select Project</string>
+    <string name="price">Price</string>
+    <string name="process_hire">Process Hire</string>
+    <string name="project_price">Project price (ex: 15000000)</string>
+    <string name="short_message">Short message of yout project hiring</string>
+    <string name="message_hire">Hire Message</string>
+
+    <!-- Project -->
+    <string name="add_project">ADD PROJECT</string>
+    <string name="update_project">UPDATE PROJECT</string>
+    <string name="delete_project">DELETE PROJECT</string>
+    <string name="detail_project">DETAIL PROJECT</string>
+    <string name="instruction_add_project">Please fill the project for add new project below</string>
+    <string name="project_name">Project Name</string>
+    <string name="project_name_hint">Your project name</string>
+    <string name="project_description">Description</string>
+    <string name="project_description_hint">Description of your project</string>
+    <string name="project_deadline">Project Deadline</string>
+    <string name="project_deadline_hint">Deadline of your project</string>
+    <string name="back_to_project">Back to list project</string>
+    <string name="project_data_not_found">No project data. Please add data!</string>
+
+    <!-- Not set -->
+    <string name="ac_name_not_set">Name Not Set</string>
+    <string name="en_job_title_not_set">Job Title Not Set</string>
+    <string name="en_job_type_not_set">Job Type Not Set</string>
+    <string name="en_domicile_not_set">Domicile Not Set</string>
+    <string name="en_description_not_set">Description Not Set</string>
+
+    <!-- Not set -->
+    <string name="cn_company_not_set">Company Not Set</string>
+    <string name="cn_position_not_set">Position Not Set</string>
+    <string name="cn_field_not_set">Field Not Set</string>
+    <string name="cn_city_not_set">City Not Set</string>
+    <string name="cn_description_not_set">Description Not Set</string>
+    <string name="ac_phone_number_not_set">Phone Number Not Set</string>
+    <string name="cn_instagram_not_set">Instagram Not Set</string>
+    <string name="cn_linked_not_set">LinkedIn Not Set</string>
+
+    <!-- Hiring -->
+    <string name="hire_project_name">Project Name</string>
+    <string name="hire_project_description">Description</string>
+    <string name="hire_project_deadline">Deadline Project</string>
+    <string name="hire_approve">Approve</string>
+    <string name="hire_reject">Reject</string>
+
+    <!-- Shimmer -->
+    <string name="shimmer_description">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </string>
+</resources>
