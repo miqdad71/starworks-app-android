@@ -21,10 +21,7 @@
 
     <string-array name="project_list_entries">
         <item>- Project -</item>
-        <item>Aplikasi Android - Pendeteksi Kejombloan</item>
-        <item>Aplikasi Android - Mamalemon</item>
-        <item>Aplikasi IOS - Ramalan Masa Depan</item>
-        <item>Perancangan Sistem Teleportasi Dengan Kecerdasan Buatan</item>
-        <item>Implementasi Server Tercepat Di Seluruh Dunia</item>
+        <item>Aplikasi Android - Co-Detection</item>
+        <item>Aplikasi Web - Web Pendataan Barang</item>
     </string-array>
 </resources>

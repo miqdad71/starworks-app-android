@@ -191,7 +191,18 @@
     <string name="hire_reject">Reject</string>
 
     <!-- Shimmer -->
+    <string name="profileName">Miqdad</string>
+    <string name="profileTitle">Android Developer</string>
+    <string name="profileType">Full Time</string>
+    <string name="profileDomicile">Bekasi, Jawa Barat</string>
+    <string name="profileEmail">miqdad.ihbs71777@gmail.com</string>
+    <string name="profilePhone">081298056468</string>
     <string name="shimmer_description">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </string>
+    <string name="skill1">Web</string>
+    <string name="skill2">Android</string>
+    <string name="skill3">Javascript</string>
+    <string name="miqdad71">\@miqdad71\</string>
+    <string name="miqdad_aja7">\@miqdad_aja7\\</string>
 </resources>

@@ -62,9 +62,8 @@ class LoginViewModel : ViewModel(), CoroutineScope {
 
                 if (response.success) {
                     val data = response.data
-                    val id: Int?
 
-                    id = if (data.acLevel == 0) {
+                    val id: Int? = if (data.acLevel == 0) {
                         data.enId
                     } else {
                         data.cnId
